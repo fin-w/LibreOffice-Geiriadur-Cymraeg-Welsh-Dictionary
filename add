@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+# add a word to the dictionary
+
+# usage:
+# ~ $ add -w "enghraifft"
+# ~ $ add ffeil.txt
+#
+# ~ $ ls ffeil.txt
+# amlddiwylliannedd
+# enghraifft
+# ~ $
+#
+
+if [[ $1 -eq "-w" ]] ; then
+	if grep -Fxq $2 ./dictionaries/word_list.txt ; then
+		echo "$2 is already in word list"
+	else
+		echo $2 >> dictionaries/word_list.txt
+		sort -u dictionaries/word_list.txt > dictionaries/dict.tmp
+		wc -l < dictionaries/dict.tmp > dictionaries/mwy.dic
+		cat dictionaries/dict.tmp >> dictionaries/mwy.dic
+		rm dictionaries/dict.tmp
+	fi
+else
+	if [[ -f $1 ]] ; then
+		cat $1 >> dictionaries/word_list.txt
+		sort -u dictionaries/word_list.txt > dictionaries/dict.tmp
+		wc -l < dictionaries/dict.tmp > dictionaries/mwy.dic
+		cat dictionaries/dict.tmp >> dictionaries/mwy.dic
+		rm dictionaries/dict.tmp
+	fi
+fi
