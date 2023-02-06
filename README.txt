@@ -17,3 +17,4 @@ not, see <https://www.gnu.org/licenses/>.
 
 
 See also ./dictionaries/bangor/LICENSE
+See also https://extensions.openoffice.org/en/project/gwirydd-sillafu-cymraeg-welsh-language-spell-checker
