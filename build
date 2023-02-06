@@ -1,0 +1,18 @@
+ #!/usr/bin/env bash
+# make the libreoffice extension
+
+#clean the folder of zips and oxts (which are just renamed zips)
+mv *.oxt archive/ 2> /dev/null
+mv *.zip archive/ 2> /dev/null
+
+# figure out which version we're building
+version=$(grep -rnw './description.xml' -e '<version value=')
+# remove xml stuff to just have the version data
+version=${version/*value=\"/}
+version=${version/\"*/} 
+
+# zip the latest files
+zip -qr out.zip description/ META-INF/ dictionaries/bangor/cy_GB.dic dictionaries/bangor/cy_GB.aff dictionaries/mwy.dic dictionaries/mwy.aff baner_cymreig.png description.xml dictionaries.xcu LICENSE
+
+# rename the latest zip to oxt
+mv out.zip libreoffice-geiriadur-$version.oxt

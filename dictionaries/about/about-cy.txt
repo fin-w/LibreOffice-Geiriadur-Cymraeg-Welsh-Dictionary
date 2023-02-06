@@ -1,0 +1,60 @@
+1. Cyflwyniad
+
+Cafodd y geiriaduron gwirio sillafu MySpell Cymraeg eu datblygu gan 
+Ganolfan Bedwyr, Prifysgol Cymru, Bangor ac maen nhw'n seiliedig ar 
+y rhestri geiriau cynhwysfawr a ddefnyddiwyd gan staff y Ganolfan 
+wrth iddynt gynhyrchu eu meddalwedd gwirio sillafu a gramadeg eu 
+hunain, sef Cysill, a'r offer prawf-ddarllen Cymraeg ar gyfer 
+Microsoft Office XP.
+
+Mae'r geiriadur yn gywasgiad affix o restr eiriau wreiddiol sy'n 
+cynnwys mwy na miliwn o wreiddeiriau ar eu gwahanol ffurfiau cryno,
+treigledig, a ffurfdroëdig, etc.
+
+Mae'r geiriadur yn gallu cynnal nodau Cymraeg arbennig fel w gydag 
+acen grom (to bach) ac y gydag acen grom os caiff ei ddefnyddio o 
+fewn OpenOffice.org (fersiwn 1.1 ymlaen).
+
+2. Hawlfraint a Thrwyddedi
+
+##########################################################################
+# 
+# Hawlfraint 2004, Canolfan Bedwyr, Prifysgol Cymru, Bangor.
+# Cedwir pob hawl.
+#
+# Mae'r geiriadur hwn yn ddarostyngedig i Drwydded Gyhoeddus Gyffredinol GNU, 
+# sydd i'w gweld yn http:/www.gnu.org/copyleft/gpl.html neu, yn Gymraeg, 
+# yn http://www.hebffinia.com/gpl_cymraeg/index.html
+#
+# Caniateir ei ailddosbarthu a'i ddefnyddio ar ffurf cod ffynhonnell ac ar 
+# ffurf ddeuaidd, gydag addasiadau neu hebddynt, os yw'r amodau canlynol yn 
+# cael eu bodloni:
+#
+#  1. Rhaid i ailddosbarthiadau cod ffynhonnell gadw'r rhybudd hawlfraint 
+#     uchod, y rhestr amodau hon a'r ymwrthodiad canlynol.
+#
+#  2. Rhaid i ailddosbarthiadau ar ffurf ddeuaidd atgynhyrchu'r rhybudd 
+#     hawlfraint uchod, y rhestr amodau hon a'r ymwrthodiad canlynol yn y 
+#     ddogfennaeth a/neu yn y deunyddiau eraill sy'n cael eu darparu gyda'r 
+#     dosbarthiad.
+#
+#  3. Rhaid i'r holl addasiadau i'r cod ffynhonnell gael eu marcio 
+#     yn glir fel addasiadau. Rhaid i ailddosbarthiadau deuaidd sy'n seiliedig 
+#     ar god ffynhonnell addasedig gael eu marcio fel fersiynau addasedig 
+#     yn y ddogfennaeth a/neu yn y deunyddiau eraill sy'n cael eu darparu 
+#     gyda'r dosbarthiad.
+#
+#  4. Ni cheir defnyddio enw Canolfan Bedwyr neu enw Prifysgol Cymru, Bangor 
+#     i gymeradwyo neu hyrwyddo cynhyrchion a geir o'r feddalwedd hon heb 
+#     ganiatâd ysgrifenedig penodol ymlaen llaw.
+#
+# Mae'r rhaglen hon yn cael ei dosbarthu yn y gobaith y bydd yn ddefnyddiol, 
+# ond HEB UNRHYW WARANT; heb hyd yn oed y warant oblygedig o FARSIANDÏAETH 
+# neu FFITRWYDD AT BWRPAS ARBENNIG. Gweler Trwydded Gyhoeddus Gyffredinol 
+# GNU am ragor o fanylion
+#
+###########################################################################
+
+3. Cydnabyddiaeth
+
+Cafodd y gwaith datblygu ei ariannu gan Fwrdd yr Iaith Gymraeg (http://www.bwrdd-yr-iaith.org.uk)

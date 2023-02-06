@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oor:component-data xmlns:oor="http://openoffice.org/2001/registry" xmlns:xs="http://www.w3.org/2001/XMLSchema" oor:name="Linguistic" oor:package="org.openoffice.Office">
+ <node oor:name="ServiceManager">
+    <node oor:name="Dictionaries">
+        <node oor:name="HunSpellDic_cy" oor:op="fuse">
+            <prop oor:name="Locations" oor:type="oor:string-list">
+                <value>%origin%/dictionaries/bangor/cy_GB.aff %origin%/dictionaries/bangor/cy_GB.dic</value>
+            </prop>
+            <prop oor:name="Format" oor:type="xs:string">
+                <value>DICT_SPELL</value>
+            </prop>
+            <prop oor:name="Locales" oor:type="oor:string-list">
+                <value>cy-GB</value>
+            </prop>
+        </node>
+        <node oor:name="HunSpellDic_cy2" oor:op="fuse">
+            <prop oor:name="Locations" oor:type="oor:string-list">
+                <value>%origin%/dictionaries/mwy.aff %origin%/dictionaries/mwy.dic</value>
+            </prop>
+            <prop oor:name="Format" oor:type="xs:string">
+                <value>DICT_SPELL</value>
+            </prop>
+            <prop oor:name="Locales" oor:type="oor:string-list">
+                <value>cy-GB</value>
+            </prop>
+        </node>
+        <!--
+        in theory these dictionaries could be added, but they don't exist yet
+        <node oor:name="HyphDic_cy" oor:op="fuse">
+            <prop oor:name="Locations" oor:type="oor:string-list">
+                <value>%origin%/dictionaries/hyph_cy.dic</value>
+            </prop>
+            <prop oor:name="Format" oor:type="xs:string">
+                <value>DICT_HYPH</value>
+            </prop>
+            <prop oor:name="Locales" oor:type="oor:string-list">
+                <value>cy</value>
+            </prop>
+        </node>
+        <node oor:name="ThesDic_cy" oor:op="fuse">
+            <prop oor:name="Locations" oor:type="oor:string-list">
+                <value>%origin%/dictionaries/thes_cy.dat %origin%/dictionaries/thes_cy.idx</value>
+            </prop>
+            <prop oor:name="Format" oor:type="xs:string">
+                <value>DICT_THES</value>
+            </prop>
+            <prop oor:name="Locales" oor:type="oor:string-list">
+                <value>cy</value>
+            </prop>
+        </node>
+        -->
+    </node>
+ </node>  
+</oor:component-data>
