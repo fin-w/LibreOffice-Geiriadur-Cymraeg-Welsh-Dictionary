@@ -12,7 +12,7 @@ version=${version/*value=\"/}
 version=${version/\"*/} 
 
 # zip the latest files
-zip -qr out.zip description/ META-INF/ dictionaries/bangor/cy_GB.dic dictionaries/bangor/cy_GB.aff dictionaries/mwy.dic dictionaries/mwy.aff baner_cymreig.png description.xml dictionaries.xcu LICENSE
+zip -qr out.zip description/ META-INF/ dictionaries/cy_GB.dic dictionaries/cy_GB.aff dictionaries/mwy.dic dictionaries/mwy.aff baner_cymreig.png description.xml dictionaries.xcu LICENSE
 
 # rename the latest zip to oxt
 mv out.zip libreoffice-geiriadur-$version.oxt

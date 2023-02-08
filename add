@@ -17,17 +17,19 @@ if [[ $1 -eq "-w" ]] ; then
 		echo "$2 is already in word list"
 	else
 		echo $2 >> dictionaries/word_list.txt
-		sort -u dictionaries/word_list.txt > dictionaries/dict.tmp
-		wc -l < dictionaries/dict.tmp > dictionaries/mwy.dic
-		cat dictionaries/dict.tmp >> dictionaries/mwy.dic
-		rm dictionaries/dict.tmp
+		#sort -u dictionaries/word_list.txt > dictionaries/dict.tmp
+		#wc -l < dictionaries/dict.tmp > dictionaries/tmp.dic
+		#cat dictionaries/dict.tmp >> dictionaries/tmp.dic
+		#iconv -f utf-8 -t iso-8859-1 -o dictionaries/mwy.dic dictionaries/tmp.dic
+		#rm dictionaries/dict.tmp
+		#rm dictionaries/tmp.dic
 	fi
-else
-	if [[ -f $1 ]] ; then
-		cat $1 >> dictionaries/word_list.txt
-		sort -u dictionaries/word_list.txt > dictionaries/dict.tmp
-		wc -l < dictionaries/dict.tmp > dictionaries/mwy.dic
-		cat dictionaries/dict.tmp >> dictionaries/mwy.dic
-		rm dictionaries/dict.tmp
-	fi
+elif [[ -f $1 ]] ; then
+	cat $1 >> dictionaries/word_list.txt
+	#sort -u dictionaries/word_list.txt > dictionaries/dict.tmp
+	#wc -l < dictionaries/dict.tmp > dictionaries/tmp.dic
+	#cat dictionaries/dict.tmp >> dictionaries/tmp.dic
+	#iconv -f utf-8 -t iso-8859-1 -o dictionaries/mwy.dic dictionaries/tmp.dic
+	#rm dictionaries/dict.tmp
+	#rm dictionaries/tmp.dic
 fi
