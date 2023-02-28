@@ -3,7 +3,7 @@
 # add a word to the dictionary
 
 # usage:
-# ~ $ add -w "enghraifft"
+# ~ $ add enghraifft
 # ~ $ add ffeil.txt
 #
 # ~ $ ls ffeil.txt
@@ -12,24 +12,26 @@
 # ~ $
 #
 
-if [[ $1 -eq "-w" ]] ; then
-	if grep -Fxq $2 ./dictionaries/word_list.txt ; then
-		echo "$2 is already in word list"
+if [[ -f $1 ]] ; then
+	cat $1 >> dictionaries/word_list.txt
+	sort -u dictionaries/word_list.txt > dictionaries/dict.tmp
+	#wc -l < dictionaries/dict.tmp > dictionaries/tmp.dic
+	cat dictionaries/dict.tmp >> dictionaries/word_list.txt
+	#cat dictionaries/dict.tmp >> dictionaries/tmp.dic
+	#iconv -f utf-8 -t iso-8859-1 -o dictionaries/mwy.dic dictionaries/tmp.dic
+	#rm dictionaries/dict.tmp
+	#rm dictionaries/tmp.dic
+else
+	if grep -Fxq $1 ./dictionaries/word_list.txt ; then
+		echo "\"$1\" is already in word list"
 	else
-		echo $2 >> dictionaries/word_list.txt
-		#sort -u dictionaries/word_list.txt > dictionaries/dict.tmp
+		echo $1 >> dictionaries/word_list.txt
+		sort -u dictionaries/word_list.txt > dictionaries/dict.tmp
 		#wc -l < dictionaries/dict.tmp > dictionaries/tmp.dic
+		cat dictionaries/dict.tmp >> dictionaries/word_list.txt
 		#cat dictionaries/dict.tmp >> dictionaries/tmp.dic
 		#iconv -f utf-8 -t iso-8859-1 -o dictionaries/mwy.dic dictionaries/tmp.dic
 		#rm dictionaries/dict.tmp
 		#rm dictionaries/tmp.dic
 	fi
-elif [[ -f $1 ]] ; then
-	cat $1 >> dictionaries/word_list.txt
-	#sort -u dictionaries/word_list.txt > dictionaries/dict.tmp
-	#wc -l < dictionaries/dict.tmp > dictionaries/tmp.dic
-	#cat dictionaries/dict.tmp >> dictionaries/tmp.dic
-	#iconv -f utf-8 -t iso-8859-1 -o dictionaries/mwy.dic dictionaries/tmp.dic
-	#rm dictionaries/dict.tmp
-	#rm dictionaries/tmp.dic
 fi
