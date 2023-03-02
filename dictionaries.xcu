@@ -13,7 +13,7 @@
                 <value>cy-GB</value>
             </prop>
         </node>
-        <node oor:name="HunSpellDic_cy2" oor:op="fuse">
+        <!-- leave this out for now <node oor:name="HunSpellDic_cy2" oor:op="fuse">
             <prop oor:name="Locations" oor:type="oor:string-list">
                 <value>%origin%/dictionaries/mwy.aff %origin%/dictionaries/mwy.dic</value>
             </prop>
@@ -23,7 +23,7 @@
             <prop oor:name="Locales" oor:type="oor:string-list">
                 <value>cy-GB</value>
             </prop>
-        </node>
+        </node>-->
         <!--
         in theory these dictionaries could be added, but they don't exist yet
         <node oor:name="HyphDic_cy" oor:op="fuse">
