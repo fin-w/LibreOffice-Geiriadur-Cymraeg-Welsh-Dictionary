@@ -79,6 +79,7 @@
 SET UTF-8
 TRY -ŷŶŵŴïÏâÂôÔêÊjJëËäÄáÁéÉîÎöÖóÓòÒàÀíÍüÜìÌèÈûÛÿùÙûÛ.aAdDiIeEnNhHrRyYoOsSlLtTcCwWgGfFmMuUbBpPkKvVzZqQxX
 
+
 PFX M Y 18
 PFX M   c           g          c
 PFX M   C           G          C
@@ -2746,7 +2747,8 @@ SFX V   0           ion        .
 
 SFX W Y 1
 SFX W   0           iaeth      .
-REP 79
+
+REP 89
 REP ax â
 REP ex ê
 REP ix î
@@ -2826,4 +2828,13 @@ REP 1 l
 REP 0 o
 REP 6 ô
 REP 6 o
-
+MAP d dd
+MAP dd d
+MAP f ff
+MAP ff f
+MAP n nn
+MAP nn n
+MAP l ll
+MAP ll l
+MAP wy yw
+MAP yw wy
