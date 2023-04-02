@@ -4,38 +4,32 @@
 
 # usage:
 # ~ $ add enghraifft
-# ~ $ add ffeil.txt
-#
-# ~ $ ls ffeil.txt
-# amlddiwylliannedd
-# enghraifft
-# ~ $
-#
 
-if [[ -f $1 ]] ; then
-	cat $1 >> dictionaries/word_list.txt
-	sort -u dictionaries/word_list.txt > dictionaries/dict.tmp
-	#wc -l < dictionaries/dict.tmp > dictionaries/tmp.dic
-	cat dictionaries/dict.tmp > dictionaries/word_list.txt
-	#cat dictionaries/dict.tmp >> dictionaries/tmp.dic
-	#iconv -f utf-8 -t iso-8859-1 -o dictionaries/mwy.dic dictionaries/tmp.dic
-	rm dictionaries/dict.tmp
-	#rm dictionaries/tmp.dic
+if grep -Fxq $1 ./dictionaries/word_list.txt ; then
+	echo "\"$1\" is already in word_list.txt"
 else
-	if grep -Fxq $1 ./dictionaries/word_list.txt ; then
-		echo "\"$1\" is already in word list"
-	else
-		echo "Adding word \"$1\" to word list"
-		echo $1 >> dictionaries/word_list.txt
-		sort -u dictionaries/word_list.txt > dictionaries/dict.tmp
-		#wc -l < dictionaries/dict.tmp > dictionaries/tmp.dic
-		cat dictionaries/dict.tmp > dictionaries/word_list.txt
-		#cat dictionaries/dict.tmp >> dictionaries/tmp.dic
-		#iconv -f utf-8 -t iso-8859-1 -o dictionaries/mwy.dic dictionaries/tmp.dic
-		rm dictionaries/dict.tmp
-		#rm dictionaries/tmp.dic
+	echo "Adding word \"$1\" to word_list.txt"
+	# Add word
+	echo $1 >> dictionaries/word_list.txt
+	# Sort alphabetically
+	sort -u dictionaries/word_list.txt > dictionaries/dict.tmp
+	# Replace the old word list
+	mv dictionaries/dict.tmp dictionaries/word_list.txt
+
+	printf "Add word \"$1\" to mwy.dic? "
+	if [[ "$(read -e -p '[y/n] '; echo $REPLY)" == [Yy]* ]] ; then
+		# Add word
+		echo $1 >> dictionaries/mwy.dic
+		# Write number of lines to tmp
+		tail -n +2 dictionaries/mwy.dic | sort -u | wc -l > dictionaries/dict.tmp
+		# Write sorted words to tmp
+		tail -n +2 dictionaries/mwy.dic | sort -u >> dictionaries/dict.tmp
+		# Copy tmp back to mwy.dic
+		mv dictionaries/dict.tmp dictionaries/mwy.dic
+		echo "Added word."
 	fi
 fi
+
 
 echo " "
 echo "The dictionary does not recognise the following:"
