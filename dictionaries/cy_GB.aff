@@ -19,10 +19,17 @@ TRY -ŷŶŵŴïÏâÂôÔêÊjJëËäÄáÁéÉîÎöÖóÓòÒàÀíÍüÜìÌ�
 
 NEEDAFFIX X
 
-BREAK 3
-BREAK -
-BREAK '
-BREAK ’
+ICONV 5
+ICONV ’ '
+ICONV ‘ '
+ICONV ` '
+ICONV “ "
+ICONV ” "
+
+#BREAK 3
+#BREAK -
+#BREAK '
+#BREAK ’
 
 # Mutations
 PFX M Y 26
@@ -295,7 +302,7 @@ SFX J 0 s
 SFX K Y 1
 SFX K 0 od
 
-SFX S Y 7
+SFX S Y 8
 SFX S 0 'r       [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
 SFX S 0 'n       [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
 SFX S 0 'i       [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
@@ -303,6 +310,7 @@ SFX S 0 'u       [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
 SFX S 0 'ch      [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
 SFX S 0 'm       [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
 SFX S 0 'th      [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
+SFX S 0 'w       [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
 
 # Common spelling substitutions
 REP 80
