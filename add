@@ -1,20 +1,23 @@
 #!/usr/bin/env bash
 
-# add a word to the dictionary
+# add a word to the dictionary, optionally with prefix / suffix tags
 
 # usage:
-# ~ $ add enghraifft
+# ~ $ add word[/TAGS]
 
-if grep -Fxq $1 ./dictionaries/word_list.txt ; then
-	echo "\"$1\" is already in word_list.txt"
+# remove any dictionary tags from the end i.e. rhywedd/M becomes rhywedd
+gair=$(sed -e "s|/.*||" <<< "$1")
+
+if grep -Fxq "$gair" ./dictionaries/word_list.txt ; then
+	echo "\"$gair\" is already in word_list.txt"
 else
-	echo "Adding word \"$1\" to word_list.txt"
+	echo "Adding word \"$gair\" to word_list.txt"
 	# Add word
-	echo $1 >> dictionaries/word_list.txt
+	echo "$gair" >> dictionaries/word_list.txt
 	# Sort alphabetically
-	sort -u dictionaries/word_list.txt > dictionaries/dict.tmp
+	sort -u dictionaries/word_list.txt > dictionaries/list.tmp
 	# Replace the old word list
-	mv dictionaries/dict.tmp dictionaries/word_list.txt
+	mv dictionaries/list.tmp dictionaries/word_list.txt
 
 	printf "Add word \"$1\" to mwy.dic? "
 	if [[ "$(read -e -p '[y/n] '; echo $REPLY)" == [Yy]* ]] ; then
@@ -30,7 +33,12 @@ else
 	fi
 fi
 
-
-echo " "
-echo "The dictionary does not recognise the following:"
-hunspell -L -d dictionaries/mwy dictionaries/word_list.txt
+# contains any unknown words in the word list
+anhysbys=$(hunspell -L -d dictionaries/mwy dictionaries/word_list.txt)
+if [[ -n "$anhysbys" ]] ; then
+	echo "The dictionary does not recognise the following:"
+	echo "$anhysbys"
+else
+	echo "The dictionary recognises everything in the word list."
+	#echo ""
+fi
