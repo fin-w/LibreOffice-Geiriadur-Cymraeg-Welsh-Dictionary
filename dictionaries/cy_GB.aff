@@ -93,6 +93,18 @@ PFX H   Ŵ           Hŵ         Ŵ
 PFX H   Ŷ           Hŷ         Ŷ
 PFX H   Ï           Hï         Ï
 
+PFX Q Y 2
+PFX Q   0   wr .
+PFX Q   0   wyr .
+
+PFX R Y 1
+PFX R   0   ol .
+
+SFX U Y 3
+SFX U   0   aidd .
+SFX U   0   iaid .
+SFX U   0   iad .
+
 SFX v Y 26
 SFX v   nn  na/aMLHX nn
 SFX v   n   na/aMLHX [^n]n
@@ -293,7 +305,7 @@ SFX S 0 'm       [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
 SFX S 0 'th      [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
 
 # Common spelling substitutions
-REP 79
+REP 80
 REP a â
 REP e ê
 REP i î
@@ -327,6 +339,7 @@ REP m ym
 REP x cs
 REP io u
 REP u io
+REP y'r yr
 REP ur u'r
 REP ir i'r
 REP 'l el
