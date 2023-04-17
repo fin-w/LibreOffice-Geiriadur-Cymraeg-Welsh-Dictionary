@@ -16,5 +16,10 @@ copy  of the GNU General Public License along with this program. If
 not, see <https://www.gnu.org/licenses/>.
 
 
-See also ./dictionaries/bangor/LICENSE
+See also ./dictionaries/bangor/hen/LICENSE for the license from the
+old dictionary data.
+
 See also https://extensions.openoffice.org/en/project/gwirydd-sillafu-cymraeg-welsh-language-spell-checker
+for the separate, old version of the dictionary.
+
+See also notes at the top of ./dictionaries/cy_GB.aff
