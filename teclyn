@@ -1,79 +1,57 @@
 #!/bin/bash
 
+###
+# usage: ./teclyn -[a, b, e]
+# -a gair
+#       adds 'gair' to dictionary (may include
+#       dictionary tags on the end e.g. /AFG).
+# -b
+#       builds the libreoffice package.
+# -e gair
+#       use 'wordforms' from hunspell to expand
+#       the given word with all relevant
+#       permitted affixes in the dictionary.
+###
+
 parse () {
-	# https://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash#13359121
-	# More safety, by turning some bugs into errors.
-	# Without `errexit` you don’t need ! and can replace
-	# ${PIPESTATUS[0]} with a simple $?, but I prefer safety.
-	set -o errexit -o pipefail -o noclobber -o nounset
-
-	# -allow a command to fail with !’s side effect on errexit
-	# -use return value from ${PIPESTATUS[0]}, because ! hosed $?
-	! getopt --test > /dev/null 
-	if [[ ${PIPESTATUS[0]} -ne 4 ]]; then
-		echo 'I’m sorry, `getopt --test` failed in this environment.'
-		exit 1
-	fi
-
-	# option --output/-o requires 1 argument
-	LONGOPTS=build,expand:,add:
-	OPTIONS=be:va:v
-
-	# -regarding ! and PIPESTATUS see above
-	# -temporarily store output to be able to check for errors
-	# -activate quoting/enhanced mode (e.g. by writing out “--options”)
-	# -pass arguments only via   -- "$@"   to separate them correctly
-	! PARSED=$(getopt --options=$OPTIONS --longoptions=$LONGOPTS --name "$0" -- "$@")
-	if [[ ${PIPESTATUS[0]} -ne 0 ]]; then
-		# e.g. return value is 1
-		#  then getopt has complained about wrong arguments to stdout
-		exit 2
-	fi
-	# read getopt’s output this way to handle the quoting right:
-	eval set -- "$PARSED"
-	echo "$1"
-	# now enjoy the options in order and nicely split until we see --
-	while true; do
-		case "$1" in
-			-a|--add)
-				ychwanegu "$2"
-				shift
-				;;
-			-e|--expand)
-				ystyried "$2"
-				shift
-				;;
-			-b|--build)
-				adeiladu
-				shift
-				#shift 2?
-				;;
-			--)
-				shift
-				break
-				;;
-			*)
-				echo "Programming error"
-				exit 3
-				;;
-		esac
-	done
-
-	# handle non-option arguments
-	if [[ $# -ne 1 ]]; then
-		echo "$0: A single input file is required."
-		exit 4
-	fi
+	###
+	# get command line options
+	###
+	case "$1" in
+		-a|--add)
+			ychwanegu "$2"
+			shift
+			;;
+		-e|--expand)
+			ystyried "$2"
+			shift
+			;;
+		-b|--build)
+			adeiladu
+			shift
+			;;
+		--)
+			shift
+			break
+			;;
+		*)
+			echo "Programming error"
+			exit 3
+			;;
+	esac
 }
 
 ystyried () {
+	###
 	# expand a word with all available relevant affixes
-
-	./wordforms dictionaries/cy_GB.aff dictionaries/cy_GB.dic <<< "$1" | sort -u
+	###
+	./wordforms dictionaries/cy_GB.aff dictionaries/cy_GB.dic "$1" | sort -u
 }
 
 adeiladu () {
+	###
 	# make the libreoffice extension
+	###
 	echo "Building..."
 	#clean the folder of zips and oxts (which are just renamed zips)
 	mv *.oxt archive/ 2> /dev/null
@@ -94,8 +72,9 @@ adeiladu () {
 }
 
 ychwanegu () {
+	###
 	# add a word to the dictionary, optionally with prefix / suffix tags
-
+	###
 	# remove any dictionary tags from the end i.e. rhywedd/M becomes rhywedd
 	gair=$(sed -e "s|/.*||" <<< "$1")
 	anhysbys=$(hunspell -L -d dictionaries/cy_GB <<< "$gair")
@@ -128,4 +107,4 @@ ychwanegu () {
 }
 
 
-parse
+parse $1 $2
