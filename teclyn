@@ -1,0 +1,131 @@
+#!/bin/bash
+
+parse () {
+	# https://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash#13359121
+	# More safety, by turning some bugs into errors.
+	# Without `errexit` you don’t need ! and can replace
+	# ${PIPESTATUS[0]} with a simple $?, but I prefer safety.
+	set -o errexit -o pipefail -o noclobber -o nounset
+
+	# -allow a command to fail with !’s side effect on errexit
+	# -use return value from ${PIPESTATUS[0]}, because ! hosed $?
+	! getopt --test > /dev/null 
+	if [[ ${PIPESTATUS[0]} -ne 4 ]]; then
+		echo 'I’m sorry, `getopt --test` failed in this environment.'
+		exit 1
+	fi
+
+	# option --output/-o requires 1 argument
+	LONGOPTS=build,expand:,add:
+	OPTIONS=be:va:v
+
+	# -regarding ! and PIPESTATUS see above
+	# -temporarily store output to be able to check for errors
+	# -activate quoting/enhanced mode (e.g. by writing out “--options”)
+	# -pass arguments only via   -- "$@"   to separate them correctly
+	! PARSED=$(getopt --options=$OPTIONS --longoptions=$LONGOPTS --name "$0" -- "$@")
+	if [[ ${PIPESTATUS[0]} -ne 0 ]]; then
+		# e.g. return value is 1
+		#  then getopt has complained about wrong arguments to stdout
+		exit 2
+	fi
+	# read getopt’s output this way to handle the quoting right:
+	eval set -- "$PARSED"
+	echo "$1"
+	# now enjoy the options in order and nicely split until we see --
+	while true; do
+		case "$1" in
+			-a|--add)
+				ychwanegu "$2"
+				shift
+				;;
+			-e|--expand)
+				ystyried "$2"
+				shift
+				;;
+			-b|--build)
+				adeiladu
+				shift
+				#shift 2?
+				;;
+			--)
+				shift
+				break
+				;;
+			*)
+				echo "Programming error"
+				exit 3
+				;;
+		esac
+	done
+
+	# handle non-option arguments
+	if [[ $# -ne 1 ]]; then
+		echo "$0: A single input file is required."
+		exit 4
+	fi
+}
+
+ystyried () {
+	# expand a word with all available relevant affixes
+
+	./wordforms dictionaries/cy_GB.aff dictionaries/cy_GB.dic <<< "$1" | sort -u
+}
+
+adeiladu () {
+	# make the libreoffice extension
+	echo "Building..."
+	#clean the folder of zips and oxts (which are just renamed zips)
+	mv *.oxt archive/ 2> /dev/null
+	mv *.zip archive/ 2> /dev/null
+
+	# figure out which version we're building
+	version=$(grep -rnw './description.xml' -e '<version value=')
+	# remove xml stuff to just have the version data
+	version=${version/*value=\"/}
+	version=${version/\"*/} 
+
+	# zip the latest files
+	zip -qr out.zip description/ META-INF/ dictionaries/cy_GB.dic dictionaries/cy_GB.aff dictionaries/hen.dic dictionaries/hen.aff baner_cymreig.png description.xml dictionaries.xcu LICENSE README.txt
+
+	# rename the latest zip to oxt
+	mv out.zip libreoffice-geiriadur-$version.oxt
+	echo "Built."
+}
+
+ychwanegu () {
+	# add a word to the dictionary, optionally with prefix / suffix tags
+
+	# remove any dictionary tags from the end i.e. rhywedd/M becomes rhywedd
+	gair=$(sed -e "s|/.*||" <<< "$1")
+	anhysbys=$(hunspell -L -d dictionaries/cy_GB <<< "$gair")
+
+	if [[ -n "$anhysbys" ]] ; then
+		echo "Adding word \"$gair\" to dictionary"
+		# Add word
+		echo "$gair" >> dictionaries/word_list.txt
+		echo "$1" >> dictionaries/cy_GB.dic
+		# Write number of lines to tmp
+		tail -n +2 dictionaries/cy_GB.dic | sort -u | wc -l > dictionaries/dict.tmp
+		# Write sorted words to tmp
+		tail -n +2 dictionaries/cy_GB.dic | sort -u >> dictionaries/dict.tmp
+		# Copy tmp back to mwy.dic
+		mv dictionaries/dict.tmp dictionaries/cy_GB.dic
+		echo "Added word."
+	else
+		echo "\"$gair\" is already in dictionary"
+	fi
+
+	# contains any unknown words in the word list
+	anhysbys=$(hunspell -L -d dictionaries/cy_GB dictionaries/word_list.txt)
+	if [[ -n "$anhysbys" ]] ; then
+		echo "The dictionary does not recognise the following:"
+		echo "$anhysbys"
+	else
+		#echo "The dictionary recognises everything in the word list."
+		echo ""
+	fi
+}
+
+
+parse
