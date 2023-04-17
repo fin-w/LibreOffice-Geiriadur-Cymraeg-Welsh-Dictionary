@@ -1,8 +1,10 @@
 # Ffeil AFF:
+# 2023 fin-w (https://github.com/fin-w/LibreOffice-Geiriadur-Cymraeg-Welsh-Dictionary)
 # Hawlfraint (C) 2008-2012, Troi (http://troi.org)
 # Hawlfraint (C) 2004-2011, Prifysgol Bangor (http://www.bangor.ac.uk)
 # 
 # Ffeil DIC:
+# 2023 fin-w (https://github.com/fin-w/LibreOffice-Geiriadur-Cymraeg-Welsh-Dictionary)
 # Hawlfraint (C) 2004-2011, Prifysgol Bangor (http://www.bangor.ac.uk)
 # 
 # Mae'r geiriadur hwn feddalwedd rhydd; gallwch ei aildosbarthu a/neu ei
@@ -15,8 +17,7 @@
 # ffitrwydd at bwrpas arbennig.
 
 SET UTF-8
-TRY -ŷŶŵŴïÏâÂôÔêÊjJëËäÄáÁéÉîÎöÖóÓòÒàÀíÍüÜìÌèÈûÛÿùÙûÛ.aAdDiIeEnNhHrRyYoOsSlLtTcCwWgGfFmMuUbBpPkKvVzZqQxX
-
+TRY yia'onrmecwdbgufâhstlôpŷŵjî-êáïûëòöéìỳüàkèίẁíäóẃÿúýїӓẅqvxz.YIAONRMECWDBGUFÂHSTLÔPŶŴJÎÊÁÏÛËÒÖÉÌỲÜÀKÈΊẀÍÄÓẂŸÚÝЇӒẄQVXZ
 KEY qwertyuiop|asdfghjkl|zxcvbnm
 
 NEEDAFFIX X

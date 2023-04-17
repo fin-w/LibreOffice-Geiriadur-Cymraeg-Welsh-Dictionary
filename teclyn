@@ -87,7 +87,7 @@ ychwanegu () {
 		# Write number of lines to tmp
 		tail -n +2 dictionaries/cy_GB.dic | sort -u | wc -l > dictionaries/dict.tmp
 		# Write sorted words to tmp
-		tail -n +2 dictionaries/cy_GB.dic | sort -u >> dictionaries/dict.tmp
+		tail -n +2 dictionaries/cy_GB.dic | WC_ALL=C sort -u >> dictionaries/dict.tmp
 		# Copy tmp back to mwy.dic
 		mv dictionaries/dict.tmp dictionaries/cy_GB.dic
 		echo "Added word."
