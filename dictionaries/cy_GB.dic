@@ -4209,7 +4209,7 @@ archwiliad/BH
 archwiliadol/H
 archwiliedig/H
 archwili/Hv
-archwilio/H
+archwilio/HS
 archwiliol/H
 archwiliwr/H
 archwilwyr/H
@@ -9751,7 +9751,7 @@ cansiwn/LMT
 canslad/BLMT
 cansl/LMv
 cans/LMT
-canslo/LMT
+canslo/LMTS
 cantata/LMT
 cantatau/LMT
 cantau/LMT
@@ -16598,7 +16598,7 @@ cyflwyniad/BLMT
 cyflwyniadol/LMT
 cyflwyn/LMv
 cyflwynol/LMT
-cyflwyno/LMT
+cyflwyno/LMTS
 cyflwynwragedd/LMT
 cyflwynwraig/LMT
 cyflwynwr/LMT
@@ -23982,7 +23982,7 @@ enwadwyr/H
 enwaed/Hv
 enwaediad/BH
 enwaedu/H
-enw/BHvw
+enw/BHvwS
 enwebai/H
 enwebedig/CH
 enwebeion/H
@@ -36338,7 +36338,7 @@ Maelor/M
 Maelorwen/M
 maelwr/M
 maelwyr/M
-mae/M
+mae/MS
 Maenaddwyn/M
 maenan/M
 Maenclochog/M
@@ -36738,7 +36738,7 @@ marathon/M
 marblen/M
 marblis/M
 marblys/M
-marc/DM
+marc/DMS
 marcha/M
 marchdai/M
 marchdaran/BM
@@ -52992,7 +52992,7 @@ WDA/H
 wdward/GH
 weber/BH
 webin/BH
-wedi/H
+wedi/HS
 wedyn/H
 weiar/HI
 weindiad/BH
