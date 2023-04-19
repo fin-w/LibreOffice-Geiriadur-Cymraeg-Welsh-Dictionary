@@ -18,9 +18,7 @@
 
 SET UTF-8
 TRY yia'onrmecwdbgufâhstlôpŷŵjî-êáïûëòöéìỳüàkèίẁíäóẃÿúýїӓẅqvxz.YIAONRMECWDBGUFÂHSTLÔPŶŴJÎÊÁÏÛËÒÖÉÌỲÜÀKÈΊẀÍÄÓẂŸÚÝЇӒẄQVXZ
-KEY qwertyuiop|asdfghjkl|zxcvbnm
-# check other dictionaries to see if this is a better version of the KEY data for qwerty keyboard:
-#KEY qwertyuiop|asdfghjkl|zxcvbnm|qwas|wqeas|ewrsd|retdf|tryfg|ytugh|uyihj|iuojk|oipkl|aqwsz|sweadzx|dersfxc|frtdgcv|gtyfhvb|hyugjbn|juihknm|kiojlm|zasx|xsdzc|cdfxv|vfgcb|bghvn|nhjbm|mnjk
+KEY qwertyuiop|asdfghjkl|zxcvbnm|qwas|wqeas|ewrsd|retdf|tryfg|ytugh|uyihj|iuojk|oipkl|aqwsz|sweadzx|dersfxc|frtdgcv|gtyfhvb|hyugjbn|juihknm|kiojlm|zasx|xsdzc|cdfxv|vfgcb|bghvn|nhjbm|mnjk
 
 NEEDAFFIX X
 
