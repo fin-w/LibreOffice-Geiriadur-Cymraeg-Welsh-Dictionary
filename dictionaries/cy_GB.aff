@@ -19,6 +19,8 @@
 SET UTF-8
 TRY yia'onrmecwdbgufâhstlôpŷŵjî-êáïûëòöéìỳüàkèίẁíäóẃÿúýїӓẅqvxz.YIAONRMECWDBGUFÂHSTLÔPŶŴJÎÊÁÏÛËÒÖÉÌỲÜÀKÈΊẀÍÄÓẂŸÚÝЇӒẄQVXZ
 KEY qwertyuiop|asdfghjkl|zxcvbnm
+# check other dictionaries to see if this is a better version of the KEY data for qwerty keyboard:
+#KEY qwertyuiop|asdfghjkl|zxcvbnm|qwas|wqeas|ewrsd|retdf|tryfg|ytugh|uyihj|iuojk|oipkl|aqwsz|sweadzx|dersfxc|frtdgcv|gtyfhvb|hyugjbn|juihknm|kiojlm|zasx|xsdzc|cdfxv|vfgcb|bghvn|nhjbm|mnjk
 
 NEEDAFFIX X
 
@@ -104,7 +106,7 @@ PFX H Ŷ Hŷ Ŷ
 PFX H Ï Hï Ï
 
 SFX Q Y 2
-SFX Q 0 wr .
+SFX Q 0 wr  .
 SFX Q 0 wyr .
 
 PFX R Y 1
@@ -113,43 +115,43 @@ PFX R 0 ol .
 SFX U Y 3
 SFX U 0 aidd .
 SFX U 0 iaid .
-SFX U 0 iad .
+SFX U 0 iad  .
 
 SFX v Y 26
-SFX v nn na/aMLHX nn
-SFX v n  na/aMLHX [^n]n
-SFX v rr ra/aMLHX rr
-SFX v r  ra/aMLHX [^r]r
-SFX v w  w/aMLHX  aw
-SFX v w  w/aMLHX  lyw
-SFX v w  wa/aMLHX [^ay]w
-SFX v w  wa/aMLHX [^l]yw
-SFX v el el/aMLHX el
-SFX v l  la/aMLHX [^e]l
-SFX v eu eu/aMLHX eu
-SFX v eu eua/aMLHX eu
-SFX v u  ua/aMLHX [^e]u
-SFX v NI nia/aMLHX  NI
-SFX v a  a/aMLHX  a
-SFX v ë  ea/aMLHX ë
-SFX v o  oe/aMLHX o
-SFX v O  oe/aMLHX O
-SFX v 0  a/aMLHX  [^nrwIlaëoO]
-SFX v NI nni/bcfMLHX  NI
-SFX v NI ni/deghijMLHX  NI
-SFX v ë  ë/bcdfghMLHX  ë
-SFX v ë  e/eijMLHX  ë
-SFX v O  O/iMLHX  O
+SFX v nn na/aMLHX        nn
+SFX v n  na/aMLHX        [^n]n
+SFX v rr ra/aMLHX        rr
+SFX v r  ra/aMLHX        [^r]r
+SFX v w  w/aMLHX         aw
+SFX v w  w/aMLHX         lyw
+SFX v w  wa/aMLHX        [^ay]w
+SFX v w  wa/aMLHX        [^l]yw
+SFX v el el/aMLHX        el
+SFX v l  la/aMLHX        [^e]l
+SFX v eu eu/aMLHX        eu
+SFX v eu eua/aMLHX       eu
+SFX v u  ua/aMLHX        [^e]u
+SFX v NI nia/aMLHX       NI
+SFX v a  a/aMLHX         a
+SFX v ë  ea/aMLHX        ë
+SFX v o  oe/aMLHX        o
+SFX v O  oe/aMLHX        O
+SFX v 0  a/aMLHX         [^nrwIlaëoO]
+SFX v NI nni/bcfMLHX     NI
+SFX v NI ni/deghijMLHX   NI
+SFX v ë  ë/bcdfghMLHX    ë
+SFX v ë  e/eijMLHX       ë
+SFX v O  O/iMLHX         O
 SFX v O  o/bcdefghjMLHX  O
-SFX v 0  0/bcdefghijMLHX  [^IëO]
+SFX v 0  0/bcdefghijMLHX [^IëO]
 
 SFX w Y 1
-SFX w 0 0/bcdeMLHX  .
+SFX w 0 0/bcdeMLHX .
 
 SFX y Y 3
-SFX y NI nni/bcfMLHX  NI
-SFX y NI ni/deghijMLHX  NI
-SFX y 0  0/bcdefghijMLHX  [^I]
+SFX y NI nni/bcfMLHX     NI
+SFX y NI ni/deghijMLHX   NI
+SFX y 0  0/bcdefghijMLHX [^I]
 
 SFX z Y 1
 SFX z 0 a/aMLHX .
