@@ -1,16 +1,20 @@
 #!/bin/bash
 
 ###
-# usage: ./teclyn -[a, b, e]
+# usage: ./teclyn -[a, b, e, f]
 # -a gair
-#       adds 'gair' to dictionary (may include
-#       dictionary tags on the end e.g. /AFG).
+#       adds 'gair'  to dictionary (may include
+#       dictionary tags on the end e.g.  /AFG).
 # -b
-#       builds the libreoffice package.
+#       builds the zipped  libreoffice package.
 # -e gair
 #       use 'wordforms' from hunspell to expand
-#       the given word with all relevant
-#       permitted affixes in the dictionary.
+#       the   given  word  with  all   relevant
+#       permitted  affixes in  the  dictionary.
+# -f gair
+#	find the word or word  fragement in the
+#	dictionary  file and print all matches:
+#	accepts regex
 ###
 
 parse () {
@@ -22,12 +26,16 @@ parse () {
 			ychwanegu "$2"
 			shift
 			;;
+		-b|--build)
+			adeiladu
+			shift
+			;;
 		-e|--expand)
 			ystyried dictionaries/cy_GB.aff dictionaries/cy_GB.dic "$2" | sort -u
 			shift
 			;;
-		-b|--build)
-			adeiladu
+		-f|--find)
+			ffeindio "$2"
 			shift
 			;;
 		--)
@@ -39,6 +47,65 @@ parse () {
 			exit 3
 			;;
 	esac
+}
+
+ychwanegu () {
+	###
+	# add a word to the dictionary, optionally with prefix / suffix tags
+	###
+	# remove any dictionary tags from the end i.e. rhywedd/M becomes rhywedd
+	gair=$(sed -e "s|/.*||" <<< "$1")
+	# empty if hunspell recognises the word
+	anhysbys=$(hunspell -L -d dictionaries/cy_GB <<< "$gair")
+
+	if [[ -n "$anhysbys" ]] ; then
+		echo "Adding word \"$gair\" to dictionary"
+		# Add word
+		echo "$gair" >> dictionaries/word_list.txt
+		echo "$1" >> dictionaries/cy_GB.dic
+		# Write number of lines to tmp
+		tail -n +2 dictionaries/cy_GB.dic | sort -u | wc -l > dictionaries/dict.tmp
+		# Write sorted words to tmp
+		tail -n +2 dictionaries/cy_GB.dic | WC_ALL=C sort -u >> dictionaries/dict.tmp
+		# Copy tmp back to mwy.dic
+		mv dictionaries/dict.tmp dictionaries/cy_GB.dic
+		echo "Added word."
+	else
+		echo "\"$gair\" is already in dictionary"
+	fi
+
+	# contains any unknown words in the word list
+	anhysbys=$(hunspell -L -d dictionaries/cy_GB dictionaries/word_list.txt)
+	if [[ -n "$anhysbys" ]] ; then
+		echo "The dictionary does not recognise the following:"
+		echo "$anhysbys"
+	else
+		#echo "The dictionary recognises everything in the word list."
+		echo ""
+	fi
+}
+
+adeiladu () {
+	###
+	# make the libreoffice extension
+	###
+	echo "Building..."
+	#clean the folder of zips and oxts (which are just renamed zips)
+	mv *.oxt archive/ 2> /dev/null
+	mv *.zip archive/ 2> /dev/null
+
+	# figure out which version we're building
+	version=$(grep -rnw './description.xml' -e '<version value=')
+	# remove xml stuff to just have the version data
+	version=${version/*value=\"/}
+	version=${version/\"*/}
+
+	# zip the latest files
+	zip -qr out.zip description/ META-INF/ dictionaries/cy_GB.dic dictionaries/cy_GB.aff baner_cymreig.png description.xml dictionaries.xcu LICENSE README.txt
+
+	# rename the latest zip to oxt
+	mv out.zip libreoffice-geiriadur-$version.oxt
+	echo "Built."
 }
 
 ystyried () {
@@ -82,63 +149,11 @@ ystyried () {
 	' /tmp/wordforms.aff - | hunspell -d /tmp/wordforms -G -l
 }
 
-adeiladu () {
+ffeindio () {
 	###
-	# make the libreoffice extension
+	# find dictionary entry matching search term (basically just grep)
 	###
-	echo "Building..."
-	#clean the folder of zips and oxts (which are just renamed zips)
-	mv *.oxt archive/ 2> /dev/null
-	mv *.zip archive/ 2> /dev/null
-
-	# figure out which version we're building
-	version=$(grep -rnw './description.xml' -e '<version value=')
-	# remove xml stuff to just have the version data
-	version=${version/*value=\"/}
-	version=${version/\"*/}
-
-	# zip the latest files
-	zip -qr out.zip description/ META-INF/ dictionaries/cy_GB.dic dictionaries/cy_GB.aff baner_cymreig.png description.xml dictionaries.xcu LICENSE README.txt
-
-	# rename the latest zip to oxt
-	mv out.zip libreoffice-geiriadur-$version.oxt
-	echo "Built."
+	cat dictionaries/cy_GB.dic | grep "$1"
 }
-
-ychwanegu () {
-	###
-	# add a word to the dictionary, optionally with prefix / suffix tags
-	###
-	# remove any dictionary tags from the end i.e. rhywedd/M becomes rhywedd
-	gair=$(sed -e "s|/.*||" <<< "$1")
-	anhysbys=$(hunspell -L -d dictionaries/cy_GB <<< "$gair")
-
-	if [[ -n "$anhysbys" ]] ; then
-		echo "Adding word \"$gair\" to dictionary"
-		# Add word
-		echo "$gair" >> dictionaries/word_list.txt
-		echo "$1" >> dictionaries/cy_GB.dic
-		# Write number of lines to tmp
-		tail -n +2 dictionaries/cy_GB.dic | sort -u | wc -l > dictionaries/dict.tmp
-		# Write sorted words to tmp
-		tail -n +2 dictionaries/cy_GB.dic | WC_ALL=C sort -u >> dictionaries/dict.tmp
-		# Copy tmp back to mwy.dic
-		mv dictionaries/dict.tmp dictionaries/cy_GB.dic
-		echo "Added word."
-	else
-		echo "\"$gair\" is already in dictionary"
-	fi
-
-	# contains any unknown words in the word list
-	anhysbys=$(hunspell -L -d dictionaries/cy_GB dictionaries/word_list.txt)
-	if [[ -n "$anhysbys" ]] ; then
-		echo "The dictionary does not recognise the following:"
-		echo "$anhysbys"
-	else
-		#echo "The dictionary recognises everything in the word list."
-		echo ""
-	fi
-}
-
 
 parse $1 $2
