@@ -20,6 +20,11 @@ SET UTF-8
 TRY yia'onrmecwdbgufâhstlôpŷŵjî-êáïûëòöéìỳüàkèίẁíäóẃÿúýїӓẅqvxz.YIAONRMECWDBGUFÂHSTLÔPŶŴJÎÊÁÏÛËÒÖÉÌỲÜÀKÈΊẀÍÄÓẂŸÚÝЇӒẄQVXZ
 KEY qwertyuiop|asdfghjkl|zxcvbnm|qwas|wqeas|ewrsd|retdf|tryfg|ytugh|uyihj|iuojk|oipkl|aqwsz|sweadzx|dersfxc|frtdgcv|gtyfhvb|hyugjbn|juihknm|kiojlm|zasx|xsdzc|cdfxv|vfgcb|bghvn|nhjbm|mnjk
 
+# in this dic NEEDAFFIX is used in aff file only, but from observing
+# wordforms behaviour, can (should?) be used in dict file. a dict entry
+# "abc/YX" will not allow 'abc' without any suffix but permits abcwr /
+# abcwyr from SFX Y rule. the hunspell manual seems to suggest the
+# NEEDAFFIX tag is for dic entries, no reference to use in  aff rules...
 NEEDAFFIX X
 
 ICONV 5

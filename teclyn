@@ -147,6 +147,9 @@ ystyried () {
 	}
 	}
 	' /tmp/wordforms.aff - | hunspell -d /tmp/wordforms -G -l
+	# pipe this into something that includes just the word itself if nothing else is found:
+	# currently when the search term is an exact match to a tag-less dict entry,
+	# the wordforms code responds with nothing
 }
 
 ffeindio () {
