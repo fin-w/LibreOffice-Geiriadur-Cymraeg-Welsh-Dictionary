@@ -21,10 +21,9 @@ TRY yia'onrmecwdbgufâhstlôpŷŵjî-êáïûëòöéìỳüàkèίẁíäóẃ
 KEY qwertyuiop|asdfghjkl|zxcvbnm|qwas|wqeas|ewrsd|retdf|tryfg|ytugh|uyihj|iuojk|oipkl|aqwsz|sweadzx|dersfxc|frtdgcv|gtyfhvb|hyugjbn|juihknm|kiojlm|zasx|xsdzc|cdfxv|vfgcb|bghvn|nhjbm|mnjk
 
 # in this dic NEEDAFFIX is used in aff file only, but from observing
-# wordforms behaviour, can (should?) be used in dict file. a dict entry
-# "abc/YX" will not allow 'abc' without any suffix but permits abcwr /
-# abcwyr from SFX Y rule. the hunspell manual seems to suggest the
-# NEEDAFFIX tag is for dic entries, no reference to use in  aff rules...
+# wordforms behaviour and comparing with other dicts, it can be used
+# in the dict file too. a dict entry "abc/YX" will not allow 'abc'
+# without any suffix but permits abcwr / abcwyr from SFX Y rule.
 NEEDAFFIX X
 
 ICONV 5
@@ -316,15 +315,19 @@ SFX N 0 iaeth
 SFX O Y 1
 SFX O 0 aidd
 
-SFX S Y 8
+SFX S Y 9
 SFX S 0 'r  [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
 SFX S 0 'n  [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
-SFX S 0 'i  [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
-SFX S 0 'u  [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
+SFX S 0 'i  [aeouwyAEOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
+SFX S 0 'i  .[iI]
+SFX S 0 'u  [aeouwyAEOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
+SFX S 0 'u  .[iI]
 SFX S 0 'ch [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
 SFX S 0 'm  [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
 SFX S 0 'th [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
-SFX S 0 'w  [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
+
+SFX W Y 1
+SFX W 0 'w [iI]
 
 # Common spelling substitutions
 REP 80
@@ -408,3 +411,7 @@ REP 1    l
 REP 0    o
 REP 6    ô
 REP 6    o
+REP i'i  i'w
+REP i'u  i'w
+REP i_eu i'w
+REP i_ei i'w
