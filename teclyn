@@ -15,6 +15,10 @@
 #	find the word or word  fragement in the
 #	dictionary  file and print all matches:
 #	accepts regex
+# -n rhestr_o_eiriau.txt
+#	search through a list of words (one per
+#	line) to find ones unknown to the  dict
+#	and add them to an output file.
 ###
 
 parse () {
@@ -36,6 +40,10 @@ parse () {
 			;;
 		-f|--find)
 			ffeindio "$2"
+			shift
+			;;
+		-n|--new)
+			newydd "$2"
 			shift
 			;;
 		--)
@@ -157,6 +165,16 @@ ffeindio () {
 	# find dictionary entry matching search term (basically just grep)
 	###
 	cat dictionaries/cy_GB.dic | grep "$1"
+}
+
+newydd () {
+	###
+	# search through a list of words and add the unknown ones to a file
+	###
+	hunspell -d dictionaries/cy_GB -L dictionaries/newydd.txt > dictionaries/newydd.tmp
+	hunspell -d dictionaries/cy_GB -L $1 >> dictionaries/newydd.tmp
+	sort -u dictionaries/newydd.tmp > dictionaries/newydd.txt
+	rm dictionaries/newydd.tmp
 }
 
 parse $1 $2
