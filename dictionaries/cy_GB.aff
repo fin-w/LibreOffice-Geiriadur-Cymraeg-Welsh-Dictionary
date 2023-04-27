@@ -33,6 +33,8 @@ ICONV ` '
 ICONV “ "
 ICONV ” "
 
+WORDCHARS '
+
 #BREAK 3
 #BREAK -
 #BREAK '
@@ -411,7 +413,5 @@ REP 1    l
 REP 0    o
 REP 6    ô
 REP 6    o
-REP i'i  i'w
-REP i'u  i'w
-REP i_eu i'w
-REP i_ei i'w
+REP ^i'i$  i'w
+REP ^i'u$  i'w

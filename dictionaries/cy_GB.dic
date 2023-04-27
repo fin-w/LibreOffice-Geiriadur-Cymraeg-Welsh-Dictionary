@@ -1,4 +1,4 @@
-54913
+54922
 abaci/H
 abacws/H
 abadaeth/BH
@@ -33029,7 +33029,6 @@ irwellt/H
 irwr/H
 irwydd/H
 irwyr/H
-i/SW
 Isaac/H
 isadain/H
 isadeiledd/BH
@@ -33360,6 +33359,7 @@ istangiad/BH
 istref/H
 istrefi/H
 istrofannol/H
+i/SW
 iswaelodol/H
 iswasanaethgar/H
 iswasanaeth/H
@@ -42540,7 +42540,10 @@ plastrwyr/LMT
 plasty/LMT
 Plas-y-ward/LMT
 Plas-yw/LMT
+plataid/LMT
 plat/DLMT
+plateidi
+plateidiau
 platen/BFLMT
 platfform/BLMT
 platiau/LMT
@@ -48036,11 +48039,16 @@ sorod
 sorri
 sortio
 sorti/v
+sosbaneidiau
 sosban/F
+sosbannaid
+sosbennaid
 sosbenni
 sosej
 sosejys
 soser
+soseraid
+sosereidiau
 soseri
 sosialaeth
 sosialaidd
@@ -49647,7 +49655,10 @@ tawtomeredd/LMT
 tawtomerig/LMT
 TCC/LMT
 Tchad/LMT
+tebotaid/LMT
 tebot/BLMT
+teboteidi/LMT
+tebotiaid/LMT
 tebyc/LM
 tebyg/LMTv
 tebygoleg/LMT
@@ -50157,7 +50168,6 @@ thrombws
 thrombysau
 throtl/B
 throtlo
-thua/S
 thus
 thuser/B
 thwliwm
