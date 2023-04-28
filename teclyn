@@ -171,6 +171,7 @@ newydd () {
 	###
 	# search through a list of words and add the unknown ones to a file
 	###
+	touch dictionaries/newydd.txt
 	hunspell -d dictionaries/cy_GB -L dictionaries/newydd.txt > dictionaries/newydd.tmp
 	hunspell -d dictionaries/cy_GB -L $1 >> dictionaries/newydd.tmp
 	sort -u dictionaries/newydd.tmp > dictionaries/newydd.txt
