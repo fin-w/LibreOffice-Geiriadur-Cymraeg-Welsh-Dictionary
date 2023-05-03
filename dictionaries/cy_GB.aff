@@ -317,19 +317,19 @@ SFX N 0 iaeth
 SFX O Y 1
 SFX O 0 aidd
 
-SFX S Y 9
-SFX S 0 'r  [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
-SFX S 0 'n  [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
-SFX S 0 'i  [aeouwyAEOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
-SFX S 0 'i  .[iI]
-SFX S 0 'u  [aeouwyAEOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
-SFX S 0 'u  .[iI]
-SFX S 0 'ch [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
-SFX S 0 'm  [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
-SFX S 0 'th [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
-
-SFX W Y 1
-SFX W 0 'w [iI]
+#SFX S Y 9
+#SFX S 0 'r  [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
+#SFX S 0 'n  [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
+#SFX S 0 'i  [aeouwyAEOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
+#SFX S 0 'i  .[iI]
+#SFX S 0 'u  [aeouwyAEOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
+#SFX S 0 'u  .[iI]
+#SFX S 0 'ch [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
+#SFX S 0 'm  [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
+#SFX S 0 'th [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
+#
+#SFX W Y 1
+#SFX W 0 'w [iI]
 
 # Common spelling substitutions
 REP 80
@@ -413,5 +413,3 @@ REP 1    l
 REP 0    o
 REP 6    ô
 REP 6    o
-REP ^i'i$  i'w
-REP ^i'u$  i'w
