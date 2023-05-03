@@ -35,10 +35,10 @@ ICONV ” "
 
 WORDCHARS '
 
-#BREAK 3
-#BREAK -
-#BREAK '
-#BREAK ’
+BREAK 3
+BREAK -
+BREAK '
+BREAK ’
 
 # Mutations
 PFX M Y 26
