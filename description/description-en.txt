@@ -1,3 +1,1 @@
-A Welsh dictionary with more words.
-
-The dictionary was developed by Canolfan Bedwyr, University of Wales, Bangor originally. The development work was funded by the Welsh Language Board (http://www.welsh-language-board.org.uk/)
+A Welsh dictionary, which builds on the work of Bangor University.
