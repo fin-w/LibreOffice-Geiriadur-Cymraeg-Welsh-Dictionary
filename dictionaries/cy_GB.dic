@@ -1,4 +1,4 @@
-54924
+54929
 abaci/H
 abacws/H
 abadaeth/BH
@@ -2418,7 +2418,7 @@ amlwyth/H
 amlwythiant/H
 amlwythi/H
 amlyc/H
-amlyg/HvS
+amlyg/Hv
 amlygiad/BH
 amlygrwydd/H
 amlygu/H
@@ -4210,7 +4210,7 @@ archwiliad/BH
 archwiliadol/H
 archwiliedig/H
 archwili/Hv
-archwilio/HS
+archwilio/H
 archwiliol/H
 archwiliwr/H
 archwilwyr/H
@@ -4835,9 +4835,9 @@ arysgrif/BH
 arysgrifen/H
 arysgrifio/H
 arysgrifion/H
-a/S
+a
 A.S.
-â/S
+â
 Asaff/H
 asalea/HI
 Asám/H
@@ -9756,7 +9756,7 @@ cansiwn/LMT
 canslad/BLMT
 cansl/LMv
 cans/LMT
-canslo/LMTS
+canslo/LMT
 cantata/LMT
 cantatau/LMT
 cantau/LMT
@@ -11127,6 +11127,7 @@ cewri/LMT
 cewyll/LMT
 cewyn/FLMT
 ceyrydd/LMT
+ch
 chaconne/I
 chalet/I
 chalumeau
@@ -11568,7 +11569,7 @@ chwythwyr
 chwythydd/C
 chwythymau
 chydag
-chyda/S
+chyda
 chylch
 ciaidd/LMT
 CIA/LMT
@@ -16604,7 +16605,7 @@ cyflwyniad/BLMT
 cyflwyniadol/LMT
 cyflwyn/LMv
 cyflwynol/LMT
-cyflwyno/LMTS
+cyflwyno/LMT
 cyflwynwragedd/LMT
 cyflwynwraig/LMT
 cyflwynwr/LMT
@@ -23218,7 +23219,7 @@ ef/H
 Efnisien/H
 Efnysien/H
 efô/H
-efo/HS
+efo/H
 efoliwt/DH
 efrau/H
 Efrog/H
@@ -23990,7 +23991,7 @@ enwadwyr/H
 enwaed/Hv
 enwaediad/BH
 enwaedu/H
-enw/BHvwS
+enw/BHvw
 enwebai/H
 enwebedig/CH
 enwebeion/H
@@ -24222,7 +24223,7 @@ eryrol/H
 Eryrys/H
 erys/H
 erythrosyt/BH
-e/S
+e
 esblyg/Hv
 esblygiadaeth/H
 esblygiad/BH
@@ -24718,7 +24719,7 @@ Ferwallt
 ferwca
 ferwcau
 Ferwig
-fe/S
+fe
 fesicl/B
 fest/DI
 festigiol
@@ -30496,7 +30497,7 @@ gwywol/MT
 gwywo/MT
 Gybi/MT
 gydag/MT
-gyda/MTS
+gyda/MT
 gyddfau/MT
 gyddfblat/DMT
 gyddfgam/MT
@@ -31612,7 +31613,7 @@ Hirwen
 hirwyntog
 hirymarhous
 hirymaros
-hi/S
+hi
 hisian
 hisi/v
 histamin
@@ -32618,6 +32619,7 @@ hywedd/v
 Hywel
 hywerthedd
 hywyn
+i'w
 iachach/H
 iachâd/H
 iachaf/H
@@ -33360,7 +33362,7 @@ istangiad/BH
 istref/H
 istrefi/H
 istrofannol/H
-i/SW
+i/
 iswaelodol/H
 iswasanaethgar/H
 iswasanaeth/H
@@ -36202,6 +36204,7 @@ lysis
 lysogenedd
 lysosom/B
 lysosym/B
+m
 'ma
 M.A.
 mabaidd/M
@@ -36347,7 +36350,7 @@ Maelor/M
 Maelorwen/M
 maelwr/M
 maelwyr/M
-mae/MS
+mae/M
 Maenaddwyn/M
 maenan/M
 Maenclochog/M
@@ -36747,7 +36750,7 @@ marathon/M
 marblen/M
 marblis/M
 marblys/M
-marc/DMS
+marc/DM
 marcha/M
 marchdai/M
 marchdaran/BM
@@ -39104,6 +39107,7 @@ mytholegwyr/M
 mywionen/M
 mywion/M
 mywionyn/M
+n
 'na
 nabl/B
 nabod
@@ -39211,7 +39215,7 @@ nardus
 narsisi
 narsisws
 nas
-na/S
+na
 Nasareth
 NASDAQ
 nasoffaryngeal
@@ -39456,7 +39460,7 @@ NetShow
 NEU
 neuadd/B
 neud
-neu/S
+neu
 newid
 newidfa/E
 newidfeydd
@@ -39559,7 +39563,7 @@ niper
 niperi
 nipl/B
 nis
-ni/S
+ni
 Nisien
 nith/E
 nithiad/B
@@ -40406,7 +40410,7 @@ onglydd/CH
 onics/BH
 onide/H
 onid/H
-oni/HS
+oni/H
 onis/H
 Onllwyn/H
 Onnau/H
@@ -40434,7 +40438,7 @@ oolitig/H
 oölitig/H
 öolitig/H
 ooplast/H
-OOPS/H
+oops
 oosberm/BH
 oosborangia/H
 oosborangiwm/H
@@ -40586,7 +40590,7 @@ orthoptwyr/H
 orthoptydd/H
 orthoteg/H
 Orwig/H
-o/S
+o
 O.S.
 oseli/H
 oselws/H
@@ -41411,7 +41415,7 @@ pellter/BELMT
 pêl-lwybro/LMT
 pêl-lwybrwr/LMT
 pelmet/BLMT
-pe/LMTS
+pe/LMT
 pelmynt/LMT
 pelresi/LMT
 pelres/LMT
@@ -44099,6 +44103,7 @@ Québecois
 Quentin
 Qur'an
 Qur'anaidd
+r
 rabad/B
 rabedu
 rabi
@@ -50086,6 +50091,7 @@ teyrnwialen/FLMT
 TGAU/LMT
 TGC/LMT
 TG/LMT
+th
 Thai
 thalasaemia
 thali
@@ -50181,7 +50187,7 @@ thyroid
 thyrotropig
 Tibet/LMT
 tibia/LMT
-ti/BLMTS
+ti/BLMT
 ticbryfed/LMT
 ticbryf/LMT
 tic/DLMT
@@ -52047,7 +52053,7 @@ tswnamïau/M
 tswnami/M
 tt/LMT
 tuag/L
-tua/LMTS
+tua/LMT
 Tuamotu/LMT
 tuchan/LMTv
 tuchanwr/LMT
@@ -53009,7 +53015,7 @@ WDA/H
 wdward/GH
 weber/BH
 webin/BH
-wedi/HS
+wedi/H
 wedyn/H
 weiar/HI
 weindiad/BH
@@ -54445,7 +54451,7 @@ yrnau/H
 yrnfaes/H
 yrnfeysydd/H
 yrŵan/H
-y/S
+y
 ysbadd/Hv
 ysbaddu/H
 Ysbaen/H
@@ -54920,6 +54926,6 @@ yta/H
 yterbiwm/H
 ytriwm/H
 ywen/H
-yw/S
+yw
 Zambia
 Zimbabwe
