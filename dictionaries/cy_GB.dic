@@ -1,4 +1,6 @@
-54929
+54931
+a
+â
 abaci/H
 abacws/H
 abadaeth/BH
@@ -4835,9 +4837,7 @@ arysgrif/BH
 arysgrifen/H
 arysgrifio/H
 arysgrifion/H
-a
 A.S.
-â
 Asaff/H
 asalea/HI
 Asám/H
@@ -11568,8 +11568,8 @@ chwythwr
 chwythwyr
 chwythydd/C
 chwythymau
-chydag
 chyda
+chydag
 chylch
 ciaidd/LMT
 CIA/LMT
@@ -22876,6 +22876,7 @@ dywedwst/MT
 dywedyd/MT
 dywenydd/MT
 dyw/MT
+e
 eangach/H
 eangaf/H
 eangderau/H
@@ -23218,8 +23219,8 @@ effro/H
 ef/H
 Efnisien/H
 Efnysien/H
-efô/H
 efo/H
+efô/H
 efoliwt/DH
 efrau/H
 Efrog/H
@@ -24223,7 +24224,6 @@ eryrol/H
 Eryrys/H
 erys/H
 erythrosyt/BH
-e
 esblyg/Hv
 esblygiadaeth/H
 esblygiad/BH
@@ -24647,6 +24647,7 @@ fasreolwyr
 fasys
 Fatican
 FBI
+fe
 feallai
 fectoraidd
 fector/B
@@ -24719,7 +24720,6 @@ Ferwallt
 ferwca
 ferwcau
 Ferwig
-fe
 fesicl/B
 fest/DI
 festigiol
@@ -31480,6 +31480,7 @@ hewristig
 heylgen
 heyrn
 HGV
+hi
 hic/D
 hicell
 hicio
@@ -31613,7 +31614,6 @@ Hirwen
 hirwyntog
 hirymarhous
 hirymaros
-hi
 hisian
 hisi/v
 histamin
@@ -32619,7 +32619,7 @@ hywedd/v
 Hywel
 hywerthedd
 hywyn
-i'w
+i/
 iachach/H
 iachâd/H
 iachaf/H
@@ -33362,7 +33362,6 @@ istangiad/BH
 istref/H
 istrefi/H
 istrofannol/H
-i/
 iswaelodol/H
 iswasanaethgar/H
 iswasanaeth/H
@@ -33396,6 +33395,7 @@ Ithel/H
 ithfaen/H
 iti/H
 IVF/H
+i'w
 Iwan/H
 iwca/H
 iwcalili/HI
@@ -39109,6 +39109,7 @@ mywion/M
 mywionyn/M
 n
 'na
+na
 nabl/B
 nabod
 nac
@@ -39215,7 +39216,6 @@ nardus
 narsisi
 narsisws
 nas
-na
 Nasareth
 NASDAQ
 nasoffaryngeal
@@ -39457,10 +39457,10 @@ net
 nethior
 NetMeeting
 NetShow
+neu
 NEU
 neuadd/B
 neud
-neu
 newid
 newidfa/E
 newidfeydd
@@ -39513,6 +39513,7 @@ nghylch
 nghyn
 NHS
 nhw
+ni
 Nia
 NIAC
 Niagra
@@ -39563,7 +39564,6 @@ niper
 niperi
 nipl/B
 nis
-ni
 Nisien
 nith/E
 nithiad/B
@@ -39890,6 +39890,7 @@ Nythygigfran
 nytiau
 nytmeg
 nyts
+o
 Obadeia/H
 obelisg/BH
 oblad/H
@@ -40590,7 +40591,6 @@ orthoptwyr/H
 orthoptydd/H
 orthoteg/H
 Orwig/H
-o
 O.S.
 oseli/H
 oselws/H
@@ -52542,6 +52542,7 @@ tywyswraig/LMT
 tywyswr/LMT
 tywyswyr/LMT
 tywysydd/CLMT
+u
 ubain/Hv
 ub/Hv
 UCAC/H
@@ -53262,6 +53263,7 @@ wythwr/H
 wythwyr/H
 xerograffig
 xerox
+y
 ychen/H
 ych/H
 ŷch/H
@@ -54451,7 +54453,6 @@ yrnau/H
 yrnfaes/H
 yrnfeysydd/H
 yrŵan/H
-y
 ysbadd/Hv
 ysbaddu/H
 Ysbaen/H
@@ -54925,7 +54926,7 @@ ysywaeth/H
 yta/H
 yterbiwm/H
 ytriwm/H
-ywen/H
 yw
+ywen/H
 Zambia
 Zimbabwe
