@@ -51,7 +51,25 @@ parse () {
 			break
 			;;
 		*)
-			echo "Programming error"
+			echo "usage: ./teclyn -[a, b, e, f]
+-a gair
+	adds 'gair'  to dictionary (may include
+	dictionary tags on the end e.g.  /AFG).
+-b
+	builds the zipped  libreoffice package.
+-e gair
+	use 'wordforms' from hunspell to expand
+	the   given  word  with  all   relevant
+	permitted  affixes in  the  dictionary.
+-f gair
+	find the word or word  fragement in the
+	dictionary  file and print all matches:
+	accepts regex
+-n rhestr_o_eiriau.txt
+	search through a list of words (one per
+	line) to find ones unknown to the  dict
+	and add them to an output file."
+
 			exit 3
 			;;
 	esac
@@ -87,9 +105,6 @@ ychwanegu () {
 	if [[ -n "$anhysbys" ]] ; then
 		echo "The dictionary does not recognise the following:"
 		echo "$anhysbys"
-	else
-		#echo "The dictionary recognises everything in the word list."
-		echo ""
 	fi
 }
 
