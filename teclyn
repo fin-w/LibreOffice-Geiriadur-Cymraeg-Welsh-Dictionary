@@ -19,6 +19,9 @@
 #	search through a list of words (one per
 #	line) to find ones unknown to the  dict
 #	and add them to an output file.
+# -s gair
+#	check  whether  word  'gair'  is in the
+#	dictionary
 ###
 
 parse () {
@@ -46,6 +49,10 @@ parse () {
 			newydd "$2"
 			shift
 			;;
+		-s|--spell)
+			gwirio "$2"
+			shift
+			;;
 		--)
 			shift
 			break
@@ -68,7 +75,10 @@ parse () {
 -n rhestr_o_eiriau.txt
 	search through a list of words (one per
 	line) to find ones unknown to the  dict
-	and add them to an output file."
+	and add them to an output file.
+-s gair
+	check  whether  word  'gair'  is in the
+	dictionary"
 
 			exit 3
 			;;
@@ -190,4 +200,33 @@ newydd () {
 	rm dictionaries/newydd.tmp
 }
 
+gwirio () {
+	###
+	# check whether a word is in the dictionary
+	###
+	response=$(tail -n1 <<< "$(echo $1 | hunspell -d dictionaries/cy_GB -a)")
+	case ${response:0:1} in
+		"*")
+			echo "Correct, in dictionary."
+			shift
+			;;
+		"&")
+			echo "Closest matches:"
+			echo "$(sed 's/^.*[:] //g' <<< $response)"
+			shift
+			;;
+		"+")
+			echo "Found using affix removal."
+			shift
+			;;
+		"-")
+			echo "Found, compound."
+			shift
+			;;
+		"#")
+			echo "Unknown word, no suggestions."
+			shift
+			;;
+	esac
+}
 parse $1 $2
