@@ -1,4 +1,4 @@
-54940
+54955
 a
 â
 abaci/H
@@ -1867,6 +1867,7 @@ allgyrchu/H
 allgyrchydd/CH
 allgyrsiol/H
 allhidlo/H
+allieithyddol/H
 all-lein/H
 all-lif/BEH
 all-lifio/H
@@ -13521,6 +13522,7 @@ coronomedr/LMT
 coronrod/BLMT
 coropleth/LMT
 corporal/GLMT
+corpora/LMT
 corpws/LMT
 corrach/LMT
 corres/LMT
@@ -15443,6 +15445,7 @@ cyd-denantiaeth/LMT
 cyd-dentantiaid/LMT
 cyd-derfynol/LMT
 cyd-destun/BLMT
+cyddestun/LMT
 cyd-destunol/LMT
 cyd-doddi/LMT
 cyd-dodd/LMv
@@ -17257,6 +17260,7 @@ cymhareb/LMT
 cymhares/LMT
 cymhargell/LMT
 cymhariaeth/LMT
+cymhar/LMTv
 cymharol/LMT
 cymharu/LMT
 cymharus/LMT
@@ -21334,6 +21338,8 @@ disgrifi/Mv
 disgrifio/MT
 disgriflun/DMT
 disgrifydd/MT
+disgwrs/MT
+disgẃrs/MT
 disgwylfa/MT
 disgwylfeydd/MT
 disgwylgar/MT
@@ -21712,6 +21718,7 @@ dofednod/MT
 dofi/MT
 dofion/M
 dof/MTv
+dofn/MT
 dofrwydd/MT
 dofwr/MT
 dofwyr/MT
@@ -24683,6 +24690,7 @@ felwm
 Fenai
 fendeta
 fendetâu
+Feneswelaidd
 fenis
 Fenisaidd
 Fenlli
@@ -25321,6 +25329,7 @@ fflop
 fflora
 fflorens
 Fflorentaidd
+Fflorida
 ffloring/K
 fflôt
 fflotiau
@@ -31621,6 +31630,7 @@ Hirwen
 hirwyntog
 hirymarhous
 hirymaros
+Hisbaenig
 hisian
 hisi/v
 histamin
@@ -31740,7 +31750,8 @@ holgar
 holi
 holiad/B
 holiadol
-holiadur/H
+holiadur
+holiaduron
 holiedydd/C
 holion
 holistaidd
@@ -37866,6 +37877,7 @@ mewnyn/M
 meysydd/M
 mezzo-soprano/IM
 Miall/M
+Miami/M
 miaren/M
 mica/M
 micas/M
@@ -39530,6 +39542,7 @@ nib/D
 niblen
 niblenni
 Nicaragua
+Nicaragwaidd
 nicel
 niceli
 nicer/I
@@ -43748,7 +43761,7 @@ prysuro/LMT
 ptomen/LMT
 ptyalin/LMT
 publican/KLMT
-Publisher/LMT
+Puerto/LMT
 Pugh/LMT
 pulpud/BLMT
 pulsau/LMT
@@ -45786,6 +45799,7 @@ ribofflafin
 riboniwcleig
 ribosom/B
 Rica
+Ricaidd
 ricercare
 Ricet
 Richard
@@ -47677,6 +47691,7 @@ siopladrad/B
 siopladron
 siopleidr
 siopwr
+siopwraig
 siopwyr
 Siôr
 sioraidd
