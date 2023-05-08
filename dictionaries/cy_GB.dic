@@ -1,4 +1,4 @@
-54954
+54955
 a
 â
 abaci/H
@@ -9777,6 +9777,7 @@ cantio/LMT
 cânt/LMT
 cantoedd/LMT
 canton/BLMT
+Cantoneg/LMT
 cantor/CGLMT
 cantores/BLMT
 cantorion/LMT
@@ -26498,7 +26499,7 @@ geirfwlch/MT
 geirfylchau/MT
 geiriad/MT
 geiriaduraeth/MT
-geiriadur/HMT
+geiriadur/HMTI
 geiriadurol/MT
 geiriadurwragedd/MT
 geiriadurwraig/MT
@@ -26540,6 +26541,7 @@ gellast/MT
 gellesgen/MT
 gellesg/MT
 gellgi/MT
+gellid/MT
 Gellidochlaethe/MT
 Gellifelen/MT
 Gellifor/MT
@@ -31749,8 +31751,7 @@ holgar
 holi
 holiad/B
 holiadol
-holiadur
-holiaduron
+holiadur/I
 holiedydd/C
 holion
 holistaidd
