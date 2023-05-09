@@ -1,4 +1,4 @@
-54981
+54999
 a
 â
 abaci/H
@@ -8085,6 +8085,7 @@ budr/MTv
 budrogaidd/MT
 budro/MT
 budron/M
+budrwhilen/MT
 budr-wleidydda/MT
 budur/MT
 bues/M
@@ -10517,6 +10518,7 @@ Cefnbryn/LMT
 Cefncoedcymer/LMT
 Cefncribwr/LMT
 cefnddryll/DLMT
+cefnddu/LMT
 cefnddwr/LMT
 Cefnddwygraig/LMT
 Cefnddwysarn/LMT
@@ -22036,6 +22038,7 @@ dringwr/MT
 dringwydden/MT
 dringwydd/MT
 dringwyr/MT
+drinws/MT
 dripian/MT
 dripi/Mv
 dripsych/MT
@@ -22070,6 +22073,7 @@ drudfawr/MT
 drudion/M
 drud/MT
 drudwen/MT
+drudws/MT
 drudwy/MT
 Druman/MT
 drutach/MT
@@ -26750,6 +26754,7 @@ gewyn/FMT
 gewynnog/MT
 gewynnol/MT
 Ghana/MT
+giach/MT
 gïach/MT
 giachod/MT
 giaffar/IT
@@ -28878,6 +28883,7 @@ gweddwhau/MT
 gweddw/HMTvw
 gweddwi/MT
 gweddwon/M
+gwedresi/MT
 gwe-dudalen/FMT
 gwe/EMT
 gwefan/FMT
@@ -34102,6 +34108,8 @@ llamu/M
 llamwr/M
 llamwyr/M
 Llamyrewig/M
+llamystaen/M
+llamysten/M
 Llanaber/M
 Llanaelhaearn/M
 Llanafan/M
@@ -36228,6 +36236,7 @@ lynsio
 Lynwen
 lyra
 lyrâu
+lysard
 lysin
 lysis
 lysogenedd
@@ -36343,6 +36352,7 @@ madfyw/M
 Madlen/M
 mad/M
 Madog/M
+madrchwilen/M
 madredd/Mv
 madreddog/M
 madreddu/M
@@ -38221,6 +38231,7 @@ modrwyo/M
 modrwywedd/M
 modrybedd/M
 modryb/M
+modrybwhilen/M
 Modrydd/M
 moduraidd/M
 modurdai/M
@@ -41612,6 +41623,7 @@ penellau/LMT
 penfar/BLMT
 penfas/LMT
 penfeddw/LMT
+penfelen/LMT
 penfelyn/LMT
 penffest/BLMT
 penffestr/BLMT
@@ -42203,6 +42215,7 @@ petheuach/LMT
 petiol/BLMT
 Petra/LMT
 Petran/LMT
+petrawilen/LMT
 petrisen/LMT
 petris/LMT
 petrocemegion/LMT
@@ -45328,6 +45341,7 @@ Rhuddlan/M
 rhuddliw/DM
 rhudd/Mv
 Rhuddnant/M
+rhuddnod/M
 rhuddog/CM
 rhuddo/M
 rhuddos/M
@@ -47570,6 +47584,7 @@ signal/B
 signwm
 sigo
 sig/v
+sigwti
 Sikh/G
 Sikhiaeth
 sil/DK
@@ -49572,6 +49587,7 @@ tapro/LMT
 tâp-yrrwr/LMT
 tâp-yrrwyr/LMT
 tâp-yrwyr/LMT
+tarad/LMT
 taradr/LMT
 taran/BLMTv
 taranfollt/BLMT
@@ -50283,11 +50299,13 @@ tindroi/LMT
 tindro/LMT
 tindrO/LMv
 tin-dros-ben/LMT
+tingoch/LMT
 tîn/LMT
 tinsel/LMT
 tinsigl/LMT
 tintio/LMT
 tintur/DLMT
+tinwen/LMT
 tio/LMT
 tïo/LMT
 tiped/BLMT
