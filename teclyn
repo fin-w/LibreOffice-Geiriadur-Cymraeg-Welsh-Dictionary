@@ -7,6 +7,10 @@
 #       dictionary tags on the end e.g.  /AFG).
 # -b
 #       builds the zipped  libreoffice package.
+# -d
+#	git diff the dictionary file and  print
+#	only  the  words  that   have   changed
+#	(usually they have been added).
 # -e gair
 #       use 'wordforms' from hunspell to expand
 #       the   given  word  with  all   relevant
@@ -37,6 +41,10 @@ parse () {
 			adeiladu
 			shift
 			;;
+		-d|--diff)
+			geiriau_a_newidiwyd
+			shift
+			;;
 		-e|--expand)
 			ystyried dictionaries/cy_GB.aff dictionaries/cy_GB.dic "$2" | sort -u
 			shift
@@ -64,6 +72,10 @@ parse () {
 	dictionary tags on the end e.g.  /AFG).
 -b
 	builds the zipped  libreoffice package.
+-d
+	git diff the dictionary file and  print
+	only  the  words  that   have   changed
+	(usually they have been added).
 -e gair
 	use 'wordforms' from hunspell to expand
 	the   given  word  with  all   relevant
@@ -136,6 +148,13 @@ adeiladu () {
 	zip -qr libreoffice-geiriadur-$version.oxt description/ META-INF/ dictionaries/cy_GB.dic dictionaries/cy_GB.aff baner_cymreig.png description.xml dictionaries.xcu LICENSE README.txt
 
 	echo "Built."
+}
+
+geiriau_a_newidiwyd () {
+	###
+	# print out the dic lines that have changed
+	###
+	git diff dictionaries/cy_GB.dic | grep +[a-z] | grep -v @ | sed -e 's/^+//g' -e 's/\///g' -e 's/[A-Z]//g'
 }
 
 ystyried () {
