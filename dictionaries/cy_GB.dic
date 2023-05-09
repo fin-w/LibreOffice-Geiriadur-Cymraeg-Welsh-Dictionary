@@ -1,4 +1,4 @@
-54965
+54978
 a
 â
 abaci/H
@@ -7276,6 +7276,7 @@ braidd/MT
 brain/MT
 braint/MT
 braisg/MT
+braith/MT
 bral/BMT
 bralgi/MT
 bralgwn/MT
@@ -11314,6 +11315,7 @@ chwibaniad
 Chwibanog
 chwibanogl/B
 chwibanu
+chwibanwr
 chwib/D
 chwibenais
 chwibeni
@@ -14029,6 +14031,7 @@ crewtio/LMT
 crëwyd/LMT
 crewyn/FLMT
 crewyr/LMT
+creyr/LMT
 crëyr/LMT
 criafolen/FLMT
 criafol/LMT
@@ -14696,6 +14699,7 @@ crypt/BLMT
 cryptoffyt/LMT
 crypton/LMT
 cryptosporidiwm/LMT
+cryr/LMT
 crŷr/LMT
 crysalis/BLMT
 crysbais/LMT
@@ -37276,6 +37280,7 @@ Meidrym/M
 Meifod/M
 meigryn/M
 meilart/KM
+meilat/M
 Meilir/M
 meillionen/M
 meillion/M
@@ -37388,6 +37393,7 @@ melanin/M
 melan/M
 melanocyt/BM
 melanoffor/BM
+melen/M
 Meleri/M
 melfa/M
 melfaréd/M
@@ -37455,7 +37461,7 @@ melyni/M
 melynion/M
 melynllys/M
 melyn/Mv
-Melynog/M
+melynog/M
 melynu/M
 melynwy/M
 melynwyn/M
@@ -37994,6 +38000,7 @@ migyrnau/M
 migyrnog/M
 Mihangel/M
 milain/M
+milart/M
 miled/M
 mileindra/M
 mileiniaid/M
@@ -39890,6 +39897,7 @@ nydd-droi
 nydd-drO/v
 nyddolion
 nyddolyn/F
+nyddreg
 nyddu
 nydd/v
 nyddwr
@@ -41774,6 +41782,7 @@ penseli/LMT
 pensel/LMT
 pensgwar/LMT
 Pensgynor/LMT
+pensidan/LMT
 pensil/DLMT
 pensiliau/LMT
 pensiwn/LMT
@@ -42063,6 +42072,7 @@ peritonewm/LMT
 peritonitis/LMT
 Periw/LMT
 perlaidd/LMT
+perla/LMT
 perl/BLMT
 perlesmeiriol/LMT
 perlewyg/HLMT
@@ -47511,7 +47521,7 @@ sielac
 sielio
 sielo/B
 sielydd/C
-Siencyn
+siencyn
 sienna
 siera/K
 sierardeiddio
@@ -47628,6 +47638,7 @@ sinamon
 sin/B
 sinc/D
 sincio
+sincyn
 sine-camera
 sine-camerâu
 sinechydd
@@ -48753,6 +48764,7 @@ sychwydd
 sychwyr
 sychydd/C
 sydd
+syddyn
 sydyn
 sydynrwydd
 Syfaddan
@@ -54942,6 +54954,7 @@ ysweiniaid/H
 ysweiniol/H
 Ysw/H
 yswidw/HK
+yswigw/H
 yswilach/H
 yswilaf/H
 yswildod/H
