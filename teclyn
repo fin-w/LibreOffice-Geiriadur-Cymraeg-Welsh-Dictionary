@@ -16,7 +16,7 @@
 #       the   given  word  with  all   relevant
 #       permitted  affixes in  the  dictionary.
 # -f gair
-#	find the word or word  fragement in the
+#	find the word or word  fragment  in the
 #	dictionary  file and print all matches:
 #	accepts regex
 # -n rhestr_o_eiriau.txt
@@ -53,6 +53,10 @@ parse () {
 			ffeindio "$2"
 			shift
 			;;
+		-i|--insert)
+			insertmode "$2"
+			shift
+			;;
 		-n|--new)
 			newydd "$2"
 			shift
@@ -81,7 +85,7 @@ parse () {
 	the   given  word  with  all   relevant
 	permitted  affixes in  the  dictionary.
 -f gair
-	find the word or word  fragement in the
+	find the word or word  fragment  in the
 	dictionary  file and print all matches:
 	accepts regex
 -n rhestr_o_eiriau.txt
@@ -101,25 +105,62 @@ ychwanegu () {
 	###
 	# add a word to the dictionary, optionally with prefix / suffix tags
 	###
+	autotag=1
 	# remove any dictionary tags from the end i.e. rhywedd/M becomes rhywedd
 	gair=$(sed -e "s|/.*||" <<< "$1")
+	dictgair="$1"
+	# print out matches or closest words
+	gwirio "$gair"
 	# empty if hunspell recognises the word
 	anhysbys=$(hunspell -L -d dictionaries/cy_GB <<< "$gair")
 
 	if [[ -n "$anhysbys" ]] ; then
 		echo "Adding word \"$gair\" to dictionary"
+		# offer to autotag word if tags were not found on the word
+		if [[ $autotag -eq 1 ]] && [[ "$gair" == "$dictgair" ]] ; then
+			llaes=""
+			meddal=""
+			trwynol=""
+			hprosth=""
+			# mutations are only possible on certain word beginnings
+			if [[ "$gair" =~ (^[ctpCTP][^hH].*) ]] ; then llaes="L" ; fi
+			if [[ "$gair" =~ (^[ctpCTP][^hH].*|^[lL][lL].*|^[rR][hH].*|^[dD][^dD].*|^[gG].*|^[bB].*|^[Mm].*) ]] ; then meddal="M" ; fi
+			if [[ "$gair" =~ (^[ctpCTP][^hH].*|^[dD][^dD].*|^[gG].*|^[bB].*) ]] ; then trwynol="T" ; fi
+			if [[ "$gair" =~ ^[aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ].* ]] ; then hprosth="H" ; fi
+			tags="/$llaes$meddal$trwynol$hprosth"
+			if [[ "$tags" == "/" ]] ; then
+				printf "Add word \"$gair\" with no tags detected? [y/n]"
+			else
+				dictgair="$gair$tags"
+				printf "Add word \"$gair\" with tags $tags , or (a) add without tags? [y/n/a]"
+			fi
+			# get user response whether to add, use autotag variable to permit writing to dictionary
+			read -n 1 -p " " ateb
+			echo
+			if [[ "$ateb" =~ [yY] ]] ; then autotag=0 ; fi
+			# TODO change dictgair=gair to something else, clashes with elif below. or swap elif location to top of if
+			#if [[ "$ateb" =~ [aA] ]] ; then autotag=0 ; dictgair=$gair ; fi
+		elif [[ $autotag -eq 1 ]] && [[ "$gair" != "$dictgair" ]] ; then
+				echo "Not autotagging, tags already added."
+				autotag=0
+		fi
 		# Add word
-		echo "$gair" >> dictionaries/word_list.txt
-		echo "$1" >> dictionaries/cy_GB.dic
-		# Write number of lines to tmp
-		tail -n +2 dictionaries/cy_GB.dic | sort -u | wc -l > dictionaries/dict.tmp
-		# Write sorted words to tmp
-		tail -n +2 dictionaries/cy_GB.dic | WC_ALL=C sort -u >> dictionaries/dict.tmp
-		# Copy tmp back to mwy.dic
-		mv dictionaries/dict.tmp dictionaries/cy_GB.dic
-		echo "Added word."
+		if [[ $autotag -ne 1 ]] ; then
+			echo "$gair" >> dictionaries/word_list.txt
+			echo "$dictgair" >> dictionaries/cy_GB.dic
+			# Write number of lines to tmp
+			tail -n +2 dictionaries/cy_GB.dic | sort -u | wc -l > dictionaries/dict.tmp
+			# Write sorted words to tmp
+			tail -n +2 dictionaries/cy_GB.dic | WC_ALL=C sort -u >> dictionaries/dict.tmp
+			# Copy tmp back to mwy.dic
+			mv dictionaries/dict.tmp dictionaries/cy_GB.dic
+			echo "Added word."
+		else
+			echo "Not adding word."
+		fi
 	else
-		echo "\"$gair\" is already in dictionary"
+		printf ''
+		#echo "\"$gair\" is already in dictionary"
 	fi
 
 	# contains any unknown words in the word list
@@ -206,6 +247,16 @@ ffeindio () {
 	# find dictionary entry matching search term (basically just grep)
 	###
 	cat dictionaries/cy_GB.dic | grep "$1"
+}
+
+insertmode () {
+	while :
+	do
+		echo
+		printf "Word: "
+		read word
+		ychwanegu "$word"
+	done
 }
 
 newydd () {
