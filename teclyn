@@ -115,9 +115,11 @@ ychwanegu () {
 	anhysbys=$(hunspell -L -d dictionaries/cy_GB <<< "$gair")
 
 	if [[ -n "$anhysbys" ]] ; then
-		echo "Adding word \"$gair\" to dictionary"
 		# offer to autotag word if tags were not found on the word
-		if [[ $autotag -eq 1 ]] && [[ "$gair" == "$dictgair" ]] ; then
+		if [[ $autotag -eq 1 ]] && [[ "$gair" != "$dictgair" ]] ; then
+			echo "Not autotagging, tags already added."
+			autotag=0
+		elif [[ $autotag -eq 1 ]] ; then
 			llaes=""
 			meddal=""
 			trwynol=""
@@ -137,15 +139,13 @@ ychwanegu () {
 			# get user response whether to add, use autotag variable to permit writing to dictionary
 			read -n 1 -p " " ateb
 			echo
+			# will only write anything to dict if autotag != 1
 			if [[ "$ateb" =~ [yY] ]] ; then autotag=0 ; fi
-			# TODO change dictgair=gair to something else, clashes with elif below. or swap elif location to top of if
-			#if [[ "$ateb" =~ [aA] ]] ; then autotag=0 ; dictgair=$gair ; fi
-		elif [[ $autotag -eq 1 ]] && [[ "$gair" != "$dictgair" ]] ; then
-				echo "Not autotagging, tags already added."
-				autotag=0
+			if [[ "$ateb" =~ [aA] ]] ; then autotag=0 ; dictgair=$gair ; fi
 		fi
 		# Add word
 		if [[ $autotag -ne 1 ]] ; then
+			echo "Writing word \"$dictgair\" to dictionary"
 			echo "$gair" >> dictionaries/word_list.txt
 			echo "$dictgair" >> dictionaries/cy_GB.dic
 			# Write number of lines to tmp
@@ -281,8 +281,7 @@ gwirio () {
 			shift
 			;;
 		"&")
-			echo "Closest matches:"
-			echo "$(sed 's/^.*[:] //g' <<< $response)"
+			echo -e "Closest matches:\t$(sed 's/^.*[:] //g' <<< $response)"
 			shift
 			;;
 		"+")
