@@ -1,4 +1,4 @@
-55039
+55072
 a
 â
 abaci/H
@@ -5512,6 +5512,7 @@ bacio/MT
 BackOffice/MT
 baco/MT
 bacsau/MT
+bacse/MT
 bacsen/MT
 bacsiau/MT
 bacs/Mv
@@ -6116,6 +6117,7 @@ beilchion/M
 beilch/M
 beiliaethau/MT
 beilïaeth/MT
+beiliaid/MT
 beilïaid/MT
 beilïau/MT
 beili/MT
@@ -7388,6 +7390,7 @@ Brechfa/MT
 brechiad/BMT
 brechlyd/MT
 brechlyn/FMT
+brechlys/MT
 brechu/MT
 brechwr/MT
 brechwyr/MT
@@ -8798,6 +8801,7 @@ cabolfeini/LMT
 caboli/LMT
 cabol/LMTv
 Cabo/LMT
+caca/LMT
 cacamwci/LMT
 cacen/FLMT
 cacenni/LMT
@@ -8827,6 +8831,7 @@ cacwn/LMT
 cacynen/LMT
 cadachau/LMT
 cadach/BLMT
+cadafarch/LMT
 cadafarth/LMT
 cadair/LMT
 cadarnach/LM
@@ -9293,6 +9298,7 @@ camacennu/LMT
 camach/LM
 camaddasiad/LMT
 camaf/LM
+camamil/LMT
 camamseriad/BLMT
 camamser/LMv
 camamseru/LMT
@@ -9470,6 +9476,7 @@ camni/LMT
 camochri/LMT
 camochr/LMv
 camog/BLMT
+camomil/LMT
 camosodiad/BLMT
 camosod/LMTv
 campanoleg/LMT
@@ -9754,6 +9761,7 @@ canradd/BLMT
 canraddol/LMT
 canran/FLMT
 canrannol/LMT
+canrhi/LMT
 canrhyg/LMT
 canrif/BELMT
 cansen/FLMT
@@ -10412,6 +10420,7 @@ cawl/DLMT
 cawlen/LMT
 cawli/LMv
 cawlio/LMT
+cawmil/LMT
 cawna/LMT
 cawn/LMTv
 cawod/BLMTv
@@ -11917,6 +11926,7 @@ claficord/DLMT
 clafisymbal/BLMT
 claf/LMT
 clafrllyd/LMT
+clafrlys/LMT
 clafych/LMv
 clafychu/LMT
 clagwydd/BLMT
@@ -11962,6 +11972,7 @@ clasurwr/LMT
 clasurwyr/LMT
 clasurydd/CLMT
 clathrad/BLMT
+clatsh/LMT
 clatsien/LMT
 clatsi/LMv
 clatsio/LMT
@@ -12118,6 +12129,7 @@ clinig/BLMT
 clinigol/LMT
 clinigwr/LMT
 clinigwyr/LMT
+cliniogau/LMT
 clinomedr/BLMT
 clint/DLMT
 clip/DLMT
@@ -12653,6 +12665,7 @@ cochlyd/LMT
 cochni/LMT
 cochrudd/LMT
 Cochwillan/LMT
+cochwraidd/LMT
 cocian/LMT
 côc/ILMT
 coci/LMTv
@@ -13957,6 +13970,7 @@ creigle/ELMT
 creiglennydd/LMT
 creiglethr/BLMT
 Creiglyn/LMT
+creiglys/LMT
 Creignant/LMT
 creigresi/LMT
 creigres/LMT
@@ -14232,6 +14246,7 @@ croesbren/FLMT
 croesbrenni/LMT
 croes-bylu/LMT
 croesbylu/LMT
+croesddail/LMT
 croesddweud/LMT
 croesddywediad/BLMT
 croesebol/LMT
@@ -18366,6 +18381,7 @@ cywely/BLMT
 cywen/LMT
 cywennen/LMT
 cywennod/LMT
+cywer/LMT
 cywerthedd/ELMT
 cywerth/LMT
 cywerthoedd/LMT
@@ -23249,6 +23265,7 @@ effemeris/BH
 effermeris/H
 efferol/H
 effro/H
+effros/H
 ef/H
 Efnisien/H
 Efnysien/H
@@ -24970,6 +24987,7 @@ ffeindio
 ffeindi/v
 ffeindrwydd
 ffeini
+ffeiriad
 ffeiriau
 ffeirio
 ffeiri/v
@@ -27340,6 +27358,7 @@ golchdai/MT
 golchdir/EMT
 golchdrwyth/BMT
 golchdy/MT
+golchenid/MT
 golchfa/MT
 golchfeydd/MT
 golchiad/BMT
@@ -27355,6 +27374,7 @@ golchwr/MT
 golchwyr/MT
 golchydd/CMT
 golchyddes/BMT
+gold/MT
 goledd/BMTv
 goleddf/BMTv
 goleddfu/MT
@@ -29724,6 +29744,7 @@ gwreiddios/MT
 gwreiddiosyn/MT
 gwreiddlysiau/MT
 gwreiddlysieuyn/MT
+gwreiddrudd/MT
 gwreiddwasgedd/MT
 gwreiddyn/MT
 gwreigaidd/MT
@@ -30452,6 +30473,7 @@ gwyrddion/MT
 gwyrddlas/MT
 gwyrddleision/MT
 gwyrddlesni/MT
+gwyrddling/MT
 gwyrddlwyd/MT
 gwyrddlysiau/MT
 gwyrddlys/MT
@@ -31892,6 +31914,7 @@ honn/v
 honoraria
 honorariwm
 Hopcyn
+hopen
 hopgefn/B
 hop/I
 hopian
@@ -33467,6 +33490,7 @@ iwrch/H
 iwroaid/H
 iwro/HI
 iwroleg/H
+iwrwg/H
 iwsans/H
 iws/H
 iwtalitaraidd/H
@@ -33674,6 +33698,7 @@ lactig
 lactoffenol
 lactogenig
 lactos
+ladi
 Ladis
 lafa
 Lafan
@@ -33767,6 +33792,7 @@ latsen
 Latvia
 latws-rectwm
 lawlaw
+lawlwm
 lawnsed
 lawnsedi
 Lawnslod
@@ -35872,6 +35898,7 @@ llygadrythu/M
 llygad-sefydledd/M
 llygadu/M
 llygadus/M
+llygaeron/M
 llygaid/M
 llygatddu/M
 llygatgam/M
@@ -38059,6 +38086,7 @@ milfil/M
 milflwyddiaeth/M
 milflwyddiant/M
 milflynyddol/M
+milfyw/M
 milgi/M
 milgwn/M
 miliast/M
@@ -38216,6 +38244,7 @@ mochaidd/M
 mocha/M
 Mochdre/M
 mochi/M
+mochlys/M
 moch/M
 Mochnant/M
 Mochno/M
@@ -38760,6 +38789,7 @@ mwcilag/BM
 mwcin/BM
 mwclen/M
 mwclis/M
+mwcog/M
 mwcoprotein/BM
 mwcosa/M
 mwcosau/M
@@ -41678,6 +41708,7 @@ pengaled/LMT
 pengaledwch/LMT
 pengam/LMT
 Pengelli/LMT
+pengelyd/LMT
 pengernod/LMT
 pengernyn/LMT
 Penglais/LMT
@@ -41722,6 +41753,7 @@ penisillia/LMT
 penisillium/LMT
 Pen-lan/LMT
 Penlan/LMT
+penlas/LMT
 Penley/LMT
 penliniad/LMT
 penliniau/LMT
@@ -49290,6 +49322,7 @@ tagiad/BLMT
 tagiant/LMT
 tagi/LMv
 tagio/LMT
+taglys/LMT
 tagu/LMT
 tagwr/LMT
 tagwydden/LMT
