@@ -193,9 +193,10 @@ adeiladu () {
 
 geiriau_a_newidiwyd () {
 	###
-	# print out the dic lines that have changed
+	# print out the dic word count, then the stems of any new words added
+	# (i.e. everything before the '/' on any lines that have changed)
 	###
-	git diff dictionaries/cy_GB.dic | grep +[a-z] | grep -v @ | sed -e 's/^+//g' -e 's/\///g' -e 's/[A-Z]//g'
+	git diff dictionaries/cy_GB.dic | grep +[a-zA-Z0-9] | grep -v @ | sed -e 's/^+//g' -e 's/\/[A-Z]*//g'
 }
 
 ystyried () {
