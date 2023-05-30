@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ###
-# usage: ./teclyn -[a, b, e, f]
+# usage: ./teclyn -[a, b, d, e, f, i, n, s] OPTION
 # -a gair
 #       adds 'gair'  to dictionary (may include
 #       dictionary tags on the end e.g.  /AFG).
@@ -19,6 +19,11 @@
 #	find the word or word  fragment  in the
 #	dictionary  file and print all matches:
 #	accepts regex
+# -i
+#	repeatedly  prompt for words,  then  -a
+#	add them (this first checks if they are
+#	in  the  dictionary   already,  and  by
+#	default auto-tags with treigladau tags.
 # -n rhestr_o_eiriau.txt
 #	search through a list of words (one per
 #	line) to find ones unknown to the  dict
@@ -88,6 +93,11 @@ parse () {
 	find the word or word  fragment  in the
 	dictionary  file and print all matches:
 	accepts regex
+-i
+	repeatedly  prompt for words,  then  -a
+	add them (this first checks if they are
+	in  the  dictionary   already,  and  by
+	default auto-tags with treigladau tags.
 -n rhestr_o_eiriau.txt
 	search through a list of words (one per
 	line) to find ones unknown to the  dict
