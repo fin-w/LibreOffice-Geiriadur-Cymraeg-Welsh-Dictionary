@@ -1,4 +1,4 @@
-55093
+55148
 a
 â
 abaci/H
@@ -2016,6 +2016,7 @@ amau/H
 ambarelau/H
 ambarél/HI
 ambareli/H
+ambarelo/H
 ambarïau/H
 ambari/H
 ambegynol/H
@@ -2479,6 +2480,7 @@ amrantu/H
 amrantun/Hv
 amrantuno/H
 amrantyn/H
+amranwen/H
 amrediad/BH
 amreiniol/H
 Amroth/H
@@ -6543,6 +6545,7 @@ blaengrwyn/MT
 blaengudyn/FMT
 blaenguriad/BMT
 Blaen-gwawr/MT
+blaengwayw/MT
 Blaengwrach/MT
 Blaengwynfi/MT
 blaengyfran/FMT
@@ -7694,12 +7697,14 @@ briwfyrddau/MT
 briwgig/MT
 briwgigoed/MT
 briwio/MT
+briwion/MT
 briwlan/MTv
 briwlaw/MT
 briwlian/MT
 briwli/Mv
 briwlio/MT
 briwl/Mv
+briwlys/MT
 briwo/MT
 briwsioni/MT
 briwsionllyd/MT
@@ -7994,6 +7999,7 @@ Bryste/MT
 brytau/MT
 brytáu/MT
 brytheirio/MT
+brythlys/MT
 Brythonaidd/MT
 Brythoneg/MT
 Brython/GMT
@@ -8743,6 +8749,7 @@ bywionen/MT
 bywion/MT
 bywionyn/MT
 bywluniad/BMT
+bywlys/MT
 byw/MT
 bywoliaeth/BMT
 bywydaeth/MT
@@ -8757,6 +8764,7 @@ bywyn/FMT
 bywynnog/MT
 cabaetsen/LMT
 cabaets/LMT
+cabaits/LMT
 cabalau/LMT
 cabál/LMT
 caban/BFLMT
@@ -9158,6 +9166,7 @@ cail/LMT
 Cai/LMT
 câi/LMT
 cainc/LMT
+caineirian/LMT
 cain/LMT
 Caint/LMT
 Caio/LMT
@@ -9804,6 +9813,7 @@ cantrefydd/LMT
 cantreg/LMT
 cantroed/LMT
 cantro/LMT
+cantwll/LMT
 Cantwn/LMT
 cantwraig/LMT
 cantwr/LMT
@@ -9998,6 +10008,7 @@ cariad/HLMT
 cariadlawn/LMT
 cariadlon/LMT
 cariadol/LMT
+cariadon/LMT
 cariadus/LMT
 cariadwledd/ELMT
 cariadwragedd/LMT
@@ -10132,6 +10143,7 @@ carthbren/LMT
 carthbrenni/LMT
 carthbwll/LMT
 carthbyllau/LMT
+cartheig/LMT
 carthen/FLMT
 carthenni/LMT
 carthffosaeth/LMT
@@ -12616,6 +12628,7 @@ cnwc/LMT
 Cnwc-yr-eithin/LMT
 cnwd/LMT
 cnwpa/LMT
+cnwp/LMT
 cnycau/LMT
 cnyciau/LMT
 cnyciog/LMT
@@ -13856,6 +13869,7 @@ crawcio/LMT
 crawciwr/LMT
 crawcwellt/LMT
 crawcwyr/LMT
+crawel/LMT
 crawen/FLMT
 crawennog/LMT
 crawennu/LMT
@@ -14433,6 +14447,7 @@ croniclo/LMT
 croniclwyr/LMT
 croniclydd/LMT
 cronig/LMT
+cron/LMT
 cronlyn/LMT
 cronlynnoedd/LMT
 cronnell/LMT
@@ -19859,6 +19874,7 @@ deuid/MT
 deui/MT
 deuir/MT
 deuit/MT
+deulafn/MT
 deulais/MT
 deulawr/MT
 deulin/MT
@@ -20083,6 +20099,7 @@ diawydd/MT
 di-baid/MT
 di-ball/MT
 dibechod/MT
+dibedoliad/MT
 diben/CMT
 di-ben-draw/MT
 dibeniad/BMT
@@ -22067,6 +22084,7 @@ dringhedydd/MT
 dringiedydd/MT
 dringlyn/FMT
 dring/MTv
+dringol/MT
 dringo/MT
 dringwr/MT
 dringwydden/MT
@@ -22313,6 +22331,7 @@ dwl/MTv
 dwlsimer/BMT
 dwlu/MT
 dwma/MT
+dwmbed/MT
 dwmbwr-dambar/MT
 dwmpian/MT
 dwmpi/Mv
@@ -23348,6 +23367,7 @@ Eglwyswrw/H
 eglwyswyr/H
 eglwysydd/H
 eglwysyddiaeth/H
+eglyn/H
 Egnant/H
 egnïaeth/H
 egnïeg/H
@@ -23441,6 +23461,7 @@ Eidda/H
 eiddew/H
 eiddgar/H
 eiddgarwch/H
+eiddiar/H
 eiddigedd/Hv
 eiddigeddu/H
 eiddigeddus/H
@@ -25305,6 +25326,7 @@ fflamdorrwr
 fflamdorwyr
 fflamgoch/C
 fflamgoed
+fflamhaul
 fflamingo/I
 fflamio
 fflami/v
@@ -25740,6 +25762,7 @@ ffrigad/B
 ffril/DI
 ffrilen
 ffriliau
+ffrils
 ffrimpan/B
 ffrind/D
 ffrindgarwch
@@ -26625,6 +26648,7 @@ gelyniaethol/MT
 gelyniaethu/MT
 gelyniaethus/MT
 gelynol/MT
+gelysg/MT
 gemau/MT
 gem/BMT
 gêm/MT
@@ -26966,6 +26990,7 @@ glaswelltog/MT
 glaswelltyn/MT
 glaswen/BMTv
 glaswenu/MT
+glaswenwyn/MT
 glaswyrdd/MT
 Glasynys/MT
 glawconit/MT
@@ -27377,6 +27402,7 @@ golchlethr/BMT
 golchlun/DMT
 golchwaith/MT
 golchwragedd/MT
+golchwraidd/MT
 golchwraig/MT
 golchwr/MT
 golchwyr/MT
@@ -27904,6 +27930,7 @@ goruchwylio/MT
 goruchwyliwr/MT
 goruchwylwyr/MT
 goruchwylydd/CMT
+gorudd/MT
 goruniad/BMT
 gorunig/MT
 goruwchadail/MT
@@ -28200,6 +28227,7 @@ Groes-faen/MT
 Groeslon/MT
 Groes-Wen/MT
 grog/MT
+grôg/MT
 Grogwynion/MT
 gromed/BMT
 gro/MT
@@ -28343,6 +28371,7 @@ gwaedlestrol/MT
 gwaedlif/BEMT
 gwaedlyd/MT
 gwaedlyn/MT
+gwaedlys/MT
 gwaed/MTv
 gwaedogen/FMT
 gwaedoliaeth/MT
@@ -29573,6 +29602,7 @@ gwlithog/MT
 gwlitho/MT
 gwlithos/MT
 gwlithyn/MT
+gwlithys/MT
 gwlybaniaeth/MT
 gwlyb-bydredd/MT
 gwlyb/CMT
@@ -35224,6 +35254,7 @@ lliniaru/M
 lliniarus/M
 lliniarydd/CM
 lliniogi/M
+llîn/M
 llinoledd/M
 llinol/M
 llin-olygydd/CM
@@ -35729,6 +35760,7 @@ Llwyngwern/M
 Llwyngwril/M
 Llwyn-gwyn/M
 Llwynhendy/M
+llwynhidydd/M
 llwyni/M
 llwyn/M
 Llwynmawr/M
@@ -36919,6 +36951,7 @@ Marcswyr/M
 Marcsydd/M
 marcwyr/M
 marcydd/CM
+marddanhadlen/M
 Marddwr/M
 Mared/M
 Maredudd/M
@@ -37254,6 +37287,7 @@ meddwol/M
 meddwon/M
 meddwyn/M
 meddygaeth/M
+meddyges/M
 meddygfa/M
 meddygfeydd/M
 meddyg/HM
@@ -37516,6 +37550,7 @@ melodrama/M
 melodramâu/M
 melog/M
 melon/BM
+melsugn/M
 Melville/M
 melwlith/M
 Melyd/M
@@ -38074,6 +38109,7 @@ migyrnog/M
 Mihangel/M
 milain/M
 milart/M
+milddail/M
 miled/M
 mileindra/M
 mileiniaid/M
@@ -38775,6 +38811,7 @@ muriwr/M
 murlen/M
 murlenni/M
 murlun/DM
+murlys/M
 murmur/HMv
 murol/M
 mursendod/M
@@ -38856,6 +38893,7 @@ mwrn/M
 mwrthwl/M
 mwsged/BM
 mwsgedi/M
+mwsglys/M
 mwsg/M
 mwsin/M
 Mwslemiaid/M
@@ -40966,6 +41004,7 @@ panlogiaeth/LMT
 panlwch/LMT
 panlychu/LMT
 pannas/LMT
+pannog/LMT
 pannu/LMT
 pannwl/LMT
 pannwr/LMT
@@ -41431,6 +41470,7 @@ pegynnu/LMT
 pegynol-arforol/LMT
 pegynol-gyfandirol/LMT
 pegynol/LMT
+peiam/LMT
 peidiad/LMT
 peidi/LMv
 peidio/LMT
@@ -41503,6 +41543,7 @@ peledio/LMT
 peledu/LMT
 peledydd/CLMT
 pelen/FLMT
+pelenllys/LMT
 pelenni/LMT
 pelet/ILMT
 pêl-falf/DLMT
@@ -41755,6 +41796,7 @@ peniad/BLMT
 Peniarth/LMT
 Peniel/LMT
 penigamp/LMT
+penigen/LMT
 penillion/LMT
 peniog/LMT
 penio/LMT
@@ -42371,8 +42413,10 @@ pibonen/LMT
 pibonwyen/LMT
 pibonwy/LMT
 pibroch/BLMT
+pibrwynen/LMT
 pibwaith/LMT
 Pibwr/LMT
+pibwydd/LMT
 pibydd/CLMT
 pibyddi/LMv
 pibyddio/LMT
@@ -42812,6 +42856,7 @@ pluad/LMT
 pluen/LMT
 pluenn/LMv
 pluennu/LMT
+plufaidd/LMT
 plufen/LMT
 plufiad/LMT
 plufi/LMv
@@ -44001,6 +44046,7 @@ pwls/LMT
 pwma/KLMT
 pwmel/LMT
 pwmis/LMT
+pwmpaliri/LMT
 pwmpen/LMT
 pwmpenni/LMT
 pwmpi/LMv
@@ -45472,6 +45518,7 @@ rhuthrad/BM
 rhuthr/BMv
 rhuthro/M
 Rhuthun/M
+rhuw/M
 rhüwr/M
 rhuwyr/M
 rhwbiad/BM
@@ -46223,6 +46270,7 @@ safonol
 safonolion
 safonwr
 safonwyr
+safri
 saf/v
 safwe/E
 saga
@@ -47630,6 +47678,7 @@ siencyn
 sienna
 siera/K
 sierardeiddio
+siercyn
 sieri
 Sierra
 sieryd
@@ -47693,6 +47742,7 @@ silicosis
 silicwa
 silicwâu
 silidon
+siligabŵd
 Silin
 silindr/B
 silindrog
@@ -49606,6 +49656,7 @@ tanseilwyr/LMT
 tansgrifeniad/BLMT
 tansgrifennwr/LMT
 tansgrifenwr/LMT
+tansi/LMT
 tansoddi/LMT
 tansodd/LMv
 tanstaffio/LMT
@@ -51469,6 +51520,7 @@ tresbaswr/LMT
 tresbaswyr/LMT
 Tresbyty/LMT
 tresglen/LMT
+tresgl/LMT
 Tresigin/LMT
 Tresilian/LMT
 tresi/LMTv
@@ -51735,6 +51787,7 @@ troell/BLMTv
 troelledd/LMT
 troellen/LMT
 troelliad/BLMT
+troellig/LMT
 troelli/LMT
 troellog/LMT
 troellwr/LMT
@@ -52085,6 +52138,7 @@ trydwll/LMT
 trydydd/LMT
 trydyddol/LMT
 trydylliad/BLMT
+tryfal/LMT
 tryfalu/LMT
 Tryfan/LMT
 tryferi/LMT
@@ -52853,6 +52907,7 @@ ungell/H
 ungellog/H
 unglinol/H
 ungnwd/H
+ungoes/H
 ungor/H
 ungorn/H
 ungwrsaidd/H
