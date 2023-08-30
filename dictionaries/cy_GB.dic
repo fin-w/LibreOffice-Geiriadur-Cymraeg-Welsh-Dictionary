@@ -1,4 +1,4 @@
-55091
+55102
 a
 â
 abaci/H
@@ -2459,6 +2459,7 @@ amser/BEHv
 amseriad/BH
 amseriadur/H
 amserlen/H
+amserlenn/Hv
 amserlenni/H
 amserlennu/H
 amserlin/BDH
@@ -6658,6 +6659,7 @@ blocfynydd/EMT
 blocfyrddau/MT
 blociau/MT
 blocio/MT
+bloci/v
 bloc-lafa/MT
 bloclwyfandir/EMT
 blocyn/MT
@@ -18471,6 +18473,7 @@ dadfilwrio/MT
 dadflin/Mv
 dadflino/MT
 dadflocio/MT
+dadfloci/v
 dadfodiwliad/BMT
 dadfodylu/MT
 dadfreinio/MT
@@ -33724,6 +33727,8 @@ landroferi
 landrofer/I
 Langro
 Lanka
+lanlwytho
+lanlwyth/v
 lansiad/B
 lansio
 lansi/v
@@ -38936,9 +38941,14 @@ mwynhait/M
 mwynha/Mv
 mwynhânt/M
 mwynhau/M
+mwynheais/M
+mwynheaist/M
 mwynheid/M
+mwynhei/M
 mwynheir/M
 mwynheui/kM
+mwynhewch/M
+mwynheych/M
 mwyniannau/M
 mwyniant/M
 mwynion/M
@@ -42492,6 +42502,7 @@ pin/FLMT
 Pinged/LMT
 pingo/BLMT
 pinio/LMT
+pini/v
 piniwn/LMT
 piniynau/LMT
 pìn/LMT
