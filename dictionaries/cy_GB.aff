@@ -317,6 +317,23 @@ SFX N 0 iaeth
 SFX O Y 1
 SFX O 0 aidd
 
+PFX P Y 14
+PFX P c  amlg/H c[^h]
+PFX P p  amlb/H p[^h]
+PFX P t  amld/H t[^h]
+PFX P 0  aml/H  [cpt]h
+PFX P g  aml/H  g
+PFX P b  amlf/H b
+PFX P m  amlf/H m
+PFX P 0  aml/H  dd
+PFX P 0  amld/H d[^d]
+PFX P l  aml-/H ll
+PFX P 0  aml-/H l[^l]
+PFX P rh amlr/H rh
+PFX P 0  aml/H  r[^h]
+PFX P 0  aml/H  [aeiouwyâêîôûŵŷfhjknqsvxz]
+
+
 #SFX S Y 9
 #SFX S 0 'r  [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
 #SFX S 0 'n  [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
