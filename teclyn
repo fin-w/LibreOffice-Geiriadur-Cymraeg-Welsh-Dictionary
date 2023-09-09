@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ###
-# usage: ./teclyn -[a, b, d, e, f, i, n, s] OPTION
+# usage: ./teclyn -[a, b, d, e, f, i, n, s, t] OPTION
 # -a gair
 #       adds 'gair'  to dictionary (may include
 #       dictionary tags on the end e.g.  /AFG).
@@ -18,7 +18,7 @@
 # -f gair
 #	find the word or word  fragment  in the
 #	dictionary  file and print all matches:
-#	accepts regex
+#	accepts regex.
 # -i
 #	repeatedly  prompt for words,  then  -a
 #	add them (this first checks if they are
@@ -30,8 +30,18 @@
 #	and add them to an output file.
 # -s gair
 #	check  whether  word  'gair'  is in the
-#	dictionary
+#	dictionary.
+# -t
+#	sort the .dic file  alphabetically  and
+#	add the number of lines to the top.
 ###
+
+PINK='\033[95m'
+BLUE='\033[94m'
+YELLOW='\033[93m'
+GREEN='\033[92m'
+RED='\033[91m'
+ENDC='\033[0m'
 
 parse () {
 	###
@@ -70,6 +80,10 @@ parse () {
 			gwirio "$2"
 			shift
 			;;
+		-t|--tidy)
+			tacluso "dictionaries/cy_GB.dic"
+			shift
+			;;
 		--)
 			shift
 			break
@@ -104,7 +118,10 @@ parse () {
 	and add them to an output file.
 -s gair
 	check  whether  word  'gair'  is in the
-	dictionary"
+	dictionary
+-t
+	sort the .dic file  alphabetically  and
+	add the number of lines to the top."
 
 			exit 3
 			;;
@@ -309,4 +326,83 @@ gwirio () {
 			;;
 	esac
 }
+
+tacluso () {
+	###
+	# tidy the dic file without adding or removing lines
+	###
+	tail -n +2 $1 | sort -u | wc -l > dictionaries/dict.tmp
+	tail -n +2 $1 | WC_ALL=C sort -u >> dictionaries/dict.tmp
+	mv dictionaries/dict.tmp $1
+}
+
+smallflags () {
+	# abc/ABCabc format typically
+	# capture what this returns for just the small flags on a line
+	intext=$1
+	# catch no flags, otherwise return lowercase flags
+	if [[ "$intext" == $( sed -e "s|/||" <<< $intext ) ]] ; then
+		echo ""
+	else
+		echo $( sed -e "s|.*/||" -e "s|[A-Z]*||g" <<< $intext )
+	fi
+}
+
+capsflags () {
+	# abc/ABCabc format typically
+	# capture what this returns for just the capital flags on a line
+	intext=$1
+	# catch no flags, otherwise return uppercase flags
+	if [[ "$intext" == $( sed -e "s|/||" <<< $intext ) ]] ; then
+		echo ""
+	else
+		echo $( sed -e "s|.*/||" -e "s|[a-z]*||g" <<< $intext )
+	fi
+}
+
+noflags () {
+	# abc/ABCabc format typically
+	# capture what this returns for just the line without flags or delimiter /
+	intext=$1
+	# catch no flags, otherwise return dic entry without flags or /
+	if [[ "$intext" == $( sed -e "s|/||" <<< $intext ) ]] ; then
+		echo $intext
+	else
+		echo $( sed -e "s|/.*||" <<< $intext )
+	fi
+}
+
+addflag () {
+	# return in abc/ABCabc format
+	# capture what this returns for the same line with
+	# the flag added to the corresponding flag grouping
+	# i.e. assuming input "abc/ABcde X" this will return
+	# abc/ABXcde, or "abc/ABcde x" for abc/ABcdex
+	intext=$1
+	inflag=$2
+	echo $( noflags $intext )"/"$( capsflags $intext )$( sed "s|[a-z]*||g" <<< $inflag )$( smallflags $intext )$( sed "s|[A-Z]*||g" <<< $inflag )
+}
+
+checkmutationflags () {
+	# capture what this returns to check if the line has
+	# "normal" mutation rules applied to it or not
+	line=$1
+	flags=$( capsflags $line )
+	lemma=$( noflags $line )
+	lemma=${lemma,,} #lowercase
+	# strip out everything except the mutation flags
+	mutflags=$( sed "s|[^LMTH]||g" <<< $flags )
+	# sort flags alphabetically
+	mutflags=$( echo $mutflags | grep -o . | sort | tr -d "\n" )
+	# now figure out the expected mutation flags and
+	# compare with the mutation flags we actually have
+	expflags=""
+	if [[ ${lemma::1} =~ [aeiouwyâêîôûŵŷï] ]] ; then expflags="H" ; fi
+	if [[ ${lemma::1} =~ [gbm] ]] || [[ ${lemma::2} =~ d[^d] ]] || [[ ${lemma::2} =~ ll ]] || [[ ${lemma::2} =~ rh ]] || [[ ${lemma::2} =~ [cpt][^h] ]] ; then expflags=$expflags"M" ; fi
+	if [[ ${lemma::1} =~ [gb] ]] || [[ ${lemma::2} =~ [cpt][^h] ]] || [[ ${lemma::2} =~ [d][^d] ]] ; then expflags=$expflags"T" ; fi
+	if [[ ${lemma::2} =~ [cp][^h] ]] || [[ ${lemma::2} =~ [t][^hs] ]] ; then expflags=$expflags"L" ; fi
+	expflags=$( echo $expflags | grep -o . | sort | tr -d "\n" )
+	if [[ "$mutflags" == "$expflags" ]] ; then echo 0 ; else echo 1 ; fi
+}
+
 parse $1 $2
