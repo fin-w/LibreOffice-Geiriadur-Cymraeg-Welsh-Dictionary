@@ -20,10 +20,6 @@ SET UTF-8
 TRY yia'onrmecwdbgufâhstlôpŷŵjî-êáïûëòöéìỳüàkèίẁíäóẃÿúýїӓẅqvxz.YIAONRMECWDBGUFÂHSTLÔPŶŴJÎÊÁÏÛËÒÖÉÌỲÜÀKÈΊẀÍÄÓẂŸÚÝЇӒẄQVXZ
 KEY qwertyuiop|asdfghjkl|zxcvbnm|qwas|wqeas|ewrsd|retdf|tryfg|ytugh|uyihj|iuojk|oipkl|aqwsz|sweadzx|dersfxc|frtdgcv|gtyfhvb|hyugjbn|juihknm|kiojlm|zasx|xsdzc|cdfxv|vfgcb|bghvn|nhjbm|mnjk
 
-# in this dic NEEDAFFIX is used in aff file only, but from observing
-# wordforms behaviour and comparing with other dicts, it can be used
-# in the dict file too. a dict entry "abc/YX" will not allow 'abc'
-# without any suffix but permits abcwr / abcwyr from SFX Y rule.
 NEEDAFFIX X
 
 ICONV 5
@@ -109,9 +105,20 @@ PFX H Ŵ Hŵ Ŵ
 PFX H Ŷ Hŷ Ŷ
 PFX H Ï Hï Ï
 
-SFX Q Y 2
-SFX Q 0 wr  .
-SFX Q 0 wyr .
+SFX Q Y 13
+SFX Q 0 wr/LMTH   [^-]
+SFX Q - iwr/LMTH  -
+SFX Q 0 wyr/LMTH  [^iäëïöünd]
+SFX Q 0 wyr/LMTH  [^n]n
+SFX Q 0 wyr/LMTH  [^d]d
+SFX Q i wyr/LMTH  i
+SFX Q ä awyr/LMTH ä
+SFX Q ë ewyr/LMTH ë
+SFX Q ï iwyr/LMTH ï
+SFX Q ö owyr/LMTH ö
+SFX Q ü uwyr/LMTH ü
+SFX Q n wyr/LMTH  nn
+SFX Q d wyr/LMTH  dd
 
 PFX R Y 1
 PFX R 0 ol .
