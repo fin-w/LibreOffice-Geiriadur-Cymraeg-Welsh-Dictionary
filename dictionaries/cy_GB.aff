@@ -122,8 +122,8 @@ SFX Q n wyr/LMTH  nn
 SFX Q d wyr/LMTH  dd
 SFX Q r wyr/LMTH  rr
 
-PFX R Y 1
-PFX R 0 ol .
+SFX R Y 1
+SFX R 0 ol .
 
 SFX U Y 3
 SFX U 0 aidd .
