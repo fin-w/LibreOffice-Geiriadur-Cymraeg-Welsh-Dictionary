@@ -223,8 +223,8 @@ achosiant/H
 achosi/H
 achrededig/H
 achrediad/BH
+achred/QX
 achredu/H
-achred/XQ
 achre/H
 achres/BH
 achresi/H
@@ -285,7 +285,7 @@ actio/H
 actiwarïaid/H
 actor/CHR
 actores/BH
-actor-reol/XQ
+actor-reol/QX
 actwari/H
 acwafeithrin/H
 acwafeithriNI/Hv
@@ -352,6 +352,7 @@ ad-dal/Hv
 ad-daliadau/H
 ad-daliad/BHR
 ad-dalu/H
+addä/QX
 addasach/H
 addasadwy/H
 addasaf/H
@@ -365,7 +366,6 @@ addasu/H
 addasydd/CH
 addawa/H
 addaw/HRv
-addä/XQ
 ad-ddail/H
 ad-ddynodi/H
 addef/Hv
@@ -512,7 +512,7 @@ adfewni/Hv
 adfewnio/H
 adfewnol/H
 adffurfiant/H
-adfil/XQ
+adfil/QX
 adflas/BH
 adflith/CH
 adfocad/BH
@@ -544,7 +544,7 @@ adfywiad/BH
 adfywi/HRv
 adfywiocáu/H
 adfywio/H
-adfyw-/XQ
+adfyw-/QX
 adfywydd/H
 ad-/H
 adhawli/Hv
@@ -697,6 +697,7 @@ adolygon/H
 adolygu/H
 adolygydd/CH
 Adpar/H
+ad/QX
 adraddiad/BH
 adraddiannau/H
 adraddiant/H
@@ -769,8 +770,8 @@ adwel/Hv
 adwerthiannau/H
 adwerthiant/H
 adwerthol/H
+adwerth/QX
 adwerthu/H
-adwerth/XQ
 adwreiddiau/H
 adwreiddyn/H
 adwthio/H
@@ -780,7 +781,6 @@ adwyog/H
 adwyo/H
 adwyth/BH
 adwythig/H
-ad/XQ
 adydd/CH
 adyn/HK
 adysgrif/BHQ
@@ -1274,7 +1274,7 @@ ailfformati/Hv
 ailfformatio/H
 ailffurfio/H
 ail-flaenores/BH
-ail-flaen/XQ
+ail-flaen/QX
 ailflagur/Hv
 ailflaguro/H
 ailfodelu/H
@@ -1711,13 +1711,13 @@ allfud/HQv
 allfudiad/BH
 allfudo/H
 allfwriad/BH
-allfwri/XQ
+allfwri/QX
 allfwrw/H
 allganol/BH
 allgaredd/H
 allgarol/H
+allgar/QX
 allgarwch/H
-allgar/XQ
 allgau/H
 allgáu/H
 allgellog/H
@@ -1820,7 +1820,7 @@ Almaenes/BH
 Almaen/HQ
 almaenig/H
 almanac/DH
-almanaci/XQ
+almanaci/QX
 almon/BHQ
 alocryl/H
 aloedd/H
@@ -1967,7 +1967,7 @@ americaneiddio/H
 Americanes/BH
 Americaniad/H
 Americaniaid/H
-American/XQ
+American/QX
 americiwm/H
 Amerig/H
 amersiad/BH
@@ -2074,9 +2074,9 @@ amheuedd/H
 amheugar/H
 amheuol/H
 amheuon/H
+amheu/QX
 amheus/H
 amheuthun/CH
-amheu/XQ
 amhiniog/BCH
 amhlaid/H
 amhlantadwy/H
@@ -2196,7 +2196,7 @@ aml-wraidd/H
 amlwreiciaeth/H
 amlwreiciol/H
 amlwreigiaeth/H
-amlwreigi/XQ
+amlwreigi/QX
 aml-wriaeth/H
 amlwriaeth/H
 amlwyth/H
@@ -2515,7 +2515,7 @@ anenwogrwydd/H
 anenwol/H
 anerchiad/BH
 anerchion/H
-anergydi/XQ
+anergydi/QX
 aneri/H
 anerobig/H
 aneroid/BH
@@ -2611,7 +2611,7 @@ anffurfio/H
 anffurfioldeb/H
 anffyddiaeth/H
 anffyddiog/H
-anffyddi/XQ
+anffyddi/QX
 anffyddlondeb/H
 anffyddlon/H
 anffyddloniaid/H
@@ -2736,7 +2736,7 @@ anghrediniaeth/H
 anghrediniaid/H
 anghrediniol/H
 anghrediniwr/H
-anghredin/XQ
+anghredin/QX
 anghredu/H
 anghrefydd/HR
 anghrisialaidd/H
@@ -2763,8 +2763,8 @@ Anghydffurfiaeth/H
 anghydffurfio/H
 anghydffurfiol/H
 Anghydffurfiol/H
-anghydffurfi/XQ
-Anghydffurfi/XQ
+anghydffurfi/QX
+Anghydffurfi/QX
 anghydfod/BH
 anghydlifiad/H
 anghydmarus/H
@@ -3102,7 +3102,7 @@ animatiaeth/H
 animeiddiad/BH
 animeiddiedig/H
 animeiddio/H
-animeiddi/XQ
+animeiddi/QX
 animeiddydd/H
 animïaeth/H
 animistaidd/H
@@ -3205,7 +3205,7 @@ annhymeredig/H
 annhymerus/H
 annhymhorol/H
 annhymig/H
-annhyng/XQ
+annhyng/QX
 anniau/H
 annibendod/H
 anniben/H
@@ -3214,8 +3214,8 @@ annibynadwyedd/H
 annibynadwy/H
 annibyniaeth/BH
 annibynnol/H
-annibynn/XQ
-Annibynn/XQ
+annibynn/QX
+Annibynn/QX
 annichellgar/H
 annichonadwy/H
 annichon/H
@@ -3373,6 +3373,7 @@ anorthrech/H
 anos/Hv
 anostwng/H
 anostyngadwy/H
+an/QX
 anraddedig/H
 anramadegol/H
 anras/HR
@@ -3463,7 +3464,7 @@ antenau/H
 antennyn/H
 antenynnau/H
 anterliwt/DH
-anterliwti/XQ
+anterliwti/QX
 anterth/BHR
 ânt/H
 anthem/BH
@@ -3648,7 +3649,6 @@ anwythiad/BH
 anwytho/H
 anwythydd/CH
 anwyw/H
-an/XQ
 anymadweithiol/H
 anymagorol/H
 anymarferol/H
@@ -3699,7 +3699,7 @@ apocarpaidd/H
 apocarpog/H
 apocryffa/H
 apoge/BH
-apoleg/XQ
+apoleg/QX
 apologiaeth/H
 apomicsis/H
 apostasïau/H
@@ -3826,7 +3826,7 @@ archaeoleg/HQR
 archaeolegydd/H
 archangel/H
 archangylion/H
-Arch-chwilys/XQ
+Arch-chwilys/QX
 archdderwyddes/BH
 archdderwydd/H
 archdderwyddiaeth/H
@@ -3850,9 +3850,9 @@ archen/H
 Archentaidd/H
 archentera/H
 archenteron/H
+Archent/QX
 Archentwragedd/H
 Archentwraig/H
-Archent/XQ
 archeoleg/HQR
 archeolegydd/H
 archesbor/BH
@@ -4182,7 +4182,7 @@ arlliw/DH
 arlliwedig/H
 arlliwi/Hv
 arlliwio/H
-arlliw-/XQ
+arlliw-/QX
 arlliwydd/CH
 arllwysfa/H
 arllwysfeydd/H
@@ -4197,7 +4197,7 @@ arloesydd/H
 arluniaeth/H
 arluNI/Hv
 arlunio/H
-arluni/XQ
+arluni/QX
 arlunwaith/H
 arlunydd/H
 arlwyaeth/H
@@ -4311,11 +4311,11 @@ arsyll/HQv
 arsylliad/BH
 arsyllog/H
 arsyllu/H
+arsyl/QX
 arsylwadau/H
 arsylwad/BH
 arsylw/Hvw
 arsylwi/H
-arsyl/XQ
 artaith/H
 arteffact/BH
 arteithglwyd/H
@@ -4374,7 +4374,7 @@ arweingwn/H
 arweiniad/BH
 arweini/HRv
 arweinlyfr/BH
-arwein/XQ
+arwein/QX
 arweinydd/CH
 arweinyddiaeth/H
 arweithiau/H
@@ -4387,7 +4387,7 @@ arwisg/EHv
 arwisgiad/BH
 arwisgo/H
 arwraddoliaeth/H
-arwraddol/XQ
+arwraddol/QX
 arwraidd/H
 arwredd/H
 arwres/BH
@@ -4733,7 +4733,7 @@ Athen/H
 athletaidd/H
 athletau/H
 athletig/H
-athlet/XQ
+athlet/QX
 athraidd/H
 athrawaidd/H
 athrawes/BH
@@ -4983,7 +4983,7 @@ awyddfryd/H
 awyddfrydig/H
 awyddu/H
 awyddus/H
-awyrblymi/XQ
+awyrblymi/QX
 awyrbwysedd/BH
 awyr-draeth/H
 awyrdrom/BH
@@ -4997,7 +4997,7 @@ awyrendy/H
 awyren/FH
 awyrennaeth/H
 awyrenneg/H
-awyrenn/XQ
+awyrenn/QX
 awyrfilwyr/H
 awyrgludiad/BH
 awyrgylch/EHR
@@ -5042,7 +5042,7 @@ bacbib/BMT
 bachan/MT
 bachau/MT
 Bachawy/MT
-bach/BMTQv
+bach/BMQTv
 bachdroeau/MT
 bachdroeon/MT
 bachdro/MT
@@ -5079,7 +5079,7 @@ bacs/Mv
 bacsu/MT
 bacteria/MT
 bacterioffag/BMT
-bacterioleg/MTQ
+bacterioleg/MQT
 bacteriolegydd/MT
 bacterioleiddiol/MT
 bacteriol/MT
@@ -5088,7 +5088,7 @@ bacteriostat/MT
 bacteriwm/MT
 bacwn/MT
 bacynau/MT
-bad/BMTQ
+bad/BMQT
 B.Add.
 BAdd/MT
 badd/Mv
@@ -5206,7 +5206,7 @@ banana/IMT
 bancaw/DMT
 bancawi/Mv
 bancawio/MT
-banc/DMTQ
+banc/DMQT
 bancer/GMT
 Bancffosfelen/MT
 bancio/MT
@@ -5222,7 +5222,7 @@ bandog/MT
 bando/MT
 bandwagen/MT
 bandwagenni/MT
-baner/BMTQv
+baner/BMQTv
 baneri/MT
 banerog/MT
 baneru/MT
@@ -5277,7 +5277,7 @@ barbi/Mv
 barbio/MT
 barbitwrad/BMT
 barbola/MT
-barb/XQ
+barb/QX
 barcarolau/MT
 barcaról/MT
 barcer/GMT
@@ -5290,7 +5290,7 @@ barcty/MT
 barcud/GMT
 barcuta/MT
 barcutan/KMT
-barcut/GMTQv
+barcut/GMQTv
 bardas/MT
 barddas/MT
 bardd/MRT
@@ -5307,7 +5307,7 @@ bared/BMT
 barette/IMT
 barfagnet/BMT
 barfan/MT
-barf/BMTQ
+barf/BMQT
 barfogion/MT
 barfog/MT
 barfogyn/MT
@@ -5323,7 +5323,7 @@ bargodfeini/MT
 bargodiad/BMT
 bargodi/MT
 Bargoed/MT
-bargyfreithi/XQ
+bargyfreithi/QX
 bariaeth/MT
 bariau/MT
 bariau-rholio/MT
@@ -5418,7 +5418,7 @@ basat/M
 basau/MT
 basbedal/BMT
 basbel/MT
-bas/BMTQ
+bas/BMQT
 basddwr/MT
 basddyfroedd/MT
 bas-drombonwyr/MT
@@ -5433,7 +5433,7 @@ basfarrau/MT
 basgedaid/MT
 basgedeidiau/MT
 basgedi/MT
-basged/MTQv
+basged/MQTv
 basgedu/MT
 basgedwaith/MT
 Basgeg/MT
@@ -5524,7 +5524,7 @@ bating/MTv
 batingo/MT
 batin/MT
 batio/MT
-bati/XQ
+bati/QX
 batog/BMT
 baton/BMT
 batrïau/MT
@@ -5597,7 +5597,7 @@ bedyddiad/BMT
 bedyddiedig/MT
 bedyddi/MRv
 bedyddio/MT
-Bedyddi/XQ
+Bedyddi/QX
 bedydd-lestri/MT
 bedydd-lestr/MT
 bedydd/MT
@@ -5731,7 +5731,7 @@ berau/MT
 berâu/MT
 berceliwm/MT
 berceuse/IMT
-bêr-droell/XQ
+bêr-droell/QX
 berdysen/MT
 berdys/MT
 berdysyn/MT
@@ -5742,8 +5742,8 @@ berfâd/MT
 berfâid/MT
 berfain/MT
 berfa/MT
+berfä/QX
 berfâu/MT
-berfä/XQ
 berf/BMRT
 berfeidiau/MT
 berféi/MT
@@ -5895,7 +5895,7 @@ bioddiogelwch/MT
 bioddiraddadwyedd/MT
 bioddiraddadwy/MT
 biodechnoleg/MRT
-biofarci/XQ
+biofarci/QX
 biofeddygol/MT
 bioffiseg/MT
 biogenesis/MT
@@ -5934,7 +5934,7 @@ bitwmen/MT
 bitwminaidd/MT
 bitw/MT
 biwbo/MT
-biwgl/BMTQ
+biwgl/BMQT
 Biwmares/MT
 biwretau/MT
 biwrét/IMT
@@ -5962,11 +5962,11 @@ blaenaf/MT
 Blaenafon/MT
 Blaenaman/MT
 Blaenannerch/MT
-blaen-arbenig/XQ
-blaenasgell/MTQ
+blaen-arbenig/QX
+blaenasgell/MQT
 blaenbacio/MT
 blaenbaredol/MT
-blaen/BCMTQv
+blaen/BCMQTv
 blaen-beipio/MT
 blaenbeipio/MT
 blaenbrawf/MT
@@ -6256,7 +6256,7 @@ bloeddio/MT
 bloeddnad/BMT
 bloesgedd/MT
 bloesgi/MT
-bloesg/MTQv
+bloesg/MQTv
 bloesgni/MT
 bloesgyn/MT
 blog/DMT
@@ -6342,8 +6342,8 @@ bocsach/MTv
 bocsachu/MT
 bocsachus/MT
 bocsio/MT
+bocsi/QX
 bocsit/MT
-bocsi/XQ
 bocs/MT
 bocsys/MT
 bocys/MT
@@ -6359,10 +6359,10 @@ boddhad/MT
 boddha/MRTv
 boddhau/MT
 boddhaus/MT
-boddheui/kM
+boddheui/Mk
 boddiant/MT
 boddiedig/MT
-boddi/MTQv
+boddi/MQTv
 boddineb/MT
 boddio/MT
 boddlonach/M
@@ -6404,7 +6404,7 @@ bodlonedd/MT
 bodloned/M
 bodlongar/MT
 bodloni/MT
-bodlon/MTQv
+bodlon/MQTv
 bodlonrwydd/MT
 bodlonus/MT
 Bodlyn/MT
@@ -6607,7 +6607,7 @@ borebryd/BMT
 boreddydd/DMT
 borëed/MT
 borefwyd/MT
-bore-god/XQ
+bore-god/QX
 boregwaith/MT
 boreu/M
 bôr/IMT
@@ -6626,7 +6626,7 @@ bosti/MQv
 bostio/MT
 botaneg/MQRT
 botasau/MT
-botas/BMTQ
+botas/BMQT
 botasen/MT
 Botffordd/MT
 botgin/BMT
@@ -6717,7 +6717,7 @@ bragad/MT
 bragaldian/MT
 bragaldi/Mv
 bragaldio/MT
-brag/BMTQv
+brag/BMQTv
 bragdai/MT
 bragdy/MT
 bragi/Mv
@@ -6808,7 +6808,7 @@ brathu/MT
 bratiaith/MT
 bratiog/MT
 brau/MT
-Brawd-Bregeth/XQ
+Brawd-Bregeth/QX
 brawddeg/BMTv
 brawddegu/MT
 brawdgarol/MT
@@ -6833,7 +6833,7 @@ brawychus/MT
 brebwl/MT
 brebyliaid/MT
 brecan/BMT
-brech/BKMTQv
+brech/BKMQTv
 brechdan/BMT
 brechedig/MT
 Brechfa/MT
@@ -6868,7 +6868,7 @@ brefu/MT
 bregiant/MT
 bregliach/MT
 breglyd/MT
-breg/MTP
+breg/MPT
 bregog/MT
 bregowtha/MT
 bregowth/Mv
@@ -6878,7 +6878,7 @@ bregysu/MT
 brehyr/CGMT
 brehyriaid/MT
 brehyrion/MT
-breibi/XQ
+breibi/QX
 breichaidi/Mv
 breichaidio/MT
 breichdlws/MT
@@ -6954,7 +6954,7 @@ brenhinlin/MT
 brenhinllwyth/MT
 brenhinoedd/MT
 brenhinol/MT
-brenhin/XQ
+brenhin/QX
 brenhinydd/MT
 brenhinyn/MT
 brenigen/MT
@@ -6978,7 +6978,7 @@ bresychen/MT
 bresych/MT
 bresys/MT
 brethyn/FMT
-brethynn/XQ
+brethynn/QX
 brethynnydd/MT
 bretyn/MT
 breuan/BMT
@@ -7014,7 +7014,7 @@ bric/DIMT
 bric-glai/MT
 briciau/MT
 bricio/MT
-brici/XQ
+brici/QX
 bricsen/MT
 brics/MT
 bricwaith/MT
@@ -7045,7 +7045,7 @@ brig/BMTv
 brigbori/MT
 brigbor/Mv
 brigdonni/MT
-brigdonn/XQ
+brigdonn/QX
 brigdorri/MT
 brigdorr/Mv
 brigdrawst/DMT
@@ -7105,6 +7105,7 @@ brith/MTv
 brithni/MT
 britho/MT
 brithosod/MT
+Brith/QX
 brithribin/BMT
 brithryw/MT
 brithwaith/MT
@@ -7114,7 +7115,6 @@ brithweision/MT
 brithweithiau/MT
 brithweithiog/MT
 Brithweunydd/MT
-Brith/XQ
 brithyd/MT
 brithyll/GKMT
 Britwn/MT
@@ -7282,7 +7282,7 @@ brwswaith/MT
 brwsys/MT
 brwyd/BMT
 brwydo/MT
-brwydr/BMTQv
+brwydr/BMQTv
 brwydro/MT
 brwydwaith/MT
 brwyliad/MT
@@ -7326,7 +7326,7 @@ brydiog/MT
 brydio/MT
 brygawthan/MT
 brygowthan/MT
-brygowth/XQ
+brygowth/QX
 Brymbo/MT
 Brynach/MT
 Brynaman/MT
@@ -7483,7 +7483,7 @@ buddel/MT
 buddelw/MT
 buddelwydd/MT
 buddfawr/MT
-buddgyfranog/XQ
+buddgyfranog/QX
 buddiannau/MT
 buddiannol/MT
 buddiant/MT
@@ -7491,7 +7491,7 @@ buddi/Mv
 buddiog/MT
 buddioldeb/MT
 buddioli/MT
-buddiol/MTQv
+buddiol/MQTv
 buddio/MT
 buddles/MT
 buddran/FMT
@@ -7504,8 +7504,8 @@ Buddug/MT
 buddugoliaeth/BMT
 buddugoliaethus/MT
 buddugol/MT
+buddug/QX
 Buddugre/MT
-buddug/XQ
 budrchwilen/MT
 budrchwil/MT
 budrchwilod/MT
@@ -7697,7 +7697,7 @@ bwndlo/MT
 bwnd/MT
 bwngleraidd/MT
 bwnglera/MT
-bwngler/GMTQv
+bwngler/GMQTv
 bwnglerwaith/MT
 bwnglerwch/MT
 bwng/MT
@@ -7710,7 +7710,7 @@ bwrddgyhoeddi/MT
 bwrdd/MT
 bwrdeisiaid/MT
 bwrdeisiol/MT
-bwrdeisi/XQ
+bwrdeisi/QX
 bwrdeistrefi/MT
 bwrdeistref/MRT
 bwred/BMT
@@ -7775,10 +7775,10 @@ bwydlestri/MT
 bwydlestr/MT
 bwydlys/DMT
 bwydlysiau/MT
-bwydlysieu/XQ
+bwydlysieu/QX
 bwydlysieuyn/MT
 bwydlysyddiaeth/MT
-bwyd/MTQv
+bwyd/MQTv
 bwyd-offrwm/MT
 bwyd-offrymau/MT
 bwydo/MT
@@ -7819,9 +7819,9 @@ bwyta/MTv
 bwytan/MT
 bwytânt/MT
 bwytaodd/MT
+bwytä/QX
 bwytawn/MT
 bwytawyd/MT
-bwytä/XQ
 bwyteais/MT
 bwyteaist/MT
 bwyteid/MT
@@ -7850,7 +7850,7 @@ bychanfyd/MT
 bychanigion/MT
 bychanig/MT
 bychanigyn/MT
-bychan/MTQv
+bychan/MQTv
 bychanu/MT
 bychanus/MT
 bych/M
@@ -7882,7 +7882,7 @@ byddet/M
 byddid/M
 byddigion/MT
 byddi/M
-byddin/EMTQv
+byddin/EMQTv
 byddiniad/BMT
 byddinog/MT
 byddino/MT
@@ -7942,9 +7942,9 @@ bylchfuriau/MT
 bylchiad/BMT
 bylchio/MT
 bylchog/MT
+bylch/QX
 bylchu/MT
 bylchus/MT
-bylch/XQ
 byliau/MT
 byllt/MT
 bympar/IMT
@@ -8009,12 +8009,12 @@ byrhad/BMT
 byrhaëdig/MT
 byrha/MTv
 byrhau/MT
-byrheui/kM
+byrheui/Mk
 byrhoedledd/MT
 byrhoedlog/MT
 byriau/MT
 byrion/M
-byrllysg/BMTQ
+byrllysg/BMQT
 byrlymau/MT
 byrlym/Mv
 byrlymog/MT
@@ -8094,7 +8094,7 @@ bytholwyrdd/CMT
 bytholwyrddion/M
 bythwyrdd/CMT
 bythynnod/MT
-bythynn/XQ
+bythynn/QX
 bytio/MT
 bytwn/MT
 bytynau/MT
@@ -8113,7 +8113,7 @@ bywgraffiadur/HMT
 bywgraffydd/CMRT
 bywha/MRTv
 bywhau/MT
-bywheui/kM
+bywheui/Mk
 bywiad/MT
 bywi/MRT
 bywioca/MRv
@@ -8134,7 +8134,7 @@ byw/MT
 bywoliaeth/BMT
 bywydaeth/MT
 bywyd/BMRT
-bywydeg/MTQ
+bywydeg/MQT
 bywydfad/BMT
 bywydoliaeth/MT
 bywyn/FMT
@@ -8159,14 +8159,14 @@ cabidylaidd/LMT
 cabidylau/LMT
 cabidyldai/LMT
 cabidyldy/LMT
-cabidyl/XQ
+cabidyl/QX
 cabi/LMT
 cabined/LMT
 cabinet/BLMT
 cablaidd/LMT
 cablair/LMT
 cablawd/LMT
-cabl/BLMTQv
+cabl/BLMQTv
 cabledd/BLMT
 cableddus/LMT
 cabledigaeth/LMT
@@ -8221,14 +8221,14 @@ cadarnaf/LM
 cadarned/LM
 cadarnhad/LMT
 cadarnha/LMRTv
+cadarnhä/QX
 cadarnhau/LMT
-cadarnhä/XQ
-cadarnheui/kLM
+cadarnheui/LMk
 cadarnle/ELMT
 cadarn/LMT
 cadarnwedd/LMT
 cadawarth/LMT
-cad/BELMTQ
+cad/BELMQT
 cadbenaethiaid/LMT
 cadbennaeth/LMT
 cad-drefniannau/LMT
@@ -8337,7 +8337,7 @@ caeadle/ELMT
 caeadu/LMT
 caea/LMT
 Caeathro/LMT
-cae/BLMTQv
+cae/BLMQTv
 caeca/LMT
 caech/LMT
 caecwm/LMT
@@ -8423,7 +8423,7 @@ caesbryf/LMT
 caesiwm/LMT
 caethach/LM
 caethaf/LM
-caeth/CLMTQ
+caeth/CLMQT
 caethder/LMT
 caethdra/LMT
 caethed/LM
@@ -8481,7 +8481,7 @@ caffent/LMT
 caffer/LMT
 caffeteria/ILMT
 caffiad/LMT
-caffi/ILMTQv
+caffi/ILMQTv
 caffio/LMT
 caffl/LMv
 cafflo/LMT
@@ -8520,7 +8520,7 @@ caill/LMT
 cail/LMT
 Cai/LMT
 câi/LMT
-cainc/LMTP
+cainc/LMPT
 caineirian/LMT
 cain/LMT
 Caint/LMT
@@ -8576,7 +8576,7 @@ calediad/LMT
 calediant/LMT
 caledi/LMT
 caledion/LM
-caled/LMTQv
+caled/LMQTv
 Caledonaidd/LMT
 caledrwydd/LMT
 caledu/LMT
@@ -8587,7 +8587,7 @@ caledwe/ELMT
 calefyn/LMT
 calendr/BLMT
 calen/FLMT
-calenig/XQ
+calenig/QX
 calennig/LMT
 calenni/LMT
 calet/LM
@@ -8622,7 +8622,7 @@ callestr/LMRT
 calli/LMv
 callineb/LMT
 callio/LMT
-call/LMTQ
+call/LMQT
 callodren/LMT
 callodr/LMT
 callodryn/LMT
@@ -8671,7 +8671,7 @@ cambiata/LMT
 cambiatâu/LMT
 cambig/LMT
 cambiwm/LMT
-cam/BLMTQv
+cam/BLMQTv
 Cambodia/LMT
 cambr/BLMT
 cambren/LMT
@@ -8770,7 +8770,7 @@ camgoeli/LMv
 camgoelio/LMT
 camgolled/LMv
 camgolledu/LMT
-camgred/BLMTQv
+camgred/BLMQTv
 camgredoau/LMT
 camgredu/LMT
 camgwl/LMT
@@ -8833,7 +8833,7 @@ camosodiad/BLMT
 camosod/LMTv
 campanoleg/LMT
 campau/LMT
-camp/BLMTQ
+camp/BLMQT
 campfa/ELMT
 campfeydd/LMT
 campi/LMv
@@ -8980,7 +8980,7 @@ canhwyllarn/LMT
 canhwyllau/LMT
 canhwyllbren/LMT
 canhwyllnerth/LMT
-canhwyll/XQ
+canhwyll/QX
 canhwyllydd/CLMT
 canhwyllyr/HLMT
 caniadaeth/LMT
@@ -8992,8 +8992,8 @@ caniatâf/LMT
 caniatâi/LMT
 caniata/LMRv
 caniatâ/LMT
+caniatä/QX
 caniatáu/LMT
-caniatä/XQ
 canibal/GLMT
 canibaliaeth/LMT
 canibalistaidd/LMT
@@ -9018,7 +9018,7 @@ canmoladwy/LMT
 canmoledig/LMT
 canmoliaeth/BLMRT
 canmoliaethus/LMT
-canmol/LMTQv
+canmol/LMQTv
 cannaid/LMT
 cann/LMv
 cannoedd/LMT
@@ -9028,7 +9028,7 @@ cannwyll/LMT
 cannydd/LMT
 cannyn/LMT
 canolbarth/BLMT
-canol/BLMTQv
+canol/BLMQTv
 canolbopio/LMT
 canolbris/DLMT
 canolbwnsio/LMT
@@ -9058,7 +9058,7 @@ canoliaeth/LMT
 canolig/LMT
 canoligyn/CLMT
 canoli/LMT
-canol-long/XQ
+canol-long/QX
 canol-lwyfannu/LMT
 canoloesoldeb/LMT
 canoloesol/LMT
@@ -9072,7 +9072,7 @@ canolwragedd/LMT
 canolwraig/LMT
 canonaidd/LMT
 canonau/LMT
-canon/BGLMTQ
+canon/BGLMQT
 canoneidd-dra/LMT
 canoneiddi/LMv
 canoneiddio/LMT
@@ -9164,7 +9164,7 @@ capandrwyn/BLMT
 capasitïau/LMT
 capasiti/LMT
 cap/DLMT
-capel/BLMTQ
+capel/BLMQT
 capeliaeth/BLMT
 capeli/LMT
 Capelulo/LMT
@@ -9240,7 +9240,7 @@ carbwradur/HLMT
 carbwreiddio/LMT
 carbynclau/LMT
 carcas/BLMT
-carchar/BLMTQv
+carchar/BLMQTv
 carchardai/LMT
 carchardy/LMT
 carchariad/BLMT
@@ -9340,8 +9340,8 @@ carlamus/LMT
 carllwythi/LMT
 carllwyth/LMT
 carllyd/LMT
+car/LMQTv
 câr/LMT
-car/LMTQv
 Carlo/LMT
 carlwm/LMT
 carlymod/LMT
@@ -9361,7 +9361,7 @@ carnedd/BLMT
 carneddi/LMT
 carneddog/LMT
 Carnfadog/LMT
-carn-frad/XQ
+carn-frad/QX
 Carngowil/LMT
 Carnguwch/LMT
 Carngwcw/LMT
@@ -9382,7 +9382,7 @@ Carn-y-cefn/LMT
 carnymorddiwes/LMT
 carob/LMT
 carodog/LMT
-carol/BLMTQv
+carol/BLMQTv
 caroli/LMT
 Carolingaidd/LMT
 Carolingiad/LMT
@@ -9458,7 +9458,7 @@ carthfos/LMT
 carthfosydd/LMT
 carthiad/BLMT
 carthion/LMT
-carth/LMTQv
+carth/LMQTv
 carthlong/BLMT
 carthlyn/FLMT
 carthu/LMT
@@ -9515,9 +9515,9 @@ casa/LMv
 casânt/LMT
 casaoch/LMT
 casaon/LMT
+casä/QX
 casau/LMT
 casáu/LMT
-casä/XQ
 casbeth/BLMT
 casddyn/CLMT
 cased/LM
@@ -9536,7 +9536,7 @@ casgennaid/LMT
 casgenni/LMT
 casgiau/LMT
 casgla/LMT
-casgl/CLMTQv
+casgl/CLMQTv
 casgliadau/LMT
 casgliad/BLMRT
 casglifiad/LMT
@@ -9579,7 +9579,7 @@ Castellhywel/LMT
 castelliad/BLMT
 Castellior/LMT
 Castell-llan/LMT
-castell/LMTQv
+castell/LMQTv
 Castellmarch/LMT
 Castellmartin/LMT
 Castell-nedd/LMT
@@ -9704,7 +9704,7 @@ cawdel/LMTv
 cawdelu/LMT
 cawellaid/LMT
 cawelleidiau/LMT
-cawell/LMTQ
+cawell/LMQT
 cawellog/LMT
 cawellu/LMT
 cawen/LMT
@@ -9737,7 +9737,7 @@ cawsaidd/LMT
 cawsai/LMT
 cawsa/LMT
 cawsant/LMT
-caws/DLMTQ
+caws/DLMQT
 cawsech/LMT
 cawseiau/LMT
 cawseiddiad/LMT
@@ -9820,7 +9820,7 @@ cefnbant/LMT
 cefnbeithynen/LMT
 cefnbeithyn/LMT
 cefnblat/DLMT
-cefn/BLMTQv
+cefn/BLMQTv
 Cefn-brith/LMT
 Cefnbryn/LMT
 Cefncoedcymer/LMT
@@ -9934,10 +9934,10 @@ Ceidrych/LMT
 ceidwadaeth/LMT
 ceidwad/LMQRT
 Ceidwadol/LMT
+Ceidwad/QX
 ceidwadwragedd/LMT
 ceidwadwraig/LMT
 ceidwadwy/LMT
-Ceidwad/XQ
 ceidwaid/LMT
 ceidw/LMT
 ceiliagwydd/BLMT
@@ -9975,7 +9975,7 @@ ceinion/LMT
 cein/LM
 ceinlythrennydd/LMT
 ceinlythrenwyr/LMT
-ceintach/LMTQv
+ceintach/LMQTv
 ceintachlyd/LMT
 ceintachus/LMT
 Ceint/LMT
@@ -10059,7 +10059,7 @@ cêl-liwiad/LMT
 cêl/LMT
 cel/LMv
 cellnodd/LMT
-cellog/LMTP
+cellog/LMPT
 cellraniad/BLMT
 cellwair/LMT
 cellweiriau/LMT
@@ -10075,7 +10075,7 @@ cellwlos/LMT
 cellystr/LMT
 celog/GLMT
 celrym/LMT
-cêl-saeth/XQ
+cêl-saeth/QX
 Celsius/LMT
 Celtaidd/LMT
 celteg/LMT
@@ -10138,14 +10138,14 @@ cenedlaethau/LMT
 cenedlaetholdeb/BLMT
 cenedlaetholgar/LMT
 cenedlaetholi/LMT
-cenedlaethol/LMTQv
+cenedlaethol/LMQTv
 cenedlaetholwragedd/LMT
 cenedlaetholwraig/LMT
 cenedl-ddyn/CLMT
 cenedledig/LMT
 cenedlgarol/LMT
+cenedlgar/QX
 cenedlgarwch/LMT
-cenedlgar/XQ
 cenedligol/LMT
 cenedligrwydd/LMT
 cenedl/LMTz
@@ -10167,12 +10167,12 @@ cenglyn/CLMT
 cenhadaeth/LMT
 cenhadol/LMT
 cenhadon/LMT
+cenhad/QX
 cenhadu/LMT
 cenhadwraig/LMT
-cenhad/XQ
 cenhedlaeth/LMT
 cenhedliad/LMT
-cenhedlig/LMTP
+cenhedlig/LMPT
 cenhedloedd/LMT
 cenhedlol/LMT
 cenhedlu/LMT
@@ -10213,7 +10213,7 @@ cerddbresi/LMT
 cerddedfa/LMT
 cerddedfeydd/LMT
 cerddediad/LMT
-cerdded/LMTQ
+cerdded/LMQT
 cerddetan/LMT
 cerddet/LMv
 cerddgar/LMT
@@ -10300,7 +10300,7 @@ Certa/LMT
 certeidiau/LMT
 certhern/LMT
 certh/LMT
-certi/LMTQ
+certi/LMQT
 cert/LMT
 cerub/GLMT
 cerwch/L
@@ -10900,7 +10900,7 @@ cigweiniau/LMT
 cigweini/LMv
 cigweinio/LMT
 cigwrthodaeth/LMT
-cigwrthod/XQ
+cigwrthod/QX
 cigydd/CLMT
 cigyddiaeth/LMT
 cigyddi/LMv
@@ -11052,11 +11052,11 @@ cinesthetig/LMRT
 cineteg/LMT
 cinetig/LMT
 cingroen/LMT
+ciniä/QX
 ciniawa/LMT
 ciniawau/LMT
 ciniaw/LMv
 ciniawn/LMT
-ciniä/XQ
 ciniewch/LMT
 cinio/LMT
 Cinmel/LMT
@@ -11238,7 +11238,7 @@ clecen/LMT
 clechdyr/LMT
 cleciad/BLMT
 clecian/LMT
-cleci/LMTQv
+cleci/LMQTv
 clecwn/LMT
 Cledan/LMT
 cleddau/LMT
@@ -11248,7 +11248,7 @@ cleddu/LMT
 cleddyfaeth/LMT
 cleddyfan/LMT
 cleddyfau/LMT
-cleddyf/BLMTQ
+cleddyf/BLMQT
 cleddyfod/LMT
 cleddyfog/LMT
 cleddyfu/LMT
@@ -11302,7 +11302,7 @@ clemi/LMv
 clemio/LMT
 clenc/LMT
 Clenennau/LMT
-cleng/XQ
+cleng/QX
 cleni/LM
 clên/LMT
 clensio/LMT
@@ -11322,7 +11322,7 @@ cleren/LMT
 clerigiaeth/LMT
 clerigoliaeth/LMT
 clerigol/LMT
-clerig/XQ
+clerig/QX
 cler/LMQv
 clêr/LMT
 clerwraidd/LMT
@@ -11546,7 +11546,7 @@ cludfelt/DLMT
 cludiad/LMT
 cludiannau/LMT
 cludiant/LMT
-clud/LMTQv
+clud/LMQTv
 cludo/LMT
 cludydd/CLMT
 clugiar/LMT
@@ -11616,7 +11616,7 @@ clwt/LMT
 Clwt-y-bont/LMT
 clwtyn/LMT
 clwy/BLMT
-clwyd/BLMTQv
+clwyd/BLMQTv
 clwyden/LMT
 clwydenni/LMT
 clwydi/LMT
@@ -11649,7 +11649,7 @@ clychsain/LMT
 clychseiniau/LMT
 Clydach/LMT
 Clydau/LMT
-clyd/LMTQ
+clyd/LMQT
 Clydno/LMT
 Clydogau/LMT
 clydwch/LMT
@@ -11788,12 +11788,12 @@ cnois/LMT
 cnoist/LMT
 cnoit/LMT
 cno/LMTv
+cnö/QX
 cnot/DLMT
 cnotiog/LMT
 cnotyn/LMT
 cnowch/LMT
 cnown/LMT
-cnö/XQ
 cnu/BELMT
 cnuch/DLMT
 cnuchi/LMv
@@ -11809,7 +11809,7 @@ cnwch/LMT
 Cnwclas/LMT
 cnwc/LMT
 Cnwc-yr-eithin/LMT
-cnwd/LMTP
+cnwd/LMPT
 cnwpa/LMT
 cnwp/LMT
 cnycau/LMT
@@ -11819,7 +11819,7 @@ cnydau/LMT
 cnydfawr/LMT
 cnydi/LMRv
 cnydiog/LMT
-cnydio/LMTP
+cnydio/LMPT
 cny/LMT
 cnyw/CLMT
 cobalt/LMT
@@ -11897,14 +11897,14 @@ coda/LMT
 CODASYL/LMT
 codâu/LMT
 cod-bar/LMT
-cod/BLMTPQv
+cod/BLMPQTv
 codded/LMT
 coddi/LMT
 codd/LMv
 codecs/BLMT
 codeiddiad/LMT
 codeiddio/LMT
-codeiddi/XQ
+codeiddi/QX
 codeidiau/LMT
 codell/BLMT
 coden/FLMT
@@ -11922,7 +11922,7 @@ codiant/LMT
 codi/LMTv
 codio/LMT
 codisil/DLMT
-codl/LMTQv
+codl/LMQTv
 còd/LMT
 codlo/LMT
 codlys/DLMRT
@@ -11989,7 +11989,7 @@ coegfriger/LMT
 coegfrigeryn/LMT
 coegi/LMTv
 coegio/LMT
-coeg/LMTQv
+coeg/LMQTv
 coeglyd/LMT
 coegni/LMT
 coegsiarad/LMT
@@ -12032,7 +12032,7 @@ coethder/BLMT
 coethedig/LMT
 coethed/LM
 coethi/LMT
-coeth/LMTQv
+coeth/LMQTv
 coetiau/LMT
 coetio/LMT
 coetir/ELMT
@@ -12114,14 +12114,14 @@ coflen/LMT
 coflenni/LMT
 coflith/ELMT
 coflyfr/BLMT
-cofnod/CLMTQv
+cofnod/CLMQTv
 cofnodedig/LMT
 cofnodiad/BLMT
 cofnodi/LMT
 cofnodydd/CLMT
 cofrestrad/BLMT
 cofrestradwy/LMT
-cofrestr/BLMTQv
+cofrestr/BLMQTv
 cofrestredig/LMT
 cofrestrfa/LMT
 cofrestrfeydd/LMT
@@ -12222,7 +12222,7 @@ colladwy/LMT
 collage/LMT
 colla/LMT
 collddail/LMT
-colled/CLMTQv
+colled/CLMQTv
 colledigaeth/LMT
 colledig/CLMT
 colledu/LMT
@@ -12232,7 +12232,7 @@ collfarn/BLMRTv
 collfarnu/LMT
 colliadau/LMT
 colli/LMT
-coll/LMTQv
+coll/LMQTv
 côl/LMT
 collnod/BLMT
 collwydden/LMT
@@ -12280,7 +12280,7 @@ coltar/LMT
 coludd/CLMRT
 coluddion/LMT
 coluddyn/LMT
-colur/BLMTQv
+colur/BLMQTv
 coluro/LMT
 colurwragedd/LMT
 colurwraig/LMT
@@ -12341,7 +12341,7 @@ conan/LMT
 conau/LMT
 concertante/LMT
 concertanti/LMT
-concerti/LMTQ
+concerti/LMQT
 concertini/LMT
 concertino/LMT
 concerto/LMT
@@ -12353,7 +12353,7 @@ concretiad/LMT
 concrit/LMT
 concr/LMv
 concro/LMT
-concwer/XQ
+concwer/QX
 concwest/BLMT
 condemniad/BLMT
 condemni/LMRv
@@ -12452,7 +12452,7 @@ continuo/LMT
 continwa/LMT
 continwwm/LMT
 contraband/LMT
-contract/BLMTQ
+contract/BLMQT
 contracti/LMv
 contractio/LMT
 contralto/ILMT
@@ -12537,7 +12537,7 @@ corden/LMT
 cordenni/LMT
 cordial/BLMT
 cordio/LMT
-cordi/XQ
+cordi/QX
 cordyn/CLMT
 Coread/LMT
 Coreaid/LMT
@@ -12802,8 +12802,8 @@ cotwm/LMT
 cotyledon/BLMT
 cotymaidd/LMT
 cotymau/LMT
-coty/XQ
-cotÿ/XQ
+coty/QX
+cotÿ/QX
 coulomb/BLMT
 courante/ILMT
 courgettes/LMT
@@ -12884,7 +12884,7 @@ craffu/LMT
 craffus/LMT
 crafiad/BLMT
 crafion/LMT
-craf/LMTQv
+craf/LMQTv
 craflyd/LMT
 Crafnant/LMT
 crafog/LMT
@@ -12955,7 +12955,7 @@ crasgnoi/LMT
 crasgno/LMv
 crasgywair/LMT
 crasiad/BLMT
-cras/LMTQv
+cras/LMQTv
 craslyd/LMT
 crasog/LMT
 crastannau/LMT
@@ -12993,7 +12993,7 @@ creadigrwydd/LMT
 creadures/BLMT
 creadur/GLMT
 crea/LMT
-creawd/XQ
+creawd/QX
 creawdydd/LMT
 creawdydwyr/LMT
 crebachiad/BLMT
@@ -13013,21 +13013,21 @@ creci/LMv
 credadun/CLMT
 credadwyaeth/LMT
 credadwy/LMT
-cred/BLMTQv
+cred/BLMQTv
 credfwrdd/LMT
 credfyrddau/LMT
 crediniaeth/BLMT
 crediniol/LMT
-credini/XQ
+credini/QX
 Cred/LMT
 credo/BLMT
 credorfodi/LMT
 credu/LMT
-credyd/BHLMTQv
+credyd/BHLMQTv
 credydu/LMT
 creedig/LMT
 crefas/BLMT
-crefft/BLMTQ
+crefft/BLMQT
 crefftus/LMT
 crefftwaith/LMT
 crefftwraidd/LMT
@@ -13078,7 +13078,7 @@ creigfa/LMT
 creighalen/LMT
 creigiau/LMT
 creigiog/LMT
-creigi/XQ
+creigi/QX
 creiglan/FLMT
 creigle/ELMT
 creiglennydd/LMT
@@ -13171,7 +13171,7 @@ criafol/LMT
 criafon/LMT
 cria/LMT
 criawol/LMT
-crib/BLMTQv
+crib/BLMQTv
 cribddail/LMT
 cribddeilgar/LMT
 cribddeiliaeth/LMT
@@ -13184,7 +13184,7 @@ cribellog/LMT
 cribin/BDLMT
 cribiNI/LMv
 cribinio/LMT
-cribini/XQ
+cribini/QX
 cribino/LMT
 criblin/BDLMT
 cri/BLMTv
@@ -13193,7 +13193,7 @@ cribo/LMT
 cribyn/FLMT
 Criccieth/LMT
 cric/DGLMT
-criced/LMTQ
+criced/LMQT
 criciaid/LMT
 criciedyn/LMT
 Cricieth/LMT
@@ -13224,7 +13224,7 @@ crinllys/LMT
 crin/LMTv
 crinolin/BLMT
 crino/LMT
-crintach/LMTQv
+crintach/LMQTv
 crintachlyd/LMT
 crintachrwydd/LMT
 crintachu/LMT
@@ -13336,7 +13336,7 @@ croesawus/LMT
 croesawydd/LMT
 croesawyr/LMT
 croesbeilliad/BLMT
-croes/BLMTQv
+croes/BLMQTv
 croesbren/FLMT
 croesbrenni/LMT
 croes-bylu/LMT
@@ -13364,7 +13364,7 @@ croesffyrdd/LMT
 croesfrid/DLMT
 croesfridio/LMT
 croesfur/LMT
-croesgad/BLMTQ
+croesgad/BLMQT
 Croes-goch/LMT
 croesgoes/LMT
 croesgornel/LMT
@@ -13426,12 +13426,12 @@ crofen/FLMT
 crofenni/LMT
 crofennog/LMT
 crofennu/LMT
-crofft/BLMTQ
+crofft/BLMQT
 crofften/LMT
 crofftio/LMT
 crofftydd/LMT
 crogardd/LMT
-crog/BLMTQv
+crog/BLMQTv
 crogedigaeth/LMT
 Crogen/LMT
 crogerddi/LMT
@@ -13622,8 +13622,8 @@ crwydro/LMT
 crwydrus/LMT
 crwydryn/LMT
 crwynllys/LMT
-crwyn/LMTQ
-Crwyn/XQ
+crwyn/LMQT
+Crwyn/QX
 crwys/BLMT
 crybiau/LMT
 crybwyll/CLMTv
@@ -13687,7 +13687,7 @@ cryff/LMv
 cryfha/LMQRTv
 cryfhau/LMT
 cryfhäwr/LMT
-cryfheui/kLM
+cryfheui/LMk
 cryfion/LM
 cryf/LMT
 crygi/LMT
@@ -13702,7 +13702,7 @@ crygni/LMT
 crygu/LMT
 crygwst/LMT
 crymachau/LMT
-cryman/BFLMTQv
+cryman/BFLMQTv
 crymangell/ELMT
 crymanu/LMT
 crymbl/BLMT
@@ -13750,9 +13750,9 @@ crynhoist/LMT
 crynhoit/LMT
 crynho/LMv
 crynhônt/LMT
+crynhö/QX
 crynhowch/LMT
 crynhown/LMT
-crynhö/XQ
 crynhoydd/LMT
 cryniad/BLMT
 crynion/LMT
@@ -13772,13 +13772,13 @@ crynoëdig/LMT
 crynofa/LMT
 cryno/LMT
 crynoyddion/LMT
+Cryn/QX
 crynrwydd/LMT
 crynswth/LMT
 crynu/LMT
 crynwraidd/LMT
 crynwreiddiog/LMT
 Crynwriaeth/LMT
-Cryn/XQ
 Crynydd/CLMT
 Crynyddiaeth/LMT
 cryoffilig/LMT
@@ -13803,7 +13803,7 @@ crythau/LMT
 crythor/CLMT
 crythori/LMv
 crythorio/LMT
-cryth/XQ
+cryth/QX
 crythyll/LMT
 cryts/LMT
 cryw/DLMT
@@ -13813,7 +13813,7 @@ cuchiau/LMT
 cuchiog/LMT
 cuchiol/LMT
 cuchio/LMT
-cuchi/XQ
+cuchi/QX
 Cuch/LMT
 cucumer/BLMT
 cudd/CDLMT
@@ -13822,7 +13822,7 @@ cuddfan/FLMT
 cuddfâu/LMT
 cuddfeydd/LMT
 cuddgomiwnydd/CLMT
-cudd-gynhyrf/XQ
+cudd-gynhyrf/QX
 cuddiad/BLMT
 cuddia/LMT
 cuddiedig/LMT
@@ -13871,10 +13871,10 @@ culfrydig/LMT
 culhad/BLMT
 culha/LMTv
 culhau/LMT
-culheui/kLM
+culheui/LMk
 Culhwch/LMT
 culion/LM
-cul/LMTQ
+cul/LMQT
 cu/LMT
 culni/LMT
 culwas/LMT
@@ -13892,7 +13892,7 @@ curadur/GHLMT
 cura/LMT
 curan/BLMT
 curchatofiwm/LMT
-cur/DLMTQv
+cur/DLMQTv
 curfa/LMT
 curfâu/LMT
 curfeydd/LMT
@@ -13910,7 +13910,7 @@ curnennu/LMT
 curo/LMT
 curydd/CLMT
 curyll/KLMT
-cusan/BLMTQv
+cusan/BLMQTv
 cusanu/LMT
 cut/DLMT
 cuwch/LMT
@@ -13976,7 +13976,7 @@ cwblgyfan/LMT
 cwblhad/LMT
 cwblha/LMv
 cwblhau/LMT
-cwblheui/kLM
+cwblheui/LMk
 cwbl/LMT
 cwb/LMT
 cwcer/BLMT
@@ -13995,7 +13995,7 @@ cwdyn/LMT
 cweir/DLMT
 Cwellyn/LMT
 cweryla/LMT
-cweryl/BHLMTQv
+cweryl/BHLMQTv
 cwerylgar/LMT
 cwest/BLMT
 cwesti/LMv
@@ -14030,7 +14030,7 @@ cwilsyn/FLMT
 cwilt/DLMT
 cwiltell/BLMT
 cwiltio/LMT
-cwilti/XQ
+cwilti/QX
 cwinin/LMT
 cwinîn/LMT
 cwinsen/LMT
@@ -14246,7 +14246,7 @@ cwrteisi/LMT
 cwrteisrwydd/LMT
 Cwrt-henri/LMT
 cwrtil/BLMT
-cwrti/XQ
+cwrti/QX
 Cwrtllechryd/LMT
 cwrt/LMT
 cwrt-marsial/LMT
@@ -14266,7 +14266,7 @@ cwsb/LMT
 cwsg-ddysgu/LMT
 cwsg/LMT
 cwsgrodio/LMT
-cwsgrodi/XQ
+cwsgrodi/QX
 cwsmereiddio/LMT
 cwsmer/GLMT
 cwsmeriaeth/LMT
@@ -14322,7 +14322,7 @@ cwympog/LMT
 cwympo/LMT
 cwynad/LMT
 cwyna/LMT
-cwyn/BCLMTQv
+cwyn/BCLMQTv
 cwynfan/BCLMTv
 cwynfanllyd/LMT
 cwynfanu/LMT
@@ -14341,7 +14341,7 @@ cwyrel/LMT
 cwyren/FLMT
 cŵyr/LMT
 cwyro/LMT
-cwys/BLMTQ
+cwys/BLMQT
 cwysedi/LMT
 cwysed/LMT
 cwysiad/BLMT
@@ -14418,7 +14418,7 @@ cydarweinyddiaeth/LMT
 cydarweithiau/LMT
 cydarwyddo/LMT
 cydastudiaeth/BLMT
-cydateb/LMTQv
+cydateb/LMQTv
 cydatebolrwydd/LMT
 cydatebydd/CLMT
 cydateg/LMRv
@@ -14461,7 +14461,7 @@ cydbwysedd/BLMT
 cydbwys/LMRv
 cydbwysoli/LMT
 cydbwyso/LMT
-cydchwarae/XQ
+cydchwarae/QX
 cyd-daro/LMT
 cyd-ddaliadaeth/BLMT
 cyd-ddaliad/LMT
@@ -14505,7 +14505,7 @@ cyd-drafod/LMTv
 cyd-drawiadol/LMT
 cyd-drawol/LMT
 cyd-drechedd/LMT
-cyd-drech/XQ
+cyd-drech/QX
 cyd-drechydd/CLMRT
 cyd-drefniant/LMT
 cyd-drefn/LMQv
@@ -14563,7 +14563,7 @@ cydfodol/LMTv
 cydfonitori/LMv
 cydfonitorio/LMT
 cydfonitro/LMT
-cydfor/XQ
+cydfor/QX
 cydfrad/LMT
 cydfrawd/LMT
 cydfrawdoliaeth/LMT
@@ -14573,7 +14573,7 @@ cydfwriadu/LMT
 cydfwriadwr/LMT
 cydfwytäedd/LMT
 cydfwytaol/LMT
-cydfwytä/XQ
+cydfwytä/QX
 cydfyd/LMT
 cyd-fynd/LMT
 cydfynedol/LMT
@@ -14716,9 +14716,9 @@ cydgynulliad/LMT
 cydgynull/LMv
 cydgysylltiad/BLMT
 cydgysylltiol/LMT
+cyd-gysyllt/QX
+cydgysyllt/QX
 cydgysylltu/LMT
-cyd-gysyllt/XQ
-cydgysyllt/XQ
 cyd-gysylltydd/LMT
 cydgysylltydd/LMT
 cydgytundeb/BLMT
@@ -14742,7 +14742,7 @@ cydlais/LMT
 cydlandlord/GLMT
 cydlawenha/LMv
 cydlawenhau/LMT
-cydlawenheui/kLM
+cydlawenheui/LMk
 cydlef/BLMT
 cydleoli/LMT
 cydleol/LMv
@@ -14766,7 +14766,7 @@ cydlynu/LMT
 cydlynwyr/LMT
 cydlynydd/LMT
 cydlywodraeth/BLMT
-cyd-lywodraeth/XQ
+cyd-lywodraeth/QX
 cydnabod/LMT
 cydnabuasech/LMT
 cydnabuasem/LMT
@@ -14817,7 +14817,7 @@ cyd-oddefol/LMT
 cydoed/LMT
 cydoesi/LMT
 cydoesol/LMT
-cydoes/XQ
+cydoes/QX
 cydofidi/LMv
 cydofidio/LMT
 cydolwg/LMT
@@ -14838,7 +14838,7 @@ cydraddoldeb/LMT
 cydraddoliaeth/LMT
 cydraddoli/LMT
 cydraddolion/LM
-cydraddol/LMTQv
+cydraddol/LMQTv
 cydran/FLMT
 cydraniad/BLMT
 cydrann/LMRv
@@ -14860,7 +14860,7 @@ cydrifol/LMT
 cydrodd/CLMTv
 cydroddiad/BLMT
 cydroddi/LMT
-cydryfel/XQ
+cydryfel/QX
 cydrywiaeth/LMT
 cydrywiog/LMT
 cydrywiol/LMT
@@ -14878,7 +14878,7 @@ cydseinio/LMT
 cyd-seren/LMT
 cyd-serenn/LMv
 cyd-serennu/LMT
-cydsgwrsi/XQ
+cydsgwrsi/QX
 cydsgwrswragedd/LMT
 cydsgwrswraig/LMT
 cydsoddiad/BLMT
@@ -14891,7 +14891,7 @@ cydsynied/LMT
 cydsyNI/LMv
 cydsyniol/LMT
 cydsynio/LMT
-cydsyni/XQ
+cydsyni/QX
 cydun/LMRv
 cyduno/LMT
 cydwaddodi/LMT
@@ -14937,8 +14937,8 @@ cydwerthusiad/BLMT
 cyd-weu/LMT
 cydwladoli/LMT
 cydwladol/LMT
-cyd-wlad/XQ
-cydwlad/XQ
+cyd-wlad/QX
+cydwlad/QX
 cydwybod/BLMRT
 cydwybodoldeb/LMT
 cydwybodolder/LMT
@@ -14969,7 +14969,7 @@ cydymgeisiaeth/LMT
 cydymgeisiau/LMT
 cydymgeisiol/LMT
 cydymgeisio/LMT
-cydymgeisi/XQ
+cydymgeisi/QX
 cydymgeisydd/LMT
 cydymgyfarfod/LMT
 cydymgyfarfuasai/LMT
@@ -15063,7 +15063,7 @@ cyfandwf/LMT
 cyfaneddfâu/LMT
 cyfaneddwr/LMT
 cyfaneddwyr/LMT
-cyfanel/XQ
+cyfanel/QX
 cyfanfod/LMT
 cyfanfor/ELMT
 cyfanfydaeth/LMT
@@ -15190,7 +15190,7 @@ cyfartalu/LMT
 cyfartalwch/LMT
 cyfarthfa/LMT
 cyfarthiad/BLMT
-cyfarth/LMTQv
+cyfarth/LMQTv
 cyfarwain/LMT
 cyfarweini/LMv
 cyfarwydd/CDGLMRTv
@@ -15240,7 +15240,7 @@ cyfebriad/BLMT
 cyfebru/LMT
 cyfebu/LMT
 cyfechelog/LMT
-cyfeddach/BLMTQv
+cyfeddach/BLMQTv
 cyfeddiannaeth/LMT
 cyfeddiannu/LMT
 cyfeddiant/LMT
@@ -15250,11 +15250,11 @@ cyfeiliant/LMT
 cyfeili/LMQv
 cyfeilio/LMT
 cyfeiliornad/BLMT
-cyfeiliorn/BLMTQv
+cyfeiliorn/BLMQTv
 cyfeiliorni/LMT
 cyfeiliornus/LMT
 cyfeiliornydd/CLMT
-cyfeillach/BLMTQv
+cyfeillach/BLMQTv
 cyfeillachgar/LMT
 cyfeillachu/LMT
 cyfeilles/BLMT
@@ -15324,14 +15324,14 @@ cyffaith/LMT
 cyff/CLMT
 cyffeithiau/LMT
 cyffeithio/LMT
-cyffeithi/XQ
+cyffeithi/QX
 cyffeithydd/CLMT
 cyffelybiaeth/BLMRT
 cyffelyb/LMTv
 cyffelybrwydd/LMT
 cyffelybu/LMT
 cyffen/LMT
-cyffes/CLMTQv
+cyffes/CLMQTv
 cyffesgell/ELMT
 cyffesiad/BLMT
 cyffesu/LMT
@@ -15347,7 +15347,7 @@ cyffiniau/LMT
 cyffiNI/LMv
 cyffiniol/LMT
 cyffinio/LMT
-cyffini/XQ
+cyffini/QX
 cyffinwlad/LMT
 cyffinwledydd/LMT
 cyffinydd/CLMT
@@ -15393,10 +15393,10 @@ cyffroist/LMT
 cyffroit/LMT
 cyffro/LMTv
 cyffrônt/LMT
+cyffrö/QX
 cyffrous/LMT
 cyffrowch/LMT
 cyffrown/LMT
-cyffrö/XQ
 cyffrydio/LMT
 cyffry/LMT
 cyffug/LMT
@@ -15407,7 +15407,7 @@ cyffurf/LMT
 cyffurgi/LMT
 cyffurgwn/LMT
 cyffuriau/LMT
-cyffuri/XQ
+cyffuri/QX
 cyffwrddadwy/LMT
 cyffwrdd/LMTv
 cyffwrdd-ymledol/LMT
@@ -15430,7 +15430,7 @@ cyfiawnedd/LMT
 cyfiawnhad/LMT
 cyfiawnha/LMQRv
 cyfiawnhau/LMT
-cyfiawnheui/kLM
+cyfiawnheui/LMk
 cyfiawn/LMT
 cyfieithiad/BLMT
 cyfieith/LMQv
@@ -15462,7 +15462,7 @@ cyflawned/LM
 cyflawnhad/LMT
 cyflawniad/BLMT
 cyflawni/LMT
-cyflawn/LMTQv
+cyflawn/LMQTv
 cyflawnrwydd/LMT
 cyflead/BLMT
 cyfled/LMT
@@ -15471,12 +15471,12 @@ cyfle/EHLMT
 cyflegr/BLMTv
 cyflegru/LMT
 cyflë/LMv
+cyflen/QX
 cyflenwad/BLMT
 cyflenwi/LMT
 cyflenw/LMRvw
 cyflenwoldeb/LMT
 cyflenwydd/CLMT
-cyflen/XQ
 cyfles/LMT
 cyfleu/LMT
 cyfleusach/LM
@@ -15499,14 +15499,14 @@ cyflith/LMT
 cyfliwi/LMv
 cyfliwio/LMT
 cyfliw/LMT
-cyfliw-/XQ
+cyfliw-/QX
 cyf/LMT
 Cyf:/LMT
 cyflogadwyedd/LMT
 cyflogadwy/LMT
 cyflogaeth/LMT
 cyflogarithm/BLMT
-cyflog/BLMTQv
+cyflog/BLMQTv
 cyflogddyn/CLMT
 cyflogedig/CLMT
 cyflogi/LMT
@@ -15530,7 +15530,7 @@ cyfluniant/LMT
 cyfluNI/LMv
 cyfluniol/LMT
 cyflunio/LMT
-cyfluni/XQ
+cyfluni/QX
 cyflunydd/CLMT
 cyflusg/LMT
 cyflwr/LMT
@@ -15541,7 +15541,7 @@ cyflwyno/LMT
 cyflwynwragedd/LMT
 cyflwynwraig/LMT
 cyflwynydd/CLMT
-cyflych/XQ
+cyflych/QX
 cyflyedd/LMT
 cyflyfr/BLMT
 cyflymach/LM
@@ -15610,14 +15610,14 @@ cyfochrog/LMT
 cyfoden/FLMT
 cyfodiad/BLMT
 cyfodi/LMT
-cyfod/LMTQv
+cyfod/LMQTv
 cyfodoli/LMT
 cyfodol/LMTv
 cyfoed/CLMTv
 cyfoedi/LMT
 cyfoen/LMT
 cyfoesi/LMT
-cyfoes/LMTQv
+cyfoes/LMQTv
 cyfoesol/CLMT
 cyfoeth/LMT
 cyfoethoc/LM
@@ -15660,7 +15660,7 @@ cyfraith/LMT
 cyfranadwy/LMT
 cyfranc/LMT
 cyfranddaliad/BLMT
-cyfranddali/XQ
+cyfranddali/QX
 cyfraneddau/LMT
 cyfraneddol/LMT
 cyfranesi/LMT
@@ -15695,7 +15695,7 @@ cyfredeg/LMT
 cyfreidiau/LMT
 cyfreithadwy/LMT
 cyfreitha/LMT
-cyfreitheg/LMTQ
+cyfreitheg/LMQT
 cyfreithgar/LMT
 cyfreithgarwch/LMT
 cyfreithiad/LMT
@@ -15774,7 +15774,7 @@ cyfrinfâu/LMT
 cyfrinfeydd/LMT
 cyfriniaeth/LMT
 cyfriniol/LMT
-cyfrini/XQ
+cyfrini/QX
 cyfrinydd/CLMT
 cyfr/LMv
 cyfrodedd/LMTv
@@ -15784,8 +15784,8 @@ cyfrodeddwyr/LMT
 cyfrol/BLMT
 cyfro/LMT
 Cyfronnydd/LMT
-cyfrwng/LMTP
-cyfrwy/BLMTQv
+cyfrwng/LMPT
+cyfrwy/BLMQTv
 cyfrwym/LMv
 cyfrwymo/LMT
 cyfrwyo/LMT
@@ -15795,7 +15795,7 @@ cyfrwysed/LM
 cyfrwys/LMT
 cyfrwyster/LMT
 cyfrwystra/LMT
-cyfryngau/LMTP
+cyfryngau/LMPT
 cyfryngdod/LMT
 cyfryngiad/LMT
 cyfryng/LMQRv
@@ -15947,7 +15947,7 @@ cylchfordeithiau/LMT
 cylchfordeithio/LMT
 cylchfordwy/LMv
 cylchfordwyo/LMT
-cylchfor/XQ
+cylchfor/QX
 cylchganeuon/LMT
 cylchgan/LMT
 cylchganon/BLMT
@@ -15973,10 +15973,10 @@ cylchoedd/LMT
 cylchog/LMT
 cylchohecsan/LMT
 cylchoid/BLMT
-cylchred/BLMTPQv
+cylchred/BLMPQTv
 cylchredeg/LMT
 cylchrediad/BLMT
-cylchredol/LMTP
+cylchredol/LMPT
 cylchresi/LMT
 cylchres/LMT
 cylchrwy/BLMT
@@ -15994,7 +15994,7 @@ cylionen/LMT
 cylion/LMT
 cylionyn/LMT
 cylla/HLMT
-cyllell/LMTQv
+cyllell/LMQTv
 cyllellu/LMT
 cyllidadwy/LMT
 cyllid/BLMQRTv
@@ -16024,7 +16024,7 @@ cymalog/LMT
 cymalu/LMT
 cymalwst/LMT
 cymanfa/ELMRT
-cymanfä/XQ
+cymanfä/QX
 cymanod/LMT
 cymantoledd/BLMT
 Cymanwlad/LMT
@@ -16040,7 +16040,7 @@ cymaroldeb/LMT
 Cymaron/LMT
 cymaryddion/LMT
 cymathiad/BLMT
-cymath/LMTQz
+cymath/LMQTz
 cymathu/LMT
 cymau/LMT
 cymdaith/LMT
@@ -16067,7 +16067,7 @@ cymedrig/LMT
 cymedroldeb/LMT
 cymedrolder/LMT
 cymedroli/LMT
-cymedrol/LMTQv
+cymedrol/LMQTv
 cymedrolydd/CLMT
 cymelldaliadau/LMT
 cymelliadau/LMT
@@ -16077,7 +16077,7 @@ cymen/LMT
 cymeradwyaeth/BLMT
 cymeradwy/LMQRTv
 cymeradwyo/LMT
-cymer/BLMTQv
+cymer/BLMQTv
 cymeriadaeth/LMT
 cymeriad/BLMRT
 cymeriadu/LMT
@@ -16103,7 +16103,7 @@ cymhelliannau/LMT
 cymhelliant/LMT
 cymhellion/LMT
 cymhellol/LMT
-cymhell/XQ
+cymhell/QX
 cymhelri/LMT
 cymhendod/LMT
 cymhenllyd/LMT
@@ -16159,7 +16159,7 @@ cymodlon/LMT
 cymoedd/LMT
 cymonedd/LMT
 cymoni/LMT
-cymon/LMTQv
+cymon/LMQTv
 cymorth-anadlu/LMT
 cymorthdaledig/LMT
 cymorthdaliadau/LMT
@@ -16213,7 +16213,7 @@ cymundod/BLMT
 cymuned/BLMRT
 cymuno/LMT
 cymwy/BLMT
-cymwynas/BLMTQ
+cymwynas/BLMQT
 cymwynasgar/LMT
 cymwynasgarwch/LMT
 cymwysadwy/LMT
@@ -16236,7 +16236,7 @@ cymylu/LMT
 cymylyn/FLMT
 cymynaeth/BLMT
 cymynai/LMT
-cymyn/CFLMTQv
+cymyn/CFLMQTv
 cymyndod/LMT
 cymynedig/CLMT
 cymyniad/BLMT
@@ -16259,7 +16259,7 @@ cymysgfa/ELMT
 cymysgfâu/LMT
 cymysgiad/BLMT
 cymysgliw/LMT
-cymysg/LMTQv
+cymysg/LMQTv
 cymysglyd/LMT
 cymysgryw/LMT
 cymysgu/LMT
@@ -16321,7 +16321,7 @@ cynddail/LMT
 cynddaredd/LMT
 cyn-ddarlithwyr/LMT
 cyn-ddarlithydd/LMT
-cynddefnyddi/XQ
+cynddefnyddi/QX
 cynddeirioc/LM
 cynddeiriogi/LMT
 cynddeiriog/LMTv
@@ -16446,13 +16446,13 @@ cyngyfarfod/LMT
 cyngyfarfodydd/LMT
 cyn-gyfarwyddwr/LMT
 cyn-gyfarwyddwyr/LMT
-cyngyflog/XQ
+cyngyflog/QX
 cyn-gyfranogwr/LMT
 cyn-gynghorwyr/LMT
 cyn-gynghorydd/LMT
 cynhadledd/LMT
 cynhaeafa/LMT
-cynhaeaf/LMTQ
+cynhaeaf/LMQT
 cynhaeafu/LMT
 Cynhafal/LMT
 cynhaig/LMT
@@ -16521,17 +16521,17 @@ cynhyrchiad/LMT
 cynhyrchiant/LMT
 cynhyrchi/LMRy
 cynhyrchion/LMT
+cynhyrch/QX
 cynhyrchu/LMT
-cynhyrch/XQ
 cynhyrchydd/LMT
 cynhyrfau/LMT
 cynhyrfawr/LMT
 cynhyrfedd/LMT
 cynhyrfiad/LMT
 cynhyrfiol/LMT
+cynhyrf/QX
 cynhyrfu/LMT
 cynhyrfus/LMT
-cynhyrf/XQ
 cynhysgaeth/LMT
 Cynidr/LMT
 cynifer/LMT
@@ -16573,11 +16573,11 @@ cynlluniad/LMT
 cynlluniedig/LMT
 cynlluNI/LMv
 cynllunio/LMT
-cynlluni/XQ
+cynlluni/QX
 cynllunwaith/LMT
 cynllunydd/CLMT
 Cynllwyd/LMT
-cynllwyn/CLMTQv
+cynllwyn/CLMQTv
 cynllwyni/LMv
 cynllwynio/LMT
 cynllwyniwr/LMT
@@ -16590,7 +16590,7 @@ cyn/LMTv
 cynlyfr/BLMT
 cynlyn/LMT
 cynlynnoedd/LMT
-cyn-lywodraeth/XQ
+cyn-lywodraeth/QX
 cyn-lywydd/CLMT
 cynnal/LMT
 cynnan/LMT
@@ -16610,7 +16610,7 @@ cynnud/LMT
 cynnull/LMT
 cynnu/LMT
 cynnwrf/LMT
-cynnwydd/LMTB
+cynnwydd/BLMT
 cynnwys/LMT
 cynnydd/LMT
 cynnyrch/LMT
@@ -16621,7 +16621,7 @@ cynodi/LMT
 cyn-oesoedd/LMT
 cynoesoedd/LMT
 cynoesol/LMT
-cynoes/XQ
+cynoes/QX
 Cynog/LMT
 cyn-ohebydd/CLMT
 cynolchi/LMT
@@ -16684,7 +16684,7 @@ cyntun/BLMT
 cynudau/LMT
 cynudydd/CLMT
 cynulleidfa/ELMRT
-cynulleidfä/XQ
+cynulleidfä/QX
 cynulliad/BLMT
 cynull/LMv
 cynullydd/CLMT
@@ -16751,7 +16751,7 @@ cyrbibion/LMT
 cyrbibyn/LMT
 cyrch-allweddi/LMT
 cyrch-allwedd/LMT
-cyrch/BELMTQv
+cyrch/BELMQTv
 cyrchborth/LMT
 cyrchbyrth/LMT
 cyrchddisg/DLMT
@@ -16892,13 +16892,13 @@ cysoned/LM
 cysoniad/LMT
 cysoni/LMT
 cysonion/LMT
-cyson/LMTQv
+cyson/LMQTv
 cysonydd/CLMT
 cysonyn/LMT
 cystadlaethau/LMT
 cystadleuaeth/LMT
 cystadleuol/LMT
-cystadleu/XQ
+cystadleu/QX
 cystadleuydd/LMT
 cystadl/LMv
 cystadlu/LMT
@@ -17025,7 +17025,7 @@ cytysau/LMT
 cywaini/LMv
 cywain/LMT
 cywair-bur/LMT
-cywair/LMTP
+cywair/LMPT
 cywaith/LMT
 cywarchen/LMT
 cywarch/LMT
@@ -17048,7 +17048,7 @@ cyweiraidd/LMT
 cyweirdannau/LMT
 cyweirdant/LMT
 cyweirdeb/LMT
-cyweiredd/BLMTP
+cyweiredd/BLMPT
 cyweirgorn/LMT
 cyweirgyrn/LMT
 cyweiriad/BLMT
@@ -17106,7 +17106,7 @@ dab/DMT
 dabiadau/MT
 dabio/MT
 dablo/MT
-dabl/XQ
+dabl/QX
 'dach
 dach/MT
 dacron/MT
@@ -17412,7 +17412,7 @@ dalbwll/MT
 dalbyllau/MT
 dalen-borthiad/BMT
 dalen-borthi/MT
-dalen-borth/XQ
+dalen-borth/QX
 dalen/FMT
 daleniad/MT
 dalenni/MT
@@ -17436,7 +17436,7 @@ dallach/M
 dallaf/M
 dallbleidiaeth/MT
 dallbleidiol/MT
-dallbleidi/XQ
+dallbleidi/QX
 dallbwynt/DMT
 dalled/M
 dalles/BMT
@@ -17461,7 +17461,7 @@ damasgin/MT
 damasg/MT
 damasgu/MT
 damasîn/MT
-damcaniaeth/BMTQv
+damcaniaeth/BMQTv
 damcaniaethol/MTv
 damcaniaethu/MT
 damcan/Mv
@@ -17546,7 +17546,7 @@ darbwyllo/MT
 darddullaidd/MT
 darddulliaeth/MT
 darddulliwr/MT
-darddull/XQ
+darddull/QX
 darfath/BMT
 darfathu/MT
 darfelydd/CMT
@@ -17672,9 +17672,9 @@ darlithi/MQv
 darlithio/MT
 darlithydd/CMT
 darlithyddiaeth/BMT
+darllä/QX
 darllaw/MTv
 darllawydd/CMT
-darllä/XQ
 darllediad/BMT
 darlled/MQv
 darlledu/MT
@@ -17687,7 +17687,7 @@ darllenfwrdd/MT
 darllenfyrddau/MT
 darllengar/MT
 darlleniad/BMT
-darllen/MTQv
+darllen/MQTv
 darllenwragedd/MT
 darllenwraig/MT
 darllenydd/CMT
@@ -17703,7 +17703,7 @@ darluniaidd/MT
 darluNI/Mv
 darluniol/MT
 darlunio/MT
-darluni/XQ
+darluni/QX
 darlunydd/MT
 darmerthu/MT
 dâr/MT
@@ -17724,7 +17724,7 @@ darostyngedig/MT
 darostyngiad/BMT
 darostyng/MRTv
 Darowen/MT
-darpar/CMTQv
+darpar/CMQTv
 darpariadau/MT
 darpariad/MT
 darpariaeth/BMT
@@ -17803,15 +17803,15 @@ datgloit/MT
 datglô/MT
 datglo/MTv
 datglônt/MT
+datglö/QX
 datglowch/MT
 datglown/MT
-datglö/XQ
 datglym/Mv
 datglymu/MT
 datglystyriad/MT
 datglystyru/MT
 datgodio/MT
-datgodi/XQ
+datgodi/QX
 datgoedwigo/MT
 datgomisiynu/MT
 datgordeddu/MT
@@ -17852,7 +17852,7 @@ dathlu/MT
 datnwyo/MT
 datodadwy/MT
 datodiad/BMT
-datod/MTQv
+datod/MQTv
 datodydd/CMT
 datrann/Mv
 datrannu/MT
@@ -17902,7 +17902,7 @@ dawnsgyfresi/MT
 dawnsgyfres/MT
 dawnsi/MQv
 dawnsio/MT
-dawnslam/XQ
+dawnslam/QX
 dawnswraig/MT
 dawnswregedd/MT
 dawnus/MT
@@ -17953,7 +17953,7 @@ decstrin/MT
 decstros/MT
 dectant/MT
 deddf/BMQRTv
-deddfeg/MTQ
+deddfeg/MQT
 deddfgadwol/MT
 deddfgorff/MT
 deddfiad/BMT
@@ -17987,16 +17987,16 @@ deffrôf/MT
 deffroi/MT
 deffro/MTv
 deffrônt/MT
-deffrö/XQ
+deffrö/QX
 deffry/MT
 defni/MT
 defn/Mv
-defnydd/DMTP
+defnydd/DMPT
 defnyddiad/MT
 defnyddi/MQv
 defnyddioldeb/MT
 defnyddioliaeth/MT
-defnyddiol/MTQ
+defnyddiol/MQT
 defnyddio/MT
 defnyn/FMT
 defnynn/Mv
@@ -18038,7 +18038,7 @@ deheu/MQRT
 deheurwydd/MT
 deheuwynt/EMT
 deholiad/MT
-dehol/XQ
+dehol/QX
 dehongliad/BMT
 dehongli/MT
 dehongl/MQv
@@ -18047,7 +18047,7 @@ dehydrad/BMT
 dehydr/Mv
 dehydrogenas/BMT
 dehydru/MT
-deial/BMTQv
+deial/BMQTv
 deialog/BMT
 deialu/MT
 deialydd/MT
@@ -18063,7 +18063,7 @@ deif/DMT
 deifiad/BMT
 deifiol/MT
 deifio/MT
-deifi/XQ
+deifi/QX
 deigastio/MT
 deigr/MT
 deigryn/MT
@@ -18078,7 +18078,7 @@ deilgoll/MT
 deilgraith/MT
 deilgreithiau/MT
 deilgyll/MT
-deiliadaeth/BMTP
+deiliadaeth/BMPT
 deiliad/HMT
 deiliaid/MT
 deiliannau/MT
@@ -18121,7 +18121,7 @@ Deio/MT
 deir/MT
 deiryd/Mv
 deirydu/MT
-deiseb/BMTQv
+deiseb/BMQTv
 deisebu/MT
 deisebydd/MT
 deisi/MT
@@ -18185,7 +18185,7 @@ delw-addol/Mv
 delw/BMTvw
 delwddrylliad/MT
 delwddrylliol/MT
-delwddrylli/XQ
+delwddrylli/QX
 delweddaeth/MT
 delweddaidd/MT
 delwedd/BMTv
@@ -18262,7 +18262,7 @@ deor/MTv
 deorydd/CMT
 depo/IMT
 deponiad/BMT
-deponi/XQ
+deponi/QX
 derbynebau/MT
 derbynebion/MT
 derbyneddau/MT
@@ -18278,7 +18278,7 @@ derbyNI/Mv
 derbynioldeb/MT
 derbyniol/MT
 derbynion/MT
-derbyni/XQ
+derbyni/QX
 derbyn/MT
 derbynneb/MT
 derbynnedd/MT
@@ -18332,7 +18332,7 @@ detholedd/MT
 detholedig/MT
 detholiad/BMRT
 detholion/MT
-dethol/MTQv
+dethol/MQTv
 detholus/MT
 detholydd/CMT
 detholyn/MT
@@ -18375,7 +18375,7 @@ deuddyblyg/MT
 deuddydd/MT
 deuddyn/MT
 deud/MTv
-deudod/XQ
+deudod/QX
 deuech/MT
 deuedafeddog/MT
 deuelectrig/MT
@@ -18481,7 +18481,7 @@ dewisach/MT
 dewis/CMPQRTv
 dewisddyn/CMT
 dewisedig/MT
-dewisiadau/MTP
+dewisiadau/MPT
 dewisiad/BMT
 dewislen/MT
 dewislenni/MT
@@ -18528,7 +18528,7 @@ diagram/BMT
 di-ail/MT
 di-ais/MT
 dialaeth/MT
-dial/BHMTQv
+dial/BHMQTv
 dialedd/BMT
 dialeddgar/MT
 dialgaredd/MT
@@ -18825,7 +18825,7 @@ didoledig/MT
 didoliad/BMT
 didoli/MT
 di-doll/MT
-didol/MTQv
+didol/MQTv
 didolnod/BMT
 didolydd/CMT
 di-do/MT
@@ -18952,12 +18952,12 @@ difandwll/MT
 difán/IMT
 difantais/MT
 difäol/MT
+difä/QX
 difaru/MT
 difarw/MT
 difater/MT
 difateroli/MT
 difaterwch/MT
-difä/XQ
 difeddiann/Mv
 difeddiannu/MT
 difeddiant/MT
@@ -18974,10 +18974,10 @@ difei/Mv
 di-feind/MT
 difeio/MT
 difeius/MT
+difen/QX
 difenwad/BMT
 difenwi/MT
 difenw/MRTvw
-difen/XQ
 diferiad/BMT
 diferion/MT
 diferlif/MT
@@ -19009,8 +19009,8 @@ diffeithdra/MT
 diffeithi/Mv
 diffeithio/MT
 diffeithle/EMT
+diffeith/QX
 diffeithwch/MT
-diffeith/XQ
 diffeithychau/MT
 diffeithydd/CMT
 di-ffens/MT
@@ -19062,8 +19062,8 @@ diffwys/MRT
 diffwysydd/MT
 diffydd/MT
 diffyg/CMT
+diffygdal/QX
 diffygdalu/MT
-diffygdal/XQ
 diffygiad/BMT
 diffygiannau/MT
 diffygiant/MT
@@ -19071,13 +19071,13 @@ diffygi/MQRv
 diffygio/MT
 diffygwerth/EMT
 diffyndollaeth/MT
-diffyndoll/BMTQ
+diffyndoll/BMQT
 diffyniadaeth/MT
 diffyniad/BMRT
 diffyniaeth/MT
 diffyn/MTv
 diffynnaeth/MT
-diffynn/XQ
+diffynn/QX
 diffynnydd/MT
 diffynwriaeth/BMT
 diffynyddion/MT
@@ -19246,7 +19246,7 @@ di-gred/MTv
 digreedig/MT
 di-grefft/MT
 digrefydd/MT
-digreiddi/XQ
+digreiddi/QX
 digrifach/M
 digrifaf/M
 digrifed/M
@@ -19380,8 +19380,8 @@ di-hid/MT
 dihidrwydd/MT
 dihiren/MT
 dihirod/MT
+dihir/QX
 dihirwch/MT
-dihir/XQ
 dihiryn/MT
 dihoeniad/MT
 dihoeni/MT
@@ -19486,7 +19486,7 @@ dimeiau/MT
 dimeiwerth/MT
 dimensiwn/MT
 dimensiynau/MT
-dimensiynol/MTP
+dimensiynol/MPT
 dimensiynu/MT
 dim/MT
 di-/MT
@@ -19523,7 +19523,7 @@ dinistrydd/CMT
 diniwed/MT
 diniweidrwydd/MT
 diniweiti/M
-diniwli/XQ
+diniwli/QX
 Dinllaen/MT
 Dinlle/MT
 Dinllugwy/MT
@@ -19601,7 +19601,7 @@ diogynnod/MT
 diolchgar/MT
 diolchgarwch/MT
 diolchiadau/MT
-diolch/MTQv
+diolch/MQTv
 diolch-offrymau/MT
 dioledig/MT
 di-oleu/Mvz
@@ -19682,7 +19682,7 @@ direwyn/MT
 dirfawr/MT
 dirfodaeth/MT
 dirfod/MRT
-dirfodo/XQ
+dirfodo/QX
 dirgelaidd/MT
 dirgel/CMTv
 dirgeledigaeth/BMT
@@ -19715,7 +19715,7 @@ dirlenwad/MT
 dirlenwi/MT
 dir/MT
 dirmygadwy/MT
-dirmyg/CMTQv
+dirmyg/CMQTv
 dirmygedig/MT
 dirmygu/MT
 dirmygus/MT
@@ -19747,7 +19747,7 @@ dirwynen/FMT
 dirwynenni/MT
 dirwyniad/BMT
 dirwynlath/MT
-dirwyn/MTQv
+dirwyn/MQTv
 dirwynydd/CMT
 dirwyo/MT
 di-rwystr/MT
@@ -19838,12 +19838,12 @@ disgwylied/MT
 disgwyli/MQv
 disgwylion/MT
 disgwyl/MT
-disgyblaeth/BMTPv
-disgyblaethol/MTP
+disgyblaeth/BMPTv
+disgyblaethol/MPT
 disgyblaethu/MT
 disgybl-athrawon/MT
 disgybl-athro/MT
-disgybl/CMTQv
+disgybl/CMQTv
 disgybledd/MT
 disgybledig/MT
 disgyblu/MT
@@ -19864,8 +19864,8 @@ disgyrchiannau/MT
 disgyrchiant/MT
 disgyrch/MRv
 disgyrchu/MT
-disg-yrr/XQ
-disgyrr/XQ
+disg-yrr/QX
+disgyrr/QX
 di-sigl/MT
 disi/MQv
 disiog/MT
@@ -19910,7 +19910,7 @@ distrywi/MRv
 distrywio/MT
 distrywlong/BMT
 distryw/MT
-distryw-/XQ
+distryw-/QX
 distrywyr/MT
 di-stŵr/MT
 distyllad/BMT
@@ -19920,7 +19920,7 @@ distyllio/MT
 distyllion/MT
 distyll-lestri/MT
 distyll-lestr/MT
-distyll/MTQv
+distyll/MQTv
 distyllu/MT
 distyllyr/HMT
 distyn/MT
@@ -19986,7 +19986,7 @@ diweddaraf/MT
 diweddaredd/MT
 diweddared/M
 diweddariad/BMT
-diweddar/MTQv
+diweddar/MQTv
 diweddaru/MT
 diweddarwch/MT
 diwedd/BCMTv
@@ -20047,8 +20047,8 @@ diwydianfa/MT
 diwydiannaeth/MT
 diwydiannau/MT
 diwydiannol/MT
+diwydiann/QX
 diwydiannu/MT
-diwydiann/XQ
 diwydiant/MT
 diwyd/MT
 diwydriad/MT
@@ -20061,7 +20061,7 @@ diwygi/MQRv
 diwygio/MT
 diwylliadol/MT
 diwylliannau/MT
-diwylliannol/MTP
+diwylliannol/MPT
 diwylliannu/MT
 diwylliant/MT
 diwylliedig/MT
@@ -20127,7 +20127,7 @@ doded/MT
 dodiad/MT
 dodi/MT
 dod/MTv
-dodrefn/MTQv
+dodrefn/MQTv
 dodrefnu/MT
 dodrefnyn/MT
 dodw/Mvw
@@ -20157,7 +20157,7 @@ doethineb/MTv
 doethinebu/MT
 doethinebus/MT
 doethion/MT
-doeth/MTQ
+doeth/MQT
 doethor/GMT
 doethur/GMT
 doethuriaeth/BMT
@@ -20170,7 +20170,7 @@ dofed/M
 dofednod/MT
 dofi/MT
 dofion/M
-dof/MTQv
+dof/MQTv
 dofn/MT
 dofrwydd/MT
 Dofydd/MT
@@ -20327,7 +20327,7 @@ dotiog/MT
 dotio/MT
 dotwaith/MT
 dotweithio/MT
-dotweithi/XQ
+dotweithi/QX
 dotyn/MT
 dowch/MT
 dowcio/MT
@@ -20386,7 +20386,7 @@ dramâu/MT
 dram/DIMT
 dramodiad/BMT
 dramodi/MT
-dramod/XQ
+dramod/QX
 dramodydd/MT
 drannoeth/MT
 drarau/MT
@@ -20416,7 +20416,7 @@ drennydd/MT
 drenshis/MT
 drensh/MT
 drensio/MT
-drensi/XQ
+drensi/QX
 dreseli/MT
 dresel/MT
 dreselydd/MT
@@ -20438,7 +20438,7 @@ drib/DMT
 drib-drab/MT
 driblad/MT
 driblan/MT
-dribl/MTQv
+dribl/MQTv
 driblo/MT
 dribyn/MT
 drifftbridd/MT
@@ -20474,8 +20474,8 @@ dromedari/MT
 dronau/MT
 drôn/MT
 dropsi/MT
+drôr-gryfha/QX
 drôr-gryfhäwr/MT
-drôr-gryfha/XQ
 droriau/MT
 drôr/MT
 drors/MT
@@ -20510,8 +20510,8 @@ drwgdybus/MT
 drwg-enwog/MT
 drwglosgiad/MT
 drwg/MT
-drwgweithred/EMTQ
-drwm/MTQ
+drwgweithred/EMQT
+drwm/MQT
 drwoch/MT
 drwodd/MT
 drwof/MT
@@ -20579,7 +20579,7 @@ drylliog/MT
 dryllio/MT
 drymiau/MT
 drymio/MT
-drymi/XQ
+drymi/QX
 drymlin/BEMT
 dryntol/BMT
 drysau/MT
@@ -20591,7 +20591,7 @@ drysi/MT
 dryslwyni/MT
 dryslwyn/MT
 dryslyd/MT
-drys/MTQv
+drys/MQTv
 drysni/MT
 drysor/CMT
 drysu/MT
@@ -20773,7 +20773,7 @@ dwyranyddion/MT
 dwyreiniad/BMT
 dwyreiniaid/MT
 dwyreiniol/MT
-dwyreini/XQ
+dwyreini/QX
 dwyreinwynt/EMT
 dwyrenn/Mw
 dwyrudd/MT
@@ -20822,7 +20822,7 @@ dyblu/MT
 dyblygeb/BMT
 dyblygedd/MT
 dyblygiad/BMT
-dyblyg/MTQv
+dyblyg/MQTv
 dyblygu/MT
 dyblygydd/CMT
 dybryd/MT
@@ -20849,7 +20849,7 @@ dychryn/MTv
 dychrynu/MT
 dychrynydd/CMT
 dychweladwy/MT
-dychwel/CMTQv
+dychwel/CMQTv
 dychweledig/CMT
 dychweledigion/M
 dychweliad/BMRT
@@ -20871,7 +20871,7 @@ dyddgwaith/MT
 dyddha/Mv
 dyddhau/MT
 dyddiad/BMT
-dyddiadur/HMTQ
+dyddiadur/HMQT
 dyddiedig/MT
 dyddi/MQRv
 dyddio/MT
@@ -20893,7 +20893,7 @@ dyfalbarhad/MT
 dyfalbarha/Mv
 dyfalbarhau/MT
 dyfalbarhaus/MT
-dyfalbarheui/kM
+dyfalbarheui/Mk
 dyfaliad/BMRT
 dyfal/MTv
 dyfalu/MT
@@ -20935,7 +20935,7 @@ dyfnentydd/MT
 dyfnfor/MRT
 dyfnha/Mv
 dyfnhau/MT
-dyfnheui/kM
+dyfnheui/Mk
 dyfnion/M
 dyfn/Mv
 dyfnu/MT
@@ -20968,7 +20968,7 @@ dyfr-haen/BMT
 dyfrhaen/BMT
 dyfrha/Mv
 dyfrhau/MT
-dyfrheui/kM
+dyfrheui/Mk
 Dyfrig/MT
 dyfri/Mv
 dyfriog/MT
@@ -21032,7 +21032,7 @@ dylaswn/MT
 dyldra/MT
 dyleb/CMT
 dylech/MT
-dyled/CMTQ
+dyled/CMQT
 dyledeb/CMT
 dyledog/CMT
 dyledus/MT
@@ -21056,7 +21056,7 @@ dylu/MT
 dyluniad/BMT
 dyluNI/Mv
 dylunio/MT
-dyluni/XQ
+dyluni/QX
 dylunwaith/MT
 dylunydd/CMT
 dylwn/MT
@@ -21096,7 +21096,7 @@ dyneddon/MT
 dyneiddiaeth/MT
 dyneiddiol/MT
 dyneiddio/MT
-dyneiddi/XQ
+dyneiddi/QX
 dynesáu/MT
 dynes/BMTv
 dynesfa/MT
@@ -21111,9 +21111,9 @@ dyngarîs/MT
 dyngar/MQRT
 dyngaroldeb/MT
 dyngarwch/MT
-dyngasä/XQ
+dyngasä/QX
 dyngasedd/MT
-dyngas/XQ
+dyngas/QX
 dyn-greiddiol/MT
 dyniaethau/MT
 dyniawed/MT
@@ -21208,7 +21208,7 @@ dysglaid/MT
 dysgl/BMT
 dysgleidiau/MT
 dysglo/MT
-dysg/MTQv
+dysg/MQTv
 dysgodron/MT
 dysgub/MTv
 dysgubo/MT
@@ -21223,7 +21223,7 @@ dyspracsia/MT
 dysprosiwm/MT
 dysychedig/MT
 dysychiad/MT
-dysych/XQ
+dysych/QX
 Dysynni/MT
 dywad/MT
 dywalder/MT
@@ -21262,7 +21262,7 @@ eanged/H
 eangfrydedd/H
 eangfrydig/H
 eang-grededd/H
-eang-gred/XQ
+eang-gred/QX
 eang/H
 eangu/H
 ebargof/Hv
@@ -21395,7 +21395,7 @@ economi/H
 economydd/CH
 ecoreol/Hv
 ecoreoli/H
-ecoryfel/XQ
+ecoryfel/QX
 ecorywogaeth/H
 ecosystem/BH
 ecoteip/DH
@@ -22055,7 +22055,7 @@ elusen/FH
 elusengar/H
 elusengarwch/H
 elusennol/H
-elusenn/XQ
+elusenn/QX
 elwach/H
 elwa/H
 elw/BHv
@@ -22424,7 +22424,7 @@ erfyn/H
 erfyniad/BH
 erfyNI/Hv
 erfyniol/H
-erfyni/XQ
+erfyni/QX
 erglywed/H
 erglyw/Hv
 ergodig/H
@@ -22505,7 +22505,7 @@ esboniad/BHR
 esboniadwy/H
 esboNI/Hv
 esbonio/H
-esboni/XQ
+esboni/QX
 esbonydd/CHR
 esburdaliad/H
 esburdalu/H
@@ -24455,7 +24455,7 @@ gafót/T
 gafraidd/MT
 gafrdarw/MT
 gafrewig/KMT
-gafr/MTQ
+gafr/MQT
 gafrod/MT
 gagendor/BMT
 gaing/MT
@@ -24474,7 +24474,7 @@ galargan/BMT
 galarganeuon/MT
 galargerddi/MT
 galargerdd/MT
-galar/MTQv
+galar/MQTv
 galarnad/BMTv
 galarnadu/MT
 galaru/MT
@@ -24515,8 +24515,9 @@ galluedd/BMT
 gallu/EMT
 galluoc/M
 galluogi/MT
-galluog/MTQv
+galluog/MQTv
 galosis/MT
+gal/QX
 Gâl/T
 galwadau/MT
 galwad/BMT
@@ -24528,7 +24529,6 @@ galw/MTvw
 galwynaid/MT
 galwyn/BMT
 galwyni/MT
-gal/XQ
 Gamallt/MT
 gamba/MT
 Gambia/MT
@@ -24613,7 +24613,7 @@ Garndwyran/MT
 Garneddwen/MT
 Garnfadrun/MT
 garnisio/T
-garnisi/XQ
+garnisi/QX
 Garnwen/MT
 garrau/MT
 garro/MT
@@ -24643,7 +24643,7 @@ garwed/M
 Garwfynydd/MT
 garwha/MTv
 garwhau/MT
-garwheui/kM
+garwheui/Mk
 garw/MT
 Gary/MT
 gascon/GMT
@@ -24719,8 +24719,8 @@ geiriadurwragedd/MT
 geiriadurwraig/MT
 geiriau/MT
 geiri/MRv
-geiriog/MTP
-geiriogrwydd/MTP
+geiriog/MPT
+geiriogrwydd/MPT
 geiriolaeth/MT
 geirio/MT
 Geirionnydd/MT
@@ -24813,7 +24813,7 @@ generadu/MT
 generadur/HMT
 genera/MT
 generig/MT
-geneteg/MTQ
+geneteg/MQT
 genethaidd/MT
 genethdod/MT
 genethig/MT
@@ -25033,7 +25033,7 @@ glanha/MQRv
 glanhau/MT
 glanhawragedd/MT
 glanhawraig/MT
-glanheui/kM
+glanheui/Mk
 glaniad/BMT
 glaniadur/HMT
 Glanieithon/MT
@@ -25189,6 +25189,7 @@ glofeydd/MT
 glomerwlws/MT
 glomerwlysau/MT
 glo/MT
+glö/QX
 glosau/T
 glosoffaryngeal/MT
 glòs/T
@@ -25196,7 +25197,6 @@ glotal/MT
 glotis/BMT
 glowtai/MT
 glowty/MT
-glö/XQ
 glöyn/MT
 gloÿnnau/MT
 gloÿnnod/MT
@@ -25346,7 +25346,7 @@ godidoc/M
 godidog/MT
 godidowgrwydd/MT
 godigowgrwydd/MT
-godineb/BMTQv
+godineb/BMQTv
 godinebu/MT
 godinebus/MT
 godinebwraig/MT
@@ -25364,7 +25364,7 @@ goedeseg/T
 gofaint/MT
 gofalaeth/BMT
 gofalgar/MT
-gofal/HMTQv
+gofal/HMQTv
 gofalu/MT
 gofalus/MT
 gofalwch/MT
@@ -25396,7 +25396,7 @@ gofodlen/MT
 gofodlenni/MT
 gofryd/MT
 gofuned/MT
-gofwy/HMTQv
+gofwy/HMQTv
 gofwyo/MT
 gofyn/CMT
 gofyniad/BMT
@@ -25405,7 +25405,7 @@ gofynn/MQRv
 gofynnod/MT
 gofynodau/MT
 gogam/MT
-gogan/BMTQv
+gogan/BMQTv
 goganu/MT
 goganus/MT
 Gogarth/MT
@@ -25481,7 +25481,7 @@ golau/MT
 golchadwyaeth/MT
 golchadwy/MT
 golchbren/FMT
-golch/CMTQv
+golch/CMQTv
 golchdai/MT
 golchdir/EMT
 golchdrwyth/BMT
@@ -25503,7 +25503,7 @@ golchydd/CMT
 golchyddes/BMT
 gold/MT
 goledd/BMRTv
-goleddf/BMTQv
+goleddf/BMQTv
 goleddfu/MT
 goleddog/MT
 goleddu/MT
@@ -25558,17 +25558,17 @@ gollyng/MTv
 Golmon/MT
 gol./MT
 gôl/MT
-golosg/CMTQv
+golosg/CMQTv
 golosgi/MT
+gol/QX
 golud/EMT
 goludlawn/MT
 goludlonedd/MT
 goludog/CMT
-golwg/MTP
+golwg/MPT
 golwyth/CHMT
 golwythen/MT
 golwythyn/MT
-gol/XQ
 golygfa/MRT
 golygfeydd/MT
 golygiad/BMT
@@ -25583,7 +25583,7 @@ golygydd/CMT
 golygyddiaeth/MT
 golygyddol/CMT
 gomaraidd/MT
-gomar/XQ
+gomar/QX
 gomeddiad/BMT
 gomedd/MTv
 gomeddwr/MT
@@ -25660,7 +25660,7 @@ gorchuddiedig/MT
 gorchuddi/MRv
 gorchuddio/MT
 gorchwyddiant/MT
-gorchwyl/CMTP
+gorchwyl/CMPT
 gorchwyledd/MT
 gorchwyli/Mv
 gorchwylio/MT
@@ -25684,8 +25684,8 @@ gorddefnydd/MT
 gordderchadon/MT
 gordderchaeth/MT
 gordderchiad/BMT
+gordderch/MQTv
 Gordderch/MT
-gordderch/MTQv
 gordderchu/MT
 gorddewisol/MT
 gorddibyniaeth/MT
@@ -25793,7 +25793,7 @@ gorfodiant/MT
 gorfodi/MT
 gorfod/MRTv
 gorfodogaeth/MT
-gorfodog/CMTQ
+gorfodog/CMQT
 gorfodogi/MT
 gorfoledd/MTv
 gorfoleddu/MT
@@ -25953,7 +25953,8 @@ gorsin/BMT
 gorsing/BMT
 Gorslas/MT
 gorswyno/MT
-gorthrech/MTQv
+gorth/QX
+gorthrech/MQTv
 gorthrechu/MT
 gorthrwm/MT
 gorthrymder/BMT
@@ -25962,11 +25963,10 @@ gorthrym/MQRv
 gorthrymu/MT
 gorthrymus/MT
 gorthrymydd/MT
-gorth/XQ
 gorthyfail/MT
 gorthyrau/MT
 goruchafiaeth/BMT
-goruchaf/MTQ
+goruchaf/MQT
 goruchelder/MT
 goruchel/MT
 goruchfiaeth/MT
@@ -26062,7 +26062,7 @@ goslefu/MT
 gosodedig/MT
 gosodiad/BMRT
 gosodion/MT
-gosod/MTQv
+gosod/MQTv
 gosodydd/CMT
 gosodyn/MT
 gosteg/BCMTv
@@ -26245,8 +26245,8 @@ Groegaidd/MT
 Groegaidd-Rufeinig/MT
 Groeges/BMT
 Groegiaid/MT
+Groeg/MQT
 groeg/MT
-Groeg/MTQ
 groeg-Rufeinig/MT
 Groeg-Rufeinig/MT
 Groes-faen/MT
@@ -26303,7 +26303,7 @@ grut/DMT
 grutiau/MT
 grutiog/MT
 grwgnachlyd/MT
-grwgnach/MTQv
+grwgnach/MQTv
 grwnan/MTv
 grwndblat/DMT
 grwndfas/MT
@@ -26373,7 +26373,7 @@ gwaddot/MQv
 gwaddwr/MT
 gwaddwyr/MT
 gwadiad/BMT
-gwad/MTQv
+gwad/MQTv
 gwadn/BMRTv
 gwadnu/MT
 gwadu/MT
@@ -26439,7 +26439,7 @@ gwaew/MT
 gwagedd/MRT
 gwagelog/MT
 gwagelus/MT
-gwagen/MTQ
+gwagen/MQT
 gwagenni/MT
 gwagfa/MT
 gwagfeydd/MT
@@ -26521,7 +26521,7 @@ gwalbentydd/MT
 gwalcen/FMT
 gwalches/BMT
 Gwalchmai/MT
-gwalch/MTQ
+gwalch/MQT
 gwalchwerth/EMT
 gwalchwriaeth/MT
 gwalci/Mv
@@ -26604,13 +26604,13 @@ gwanhadur/HMT
 gwanhaëdig/MT
 gwanha/MRv
 gwanhau/MT
-gwanheui/kM
+gwanheui/Mk
 gwaniad/BMT
 gwani/Mv
 gwanio/MT
 gwanllyd/MT
+gwan/MQTv
 gwân/MT
-gwan/MTQv
 gwannaidd/MT
 gwann/M
 gwanobaith/MT
@@ -26635,7 +26635,7 @@ gwaradwyddus/MT
 Gwarafog/MT
 gwarafun/MTv
 gwaraidd/MT
-gwarant/BEMTQv
+gwarant/BEMQTv
 gwarantedig/MT
 gwarantiad/BMT
 gwarantu/MT
@@ -26657,7 +26657,7 @@ gwarchodaeth/MT
 gwarchodedig/MT
 gwarchodfa/MT
 gwarchodfeydd/MT
-gwarchodfil/XQ
+gwarchodfil/QX
 gwarchodle/EMT
 gwarchodliw/DMT
 gwarchodlu/EMT
@@ -26761,7 +26761,7 @@ gwasgarog/MT
 gwasgaru/MT
 gwasgarwedd/BMT
 gwasgblat/DMT
-gwasg/BMTQv
+gwasg/BMQTv
 gwasgbwynt/DMT
 gwasgedd/BMT
 gwasgeddedig/MT
@@ -26800,7 +26800,7 @@ gwastatir/EMT
 gwastat/MQ
 gwast/BMT
 gwaster/MT
-gwastraff/BMTQv
+gwastraff/BMQTv
 gwastrafflyd/MT
 gwastraffu/MT
 gwastraffus/MT
@@ -26814,7 +26814,7 @@ gwatwareg/MT
 gwatwargerddi/MT
 gwatwargerdd/MT
 gwatwariaeth/MT
-gwatwar/MTQv
+gwatwar/MQTv
 gwatwarus/MT
 gwaudd/MT
 gwau/MT
@@ -26832,7 +26832,7 @@ gwawdiaeth/MT
 gwawdi/MQv
 gwawdio/MT
 gwawdlun/DMT
-gwawdluni/XQ
+gwawdluni/QX
 gwawdlunydd/MT
 gwawdlyd/MT
 gwawdodyn/MT
@@ -26847,13 +26847,13 @@ gwawri/Mv
 gwawrio/MT
 Gwawrwen/MT
 gwawyffyn/MT
+gway/QX
 gwaywffon/MT
 gwaywffurf/MT
 gwaywffyn/MT
 gwayw-fwyeill/MT
 gwayw-fwyell/MT
 gwayw/MT
-gway/XQ
 Gwbert/MT
 gwchi/MT
 gwddf/MT
@@ -26866,7 +26866,7 @@ gwdennu/MT
 Gwdig/MT
 gwdihŵ/GIMT
 gwdyn/MT
-gwead/BMTP
+gwead/BMPT
 gweadedd/BMRT
 gweadeddu/MT
 gweadog/MT
@@ -26932,8 +26932,8 @@ gwefreiddio/MT
 gwefriad/MT
 gwefrio/MT
 gwefru/MT
+gwefryrr/QX
 gwefryrru/MT
-gwefryrr/XQ
 gwefus/BMRT
 gwefusedd/MT
 gwefusoliad/BMT
@@ -27007,8 +27007,8 @@ gweithgar/MT
 gweithgarwch/MT
 gweithgor/BMT
 gweithgynhyrchion/MT
+gweithgynhyrch/QX
 gweithgynhyrchu/MT
-gweithgynhyrch/XQ
 gweithiadwy/MT
 gweithia/MT
 gweithiau/MT
@@ -27021,7 +27021,7 @@ gweithlen/MT
 gweithlenni/MT
 gweithlu/EMT
 gweithredadwy/MT
-gweithred/EMTQv
+gweithred/EMQTv
 gweithrediadau/MT
 gweithrediad/BMRT
 gweithrediaeth/BMT
@@ -27063,7 +27063,7 @@ gwellen/MT
 gwellhad/MT
 gwellha/MRv
 gwellhau/MT
-gwellheui/kM
+gwellheui/Mk
 gwelliannau/MT
 gwelliann/Mv
 gwelliannu/MT
@@ -27160,7 +27160,7 @@ gwenyg/MT
 gwenynen/MT
 gwenynfa/MT
 gwenynfeydd/MT
-gwenyn/MTQ
+gwenyn/MQT
 Gwenynog/MT
 gweog/MT
 gweolion/MT
@@ -27224,7 +27224,7 @@ Gwersyllt/MT
 gwersyllty/MT
 gwersyllu/MT
 gwerthadwy/MT
-gwerth/EMTQv
+gwerth/EMQTv
 gwerthfarn/BMT
 gwerthfarniad/BMT
 gwerthfawredd/MT
@@ -27263,10 +27263,10 @@ gwesteiwraig/MT
 gwesteiwr/MT
 gwesteiwyr/MT
 gwestyaeth/MT
-gwesty/BMTQ
+gwesty/BMQT
 Gwesyn/MT
 gweuglwm/MT
-gweu/MTQ
+gweu/MQT
 gweunblu/MT
 gweundir/EMRT
 gweunydd/MT
@@ -27290,7 +27290,7 @@ gwibdacl/MT
 gwibdaith/MT
 gwibdeithiau/MT
 gwibdeithio/MT
-gwibdeithi/XQ
+gwibdeithi/QX
 gwib/DMT
 gwiberaidd/MT
 gwiber/KMRT
@@ -27338,7 +27338,7 @@ gwina/MT
 gwinau/MT
 gwinc/KMT
 gwinegr/MT
-gwin/EMTQv
+gwin/EMQTv
 gwingad/MT
 gwingar/MT
 gwingiad/BMT
@@ -27351,7 +27351,7 @@ gwiniolwydden/MT
 gwiniolwydd/MT
 gwinllan/FMT
 gwinllannoedd/MT
-gwinllann/XQ
+gwinllann/QX
 gwinllannydd/MT
 gwinrawn/MT
 gwinronyn/MT
@@ -27376,7 +27376,7 @@ gwirfodd/MT
 gwirfoddoldeb/MT
 gwirfoddoliaeth/MT
 gwirfoddoli/MT
-gwirfoddol/MTQv
+gwirfoddol/MQTv
 gwirfoddolrwydd/MT
 gwiriad/BMT
 gwiriadwy/MT
@@ -27400,7 +27400,7 @@ gwirota/MT
 gwirot/Mv
 gwiroty/MT
 gwirydd/CMT
-gwisg/EMTQv
+gwisg/EMQTv
 gwisgiad/MT
 gwisgi/MT
 gwisgoedd/MT
@@ -27421,11 +27421,11 @@ gwladfa/EMT
 gwladfeydd/MT
 gwladgar/MQRT
 gwladgarwch/MT
-gwlad/MTQ
+gwlad/MQT
 gwladoledig/MT
 gwladoliad/MT
 gwladoli/MT
-gwladol/MTPv
+gwladol/MPTv
 Gwladus/MT
 gwladweiniaeth/MT
 gwladweinwyr/MT
@@ -27436,7 +27436,7 @@ gwladwraidd/MT
 gwladwriaeth/BMRT
 gwladychfa/EMT
 gwladychiad/BMT
-gwladychiaeth/MTQ
+gwladychiaeth/MQT
 gwladych/MQRv
 gwladychu/MT
 Gwlad-yr-haf/MT
@@ -27448,7 +27448,7 @@ gwlanen/MT
 gwlanennaidd/MT
 gwlanenni/MT
 gwlanennog/MT
-gwlanenn/XQ
+gwlanenn/QX
 gwlaniach/MT
 gwlân/MT
 gwlan/Mv
@@ -27568,7 +27568,7 @@ gwneuthuradwy/MT
 gwneuthuredig/MT
 gwneuthuriad/MT
 gwneuthurion/MT
-gwneuthur/MTQ
+gwneuthur/MQT
 gwneuthuryn/MT
 gwnewch/MT
 gwnfetel/MT
@@ -27606,12 +27606,12 @@ gwraidd/MT
 gwraig/MT
 gwraint/MT
 gwra/MT
+gwrandä/QX
 gwrandawgar/MT
 gwrandawiad/BMT
 gwrandaw/MTv
 gwrandawn/MT
 gwrandawus/MT
-gwrandä/XQ
 gwrandewch/MT
 gwrandew/Mw
 gwrand/Mv
@@ -27724,13 +27724,13 @@ gwrteithiau/MT
 gwrteithi/MQv
 gwrteithio/MT
 gwrthallt/MT
-gwrthapeli/XQ
+gwrthapeli/QX
 gwrthapelydd/MT
 gwrth-argaenau/MT
 gwrthargaen/MT
 gwrtharogl/MT
+gwrthar/QX
 gwrtharwydd/CMT
-gwrthar/XQ
 gwrthasid/MT
 gwrthateb/CMT
 gwrthatyniad/BMT
@@ -27782,7 +27782,7 @@ gwrthddywediad/BMT
 gwrthddywed/Mv
 gwrthddywedyd/MT
 gwrthderfysgaeth/MT
-gwrthderfysg/XQ
+gwrthderfysg/QX
 gwrthdestun/BMT
 gwrthdlodi/MT
 gwrthdoradwy/MT
@@ -27810,8 +27810,8 @@ gwrthdyb/MT
 gwrthdyllu/MT
 gwrthdynfa/MT
 gwrthdyniad/BMT
+gwrthdynn/QX
 gwrthdynnu/MT
-gwrthdynn/XQ
 gwrthdyst/CMT
 gwrthdystiad/BMT
 gwrthdysti/MQv
@@ -27896,7 +27896,7 @@ gwrth-hawliad/BMT
 gwrth-heintiad/MT
 gwrth-heintiol/MT
 gwrth-heintio/MT
-gwrth-heinti/XQ
+gwrth-heinti/QX
 gwrth-heintus/MT
 gwrth-hiliaeth/MT
 gwrth-hiliol/MT
@@ -27930,11 +27930,11 @@ gwrthnysig/MT
 gwrthocsidydd/CMT
 gwrthodedig/CMT
 gwrthodiad/BMT
-gwrthod/MTQv
+gwrthod/MQTv
 gwrthodwragedd/MT
 gwrthodwraig/MT
 gwrtholeuaeth/MT
-gwrtholeu/XQ
+gwrtholeu/QX
 gwrtholew/MT
 gwrtholygol/MT
 gwrtho/MT
@@ -27954,7 +27954,7 @@ gwrthrycholdeb/MT
 gwrthrycholiad/BMT
 gwrthrychu/MT
 gwrthryfela/MT
-gwrthryfel/EMTQv
+gwrthryfel/EMQTv
 gwrthryfelgar/MT
 gwrthsafiad/MT
 gwrthsaf/MQRv
@@ -28013,9 +28013,9 @@ gwrthyriad/BMT
 gwrthyrru/MT
 gwrthysgrif/BMT
 gwrthysgrifennu/MT
-gwrwgydi/XQ
+gwrwgydi/QX
 gwrwst/MT
-gwrych/EMTQ
+gwrych/EMQT
 gwrychi/Mv
 gwrychio/MT
 gwrychyn/MT
@@ -28034,7 +28034,7 @@ gwrywdod/MT
 gwrywedd/MT
 gwrywgydiaeth/MT
 gwrywgydiol/MT
-gwrywgydi/XQ
+gwrywgydi/QX
 gwryw/KMRT
 gwsberen/MT
 gwsberis/MT
@@ -28189,10 +28189,10 @@ Gwylfai/MT
 gwylfa/MT
 gwylfâu/MT
 gwylfeydd/MT
+gwyliad/QX
 gwyliadwriaeth/BMT
 gwyliadwrus/MT
 gwyliadwrusrwydd/MT
-gwyliad/XQ
 gwyliau/MT
 gwylied/MT
 gwyliedydd/CMT
@@ -28395,7 +28395,7 @@ gwŷs/MT
 gŵys/MT
 gwystlad/MT
 gwystleidiaeth/MT
-gwystl/HMTQv
+gwystl/HMQTv
 gwystlo/MT
 gwystloriaeth/MT
 gwystn/Mv
@@ -28453,7 +28453,7 @@ gymio/MT
 gymnasia/T
 gymnasiwm/T
 gymnasteg/MT
-gymnast/XQ
+gymnast/QX
 gymnosbor/BMT
 gynaeciwm/MT
 gynaecoleg/MT
@@ -28471,7 +28471,7 @@ gynni/MT
 gynnoch/MT
 gynno/MT
 gynnon/MT
-gynn/XQ
+gynn/QX
 gynnyn/MT
 gynoeciwm/MT
 gynt/MT
@@ -28483,8 +28483,8 @@ gyrdd/MT
 gyredig/MT
 gyrfa/EMRT
 gyrfäol/MT
+gyrfä/QX
 gyrfâu/MT
-gyrfä/XQ
 gyrfeydd/MT
 gyriad/BMRT
 gyriannau/MT
@@ -28495,8 +28495,8 @@ gyr/MT
 gyrosgop/BMT
 gyrr/EMTv
 gyrroedd/MT
+gyrr/QX
 gyrru/MT
-gyrr/XQ
 gyrrydd/MT
 gyrwynt/EMT
 gysb/MT
@@ -29003,8 +29003,8 @@ heddychiad/B
 heddychiaeth
 heddychlon
 heddychol
+heddych/Qv
 heddychu
-heddych/vQ
 hedeg
 hedegog
 hedfa
@@ -30555,8 +30555,8 @@ iachaf/H
 iacha/HQRv
 iachau/H
 iacháu/H
+iachawd/QX
 iachawdwriaeth/H
-iachawd/XQ
 iached/H
 iach/HR
 iachusach/H
@@ -30580,7 +30580,7 @@ iambig/CH
 Iancïaid/H
 Ianci/HI
 iangaidd/H
-iang/XQ
+iang/QX
 Ianto/H
 iapiad/BH
 iardang/BH
@@ -30599,7 +30599,7 @@ iawndaliadau/H
 iawndda/H
 iawnderau/H
 iawnder/BH
-iawndyll/XQ
+iawndyll/QX
 iawnffydd/H
 iawnffyddiog/H
 iawn/HR
@@ -30666,7 +30666,7 @@ iepian/H
 ierdydd/H
 Iestyn/H
 Iesu/H
-Iesü/XQ
+Iesü/QX
 iet/BDH
 ietheg/H
 ieuafanedigaeth/H
@@ -30722,7 +30722,7 @@ iglw/H
 igneaidd/H
 igwana/HK
 Ilar/H
-ildfryd/XQ
+ildfryd/QX
 ildiad/BH
 ildi/Hv
 ildio/H
@@ -30894,7 +30894,7 @@ iorwg/H
 iota/H
 iotâu/H
 iot/DH
-ioti/XQ
+ioti/QX
 irach/H
 irad/H
 iraf/H
@@ -31233,11 +31233,11 @@ isranbarth/BHR
 israniad/BH
 isrannu/H
 is-reolaeth/H
+is-reol/QX
 is-reolwaith/H
 isreolwaith/H
 is-reolweithiau/H
 isreolweithiau/H
-is-reol/XQ
 isrywogaeth/BH
 is-safonol/H
 is-sector/BH
@@ -31256,7 +31256,7 @@ iswasanaethgar/H
 iswasanaeth/H
 iswasanaethu/H
 is-weinidog/CH
-is-weithi/XQ
+is-weithi/QX
 is-werth/H
 isweryd/H
 is-wisg/EH
@@ -31531,7 +31531,7 @@ laminâu
 laminedig
 lamineiddiad/B
 lamineiddio
-lamineiddi/XQ
+lamineiddi/QX
 laminiad/B
 laminiadu
 Lammas
@@ -31661,7 +31661,7 @@ leitmotif/B
 lelog
 lema
 lemata
-lemateiddi/XQ
+lemateiddi/QX
 lembo
 Lembo
 leming/G
@@ -32427,7 +32427,7 @@ llawd/M
 llawdriniad/BM
 llawdriniaeth/BMR
 llawdriniol/M
-llawdrini/XQ
+llawdrini/QX
 llaw-drin/M
 llawdrin/M
 llawdrwm/M
@@ -32435,7 +32435,7 @@ llawdryfer/BM
 llawdueddiad/M
 llawenha/Mv
 llawenhau/M
-llawenheui/kM
+llawenheui/Mk
 llawen/M
 llawenych/Mv
 llawenychu/M
@@ -32568,7 +32568,7 @@ lledferw/Mvw
 lled-feysydd/M
 lledfyw/M
 lled-glir/M
-lled-grefft/XQ
+lled-grefft/QX
 lled-gylchu/M
 lledgymryd/M
 lledgywir/M
@@ -32588,7 +32588,7 @@ lled-/M
 llednaid/M
 llednais/M
 llednant/M
-lledneidi/XQ
+lledneidi/QX
 lledneisrwydd/M
 llednentydd/M
 lledod/M
@@ -32661,10 +32661,10 @@ lleidr/M
 lleied/M
 Lleifior/M
 lleihad/BM
-lleihai/kM
+lleihai/Mk
 lleiha/MRv
+lleihä/QX
 lleihau/M
-lleihä/XQ
 lleill/M
 llei/M
 lleinasiad/BM
@@ -32705,7 +32705,7 @@ llengar/M
 lleng/EMR
 llengig/EM
 llên-gylch/EM
-llenhoff/XQ
+llenhoff/QX
 llên-ladrad/BM
 llên-ladrata/M
 llên-ladrat/Mv
@@ -32864,7 +32864,7 @@ llidus/M
 lliein-blyg/M
 llieingant/M
 llieiniau/M
-llieini/XQ
+llieini/QX
 llifan/Mv
 llifanu/M
 llifanwyr/M
@@ -32930,7 +32930,7 @@ llin-borthiad/BM
 llinborthiad/BM
 llin-borthi/M
 llinborthi/M
-llin-borth/XQ
+llin-borth/QX
 llindag/BMQv
 llindagiad/BM
 llindagu/M
@@ -33029,7 +33029,7 @@ llodi/M
 llod/Mv
 llodrau/M
 llodrog/M
-llodr/XQ
+llodr/QX
 llodrydd/CM
 lloeau/M
 Lloegr/M
@@ -33058,7 +33058,7 @@ lloffyn/M
 llofnaid/M
 llofneidiau/M
 llofneidio/M
-llofneidi/XQ
+llofneidi/QX
 llofniad/BM
 llofnod/BCMQv
 llofnodiad/BM
@@ -33168,6 +33168,7 @@ llowc/M
 Llowes/M
 Lloyd/M
 Lloyds/M
+ll/QX
 lluarth/BM
 lluchddu/M
 llucheden/M
@@ -33199,7 +33200,7 @@ llueiddiaid/M
 llu/EM
 lluestai/M
 lluest/BMQv
-lluestei/XQ
+lluestei/QX
 lluestfa/EM
 lluestfeydd/M
 Lluestowain/M
@@ -33218,7 +33219,7 @@ llumon/M
 Llundain-fach/M
 Llundain/M
 Llundeinig/M
-Llundeini/XQ
+Llundeini/QX
 llun/DM
 llungar/M
 llungopïau/M
@@ -33243,7 +33244,7 @@ llunieidd-dra/M
 lluNI/Mv
 lluniol/M
 llunio/M
-lluni/XQ
+lluni/QX
 llun-recordydd/CM
 llunwedd/BM
 lluosafog/M
@@ -33321,13 +33322,13 @@ llwfrgi/M
 llwfrgwn/M
 llwfrha/Mv
 llwfrhau/M
-llwfrheui/kM
+llwfrheui/Mk
 llwfr/M
 llwfryn/M
 llwfrynnod/M
 llwglyd/M
 llwg/Mv
-llwgr-fasnach/XQ
+llwgr-fasnach/QX
 llwgr/M
 llwgrwobr/M
 llwgrwobrwyaeth/M
@@ -33438,7 +33439,7 @@ llwyrglo/M
 llwyrlanha/Mv
 llwyrlanhau/M
 llwyrlosgi/M
-llwyrymatali/XQ
+llwyrymatali/QX
 llwyrymatal/Mv
 llwyrymwrthodiad/M
 llwyrymwrthod/MQRv
@@ -33457,12 +33458,11 @@ llwytho-mwdwl/M
 llwythydd/CM
 Llwytmor/M
 llwytu/M
-ll/XQ
 llychau/M
 llychlyd/M
 Llychlyn/M
 Llychlynnaidd/M
-Llychlynn/XQ
+Llychlynn/QX
 llychwin/Mv
 llychwino/M
 llychyn/M
@@ -33508,7 +33508,7 @@ llyfned/M
 llyfngrwn/M
 llyfnha/Mv
 llyfnhau/M
-llyfnheui/kM
+llyfnheui/Mk
 llyfnion/M
 llyfn/MQv
 llyfnochrau/M
@@ -33529,13 +33529,13 @@ llyfrgi/M
 llyfrgwn/M
 llyfrifeg/M
 llyfrifiad/BM
-llyfrif/XQ
+llyfrif/QX
 llyfrithen/M
 llyfrithennod/M
 llyfrnod/BM
 llyfrothen/M
 llyfrothennod/M
-llyfr-rwym/XQ
+llyfr-rwym/QX
 llyfru/M
 llyfrwerth/MQv
 llyfrwerthu/M
@@ -33660,7 +33660,7 @@ llysblant/M
 llysblentyn/M
 llyschwaer/M
 llyschwiorydd/M
-llysddadleu/XQ
+llysddadleu/QX
 Llysdinam/M
 llys/EMQR
 llysenw/BMvw
@@ -33674,7 +33674,7 @@ llysferched/M
 llysferch/M
 llysfrawd/M
 llysfrodyr/M
-llysfwytä/XQ
+llysfwytä/QX
 llysgenadaethau/M
 llysgenhadaeth/M
 llysgenhadol/M
@@ -33695,7 +33695,7 @@ llysieufeydd/M
 llysieulyfr/BM
 llysieuog/M
 llysieuol/M
-llysieu/XQ
+llysieu/QX
 llysieuydd/CM
 llysieuyn/M
 llysiol/M
@@ -33729,7 +33729,7 @@ llythrennog/M
 llythrennol/M
 llythrennu/M
 llythrennydd/M
-llythrenol/XQ
+llythrenol/QX
 llythrenwasg/M
 llythrenweisg/M
 llythrenyddion/M
@@ -33758,7 +33758,7 @@ Llywern/M
 Llywernog/M
 llyweth/BM
 llywiad/M
-llywiawd/XQ
+llywiawd/QX
 llywi/Mv
 llywio/M
 llywionen/M
@@ -33766,7 +33766,7 @@ llywodraeth/BMQRv
 llywodraethiad/M
 llywodraethiant/M
 llywodraethu/M
-llyw-/XQ
+llyw-/QX
 llywydd/CMRv
 llywyddiaeth/BM
 llywyddu/M
@@ -34453,7 +34453,7 @@ Marchell/M
 marchelod/M
 marches/BM
 marchfieri/M
-marchfil/XQ
+marchfil/QX
 marchgae/BM
 marchi/Mv
 marchio/M
@@ -34467,7 +34467,7 @@ marchnadfa/EM
 marchnadwerth/M
 Marchnant/M
 marchnata/M
-marchnatä/XQ
+marchnatä/QX
 marchnat/MQv
 marchnerth/EM
 marchocau/M
@@ -34545,8 +34545,8 @@ marsial/GM
 marsialu/M
 marsialydd/CM
 marsiandïaeth/M
-marsiand/XQ
-marsianfanc/XQ
+marsiand/QX
+marsianfanc/QX
 marsipán/M
 marswpial/KM
 mart/BIM
@@ -34712,7 +34712,7 @@ mawrfrydigrwydd/M
 mawrhad/M
 mawrha/Mv
 mawrhau/M
-mawrheui/kM
+mawrheui/Mk
 mawrhydi/M
 mawrion/M
 mawr/M
@@ -34915,7 +34915,7 @@ meim/DM
 meimi/Mv
 meimio/M
 meinciau/M
-meinci/XQ
+meinci/QX
 meincnod/BMv
 meincnodi/Mv
 meincwaith/M
@@ -34936,7 +34936,7 @@ meingledd/M
 meingleddyfau/M
 meinha/Mv
 meinhau/M
-meinheui/kM
+meinheui/Mk
 meini/M
 meinion/M
 Meinir/M
@@ -35096,7 +35096,7 @@ memoranda/M
 memorandwm/M
 memrwn/M
 memrynau/M
-memryn/XQ
+memryn/QX
 memyn/FM
 Menai/M
 Mendelaidd/M
@@ -35190,7 +35190,7 @@ Merofingaidd/M
 merog/M
 meromorffig/M
 Mers/M
-mers/XQ
+mers/QX
 merthyrdod/M
 merthyr/HMv
 merthyri/M
@@ -36010,7 +36010,7 @@ morddwyd/MR
 morddwydydd/M
 mordeithiau/M
 mordeithio/M
-mordeithi/XQ
+mordeithi/QX
 mordent/BM
 Mordeyrn/M
 mordwll/M
@@ -36033,7 +36033,7 @@ morffyrdd/M
 morfil/KM
 morfilltir/EM
 môr-filltir/EM
-môr-fil/XQ
+môr-fil/QX
 morforwyn/M
 môr-forwyn/M
 morforynion/M
@@ -36074,7 +36074,7 @@ morgryn/M
 morgwn/M
 môr-gyllell/M
 môr-gyllyll/M
-môr-her/XQ
+môr-her/QX
 morhwch/M
 morhychod/M
 Morien/M
@@ -36169,13 +36169,13 @@ motiff/BM
 Mot/M
 MotoCross/M
 motor-beic/IM
-motorbeici/XQ
+motorbeici/QX
 motor/BM
 Mouse/M
 mowld/DM
 mowldin/BM
 mowldio/M
-mowldi/XQ
+mowldi/QX
 mownt/DM
 mowntiedig/M
 mownti/Mv
@@ -36377,8 +36377,8 @@ mwyglo/M
 mwyhad/M
 mwyhadur/HM
 mwyha/MRv
+mwyhä/QX
 mwyhau/M
-mwyhä/XQ
 mwy/M
 mwynach/M
 mwynaf/M
@@ -36419,7 +36419,7 @@ mwynheaist/M
 mwynheid/M
 mwynhei/M
 mwynheir/M
-mwynheui/kM
+mwynheui/Mk
 mwynhewch/M
 mwynheych/M
 mwyniannau/M
@@ -36504,7 +36504,7 @@ mygfeydd/M
 mygiad/BM
 mygiau/M
 mygio/M
-mygi/XQ
+mygi/QX
 myglyd/M
 myglys/M
 mỳg/M
@@ -36859,12 +36859,12 @@ negodwyr
 negro
 negroaid
 negroes/B
+negydd/Cv
 negydden
 negyddiad
 negyddiaeth
 negyddol
 negyddu
-negydd/vC
 Nehemeia
 neiaint
 neidiannau
@@ -37024,6 +37024,7 @@ newydda
 newyddair
 newydd-anedig
 newyddbeth/B
+newydd/CQv
 newydd-ddyfodiad
 newydd-ddyfodiaid
 newydd-deb
@@ -37047,7 +37048,6 @@ newyddlen
 newyddlenni
 newyddleuad/B
 newyddloer/B
-newydd/QCv
 newyddu
 newyddwch
 newyn/Bv
@@ -37510,7 +37510,7 @@ ocsiwn/H
 ocsiwnïar/HI
 ocsiwnïer/H
 ocsiynau/H
-ocsiyn/XQ
+ocsiyn/QX
 octagon/BH
 octahedron/BH
 octannau/H
@@ -37659,7 +37659,7 @@ offeru/H
 offeryn/FH
 offeryniaeth/BH
 offerynnol/H
-offerynn/XQ
+offerynn/QX
 offerynnydd/H
 offerynoliaeth/H
 offerynyddion/H
@@ -37807,7 +37807,7 @@ olgart/H
 olgeirt/H
 ôl-gerbyd/BH
 ôl-gic/DH
-ôl-glepi/XQ
+ôl-glepi/QX
 ôl-gripian/H
 ôl-groesiad/BH
 ôl-groniad/BH
@@ -37852,6 +37852,7 @@ olnod/BH
 ôl-olwg/H
 ôl-orbitol/H
 olp/BH
+ol/QX
 olraddadwy/H
 ôl-raddedig/CH
 ôl-radd/H
@@ -37884,7 +37885,6 @@ olwyndroi/H
 olwynog/H
 olwyno/H
 ôl-wynt/EH
-ol/XQ
 ôl-ymennydd/H
 ôl-ymenyddiau/H
 Olympaidd/H
@@ -38037,7 +38037,7 @@ Ordofigaidd/H
 orendai/H
 orendy/H
 oren/H
-Oren/XQ
+Oren/QX
 Orffiaeth/H
 organaidd/H
 organ/BH
@@ -38119,7 +38119,7 @@ osgoedig/H
 osgo/Hv
 osgoi/H
 osgói/H
-osgö/XQ
+osgö/QX
 os/H
 Osian/H
 osio/H
@@ -38197,7 +38197,7 @@ padelli/LMT
 padellog/LMT
 padera/LMT
 paderau/LMT
-pader/BLMTQv
+pader/BLMQTv
 padin/LMT
 padio/LMT
 padl/BLMT
@@ -38254,7 +38254,7 @@ Pale/LMT
 paleobotaneg/LMT
 paleoddaearyddiaeth/LMT
 paleograffeg/LMT
-paleograff/XQ
+paleograff/QX
 paleolithig/LMT
 paleontoleg/LMT
 palesteina/LMT
@@ -38285,10 +38285,10 @@ palmant/BLMTv
 palmantog/LMT
 palmantu/LMT
 palmentydd/LMT
+palm/QX
 pa/LMT
 palmwydden/LMT
 palmwydd/LMT
-palm/XQ
 palod/LMT
 palp/BDLMT
 palpws/LMT
@@ -38298,7 +38298,7 @@ palu/LMT
 palwyden/FLMT
 pamau/LMT
 pamffledau/LMT
-pamffled/BLMTQ
+pamffled/BLMQT
 pamffledi/LMT
 pamffledu/LMT
 pamffledyn/LMT
@@ -38338,9 +38338,9 @@ panlwch/LMT
 panlychu/LMT
 pannas/LMT
 pannog/LMT
+pann/QX
 pannu/LMT
 pannwl/LMT
-pann/XQ
 panorama/ILMT
 panoramâu/LMT
 panoramig/LMT
@@ -38396,7 +38396,7 @@ papiliffurf/LMT
 papi/LMT
 Papua/LMT
 papurach/LMT
-papur/BLMTQv
+papur/BLMQTv
 papurfrwynen/LMT
 papurfrwyn/LMT
 papuro/LMT
@@ -38516,11 +38516,11 @@ parhad/LMT
 parhâi/LMT
 parha/LMRv
 parhânt/LMT
+parhä/QX
 parhau/LMT
 parhaus/LMT
 parhauster/LMT
-parhä/XQ
-parheui/kLM
+parheui/LMk
 pariad/BLMT
 pario/LMT
 Paris/LMT
@@ -38547,7 +38547,7 @@ Parrog/LMT
 Parry/LMT
 parsel/BLMT
 parseli/LMT
-pars/XQ
+pars/QX
 parth/BLMTv
 parthed/LMT
 parthenogenesis/LMT
@@ -38595,7 +38595,7 @@ pastai/LMT
 pasta/LMT
 past/BLMT
 pasteiod/LMT
-pastei/XQ
+pastei/QX
 pastel/BLMT
 pasteli/LMT
 pasten/LMT
@@ -38642,7 +38642,7 @@ patrieirch/LMT
 patrolau/LMT
 patroleg/LMT
 patrolio/LMT
-patroli/XQ
+patroli/QX
 patrôl/LMT
 patronymig/LMT
 patrwm/LMT
@@ -38719,7 +38719,7 @@ ped/LMTv
 pedoffeil/LMT
 pedoffiliaid/LMT
 pedoffilydd/CLMT
-pedol/BLMTQv
+pedol/BLMQTv
 pedoli/LMT
 pedrain/LMT
 Pedran/LMT
@@ -38817,8 +38817,8 @@ peirianegol/LMT
 peiriannau/LMT
 peirianneg/LMT
 peiriannol/LMT
+peiriann/QX
 peiriannu/LMT
-peiriann/XQ
 peiriannydd/LMT
 peiriant/LMT
 peirianwaith/LMT
@@ -38842,8 +38842,8 @@ pelagra/LMT
 pelau/LMT
 pelawd/BLMT
 Pelcam/LMT
-peldroedi/XQ
-pêl-droedi/XQ
+peldroedi/QX
+pêl-droedi/QX
 pêl-droed/LMT
 peledio/LMT
 peledu/LMT
@@ -38877,7 +38877,7 @@ pellgyrhaeddol/LMT
 pellhad/LMT
 pellha/LMv
 pellhau/LMT
-pellheui/kLM
+pellheui/LMk
 pell/LMT
 pêl/LMT
 pellter/BELMT
@@ -38886,12 +38886,12 @@ pêl-lwybrwr/LMT
 pelmet/BLMT
 pe/LMT
 pelmynt/LMT
+pel/QX
 pelresi/LMT
 pelres/LMT
 pêl-rwyd/LMT
 pelten/LMT
 pelts/LMT
-pel/XQ
 pelydrau/LMT
 pelydrau-X/LMT
 pelydr/BLMRTv
@@ -38922,7 +38922,7 @@ penarglwydd/LMT
 Penarlâg/LMT
 Penarth/LMT
 penawdau/LMT
-penawd/XQ
+penawd/QX
 penawdydd/LMT
 penbaladr/LMT
 Penbedw/LMT
@@ -38949,10 +38949,10 @@ pencadfridog/CLMT
 pencadlys/ELMT
 Pencaenewydd/LMT
 Pencaerau/LMT
+pencamp/QX
 pencampwragedd/LMT
 pencampwraig/LMT
 pencampwriaeth/BLMT
-pencamp/XQ
 Pencarreg/LMT
 pencawna/LMT
 pencawn/LMv
@@ -39082,8 +39082,8 @@ Pengryniad/LMT
 pengryniaid/LMT
 Pengryniaid/LMT
 pengrynion/LMT
-Pengryn/XQ
-pen-gweithi/XQ
+Pengryn/QX
+pen-gweithi/QX
 Pengwern/LMT
 pengwin/GLMT
 pengwrthsodd/LMT
@@ -39214,7 +39214,7 @@ pensiliau/LMT
 pensiwn/LMT
 pensiynadwy/LMT
 pensiynau/LMT
-pensiyn/XQ
+pensiyn/QX
 penstiff/LMT
 penswyddog/CLMT
 pensyfrdandod/LMT
@@ -39331,7 +39331,7 @@ Pen-y-crug/LMT
 Pen-y-cwm/LMT
 Penydarren/LMT
 penyd/DLMT
-penydeg/LMTQ
+penydeg/LMQT
 penydfa/ELMT
 penydfan/FLMT
 penydfaoedd/LMT
@@ -39394,7 +39394,7 @@ perchenogion-ddeiliaid/LMT
 perchenogion/LMT
 perchenog/LMv
 perchentyaeth/LMT
-perchenty/XQ
+perchenty/QX
 perchnogaeth/LMT
 perchnogi/LMT
 perchnogion/LMT
@@ -39517,8 +39517,8 @@ Persieg/LMT
 persli/LMT
 pêrs/LMT
 personadiad/LMT
+personad/QX
 personadu/LMT
-personad/XQ
 personaidd/LMT
 person/BGLMT
 persondai/LMT
@@ -39662,7 +39662,7 @@ pib/BLMTv
 pibed/BLMT
 pibedu/LMT
 pibellau/LMT
-pibell/BLMTQ
+pibell/BLMQT
 pibelli/LMT
 pibellog/LMT
 piben/LMT
@@ -39692,9 +39692,9 @@ picas/BLMT
 picau/LMT
 pic/BLMT
 picedi/LMT
-piced/LMTQv
+piced/LMQTv
 picedu/LMT
-picell/BLMTQv
+picell/BLMQTv
 picellu/LMT
 pice/LMT
 picen/LMT
@@ -39873,7 +39873,7 @@ pitran/LMT
 pitsa/ILMT
 pitsh/LMT
 pitsio/LMT
-pitsi/XQ
+pitsi/QX
 pitẅidol/LMT
 pitw/LMT
 piw/BKLMT
@@ -39896,7 +39896,7 @@ plac/DLMT
 placed/BLMT
 placedi/LMT
 plad/LMT
-pladur/DLMTQv
+pladur/DLMQTv
 pladuro/LMT
 plaenach/LM
 plaenaf/LM
@@ -39967,11 +39967,11 @@ plastai/LMT
 plaster/BLMT
 plasteri/LMT
 plastid/BLMT
-plastig/BCLMTQ
+plastig/BCLMQT
 plastigrwydd/LMT
 plastigydd/CLMT
 plastisin/BLMT
-plastr/BLMTQv
+plastr/BLMQTv
 plastro/LMT
 plasty/LMT
 Plas-y-ward/LMT
@@ -40018,7 +40018,7 @@ pleidgarwch/LMT
 pleidiaeth/LMT
 pleidiau/LMT
 pleidi/LMQv
-pleidiol/LMTP
+pleidiol/LMPT
 pleidio/LMT
 pleidlais/LMT
 pleidleisiau/LMT
@@ -40032,7 +40032,7 @@ pleion/LMT
 pleiotropedd/LMT
 Pleistosen/LMT
 plencyn/LMT
-plenipotensi/XQ
+plenipotensi/QX
 plenn/LMw
 plentyndod/LMT
 plentyneiddiwch/LMT
@@ -40049,7 +40049,7 @@ plesi/LMv
 plesio/LMT
 plet/DLMT
 pleten/LMT
-pleth/BLMTPv
+pleth/BLMPTv
 plethdorch/BLMT
 plethedig/LMT
 plethen/LMT
@@ -40129,12 +40129,12 @@ plwyfog/CLMT
 plwyfoldeb/LMT
 plwyfoli/LMT
 plwyfolion/LMT
-plwyfol/LMTPv
+plwyfol/LMPTv
 plwyfo/LMT
 plwyfolyn/LMT
 plwyfwas/LMT
 plwyfweision/LMT
-plwyfydd/LMTP
+plwyfydd/LMPT
 plwy/LMT
 plwynedd/LMT
 plwyn/LMRT
@@ -40143,8 +40143,8 @@ plyci/LMQv
 plycio/LMT
 plygadwy/LMT
 plygain/LMT
+plyg/CLMPQTv
 plŷg/CLMT
-plyg/CLMTPQv
 plyg-ddalen/FLMT
 plygeiniau/LMT
 plygeiniol/LMT
@@ -40172,9 +40172,9 @@ plymi/LMv
 plymio/LMT
 plymiwr/LMT
 plymlys/LMT
+plym/QX
 plymus/LMT
 plymwl/LMT
-plym/XQ
 plymylau/LMT
 plysau/LMT
 plỳsh/LMT
@@ -40210,20 +40210,20 @@ podia/LMT
 podiatreg/LMT
 podiwm/LMT
 podlediad/BLMT
-podled/LMTQ
+podled/LMQT
 podledu/LMT
 podsol/BLMT
 podsoleiddi/LMv
 podsoleiddio/LMT
 podsolig/LMT
-poen/BLMTQv
+poen/BLMQTv
 poendod/LMT
 poenedigaeth/BLMT
 poenfa/ELMT
 poenfâu/LMT
 poenfeydd/LMT
 poeni/LMT
-poenleddf/XQ
+poenleddf/QX
 poenliniaredd/LMT
 poenliniarol/LMT
 poenliniarwyr/LMT
@@ -40431,8 +40431,8 @@ porchell/LMT
 porc/LMT
 porcyn/LMT
 porfa/ELMT
+porfä/QX
 porfâu/LMT
-porfä/XQ
 porfedog/LMT
 porfelaeth/LMT
 porfel/ELMTv
@@ -40632,14 +40632,14 @@ preceptor/GLMT
 preceptoriaeth/BLMT
 predela/LMT
 predelâu/LMT
-pregeth/BLMTQv
+pregeth/BLMQTv
 pregethiad/BLMT
 pregethu/LMT
 pregethwrol/LMT
 pregowtha/LMT
 pregowthan/LMT
 preiddiau/LMT
-preiddi/XQ
+preiddi/QX
 preifateiddio/LMT
 preifatiriaid/LMT
 preifatîr/LMT
@@ -40705,7 +40705,7 @@ preswylfa/LMT
 preswylfeydd/LMT
 preswylfod/LMT
 preswyliad/BLMT
-preswyliaeth/LMTP
+preswyliaeth/LMPT
 preswyli/LMQv
 preswylio/LMT
 preswyl/LMT
@@ -40714,7 +40714,7 @@ presyddu/LMT
 pric/DLMT
 Price/LMT
 pricio/LMT
-prici/XQ
+prici/QX
 pricsiwn/LMT
 priddeg/LMRT
 priddell/BLMT
@@ -40784,7 +40784,7 @@ prinfwyn/BLMT
 prinhad/LMT
 prinha/LMv
 prinhau/LMT
-prinheui/kLM
+prinheui/LMk
 prinion/LM
 prin/LMT
 prinn/LM
@@ -40804,7 +40804,7 @@ priodfeibion/LMT
 priodferched/LMT
 priodferch/LMT
 priodi/LMT
-priod/LMTPv
+priod/LMPTv
 priodoldeb/BLMT
 priodolder/LMT
 priodoledd/BLMT
@@ -40876,12 +40876,12 @@ profedig/CLMT
 profedigeion/LMT
 Profensaidd/LMT
 Profensaleg/LMT
-Profens/XQ
+Profens/QX
 Professional/LMT
 proffas/LMT
 proffes/BLMTv
 proffesedig/LMT
-proffesiwn/LMTP
+proffesiwn/LMPT
 proffesiynau/LMT
 proffesiynoldeb/LMT
 proffesiynoliaeth/LMT
@@ -40904,7 +40904,7 @@ proffwydo/LMT
 proffylacsis/LMT
 profiad/BLMRT
 profiannaeth/BLMT
-profiann/XQ
+profiann/QX
 profiant/LMT
 profiedydd/CLMT
 profi/LMT
@@ -40951,9 +40951,9 @@ proselytiaeth/LMT
 proselytio/LMT
 prosenia/LMT
 proseniwm/LMT
-proses/BLMTPv
+proses/BLMPTv
 prosesu/LMT
-prosesydd/CLMTP
+prosesydd/CLMPT
 prosiect/BLMT
 Prosser/LMT
 prostad/BLMT
@@ -41002,7 +41002,7 @@ pruddglwyf/LMT
 pruddglwyfus/LMT
 pruddha/LMv
 pruddhau/LMT
-pruddheui/kLM
+pruddheui/LMk
 prudd/LMT
 prun/LMT
 prwnsen/LMT
@@ -41021,7 +41021,7 @@ pryddest/BLMT
 Prydeindod/LMT
 Prydeiniaid/LMT
 Prydeinig/LMT
-Prydeini/XQ
+Prydeini/QX
 pryder/HLMTv
 pryderu/LMT
 pryderus/LMT
@@ -41078,8 +41078,8 @@ prynhawngwaith/LMT
 pryniad/BLMT
 pryniannau/LMT
 pryniant/LMT
+pryn/LMQTv
 prŷn/LMT
-pryn/LMTQv
 prynu/LMT
 prynwriaeth/LMT
 Prysaeddfed/LMT
@@ -41136,7 +41136,7 @@ puraf/LM
 purdan/BLMT
 purddu/LMT
 purdebaeth/LMT
-purdeb/LMTQ
+purdeb/LMQT
 puredd/LMT
 puredigaeth/BLMT
 puredig/LMT
@@ -41148,7 +41148,7 @@ purfa/LMT
 purfeydd/LMT
 puriad/LMT
 purion/LMT
-pur/LMTQv
+pur/LMQTv
 purolchi/LMT
 puro/LMT
 puror/LMT
@@ -41267,7 +41267,7 @@ pwylldrais/LMT
 pwylledd/LMT
 pwyllgar/LMT
 pwyllgora/LMT
-pwyllgor/BLMTQv
+pwyllgor/BLMQTv
 pwyllgorfa/LMT
 pwyllgorfeydd/LMT
 pwyll/LMTv
@@ -41284,7 +41284,7 @@ pwyntio/LMT
 pwyntydd/CLMT
 pwyo/LMT
 pwysau/LMT
-pwys/BLMTQv
+pwys/BLMQTv
 pwysdal/LMT
 pwysedd/BLMT
 pwysedig/LMT
@@ -41311,7 +41311,7 @@ pwysoliad/BLMT
 pwysoli/LMT
 pwyso/LMT
 pwysyn/FLMT
-pwyth/BLMTQv
+pwyth/BLMQTv
 pwythi/LMT
 pwytho/LMT
 pwythwaith/LMT
@@ -41320,7 +41320,7 @@ pybyr/LMT
 pybyrwch/LMT
 pycnostylig/LMT
 pydew/BLMT
-pydl/XQ
+pydl/QX
 pydrad/LMT
 pydradwy/LMT
 pydredd/LMT
@@ -41354,7 +41354,7 @@ pylni/LMT
 pyloriad/BLMT
 pyloriant/LMT
 pylori/LMT
-pylor/LMTQ
+pylor/LMQT
 pylorws/LMT
 pylsadu/LMT
 pylsadur/HLMT
@@ -41382,10 +41382,10 @@ pynsiau/LMT
 pynt/DLMT
 pyntiau/LMT
 pyntio/LMT
-pynti/XQ
+pynti/QX
 pyometria/LMT
 pyorhea/LMT
-pyped/BLMTQ
+pyped/BLMQT
 pyramidaidd/LMT
 pyramid/DLMT
 pyrcs/LMT
@@ -41437,7 +41437,7 @@ Pythagoras/LMT
 pythefnos/BLMT
 pytiau/LMT
 pytio/LMT
-pyti/XQ
+pyti/QX
 Qatar
 Québec
 Québecois
@@ -41819,9 +41819,9 @@ rhaglennig/M
 rhaglenni/M
 rhaglennog/M
 rhaglennol/M
+rhaglenn/QX
 rhaglennu/MP
 rhaglennwyr/M
-rhaglenn/XQ
 rhaglennydd/M
 rhaglith/DEM
 rhagliwio/M
@@ -42082,7 +42082,7 @@ rheiddiadur/HM
 rheiddiau/M
 rheiddi/MRv
 rheiddio/M
-rheideg/XQ
+rheideg/QX
 rheidiau/M
 rheidiol/M
 Rheidol/M
@@ -42103,7 +42103,7 @@ rheitheg/M
 rheithegydd/CM
 rheithfarn/BM
 rheithgor/BM
-rheithi/XQ
+rheithi/QX
 rheithor/CGM
 rheithordai/M
 rheithordy/M
@@ -42236,9 +42236,9 @@ Rhiangoll/M
 Rhian/M
 Rhiannon/M
 rhianta/M
-rhiant-gynorthwy/XQ
+rhiant-gynorthwy/QX
 rhiant-gynorthwyydd/M
-rhiant-lywodraeth/XQ
+rhiant-lywodraeth/QX
 rhiant/M
 Rhianwen/M
 Rhianydd/M
@@ -42309,7 +42309,7 @@ rhinflas/BM
 rhingyll/GKM
 rhiniog/BM
 rhiniol/M
-rhini/XQ
+rhini/QX
 rhinoseros/GKM
 rhintach/M
 rhintio/M
@@ -42557,7 +42557,7 @@ Rhufeiniaid/M
 Rhufeinig/M
 Rhufeinio/M
 Rhufeiniwr/M
-Rhufein/XQ
+Rhufein/QX
 rhufell/KM
 rhuglad/BM
 rhuglder/M
@@ -42576,6 +42576,7 @@ Rhun/M
 rhuog/M
 rhuo/M
 rhupunt/M
+rhü/QX
 rhus/EM
 rhusiant/M
 rhusiedig/M
@@ -42587,7 +42588,6 @@ rhuthr/BMv
 rhuthro/M
 Rhuthun/M
 rhuw/M
-rhü/XQ
 rhwbiad/BM
 rhwbian/M
 rhwbi/MQv
@@ -42610,7 +42610,7 @@ rhwydded/M
 rhwyddhad/M
 rhwyddha/Mv
 rhwyddhau/M
-rhwyddheui/kM
+rhwyddheui/Mk
 rhwyddineb/M
 rhwydd/M
 rhwyddur/M
@@ -42710,11 +42710,11 @@ rhydd-dorri/M
 Rhyd-ddu/M
 rhydded/M
 Rhydderch/M
-rhyddewyllys/XQ
+rhyddewyllys/QX
 rhyddfarn/BM
 rhyddfarniad/BM
 rhyddfarnu/M
-rhydd-feddyli/XQ
+rhydd-feddyli/QX
 rhyddfenter/M
 rhyddfraint/M
 rhyddfreiniad/M
@@ -42728,10 +42728,10 @@ rhyddfrydig/M
 rhyddfrydigrwydd/M
 rhyddfrydoli/M
 Rhyddfrydol/M
+rhyddfryd/QX
+Rhyddfryd/QX
 Rhyddfrydwragedd/M
 Rhyddfrydwraig/M
-rhyddfryd/XQ
-Rhyddfryd/XQ
 rhyddfynegiant/M
 rhyddganon/M
 rhyddgymdeithasiad/M
@@ -42740,9 +42740,9 @@ rhyddgysylltiad/M
 rhyddhad/BM
 rhyddhâi/M
 rhyddha/MRv
+rhyddhä/QX
 rhyddhau/M
-rhyddhä/XQ
-rhyddheui/kM
+rhyddheui/Mk
 rhyddiaith/M
 rhyddidau/M
 rhyddid/M
@@ -42857,7 +42857,7 @@ rhyngbarthol/M
 rhyngbersonol/M
 rhyngberthynas/M
 rhyngberthynol/M
-rhyngbleidi/XQ
+rhyngbleidi/QX
 rhyngbroffesiynol/M
 rhyngchwartel/BM
 rhyngddi/M
@@ -42876,7 +42876,7 @@ rhyng-drofannol/M
 rhyngdrofannol/M
 rhyngdrymlinol/M
 rhyngdyllau/M
-rhyngfasnach/XQ
+rhyngfasnach/QX
 rhyngfertebrol/M
 rhyngffas/BM
 rhyngffasgellol/M
@@ -42951,7 +42951,7 @@ rhysgenni/M
 Rhys/M
 Rhystud/M
 Rhyswg/M
-rhysyf/XQ
+rhysyf/QX
 Rhytalog/M
 Rhythallt/M
 rhythm/BM
@@ -46226,7 +46226,7 @@ tab/DLMT
 tabernacl/BLMTv
 tabernaclu/LMT
 tablaidd/LMT
-tabl/BLMTQ
+tabl/BLMQT
 tabledig/LMT
 tabledi/LMT
 tabled/LMT
@@ -46251,10 +46251,10 @@ tabyrddwyr/LMT
 tac/DLMT
 Tachwedd/LMT
 tacio/LMT
-taci/XQ
+taci/QX
 taclad/BLMT
 taclau/LMT
-tacl/BLMTQv
+tacl/BLMQTv
 tacliad/BLMT
 taclo/LMT
 taclu/LMT
@@ -46295,7 +46295,7 @@ tadog/LMv
 tadolaeth/LMT
 tad-yng-nghyfraith/LMT
 taele/LMT
-taen/CLMTQv
+taen/CLMQTv
 taenedig/LMT
 taenelliad/BLMT
 taenell/LMQv
@@ -46322,7 +46322,7 @@ taerineb/LMT
 taer/LMTv
 taerni/LMT
 taeru/LMT
-tafarn/BLMTQ
+tafarn/BLMQT
 tafarndai/LMT
 tafarndy/LMT
 Tafarngelyn/LMT
@@ -46339,13 +46339,13 @@ taffreli/LMT
 taffrel/LMT
 tafladwy/LMT
 tafl-arfau/LMT
-tafl/BLMTQv
+tafl/BLMQTv
 tafledd/BLMT
 tafledigion/LMT
 taflegrau/LMT
 taflegryn/LMT
 tafleisiaeth/LMT
-tafleisi/XQ
+tafleisi/QX
 tafleisydd/CLMT
 taflen/FLMT
 tafleniad/LMT
@@ -46367,7 +46367,7 @@ tafluniad/BLMT
 tafluNI/LMv
 tafluniol/LMT
 taflunio/LMT
-tafluni/XQ
+tafluni/QX
 taflunydd/CLMT
 tafl-wybr/BLMT
 taflwybr/BLMT
@@ -46389,7 +46389,7 @@ tafotrwg/LMT
 tafotrydd/LMT
 Tafwys/LMT
 tagaradr/LMT
-tag/DLMTQv
+tag/DLMQTv
 tagell/BLMRT
 tagellog/LMT
 tagen/LMT
@@ -46486,8 +46486,8 @@ talïaidd/LMT
 Taliaris/LMT
 Taliesin/LMT
 talismon/BLMT
+tal/LMQTv
 tâl/LMT
-tal/LMTQv
 talm/BLMTv
 Talmignedd/LMT
 ta/LMT
@@ -46618,7 +46618,7 @@ tangynrychiol/LMv
 tanh/LMT
 taniad/BLMT
 taniadur/HLMT
-tani/LMTQ
+tani/LMQT
 taNI/LMv
 tanin/LMT
 tanio/LMT
@@ -46661,7 +46661,7 @@ tansudd/LMRv
 tansuddo/LMT
 tansugno/LMT
 tantalwm/LMT
-tanti/XQ
+tanti/QX
 tant/LMT
 tanwariant/LMT
 tanwario/LMT
@@ -46685,8 +46685,8 @@ Tanymanod/LMT
 tanymarfer/LMT
 tanyn/LMT
 tanynt/LMT
+tanysgrifenn/QX
 tanysgrifennu/LMT
-tanysgrifenn/XQ
 tanysgrifiad/BLMT
 tanysgrifi/LMQv
 tanysgrifio/LMT
@@ -46718,10 +46718,10 @@ tapr/BLMT
 tâp-recordydd/CLMT
 taprog/LMT
 tapro/LMT
-tâp-yrr/XQ
+tâp-yrr/QX
 tarad/LMT
 taradr/LMT
-taran/BLMTQv
+taran/BLMQTv
 taranfollt/BLMT
 taraniad/BLMT
 taranllyd/LMT
@@ -46751,7 +46751,7 @@ Tarennig/LMT
 tarenni/LMT
 tarennydd/LMT
 tarfedig/LMT
-tarf/LMTQv
+tarf/LMQTv
 tarfu/LMT
 targed/BLMTv
 targedu/LMT
@@ -46795,7 +46795,7 @@ tasgu/LMT
 tasiaeth/LMT
 tasi/LMv
 tasio/LMT
-tas/LMTQv
+tas/LMQTv
 tastus/LMT
 tasu/LMT
 taten/LMT
@@ -46821,7 +46821,7 @@ tawedogrwydd/LMT
 tawelach/LM
 tawelaf/LM
 taweled/LM
-tawel/LMTQv
+tawel/LMQTv
 Tawe/LMT
 tawelog/LMT
 tawelu/LMT
@@ -46915,7 +46915,7 @@ teil/LMTv
 teilo/LMT
 teilsen/LMT
 teilsio/LMT
-teilsi/XQ
+teilsi/QX
 teils/LMT
 teilwng/LMT
 teilwraidd/LMT
@@ -46974,7 +46974,7 @@ teisban/FLMT
 teisen/FLMT
 teisenni/LMT
 teisennod/LMT
-teisi/LMTQv
+teisi/LMQTv
 teisio/LMT
 teitheb/BLMT
 teithiau/LMT
@@ -47164,7 +47164,7 @@ tes/LMT
 Tesni/LMT
 tesog/LMT
 testamentaidd/LMT
-testament/BLMTQ
+testament/BLMQT
 testosteron/LMT
 testun/BLMRT
 testuNI/LMv
@@ -47201,7 +47201,7 @@ tewfrig/LMT
 tewgrwn/LMT
 tewha/LMv
 tewhau/LMT
-tewheui/kLM
+tewheui/LMk
 tewi/LMT
 tewion/LM
 tew/LMTw
@@ -47220,8 +47220,8 @@ teyrnasu/LMT
 teyrndlysau/LMT
 teyrnedd/LMT
 teyrn/ELMT
+teyrnfrad/QX
 teyrnfradwriaeth/BLMT
-teyrnfrad/XQ
 teyrngarach/LM
 teyrngaraf/LM
 teyrngared/LM
@@ -47413,7 +47413,7 @@ Tirdeunaw/LMT
 tir/ELMRT
 tirfas/BLMT
 tirfeddiannaeth/LMT
-tirfeddiann/XQ
+tirfeddiann/QX
 tirfesur/LMT
 tirfesurwyr/LMT
 tirfesurydd/CLMT
@@ -47534,7 +47534,7 @@ tocsicoleg/LMT
 tocsin/BLMT
 tocsoplasmosis/LMT
 tocyn/FLMT
-tocynn/XQ
+tocynn/QX
 toddadwyedd/LMT
 toddadwy/LMT
 toddaid/LMT
@@ -47589,7 +47589,7 @@ tolio/LMT
 tolladwy/LMT
 tollaeth/BLMT
 tollau/LMT
-toll/BLMTQv
+toll/BLMQTv
 tollbont/LMT
 tollbontydd/LMT
 tollborth/LMT
@@ -47678,6 +47678,7 @@ topograffig/LMRT
 topograffi/LMT
 topoleg/LMRT
 topyn/FLMT
+tö/QX
 toradwy/LMT
 torah/LMT
 torasgwrn/LMT
@@ -47761,7 +47762,7 @@ torr/LMQRv
 torshis/LMT
 torsh/LMT
 torso/BLMT
-torsyth/LMTQv
+torsyth/LMQTv
 torsythu/LMT
 torth/BLMTv
 torthen/LMT
@@ -47780,7 +47781,7 @@ tostach/LM
 tostaf/LM
 tosted/LM
 tostio/LMT
-tosti/XQ
+tosti/QX
 tost/LMT
 tostrwydd/LMT
 tosturiaethau/LMT
@@ -47795,7 +47796,6 @@ totemiaeth/LMT
 towt/GLMT
 towtio/LMT
 Towyn/LMT
-tö/XQ
 tra-arglwyddiaeth/BLMTv
 tra-arglwyddiaethu/LMT
 tra-awdurdodi/LMT
@@ -47803,7 +47803,7 @@ tra-awdurdod/LMv
 trabludd/LMT
 trabluddus/LMT
 trac-cyflym/LMT
-trac/DLMTP
+trac/DLMPT
 tracea/FLMT
 traceâu/H
 traceau/LMT
@@ -47815,7 +47815,7 @@ trachwanta/LMT
 trachwant/BLMTv
 trachwantu/LMT
 trachwantus/LMT
-tra-chywasg/XQ
+tra-chywasg/QX
 tra-chywiredd/LMT
 trachywiredd/LMT
 tra-chywir/LMT
@@ -47860,12 +47860,12 @@ traethodyn/FLMT
 traethu/LMT
 traethwyr/LMT
 traethydd/LMT
-trafael/CLMTQv
+trafael/CLMQTv
 trafaeli/LMv
 trafaelio/LMT
 trafaeliwr/LMT
 trafaelu/LMT
-trafeili/XQ
+trafeili/QX
 trafertin/BLMT
 traffertha/LMT
 trafferth/CLMTv
@@ -47881,10 +47881,10 @@ traflyncu/LMT
 trafnidiaeth/LMT
 trafnidiol/LMT
 trafnidio/LMT
-trafnidi/XQ
+trafnidi/QX
 trafodadwy/LMT
 trafodaeth/BLMRT
-trafod/CLMTQv
+trafod/CLMQTv
 trafodion/LMT
 trafriwi/LMv
 trafriwio/LMT
@@ -47900,7 +47900,7 @@ traidd/LMT
 traill/LMT
 trai/LMT
 trais/LMT
-trallod/BCLMTQv
+trallod/BCLMQTv
 trallodi/LMT
 trallodus/LMT
 Trallwng/LMT
@@ -47919,7 +47919,7 @@ tramgwyddus/LMT
 tramgwyddwr/LMT
 tramgwyddwyr/LMT
 tramleiniau/LMT
-tramor/LMTQ
+tramor/LMQT
 trampetau/LMT
 trampet/BLMT
 trampét/LMT
@@ -47931,7 +47931,7 @@ tramwyad/BLMT
 tramwyadwy/LMT
 tramwyfa/LMT
 tramwyfeydd/LMT
-tramwy/HLMTQv
+tramwy/HLMQTv
 tramwyo/LMT
 trancedigaeth/LMT
 trancedig/LMT
@@ -48270,7 +48270,7 @@ Treharris/LMT
 Treheli/LMT
 Treherbert/LMT
 Trehopcyn/LMT
-treial/HLMTQv
+treial/HLMQTv
 treialu/LMT
 treialydd/LMT
 treiau/LMT
@@ -48286,7 +48286,7 @@ treiffl/BILMT
 treigladaid/LMT
 treiglad/BLMT
 treigladwy/LMT
-treigl/BLMTQv
+treigl/BLMQTv
 treiglddyn/CLMT
 treigledig/LMT
 treiglfa/LMT
@@ -48307,7 +48307,7 @@ treio/LMT
 treip/LMT
 treisgar/LMT
 treisgarwch/LMT
-treisgyrch/ELMTQ
+treisgyrch/ELMQT
 treisiad/LMT
 treisicl/BLMT
 treisiedi/LMT
@@ -48377,7 +48377,7 @@ Tre'r-llai/LMT
 Tre'r-llan/LMT
 Tre'ronnen/LMT
 Tresaith/LMT
-tresbas/BLMTQv
+tresbas/BLMQTv
 tresbasu/LMT
 Tresbyty/LMT
 tresglen/LMT
@@ -48396,7 +48396,7 @@ treswaith/LMT
 tresweithiau/LMT
 Treteio/LMT
 trethadwy/LMT
-trethdal/XQ
+trethdal/QX
 trethedig/LMT
 treth-gysylltiol/LMT
 trethiad/BLMT
@@ -48449,7 +48449,7 @@ trichanmlwyddiannau/LMT
 trichanmlwyddiant/LMT
 trichornel/LMT
 Trichrug/LMT
-trichwarter/XQ
+trichwarter/QX
 tricloromethan/LMT
 tridaint/LMT
 tridant/LMT
@@ -48510,7 +48510,7 @@ triniaeth/BLMT
 Trinidad/LMT
 triniedig/LMT
 triNI/LMv
-trini/XQ
+trini/QX
 trin/LMT
 trinod/BLMT
 trinomaidd/LMT
@@ -48584,7 +48584,7 @@ trochi/LMT
 trochioni/LMT
 trochion/LMTv
 trochionog/LMT
-troch/LMTQv
+troch/LMQTv
 trochoeri/LMT
 trochydd/CLMT
 trocoid/BLMT
@@ -48598,7 +48598,7 @@ troedfedd/LMT
 troedfeinciau/LMT
 troedffordd/LMT
 troedffyrdd/LMT
-troedfil/XQ
+troedfil/QX
 troedfryn/DLMT
 troedfwrdd/LMT
 troedfyrddau/LMT
@@ -48623,7 +48623,7 @@ troedwst/LMT
 troedyn/FLMT
 Troedyraur/LMT
 Troedyrhiw/LMT
-troell/BLMTQv
+troell/BLMQTv
 troelledd/LMT
 troellen/LMT
 troelliad/BLMT
@@ -48672,7 +48672,7 @@ troliau/LMT
 trolïau/LMT
 trolif/BLMT
 trolifo/LMT
-troli/LMTQv
+troli/LMQTv
 trolio/LMT
 trôl/LMT
 tro/LMT
@@ -48689,6 +48689,7 @@ tropedd/BLMT
 tropoffin/DLMT
 tropopos/BLMT
 troposffer/BLMT
+trö/QX
 trorym/ELMT
 trosadwy/LMT
 trosafael/LMT
@@ -48756,8 +48757,8 @@ trosi/LMT
 troslap/DLMT
 trosleisiad/LMT
 trosleisio/LMT
+tros/LMQTv
 tros-/LMT
-tros/LMTQv
 troslun/DLMT
 troslunio/LMT
 troslythrennu/LMT
@@ -48809,7 +48810,6 @@ trowseri/LMT
 trowser/LMT
 trowsus/BLMT
 trowynt/ELMT
-trö/XQ
 troyddion/LMT
 tröydd/LMT
 truain/LMT
@@ -48827,7 +48827,7 @@ trugaredd/LMT
 trugarhad/LMT
 trugarha/LMv
 trugarhau/LMT
-trugarheui/kLM
+trugarheui/LMk
 trugaroc/LM
 trugarog/LMT
 trugarowgrwydd/LMT
@@ -48855,7 +48855,7 @@ trwchus/LMT
 trwco/LMT
 trwmgwsg/LMT
 trwm/LMT
-trwmped/XQ
+trwmped/QX
 trwmp/LMT
 trwnc/LMT
 trwoch/LM
@@ -48871,7 +48871,7 @@ trwsgl/LMT
 trwsiad/LMT
 trwsiadus/LMT
 trwsio/LMT
-trwsi/XQ
+trwsi/QX
 trwso/ILMT
 trwstaneiddiwch/LMT
 trwstan/LMT
@@ -48881,7 +48881,7 @@ trwyborth/LMT
 trwybwn/LMT
 trwybynnau/LMT
 trwyddedair/LMT
-trwydded/BLMTQv
+trwydded/BLMQTv
 trwyddedig/CLMT
 trwyddedog/CLMT
 trwyddedu/LMT
@@ -48998,7 +48998,7 @@ trymllyd/LMT
 trym/LM
 trymlwythog/LMT
 trympedi/LMT
-trymped/LMTQ
+trymped/LMQT
 trympiau/LMT
 trymplaen/DLMT
 trynciau/LMT
@@ -49033,7 +49033,7 @@ trỳst-gorfforaeth/BLMT
 trysti/LMv
 trystiog/LMT
 trystio/LMT
-trythyll/LMTQ
+trythyll/LMQT
 trythyllwch/LMT
 trythyllwesti/LMT
 trythyllwest/LMT
@@ -49077,7 +49077,7 @@ tt/LMT
 tuag/L
 tua/LMT
 Tuamotu/LMT
-tuchan/LMTQv
+tuchan/LMQTv
 tudalen/FLMT
 tudalengipio/LMT
 tudaleniad/LMT
@@ -49099,8 +49099,8 @@ Tudwal/LMT
 Tudweiliog/LMT
 tueddfryd/BLMT
 tueddiadau/LMT
-tueddiad/BRLMT
-tuedd/LMTRv
+tueddiad/BLMRT
+tuedd/LMRTv
 tueddu/LMT
 tufewnol/LMT
 tugel/CLMT
@@ -49112,8 +49112,8 @@ tunellau/LMT
 tunelledd/BLMT
 tunelli/LMT
 tunio/LMT
+tuni/QX
 Tunisia/LMT
-tuni/XQ
 tunnell/LMT
 tunplat/DLMT
 turi/LMv
@@ -49121,7 +49121,7 @@ turio/LMT
 Turkmenistan/LMT
 turn/BDLMT
 turnio/LMT
-turni/XQ
+turni/QX
 turnoriaeth/LMT
 turnwriaeth/LMT
 turs/DLMT
@@ -49236,12 +49236,12 @@ twtio/LMT
 twt/LMT
 twtrwydd/LMT
 twtw/LMT
-twyll/LMTQv
+twyll/LMQTv
 twyllodrus/LMT
 twyllo/LMT
 twyllresymeg/LMT
 twyllresymiad/BLMT
-twyllresym/XQ
+twyllresym/QX
 twyllymresymeg/LMT
 twymach/LM
 twymaf/LM
@@ -49291,7 +49291,7 @@ tycio/LMT
 Tŷ-croes/LMT
 tŷ-ddeiliaid/LMT
 Tyddewi/LMT
-tyddyn/FLMTQ
+tyddyn/FLMQT
 tyddynnod/LMT
 tyddynnwr/LMT
 Tydfil/LMT
@@ -49304,7 +49304,7 @@ tyffaidd/LMT
 tyffiau/LMT
 tyfiannau/LMT
 tyfiant/LMT
-tyf/LMTQv
+tyf/LMQTv
 Tyfriog/LMT
 tyfu/LMT
 tygiau/LMT
@@ -49380,7 +49380,7 @@ tyner/LMTv
 tyneru/LMT
 tynerwch/LMT
 tynerydd/CLMT
-tynfad/BLMTQ
+tynfad/BLMQT
 tynfaen/LMT
 tynfa/LMT
 tynfeini/LMT
@@ -49404,10 +49404,10 @@ tynhad/LMT
 tynha/LMQv
 tynhau/LMT
 tynhäwr/LMT
-tynheui/kLM
+tynheui/LMk
 tyniad/BLMRT
 tyniannau/LMT
-tyniann/XQ
+tyniann/QX
 tyniant/LMT
 tynion/LM
 tynlath/BLMT
@@ -49498,7 +49498,7 @@ tywyllach/LM
 tywyllaf/LM
 tywylled/LM
 tywyllfrydigrwydd/LMT
-tywyllfryd/XQ
+tywyllfryd/QX
 tywylliad/LMT
 tywyll/LMTv
 tywyllu/LMT
@@ -49514,7 +49514,7 @@ tywysenigau/LMT
 tywysennig/LMT
 tywyslinellau/LMT
 tywyslinell/BLMT
-tywys/LMTQv
+tywys/LMQTv
 tywyslyfr/BLMT
 tywysogaeth/BLMT
 tywysogaidd/LMT
@@ -49763,7 +49763,7 @@ unwaith/H
 unwedd/H
 unwerth/H
 unwreiciaeth/H
-unwreici/XQ
+unwreici/QX
 unystyr/H
 urddas/BHR
 urddasoldeb/H
@@ -49784,7 +49784,7 @@ usog/H
 ust/H
 ustus/GH
 usuriaeth/H
-usuri/XQ
+usuri/QX
 usyn/FH
 utgan/HQv
 utganiad/BH
@@ -49872,7 +49872,7 @@ uwchraddiad/BH
 uwchraddi/Hv
 uwchraddio/H
 uwch-reolaeth/H
-uwch-reol/XQ
+uwch-reol/QX
 uwch-ringyll/H
 uwchsain/H
 uwch-sarsiant/GH
@@ -50111,7 +50111,7 @@ wstid/H
 wsti/H
 WTO/H
 Wtraciaeth/H
-Wtrac/XQ
+Wtrac/QX
 wtra/H
 wtregydd/H
 wtre/H
@@ -50256,11 +50256,11 @@ yli/H
 ylwch/H
 ymachub/Hv
 ymadael/H
+ymada/QX
 ymadawedig/H
 ymadaw/HRv
 ymadawiad/BH
 ymadawn/H
-ymada/XQ
 ymaddas/HRv
 ymaddasiad/BH
 ymaddasu/H
@@ -50312,7 +50312,7 @@ ymatal/Hv
 ymataliad/BH
 ymataliaeth/H
 ymataliol/H
-ymatali/XQ
+ymatali/QX
 ymatblyg/H
 ymatchwelaidd/H
 ymatchweliad/BH
@@ -50350,7 +50350,7 @@ ymblaid/H
 ymbleidiaeth/H
 ymbleidiau/H
 ymbleidiol/H
-ymbleidi/XQ
+ymbleidi/QX
 ymbleseru/H
 ymboen/Hv
 ymboeni/H
@@ -50550,7 +50550,7 @@ ymenyddiau/H
 ymenyddol/H
 ymenyn/H
 ymenynn/Hv
-ymerawd/XQ
+ymerawd/QX
 ymerodraeth/BHR
 ymerodraidd/H
 ymerodres/BH
@@ -50757,7 +50757,7 @@ ymgyfreitha/H
 ymgyfreithgar/H
 ymgyfreithiad/H
 ymgyfreithio/H
-ymgyfreithi/XQ
+ymgyfreithi/QX
 ymgyfrinachu/H
 ymgyfun/Hv
 ymgyfuno/H
@@ -50815,7 +50815,7 @@ ymhelaeth/Hv
 ymhelaethu/H
 ymhél/H
 ymhel/Hv
-ymheli/XQ
+ymheli/QX
 ymhellach/H
 ymhell/H
 ymhen/H
@@ -50834,7 +50834,7 @@ ymhlygiad/BH
 ymhlygu/H
 ymhob/H
 ymhobman/H
-ymhoel/XQ
+ymhoel/QX
 ymhoelyd/H
 ymhoff/Hv
 ymhoffi/H
@@ -50898,7 +50898,7 @@ ymlwybran/Hv
 ymlwybr/Hv
 ymlwybro/H
 ymlwytho/H
-ymlwyth/XQ
+ymlwyth/QX
 ymlygr/Hv
 ymlygru/H
 ymlyn/HQv
@@ -50970,8 +50970,8 @@ ymrannu/H
 ymreinio/H
 ymrenn/Hw
 ymreolaeth/HR
+ymreol/QX
 ymreolus/H
-ymreol/XQ
 ymrestr/Hv
 ymrestriad/BH
 ymrestru/H
@@ -51147,11 +51147,11 @@ ymyluno/H
 ymylwaith/H
 ymylwe/EH
 ymynysiaeth/H
-ymynys/XQ
+ymynys/QX
 ymyradur/H
 ymyraethau/H
 ymyraethol/H
-ymyraeth/XQ
+ymyraeth/QX
 ymyrgar/H
 ymyriad/BHR
 ymyriadureg/H
@@ -51307,7 +51307,7 @@ ysbrigyn/H
 ysbryd/CEH
 ysbrydegaeth/H
 ysbrydegol/H
-ysbrydeg/XQ
+ysbrydeg/QX
 ysbrydegydd/CH
 ysbrydiaeth/H
 ysbrydoledig/H
@@ -51533,7 +51533,7 @@ yslotian/Hv
 ysloti/HQv
 ysmala/H
 ysmaldod/H
-ysmali/XQ
+ysmali/QX
 ysmotiau/H
 ysmotyn/H
 ysmudiad/BH
@@ -51546,7 +51546,7 @@ ystadau/H
 ystadegaeth/H
 ystadegau/H
 ystadegol/H
-ystadeg/XQ
+ystadeg/QX
 ystadegydd/CH
 ystadegyn/H
 ystaden/FH
