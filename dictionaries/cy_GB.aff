@@ -105,12 +105,13 @@ PFX H Ŵ Hŵ Ŵ
 PFX H Ŷ Hŷ Ŷ
 PFX H Ï Hï Ï
 
-SFX Q Y 13
+SFX Q Y 15
 SFX Q 0 wr/LMTH   [^-]
 SFX Q - iwr/LMTH  -
-SFX Q 0 wyr/LMTH  [^iäëïöünd]
+SFX Q 0 wyr/LMTH  [^iäëïöündr]
 SFX Q 0 wyr/LMTH  [^n]n
 SFX Q 0 wyr/LMTH  [^d]d
+SFX Q 0 wyr/LMTH  [^r]r
 SFX Q i wyr/LMTH  i
 SFX Q ä awyr/LMTH ä
 SFX Q ë ewyr/LMTH ë
@@ -119,6 +120,7 @@ SFX Q ö owyr/LMTH ö
 SFX Q ü uwyr/LMTH ü
 SFX Q n wyr/LMTH  nn
 SFX Q d wyr/LMTH  dd
+SFX Q r wyr/LMTH  rr
 
 PFX R Y 1
 PFX R 0 ol .
