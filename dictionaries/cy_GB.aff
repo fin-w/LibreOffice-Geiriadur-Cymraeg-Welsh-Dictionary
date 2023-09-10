@@ -358,14 +358,7 @@ PFX P 0  aml/H  [aeiouwyâêîôûŵŷfhjknqsvxz]
 #SFX W 0 'w [iI]
 
 # Common spelling substitutions
-REP 80
-REP a    â
-REP e    ê
-REP i    î
-REP o    ô
-REP u    û
-REP w    ŵ
-REP y    ŷ
+REP 73
 REP ol   ôl
 REP ty   tŷ
 REP io   ïo
@@ -439,3 +432,12 @@ REP 1    l
 REP 0    o
 REP 6    ô
 REP 6    o
+
+MAP 7
+MAP aâáàä
+MAP eêéèë
+MAP iîíìï
+MAP oôóòö
+MAP uûúùü
+MAP wŵẃẁẅ
+MAP yŷýỳÿ
