@@ -29,8 +29,8 @@
 #	line) to find ones unknown to the  dict
 #	and add them to an output file.
 # -s gair
-#	check  whether  word  'gair'  is in the
-#	dictionary.
+#	check  whether  word  'gair'  (or words
+#	in file 'gair') are in the dictionary.
 # -t
 #	sort the .dic file  alphabetically  and
 #	add the number of lines to the top.
@@ -117,8 +117,8 @@ parse () {
 	line) to find ones unknown to the  dict
 	and add them to an output file.
 -s gair
-	check  whether  word  'gair'  is in the
-	dictionary
+	check  whether  word  'gair'  (or words
+	in file 'gair') are in the dictionary.
 -t
 	sort the .dic file  alphabetically  and
 	add the number of lines to the top."
@@ -301,30 +301,38 @@ newydd () {
 gwirio () {
 	###
 	# check whether a word is in the dictionary
+	# if $1 is a file, check through it for non
+	# -english words that aren't in the cymraeg
+	# dictionary either
 	###
-	response=$(tail -n1 <<< "$(echo $1 | hunspell -d dictionaries/cy_GB -a)")
-	case ${response:0:1} in
-		"*")
-			echo "Correct, in dictionary."
-			shift
-			;;
-		"&")
-			echo -e "Closest matches:\t$(sed 's/^.*[:] //g' <<< $response)"
-			shift
-			;;
-		"+")
-			echo "Found using affix removal."
-			shift
-			;;
-		"-")
-			echo "Found, compound."
-			shift
-			;;
-		"#")
-			echo "Unknown word, no suggestions."
-			shift
-			;;
-	esac
+	# TODO: backslash-escaped filenames with spaces don't work with the -f
+	if [ -f "$1" ] ; then
+		cat $1 | hunspell -l -d dictionaries/cy_GB | hunspell -l -d en_GB | sort -u | uniq -u | tr ' ' '\n'
+	else
+		response=$(tail -n1 <<< "$(echo $1 | hunspell -d dictionaries/cy_GB -a)")
+		case ${response:0:1} in
+			"*")
+				echo "Correct, in dictionary."
+				shift
+				;;
+			"&")
+				echo -e "Closest matches:\t$(sed 's/^.*[:] //g' <<< $response)"
+				shift
+				;;
+			"+")
+				echo "Found using affix removal."
+				shift
+				;;
+			"-")
+				echo "Found, compound."
+				shift
+				;;
+			"#")
+				echo "Unknown word, no suggestions."
+				shift
+				;;
+		esac
+	fi
 }
 
 tacluso () {
