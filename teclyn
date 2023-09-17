@@ -248,10 +248,16 @@ ystyried () {
 	test -h /tmp/wordforms.aff && rm /tmp/wordforms.aff
 	# make a symbolic link of the aff file
 	ln -s "$PWD/$1" /tmp/wordforms.aff
-	# prepared dic only contains the query word
-	# TODO this will not find the stem properly
-	echo 1 >/tmp/wordforms.dic
-	grep "^$3/" $2 >>/tmp/wordforms.dic
+	# find all lines exactly matching the search stem
+	# plus optional forward slash and flags
+	stems=( $( grep -E "^$3(/|$)" $2 ) )
+	# if no stem was found then exit
+	[ ${#stems[@]} -eq 0 ] && return
+	# number of stems found is the number of entries
+	# in the temporary dictionary
+	echo "${#stems[@]}" > /tmp/wordforms.dic
+	# add entries to temporary dictionary
+	printf "%s\n" "${stems[@]}" >> /tmp/wordforms.dic
 	# awk magic: seems to add every affix to the stem and then lets
 	# hunspell and the original dictionary filter out the bad entries
 	echo $3 | awk -v "fx=$fx" '
