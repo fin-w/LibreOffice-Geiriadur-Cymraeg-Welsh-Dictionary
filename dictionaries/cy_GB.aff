@@ -289,42 +289,42 @@ SFX k 0 iff/MLH .
 SFX k 0 an/MLH  .
 
 SFX A Y 3
-SFX A 0 ed
-SFX A 0 ach
-SFX A 0 af
+SFX A 0 ed  .
+SFX A 0 ach .
+SFX A 0 af  .
 
 SFX B Y 1
-SFX B 0 au
+SFX B 0 au .
 
 SFX C Y 1
-SFX C 0 ion
+SFX C 0 ion .
 
 SFX D Y 1
-SFX D 0 iau
+SFX D 0 iau .
 
 SFX E Y 1
-SFX E 0 oedd
+SFX E 0 oedd .
 
 SFX F Y 1
-SFX F 0 nau
+SFX F 0 nau .
 
 SFX G Y 1
-SFX G 0 iaid
+SFX G 0 iaid .
 
 SFX I Y 1
-SFX I 0 on
+SFX I 0 on .
 
 SFX J Y 1
-SFX J 0 s
+SFX J 0 s .
 
 SFX K Y 1
-SFX K 0 od
+SFX K 0 od .
 
 SFX N Y 1
-SFX N 0 iaeth
+SFX N 0 iaeth .
 
 SFX O Y 1
-SFX O 0 aidd
+SFX O 0 aidd .
 
 PFX P Y 14
 PFX P c  amlg/H c[^h]
