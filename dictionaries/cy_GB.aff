@@ -130,7 +130,7 @@ SFX U 0 aidd .
 SFX U 0 iaid .
 SFX U 0 iad  .
 
-SFX v Y 26
+SFX v Y 26 # ~200 instances in dic
 SFX v nn na/aMLHX        nn
 SFX v n  na/aMLHX        [^n]n
 SFX v rr ra/aMLHX        rr
@@ -158,15 +158,15 @@ SFX v O  O/iMLHX         O
 SFX v O  o/bcdefghjMLHX  O
 SFX v 0  0/bcdefghijMLHX [^IëO]
 
-SFX w Y 1
+SFX w Y 1 # ~100 instances in the dic
 SFX w 0 0/bcdeMLHX .
 
-SFX y Y 3
+SFX y Y 3 # ~5 instances in the dic
 SFX y NI nni/bcfMLHX     NI
 SFX y NI ni/deghijMLHX   NI
 SFX y 0  0/bcdefghijMLHX [^I]
 
-SFX z Y 1
+SFX z Y 1 # ~50 instances in the dic
 SFX z 0 a/aMLHX .
 
 SFX a Y 11
@@ -277,7 +277,7 @@ SFX j 0 est .
 SFX j 0 on  .
 SFX j 0 an  .
 
-SFX k Y 9
+SFX k Y 9 # ~50 instances in the dic
 SFX k 0 wn/MLH  .
 SFX k 0 odd/MLH .
 SFX k 0 on/MLH  .
