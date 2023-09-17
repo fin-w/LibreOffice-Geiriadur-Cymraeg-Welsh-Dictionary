@@ -228,25 +228,32 @@ geiriau_a_newidiwyd () {
 
 ystyried () {
 	###
-	# expand a word with all available relevant affixes: the below is 'wordforms' from
-	# https://github.com/hunspell/hunspell/blob/master/src/tools/wordforms
+	# expand a word with all available relevant affixes: the below is modified from 'wordforms'
+	# from https://github.com/hunspell/hunspell/blob/master/src/tools/wordforms
 	###
+	# check for incorrect number of arguments
 	case $# in
 	0|1|2) echo "Usage: wordforms [-s | -p] dictionary.aff dictionary.dic word
 	-s: print only suffixed forms
 	-p: print only prefixed forms
 	"; exit 1;;
 	esac
+	# this switches whether to print only suffixed, prefixed or all forms of stem
 	fx=0
 	case $1 in
 	-s) fx=1; shift;;
 	-p) fx=2; shift;;
 	esac
+	# clear any previous temporary dictionary
 	test -h /tmp/wordforms.aff && rm /tmp/wordforms.aff
+	# make a symbolic link of the aff file
 	ln -s "$PWD/$1" /tmp/wordforms.aff
-	# prepared dic only with the query word
+	# prepared dic only contains the query word
+	# TODO this will not find the stem properly
 	echo 1 >/tmp/wordforms.dic
 	grep "^$3/" $2 >>/tmp/wordforms.dic
+	# awk magic: seems to add every affix to the stem and then lets
+	# hunspell and the original dictionary filter out the bad entries
 	echo $3 | awk -v "fx=$fx" '
 	fx!=2 && FILENAME!="-" && /^SFX/ && NF > 4{split($4,a,"/");clen=($3=="0") ? 0 : length($3);sfx[a[1],clen]=a[1];sfxc[a[1],clen]=clen;next}
 	fx!=1 && FILENAME!="-" && /^PFX/ && NF > 4{split($4,a,"/");clen=($3=="0") ? 0 : length($3);pfx[a[1],clen]=a[1];pfxc[a[1],clen]=clen;next}
@@ -265,9 +272,6 @@ ystyried () {
 	}
 	}
 	' /tmp/wordforms.aff - | hunspell -d /tmp/wordforms -G -l
-	# pipe this into something that includes just the word itself if nothing else is found:
-	# currently when the search term is an exact match to a tag-less dict entry,
-	# the wordforms code responds with nothing
 }
 
 ffeindio () {
