@@ -258,28 +258,89 @@ ystyried () {
 	echo "${#stems[@]}" > /tmp/wordforms.dic
 	# add entries to temporary dictionary
 	printf "%s\n" "${stems[@]}" >> /tmp/wordforms.dic
-	# awk magic: seems to add every affix to the stem and then lets
-	# hunspell and the original dictionary filter out the bad entries
-	echo $3 | awk -v "fx=$fx" '
-	fx!=2 && FILENAME!="-" && /^SFX/ && NF > 4{split($4,a,"/");clen=($3=="0") ? 0 : length($3);sfx[a[1],clen]=a[1];sfxc[a[1],clen]=clen;next}
-	fx!=1 && FILENAME!="-" && /^PFX/ && NF > 4{split($4,a,"/");clen=($3=="0") ? 0 : length($3);pfx[a[1],clen]=a[1];pfxc[a[1],clen]=clen;next}
-	FILENAME=="-"{
-		wlen=length($1)
-		if (fx==0 || fx==2) {
-			for (j in pfx) {if (wlen<=pfxc[j]) continue; print (pfx[j]=="0" ? "" : pfx[j]) substr($1, pfxc[j]+1)}
-		}
-		if (fx==0 || fx==1) {
-			for(i in sfx){clen=sfxc[i];if (wlen<=clen) continue; print substr($1, 1, wlen-clen) (sfx[i]=="0" ? "": sfx[i]) }
-		}
-		if (fx==0) {
-			for (j in pfx) {if (wlen<=pfxc[j]) continue;
-				for(i in sfx){clen=sfxc[i];if (wlen<=clen || wlen <= (clen + pfxc[j]))continue;
-					print (pfx[j]=="0" ? "" : pfx[j]) substr($1, pfxc[j]+1, wlen-clen-pfxc[j]) (sfx[i]=="0" ? "": sfx[i])
+
+	not_affix="$( awk '/^NEEDAFFIX/ {print $2}' $1 )"
+	expanded=("$( noflags ${stems[0]} )")
+	# get rid of any entries without flags
+	temp_stems=( ${stems[@]} )
+	i=0
+	for stem in ${stems[@]} ; do
+		if ! hasflags "$stem" ; then
+			unset 'temp_stems[i]'
+		fi
+		#echo "between stems, expanded: ${expanded[@]}"
+		((i++))
+	done
+	#echo -e "stems: <${stems[@]}>\ttemps: <${temp_stems[@]}>"
+	stems=( ${temp_stems[@]} )
+	temp=()
+	i=0
+	while [[ $i -eq 0 ]] ; do
+		for stem in "${stems[@]}" ; do
+			flags=( $( get_flags $stem ) )
+			flagregex="$( flag_regex /tmp/wordforms.aff ${flags[@]} )"
+			#printf "\nflags:" >> /dev/tty
+			#for flag in "${flags[@]}" ; do
+			#	printf " <$PINK$flag$ENDC>" >> /dev/tty
+			#done
+			#printf " regex: <$GREEN$flagregex$ENDC>" >> /dev/tty
+			for flag in "${flags[@]}" ; do
+				subflags="$( get_affixes_in_affix /tmp/wordforms.aff $flag )"
+				#printf " subflag regex: <$RED$subflags$ENDC>" >> /dev/tty
+				stemaffs=( $( echo "$( noflags $stem )" | awk -v "fx=$fx" -v "flags=$flagregex" -v "stem=$( noflags $stem )" '
+				fx!=2 && FILENAME!="-" && $0 ~ "^SFX "flags && NF > 4 && $4 !~ "[1-9][0-9]*" && stem ~ ".*"$5"$" {split($4,a,"/");clen=($3=="0") ? 0 : length($3);sfx[a[1],clen]=a[1];sfxc[a[1],clen]=clen;next}
+				fx!=1 && FILENAME!="-" && $0 ~ "^PFX "flags && NF > 4 && $4 !~ "[1-9][0-9]*" && stem ~ "^"$5".*" {split($4,a,"/");clen=($3=="0") ? 0 : length($3);pfx[a[1],clen]=a[1];pfxc[a[1],clen]=clen;next}
+				FILENAME=="-"{
+					wlen=length($1)
+					if (fx==0 || fx==2) {
+						for (j in pfx) {if (wlen<=pfxc[j]) continue; print (pfx[j]=="0" ? "" : pfx[j]) substr($1, pfxc[j]+1)}
+					}
+					if (fx==0 || fx==1) {
+						for(i in sfx){clen=sfxc[i];if (wlen<=clen) continue; print substr($1, 1, wlen-clen) (sfx[i]=="0" ? "": sfx[i]) }
+					}
+					if (fx==0) {
+						for (j in pfx) {if (wlen<=pfxc[j]) continue;
+							for(i in sfx){clen=sfxc[i];if (wlen<=clen || wlen <= (clen + pfxc[j]))continue;
+								print (pfx[j]=="0" ? "" : pfx[j]) substr($1, pfxc[j]+1, wlen-clen-pfxc[j]) (sfx[i]=="0" ? "": sfx[i])
+							}
+						}
+					}
 				}
-			}
-		}
-	}
-	' /tmp/wordforms.aff - | hunspell -d /tmp/wordforms -G -l
+				' /tmp/wordforms.aff - ))
+				expanded+=( ${stemaffs[@]} )
+				if [[ "$subflags[@]}" != "" ]] ; then
+					for stemaff in "${stemaffs[@]}" ; do
+						stemaffaffs=( $( echo "$stemaff" | awk -v "fx=$fx" -v "flags=$subflags" -v "stemaff=$stemaff" '
+						fx!=2 && FILENAME!="-" && $0 ~ "^SFX "flags && NF > 4 && $4 !~ "[1-9][0-9]*" && stemaff ~ ".*"$5"$" {split($4,a,"/");clen=($3=="0") ? 0 : length($3);sfx[a[1],clen]=a[1];sfxc[a[1],clen]=clen;next}
+						0==1 && fx!=1 && FILENAME!="-" && $0 ~ "^PFX "flags && NF > 4 && $4 !~ "[1-9][0-9]*" && stemaff ~ "^"$5".*" {split($4,a,"/");clen=($3=="0") ? 0 : length($3);pfx[a[1],clen]=a[1];pfxc[a[1],clen]=clen;next}
+						FILENAME=="-"{
+							wlen=length($1)
+							if (fx==0 || fx==2) {
+								for (j in pfx) {if (wlen<=pfxc[j]) continue; print (pfx[j]=="0" ? "" : pfx[j]) substr($1, pfxc[j]+1)}
+							}
+							if (fx==0 || fx==1) {
+								for(i in sfx){clen=sfxc[i];if (wlen<=clen) continue; print substr($1, 1, wlen-clen) (sfx[i]=="0" ? "": sfx[i]) }
+							}
+							if (fx==0) {
+								for (j in pfx) {if (wlen<=pfxc[j]) continue;
+									for(i in sfx){clen=sfxc[i];if (wlen<=clen || wlen <= (clen + pfxc[j]))continue;
+										print (pfx[j]=="0" ? "" : pfx[j]) substr($1, pfxc[j]+1, wlen-clen-pfxc[j]) (sfx[i]=="0" ? "": sfx[i])
+									}
+								}
+							}
+						}
+						' /tmp/wordforms.aff - ))
+						expanded+=( ${stemaffaffs[@]} )
+					done
+				fi
+			done
+		done
+		((i++))
+		expanded=( $( printf "%s\n" "${expanded[@]}" | sort -u ) )
+		#echo -e "\n$BLUE${expanded[@]}" > /dev/tty
+		accepted=( $( echo "${expanded[@]}" | hunspell -d /tmp/wordforms -G -l | sort -u ) )
+		echo -e "$YELLOW${accepted[@]}$ENDC" #>> /dev/tty
+	done
 }
 
 ffeindio () {
@@ -361,10 +422,10 @@ smallflags () {
 	# capture what this returns for just the small flags on a line
 	intext=$1
 	# catch no flags, otherwise return lowercase flags
-	if [[ "$intext" == $( sed -e "s|/||" <<< $intext ) ]] ; then
-		echo ""
-	else
+	if [[ $( hasflags $intext ) -ne 1 ]] ; then
 		echo $( sed -e "s|.*/||" -e "s|[A-Z]*||g" <<< $intext )
+	else
+		echo ""
 	fi
 }
 
@@ -372,24 +433,18 @@ capsflags () {
 	# abc/ABCabc format typically
 	# capture what this returns for just the capital flags on a line
 	intext=$1
-	# catch no flags, otherwise return uppercase flags
-	if [[ "$intext" == $( sed -e "s|/||" <<< $intext ) ]] ; then
-		echo ""
-	else
+	# return uppercase flags, catch no flags
+	if [[ $( hasflags $intext ) -ne 1 ]] ; then
 		echo $( sed -e "s|.*/||" -e "s|[a-z]*||g" <<< $intext )
+	else
+		echo ""
 	fi
 }
 
 noflags () {
 	# abc/ABCabc format typically
 	# capture what this returns for just the line without flags or delimiter /
-	intext=$1
-	# catch no flags, otherwise return dic entry without flags or /
-	if [[ "$intext" == $( sed -e "s|/||" <<< $intext ) ]] ; then
-		echo $intext
-	else
-		echo $( sed -e "s|/.*||" <<< $intext )
-	fi
+	echo $( sed -e "s|/.*||" <<< $1 )
 }
 
 addflag () {
@@ -401,6 +456,109 @@ addflag () {
 	intext=$1
 	inflag=$2
 	echo $( noflags $intext )"/"$( capsflags $intext )$( sed "s|[a-z]*||g" <<< $inflag )$( smallflags $intext )$( sed "s|[A-Z]*||g" <<< $inflag )
+}
+
+hasflags () {
+	case $1 in
+		*/?* ) return 0 ;;
+		*/   ) return 2 ;;
+		*    ) return 1 ;;
+	esac
+}
+
+get_flags () {
+	# get_flags "abc/ABC"
+	# returns array of the flags
+	intext="$( sed 's|.*/||' <<< $1 )"
+	flags=()
+	flag_type="$( get_flag_type dictionaries/cy_GB.aff )"
+	if [[ "$flag_type" == "num" ]] ; then
+		flags+=( ${intext//,/ } )
+	elif [[ "$flag_type" == "long" ]] ; then
+		for (( i=0 ; i*2<${#intext} ; i++ )); do
+			flags+=( ${intext:((i*2)):2} )
+		done
+	elif [[ "$flag_type" == "unicode" ]] ; then
+		for (( i=0 ; i<${#intext} ; i++ )); do
+			flags+=( ${intext:i:1} )
+		done
+	fi
+	echo "${flags[@]}"
+}
+
+get_flag_type () {
+	# get_flag_type path/to/dict.aff
+	# returns 'long', 'num' or default 'unicode'
+	type=$( awk '/^FLAG/ {print $2}' $1 )
+	if [[ "$type" == "" ]] ; then echo "unicode" ; else echo "$type" ; fi
+}
+
+get_affixes_in_affix () {
+	# get_affixes_in_affix path/to/dict.aff flag_name
+	# return_type:
+	# =0 return array of flag names
+	# =1 return regex that matches any flag name
+	return_type=1
+	affixes=()
+	flag_type="$( get_flag_type $1 )"
+	#flag_type="num"
+	awk_affixes=( $( awk -v "flag=$2" '
+		$0 ~ "^[SP]FX "flag && NF > 4 && $4 ~ ".*/.*" {split($4,a,"/"); print a[2]}
+		' $1 ) )
+	[ "$awk_affixes" == "" ] && return 1
+	for awk_affix in ${awk_affixes[@]} ; do
+		if [[ "$flag_type" == "num" ]] ; then
+			affixes+=( ${awk_affix//,/ } )
+		elif [[ "$flag_type" == "long" ]] ; then
+			for (( i=0 ; i*2<${#awk_affix} ; i++ )); do
+				affixes+=( ${awk_affix:((i*2)):2} )
+			done
+		elif [[ "$flag_type" == "unicode" ]] ; then
+			for (( i=0 ; i<${#awk_affix} ; i++ )); do
+				affixes+=( ${awk_affix:i:1} )
+			done
+		fi
+	done
+	# remove duplicates
+	affixes=( $( printf "%s\n" "${affixes[@]}" | sort -u ) )
+	if [[ $return_type -eq 0 ]] ; then
+		echo "${affixes[@]}"
+	else
+		echo "$( flag_regex $1 ${affixes[@]} )"
+		#regex="("
+		#[[ "$flag_type" == "unicode" ]] && regex="["
+		#for aff in ${affixes[@]} ; do
+		#	regex="$regex$aff"
+		#	[[ "$flag_type" != "unicode" ]] && regex="$regex"'|'
+		#done
+		#if [[ "$flag_type" == "unicode" ]] ; then regex="$regex]" ; else regex="${regex::-1})" ; fi
+		#echo "$regex"
+	fi
+}
+
+flag_regex () {
+	# flag_regex path/to/dict.aff array_of_flags
+	# returns regex matching the flags
+	flags=("$@")
+	unset 'flags[0]'
+	[[ "${flags[@]}" == "" ]] && return 1
+	flag_type="$( get_flag_type $1 )"
+	regex="("
+	[[ "$flag_type" == "unicode" ]] && regex="["
+	for flag in ${flags[@]} ; do
+		regex="$regex$flag"
+		[[ "$flag_type" != "unicode" ]] && regex="$regex|"
+	done
+	if [[ "$flag_type" == "unicode" ]] ; then regex="$regex]" ; else regex="${regex::-1})" ; fi
+	echo "$regex"
+}
+
+separate_affixes () {
+	# deal with affixes differently depending on affix type
+	# num: split at ,
+	# long: split at every 2nd char
+	# unicode: split at every char
+:
 }
 
 checkmutationflags () {
