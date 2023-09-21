@@ -255,46 +255,68 @@ ystyried () {
 	[ ${#stems[@]} -eq 0 ] && return
 	# number of stems found is the number of entries
 	# in the temporary dictionary
-	echo "${#stems[@]}" > /tmp/wordforms.dic
+	printf "%s\n" "${#stems[@]}" > /tmp/wordforms.dic
 	# add entries to temporary dictionary
 	printf "%s\n" "${stems[@]}" >> /tmp/wordforms.dic
 
 	grep -q '^COMPLEXPREFIXES' $1 && complex_prefixes="yes" || complex_prefixes="no"
-	awk -v fx="$fx" -v stem="$( sed -e "s|/.*||" <<< ${stems[0]} )" -v complex_prefixes="$complex_prefixes" '
-	BEGIN { all_variations[stem]=stem }
+	awk -v fx="$fx" -v stem="${stems[0]}" -v complex_prefixes="$complex_prefixes" '
+	# this runs before processing the .aff file
+	BEGIN {
+		split(stem,a,"/")
+		stem=a[1]
+		# all potential words go in here before being sent to the spellchecker;
+		# the nature of the associative array means any duplicate data overwrites
+		# itself in the array rather than adding a new entry; there are no
+		# duplicates in the array
+		all_variations[stem]=stem
+	}
 
+	# this runs on the .aff file to get suffix data
 	fx!=2 && /^SFX/ && NF > 4 && $4 !~ "[1-9][0-9]*" {
 		split($4,a,"/")
 		clen=($3=="0") ? 0 : length($3)
+		# put every suffix in $sfx
 		sfx[a[1],clen]=a[1]
 		sfxc[a[1],clen]=clen
 		if (stem ~ ".*"$5"$") {
+			# put only the suffixes whose regex will
+			# match the end of $stem into this array
 			stem_regexed_sfx[a[1],clen]=a[1]
 			stem_regexed_sfxc[a[1],clen]=clen
 		}
 		next
 	}
+
+	# this runs on the .aff file to get prefix data
 	fx!=1 && /^PFX/ && NF > 4 && $4 !~ "[1-9][0-9]*" {
 		split($4,a,"/")
 		clen=($3=="0") ? 0 : length($3)
+		# put every prefix in $pfx
 		pfx[a[1],clen]=a[1]
 		pfxc[a[1],clen]=clen
 		if (stem ~ "^"$5".*") {
+			# put only the prefixes whose regex will
+			# match the start of $stem into this array
 			stem_regexed_pfx[a[1],clen]=a[1]
 			stem_regexed_pfxc[a[1],clen]=clen
 		}
 		next
 	}
 
+	# this runs after processing the .aff file
 	END {
 		wlen=length(stem)
-		if (fx==0 || fx==2) {
+		if (fx!=1) {
+			# loop through only the array indexes of prefixes that will fit with the stem
 			for (j in stem_regexed_pfx) {
 				if (wlen<=pfxc[j]) continue;
 				pref_stem=(pfx[j]=="0" ? "" : pfx[j]) substr(stem, pfxc[j]+1)
 				pswlen=length(pref_stem)
+				# add prefixed stem to the array of words to check
 				all_variations[pref_stem]=pref_stem
 				if (complex_prefixes=="yes") {
+					# add the current prefixed stem, with every prefix added to the front
 					for (jj in pfx) {
 						if (pswlen<=pfxc[jj]) continue;
 						pref_pref_stem=(pfx[jj]=="0" ? "" : pfx[jj]) substr(pref_stem, pfxc[jj]+1)
@@ -303,13 +325,16 @@ ystyried () {
 				}
 			}
 		}
-		if (fx==0 || fx==1) {
+		if (fx!=2) {
+			# loop through only the array indexes of suffixes that will fit with the stem
 			for(i in stem_regexed_sfx) {
 				if (wlen<=sfxc[i]) continue;
 				stem_suff=substr(stem, 1, wlen-sfxc[i]) (sfx[i]=="0" ? "": sfx[i])
 				sswlen=length(stem_suff)
+				# add suffixed stem to the array of words to check
 				all_variations[stem_suff]=stem_suff
 				if (complex_prefixes="no") {
+					# add the current suffixed stem, with every suffix added to the end
 					for (ii in sfx) {
 						if (sswlen<=sfxc[ii]) continue;
 						stem_suff_suff=substr(stem_suff, 1, sswlen-sfxc[ii]) (sfx[ii]=="0" ? "": sfx[ii])
@@ -319,14 +344,18 @@ ystyried () {
 			}
 		}
 		if (fx==0) {
+			# generate stems with prefixes and suffixes
+			# loop through only the array indexes of affixes that will fit with the stem
 			for (j in stem_regexed_pfx) {
 				if (wlen<=pfxc[j]) continue;
 				for(i in stem_regexed_sfx) {
 					if (wlen<=sfxc[i] || wlen <= (sfxc[i] + pfxc[j])) continue;
 					pref_stem_suff=(pfx[j]=="0" ? "" : pfx[j]) substr(stem, pfxc[j]+1, wlen-sfxc[i]-pfxc[j]) (sfx[i]=="0" ? "": sfx[i])
 					psswlen=length(pref_stem_suff)
+					# add the prefixed and suffixed stem
 					all_variations[pref_stem_suff]=pref_stem_suff
 					if (complex_prefixes=="yes") {
+						# add the current prefixed and suffixed stem, with every prefix added to the start
 						for (jj in pfx) {
 							if (psswlen<=pfxc[jj]) continue;
 							pref_pref_stem_suff=(pfx[jj]=="0" ? "" : pfx[jj]) substr(pref_stem_suff, pfxc[jj]+1)
@@ -334,6 +363,7 @@ ystyried () {
 						}
 					}
 					else {
+						# add the current prefixed and suffixed stem, with every suffix added to the end
 						for (ii in sfx) {
 							if (psswlen<=sfxc[ii]) continue;
 							pref_stem_suff_suff=substr(pref_stem_suff, 1, psswlen-sfxc[ii]) (sfx[ii]=="0" ? "": sfx[ii])
@@ -344,6 +374,7 @@ ystyried () {
 			}
 		}
 		for (variation in all_variations) {
+			# finally, print all the prefix / stem / suffix variations without duplicates
 			print variation
 		}
 	}
