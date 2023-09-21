@@ -263,54 +263,82 @@ ystyried () {
 	awk -v fx="$fx" -v stem="$( sed -e "s|/.*||" <<< ${stems[0]} )" -v complex_prefixes="$complex_prefixes" '
 	BEGIN { all_variations[stem]=stem }
 
-	fx!=2 && /^SFX/ && NF > 4 && $4 !~ "[1-9][0-9]*" {split($4,a,"/");clen=($3=="0") ? 0 : length($3);sfx[a[1],clen]=a[1];sfxc[a[1],clen]=clen;next}
-	fx!=1 && /^PFX/ && NF > 4 && $4 !~ "[1-9][0-9]*" {split($4,a,"/");clen=($3=="0") ? 0 : length($3);pfx[a[1],clen]=a[1];pfxc[a[1],clen]=clen;next}
+	fx!=2 && /^SFX/ && NF > 4 && $4 !~ "[1-9][0-9]*" {
+		split($4,a,"/")
+		clen=($3=="0") ? 0 : length($3)
+		sfx[a[1],clen]=a[1]
+		sfxc[a[1],clen]=clen
+		if (stem ~ ".*"$5"$") {
+			stem_regexed_sfx[a[1],clen]=a[1]
+			stem_regexed_sfxc[a[1],clen]=clen
+		}
+		next
+	}
+	fx!=1 && /^PFX/ && NF > 4 && $4 !~ "[1-9][0-9]*" {
+		split($4,a,"/")
+		clen=($3=="0") ? 0 : length($3)
+		pfx[a[1],clen]=a[1]
+		pfxc[a[1],clen]=clen
+		if (stem ~ "^"$5".*") {
+			stem_regexed_pfx[a[1],clen]=a[1]
+			stem_regexed_pfxc[a[1],clen]=clen
+		}
+		next
+	}
 
 	END {
 		wlen=length(stem)
 		if (fx==0 || fx==2) {
-			for (j in pfx) {
+			for (j in stem_regexed_pfx) {
 				if (wlen<=pfxc[j]) continue;
 				pref_stem=(pfx[j]=="0" ? "" : pfx[j]) substr(stem, pfxc[j]+1)
 				pswlen=length(pref_stem)
 				all_variations[pref_stem]=pref_stem
-				for (jj in pfx) {
-					if (pswlen<=pfxc[jj]) continue;
-					pref_pref_stem=(pfx[jj]=="0" ? "" : pfx[jj]) substr(pref_stem, pfxc[jj]+1)
-					all_variations[pref_pref_stem]=pref_pref_stem
+				if (complex_prefixes=="yes") {
+					for (jj in pfx) {
+						if (pswlen<=pfxc[jj]) continue;
+						pref_pref_stem=(pfx[jj]=="0" ? "" : pfx[jj]) substr(pref_stem, pfxc[jj]+1)
+						all_variations[pref_pref_stem]=pref_pref_stem
+					}
 				}
 			}
 		}
 		if (fx==0 || fx==1) {
-			for(i in sfx) {
+			for(i in stem_regexed_sfx) {
 				if (wlen<=sfxc[i]) continue;
 				stem_suff=substr(stem, 1, wlen-sfxc[i]) (sfx[i]=="0" ? "": sfx[i])
 				sswlen=length(stem_suff)
 				all_variations[stem_suff]=stem_suff
-				for (ii in sfx) {
-					if (sswlen<=sfxc[ii]) continue;
-					stem_suff_suff=substr(stem_suff, 1, sswlen-sfxc[ii]) (sfx[ii]=="0" ? "": sfx[ii])
-					all_variations[stem_suff_suff]=stem_suff_suff
+				if (complex_prefixes="no") {
+					for (ii in sfx) {
+						if (sswlen<=sfxc[ii]) continue;
+						stem_suff_suff=substr(stem_suff, 1, sswlen-sfxc[ii]) (sfx[ii]=="0" ? "": sfx[ii])
+						all_variations[stem_suff_suff]=stem_suff_suff
+					}
 				}
 			}
 		}
 		if (fx==0) {
-			for (j in pfx) {
+			for (j in stem_regexed_pfx) {
 				if (wlen<=pfxc[j]) continue;
-				for(i in sfx) {
+				for(i in stem_regexed_sfx) {
 					if (wlen<=sfxc[i] || wlen <= (sfxc[i] + pfxc[j])) continue;
 					pref_stem_suff=(pfx[j]=="0" ? "" : pfx[j]) substr(stem, pfxc[j]+1, wlen-sfxc[i]-pfxc[j]) (sfx[i]=="0" ? "": sfx[i])
 					psswlen=length(pref_stem_suff)
 					all_variations[pref_stem_suff]=pref_stem_suff
-					for (jj in pfx) {
-						if (psswlen<=pfxc[jj]) continue;
-						pref_pref_stem_suff=(pfx[jj]=="0" ? "" : pfx[jj]) substr(pref_stem_suff, pfxc[jj]+1)
-						all_variations[pref_pref_stem_suff]=pref_pref_stem_suff
+					if (complex_prefixes=="yes") {
+						for (jj in pfx) {
+							if (psswlen<=pfxc[jj]) continue;
+							pref_pref_stem_suff=(pfx[jj]=="0" ? "" : pfx[jj]) substr(pref_stem_suff, pfxc[jj]+1)
+							all_variations[pref_pref_stem_suff]=pref_pref_stem_suff
+						}
 					}
-					for (ii in sfx) {
-						if (psswlen<=sfxc[ii]) continue;
-						pref_stem_suff_suff=substr(pref_stem_suff, 1, psswlen-sfxc[ii]) (sfx[ii]=="0" ? "": sfx[ii])
-						all_variations[pref_stem_suff_suff]=pref_stem_suff_suff
+					else {
+						for (ii in sfx) {
+							if (psswlen<=sfxc[ii]) continue;
+							pref_stem_suff_suff=substr(pref_stem_suff, 1, psswlen-sfxc[ii]) (sfx[ii]=="0" ? "": sfx[ii])
+							all_variations[pref_stem_suff_suff]=pref_stem_suff_suff
+						}
 					}
 				}
 			}
@@ -319,7 +347,7 @@ ystyried () {
 			print variation
 		}
 	}
-	' /tmp/wordforms.aff /tmp/wordforms.aff | hunspell -d /tmp/wordforms -G -l | sort -u
+	' /tmp/wordforms.aff | hunspell -d /tmp/wordforms -G -l
 }
 
 ffeindio () {
