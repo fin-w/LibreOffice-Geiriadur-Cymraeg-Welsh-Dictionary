@@ -261,46 +261,65 @@ ystyried () {
 
 	grep -q '^COMPLEXPREFIXES' $1 && complex_prefixes="yes" || complex_prefixes="no"
 	awk -v fx="$fx" -v stem="$( sed -e "s|/.*||" <<< ${stems[0]} )" -v complex_prefixes="$complex_prefixes" '
-		BEGIN {
-			wlen=length(stem)
-			print stem
-		}
+	BEGIN { all_variations[stem]=stem }
 
-		NR==FNR {
-			# this runs on the first file (i.e. first pass through the affix file)
-			if (fx!=2 && FILENAME!="-" && /^SFX/ && NF > 4 && $4 !~ "[1-9][0-9]*" && stem ~ ".*"$5"$") {split($4,a,"/");clen=($3=="0") ? 0 : length($3);sfx[a[1],clen]=a[1];sfxc[a[1],clen]=clen;next}
-			if (fx!=1 && FILENAME!="-" && /^PFX/ && NF > 4 && $4 !~ "[1-9][0-9]*" && stem ~ "^"$5".*") {split($4,a,"/");clen=($3=="0") ? 0 : length($3);pfx[a[1],clen]=a[1];pfxc[a[1],clen]=clen;next}
-		}
+	fx!=2 && /^SFX/ && NF > 4 && $4 !~ "[1-9][0-9]*" {split($4,a,"/");clen=($3=="0") ? 0 : length($3);sfx[a[1],clen]=a[1];sfxc[a[1],clen]=clen;next}
+	fx!=1 && /^PFX/ && NF > 4 && $4 !~ "[1-9][0-9]*" {split($4,a,"/");clen=($3=="0") ? 0 : length($3);pfx[a[1],clen]=a[1];pfxc[a[1],clen]=clen;next}
 
-		NR!=FNR && fx!=2 && complex_prefixes=="no" && FILENAME!="-" && /^SFX/ && NF > 4 && $4 !~ "[1-9][0-9]*" {
-			# this runs on the second file (i.e. second pass through the affix file)
-			for (i in sfx) {
-				clen=sfxc[i];if (wlen<=clen) continue
-				stem_and_suff=substr(stem, 1, wlen-clen) (sfx[i]=="0" ? "": sfx[i])
-				print stem_and_suff
-				if ( stem_and_suff ~ ".*"$5"$" ) {
-					swlen=length(stem_and_suff)
-					split($4,a,"/");sclen=($3=="0") ? 0 : length($3);sfx[a[1],sclen]=a[1];sfxc[a[1],sclen]=sclen
-					print substr(stem_and_suff, 1, swlen-sclen) (a[1]=="0" ? "": a[1])
-				}
-			}
-		}
-
-		NR!=FNR && fx!=1 && complex_prefixes=="yes" && FILENAME!="-" && /^PFX/ && NF > 4 && $4 !~ "[1-9][0-9]*" {
+	END {
+		wlen=length(stem)
+		if (fx==0 || fx==2) {
 			for (j in pfx) {
-				clen=pfxc[j];if (wlen<=clen) continue
-				stem_and_pref=(pfx[j]=="0" ? "" : pfx[j]) substr(stem, clen+1)
-				print stem_and_pref
-				if (stem_and_pref ~ "^"$5".*") {
-					pwlen=length(stem_and_pref)
-					split($4,a,"/");pclen=($3=="0") ? 0 : length($3);pfx[a[1],pclen]=a[1];pfxc[a[1],pclen]=pclen
+				if (wlen<=pfxc[j]) continue;
+				pref_stem=(pfx[j]=="0" ? "" : pfx[j]) substr(stem, pfxc[j]+1)
+				pswlen=length(pref_stem)
+				all_variations[pref_stem]=pref_stem
+				for (jj in pfx) {
+					if (pswlen<=pfxc[jj]) continue;
+					pref_pref_stem=(pfx[jj]=="0" ? "" : pfx[jj]) substr(pref_stem, pfxc[jj]+1)
+					all_variations[pref_pref_stem]=pref_pref_stem
 				}
 			}
 		}
-		END {
-			print
+		if (fx==0 || fx==1) {
+			for(i in sfx) {
+				if (wlen<=sfxc[i]) continue;
+				stem_suff=substr(stem, 1, wlen-sfxc[i]) (sfx[i]=="0" ? "": sfx[i])
+				sswlen=length(stem_suff)
+				all_variations[stem_suff]=stem_suff
+				for (ii in sfx) {
+					if (sswlen<=sfxc[ii]) continue;
+					stem_suff_suff=substr(stem_suff, 1, sswlen-sfxc[ii]) (sfx[ii]=="0" ? "": sfx[ii])
+					all_variations[stem_suff_suff]=stem_suff_suff
+				}
+			}
 		}
-	' /tmp/wordforms.aff /tmp/wordforms.aff | hunspell -d /tmp/wordforms -G -l
+		if (fx==0) {
+			for (j in pfx) {
+				if (wlen<=pfxc[j]) continue;
+				for(i in sfx) {
+					if (wlen<=sfxc[i] || wlen <= (sfxc[i] + pfxc[j])) continue;
+					pref_stem_suff=(pfx[j]=="0" ? "" : pfx[j]) substr(stem, pfxc[j]+1, wlen-sfxc[i]-pfxc[j]) (sfx[i]=="0" ? "": sfx[i])
+					psswlen=length(pref_stem_suff)
+					all_variations[pref_stem_suff]=pref_stem_suff
+					for (jj in pfx) {
+						if (psswlen<=pfxc[jj]) continue;
+						pref_pref_stem_suff=(pfx[jj]=="0" ? "" : pfx[jj]) substr(pref_stem_suff, pfxc[jj]+1)
+						all_variations[pref_pref_stem_suff]=pref_pref_stem_suff
+					}
+					for (ii in sfx) {
+						if (psswlen<=sfxc[ii]) continue;
+						pref_stem_suff_suff=substr(pref_stem_suff, 1, psswlen-sfxc[ii]) (sfx[ii]=="0" ? "": sfx[ii])
+						all_variations[pref_stem_suff_suff]=pref_stem_suff_suff
+					}
+				}
+			}
+		}
+		for (variation in all_variations) {
+			print variation
+		}
+	}
+	' /tmp/wordforms.aff /tmp/wordforms.aff | hunspell -d /tmp/wordforms -G -l | sort -u
 }
 
 ffeindio () {
