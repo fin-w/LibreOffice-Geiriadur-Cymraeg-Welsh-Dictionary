@@ -279,6 +279,7 @@ ystyried () {
 		# put every suffix in $sfx
 		sfx[a[1],clen]=a[1]
 		sfxc[a[1],clen]=clen
+		sfx_regex[a[1],clen]=$5
 		if (stem ~ ".*"$5"$") {
 			# put only the suffixes whose regex will
 			# match the end of $stem into this array
@@ -295,6 +296,7 @@ ystyried () {
 		# put every prefix in $pfx
 		pfx[a[1],clen]=a[1]
 		pfxc[a[1],clen]=clen
+		pfx_regex[a[1],clen]=$5
 		if (stem ~ "^"$5".*") {
 			# put only the prefixes whose regex will
 			# match the start of $stem into this array
@@ -318,7 +320,7 @@ ystyried () {
 				if (complex_prefixes=="yes") {
 					# add the current prefixed stem, with every prefix added to the front
 					for (jj in pfx) {
-						if (pswlen<=pfxc[jj]) continue;
+						if (pswlen<=pfxc[jj] || pref_stem !~ "^"pfx_regex[jj]".*") continue;
 						pref_pref_stem=(pfx[jj]=="0" ? "" : pfx[jj]) substr(pref_stem, pfxc[jj]+1)
 						all_variations[pref_pref_stem]=pref_pref_stem
 					}
@@ -336,7 +338,7 @@ ystyried () {
 				if (complex_prefixes="no") {
 					# add the current suffixed stem, with every suffix added to the end
 					for (ii in sfx) {
-						if (sswlen<=sfxc[ii]) continue;
+						if (sswlen<=sfxc[ii] || stem_suff !~ ".*"sfx_regex[ii]"$") continue;
 						stem_suff_suff=substr(stem_suff, 1, sswlen-sfxc[ii]) (sfx[ii]=="0" ? "": sfx[ii])
 						all_variations[stem_suff_suff]=stem_suff_suff
 					}
@@ -357,7 +359,7 @@ ystyried () {
 					if (complex_prefixes=="yes") {
 						# add the current prefixed and suffixed stem, with every prefix added to the start
 						for (jj in pfx) {
-							if (psswlen<=pfxc[jj]) continue;
+							if (psswlen<=pfxc[jj] || pref_stem_suff !~ "^"pfx_regex[jj]".*") continue;
 							pref_pref_stem_suff=(pfx[jj]=="0" ? "" : pfx[jj]) substr(pref_stem_suff, pfxc[jj]+1)
 							all_variations[pref_pref_stem_suff]=pref_pref_stem_suff
 						}
@@ -365,7 +367,7 @@ ystyried () {
 					else {
 						# add the current prefixed and suffixed stem, with every suffix added to the end
 						for (ii in sfx) {
-							if (psswlen<=sfxc[ii]) continue;
+							if (psswlen<=sfxc[ii] || pref_stem_suff !~ ".*"sfx_regex[ii]"$") continue;
 							pref_stem_suff_suff=substr(pref_stem_suff, 1, psswlen-sfxc[ii]) (sfx[ii]=="0" ? "": sfx[ii])
 							all_variations[pref_stem_suff_suff]=pref_stem_suff_suff
 						}
