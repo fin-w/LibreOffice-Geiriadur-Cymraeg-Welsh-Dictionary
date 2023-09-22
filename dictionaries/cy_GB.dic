@@ -2203,6 +2203,7 @@ amlwyth/H
 amlwythiant/H
 amlwythi/H
 amlyc/H
+amlycaf/H
 amlyg/Hv
 amlygiad/BH
 amlygrwydd/H
@@ -2771,6 +2772,7 @@ anghydmarus/H
 anghydnabyddedig/H
 anghydnabyddus/H
 anghydnaws/H
+anghydradd/H
 anghydraddoldeb/BH
 anghydrif/BH
 anghydryw/H
@@ -22649,7 +22651,7 @@ ethen/H
 ether/H
 Ethiopia/H
 ethneg/H
-ethnig/H
+ethnig/HP
 ethnigrwydd/H
 ethnogerddoleg/H
 ethnogerddoreg/H
@@ -28572,7 +28574,7 @@ haenen/F
 haeniad/B
 haeniadur/H
 haenliwio
-haenog
+haenog/P
 haenogi
 haenogiad/B
 haenol
