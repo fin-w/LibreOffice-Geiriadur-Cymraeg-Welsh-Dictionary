@@ -231,6 +231,7 @@ ystyried () {
 	# expand a word with all available relevant affixes: the below is modified from 'wordforms'
 	# from https://github.com/hunspell/hunspell/blob/master/src/tools/wordforms
 	###
+
 	# check for incorrect number of arguments
 	case $# in
 		0|1|2) echo "Usage: wordforms [-s | -p] dictionary.aff dictionary.dic word
@@ -248,198 +249,220 @@ ystyried () {
 	test -h /tmp/wordforms.aff && rm /tmp/wordforms.aff
 	# make a symbolic link of the aff file
 	ln -s "$PWD/$1" /tmp/wordforms.aff
-	# find all lines exactly matching the search stem
-	# plus optional forward slash and flags
-	stems=( $( grep -E "^$3(/|$)" $2 ) )
+
+	# find all lines exactly matching the search
+	# stem, plus optional forward slash and flags
+	entries=""
+	count=0
+	for entry in $( grep -E "^$3(/|$)" $2 ) ; do
+		[ ! -z $entries ] && entries="$entries|$entry"
+		[ -z $entries ] && entries="$entry"
+		count=$((count+1))
+	done
 	# if no stem was found then exit
-	[ ${#stems[@]} -eq 0 ] && return
+	[ $count -eq 0 ] && return 1
 	# number of stems found is the number of entries
 	# in the temporary dictionary
-	printf "%s\n" "${#stems[@]}" > /tmp/wordforms.dic
+	echo "$count" > /tmp/wordforms.dic
 	# add entries to temporary dictionary
-	printf "%s\n" "${stems[@]}" >> /tmp/wordforms.dic
+	echo "$entries" | sed 's/|/\n/g' >> /tmp/wordforms.dic
+
 	# collect the dictionary settings we need to optimise the word generation
-	grep -q '^COMPLEXPREFIXES' $1 && complex_prefixes="yes" || complex_prefixes="no"
+	grep -q '^COMPLEXPREFIXES' $1 && complex_prefixes="yes" || complex_prefixes=""
 	flag_type="unicode"
 	case "$( awk '/^FLAG/ && NF>1 { print $2 }' $1 )" in
 		num) flag_type="num";;
 		long) flag_type="long";;
 	esac
 
+
 	# generate the different potential words
 	awk -v fx="$fx" -v complex_prefixes="$complex_prefixes" -v flag_type="$flag_type" '
-	# this runs before processing the .aff file
-	BEGIN {
-		use_flags=0
-		delete stem_flags[0]
-	}
-	
-	# this runs on the .dic file to get stem and flag data
-	NR==FNR && NR>1 && /\// && NF==1 {
-		split($1,a,"/")
-		stem=a[1]
-		if (a[2]) {
-			use_flags=1
-			split(a[2],b, (flag_type=="num" ? "," : "" ), blen)
-			# correct long flags being split into separate characters
-			i=1
+	function get_regex_from_flags(input_flags) {
+		delete flag_array
+		delete long_flags
+		output_regex=""
+		temp=""
+		
+		if (input_flags) {
+			split(input_flags, flag_particles, (flag_type=="num" ? "," : "" ))
 			if (flag_type=="long") {
-				for (i=1; i<length(blen); i=i+2) {
-					long_flags[i]=b[i] b[i+1]
+				for (i in flag_particles) {
+					temp=temp flag_particles[i]
+					if (length(temp)==2) {
+						#flag_particles[i] && flag_particles[i-1] &&) {
+						long_flags[temp]=temp
+						temp=""
+					}
 				}
-				for (f in long_flags) {
-					stem_flags[length(stem_flags)+1]=long_flags[f]
+				for (i in long_flags) {
+					flag_array[length(flag_array)+1]=long_flags[i]
 				}
 			}
 			else {
-				for (f in b) {
-					stem_flags[length(stem_flags)+1]=b[f]
+				for (i in flag_particles) {
+					flag_array[length(flag_array)+1]=flag_particles[i]
 				}
 			}
+			output_regex=output_regex (flag_type!="unicode" ? "(" : "[")
+			for (flag in flag_array) {
+				if (flag_array[flag]) {
+					output_regex=output_regex flag_array[flag] (flag_type!="unicode" ? "|" : "")
+				}
+			}
+			if (flag_type!="unicode") output_regex=substr(output_regex, 1, (length(output_regex) - 1));
+			output_regex=output_regex (flag_type!="unicode" ? ")" : "]")
+			return output_regex
+		}
+		else {
+			return 0
 		}
 	}
-	
-	# this runs on the .dic file to get any stems without flags
-	NR==FNR && NR>1 && NF==1 && !/\// {
-		stem=$1
+
+	# this runs on the .dic file to get stem and flag data
+	NR==FNR && NR>1 && /\// && NF==1 {
+		split($1,dic_line,"/")
+		stem=dic_line[1]
+		if (dic_line[2]) stem_flags=stem_flags dic_line[2];
 	}
-	
+
+	# this runs on the .dic file to get any stems without flags
+	NR==FNR && NR>1 && NF==1 && !/\// { stem=$1 }
+
 	# this runs on the first line of the .aff file
 	# to prepare regex to search the file with
 	NR!=FNR && FNR==1 {
 		# generate regex matching all flags used by the stem
-		if (use_flags) {
-			flag_regex=flag_regex (flag_type!="unicode" ? "(" : "[")
-			for (flag in stem_flags) {
-				if (stem_flags[flag]) {
-					flag_regex=flag_regex stem_flags[flag] (flag_type!="unicode" ? "," : "")
-				}
-			}
-			if (flag_type!="unicode") flag_regex=substr(flag_regex, 1, (length(flag_regex) - 1));
-			flag_regex=flag_regex (flag_type!="unicode" ? ")" : "]")
-		}
-		else {
-			# if no flags have been used then
-			# only the dictionary form is correct
-			print stem
-			exit 0
-		}
-	}
-	
-	# this runs on the .aff file to get suffix data
-	NR!=FNR && fx!=2 && /^SFX/ && NF>4 && $4 !~ "[1-9][0-9]*" {
-		split($4,a,"/")
-		clen=($3=="0") ? 0 : length($3)
-		# put every suffix in $sfx
-		sfx[a[1],clen]=a[1]
-		sfxc[a[1],clen]=clen
-		sfx_regex[a[1],clen]=$5
-		if ($2 ~ "^"flag_regex"$" && stem ~ ".*"$5"$") {
-			# add only the suffixes whose regex
-			# matches the end of $stem AND matches
-			# with a flag on any of the dic entries
-			stem_regexed_sfx[a[1],clen]=a[1]
-			stem_regexed_sfxc[a[1],clen]=clen
-		}
-		next
+		flag_regex=get_regex_from_flags(stem_flags)
+		# if no flags have been used then
+		# only the dictionary form is correct
+		if (!flag_regex) exit 0;
 	}
 
-	# this runs on the .aff file to get prefix data
-	NR!=FNR && fx!=1 && /^PFX/ && NF>4 && $4 !~ "[1-9][0-9]*" {
+	# this runs on the .aff file to get affix data
+	NR!=FNR && /^[SP]FX/ && NF>4 && $4 !~ "[1-9][0-9]*" {
 		split($4,a,"/")
 		clen=($3=="0") ? 0 : length($3)
-		# put every prefix in $pfx
-		pfx[a[1],clen]=a[1]
-		pfxc[a[1],clen]=clen
-		if ($2 ~ "^"flag_regex"$" && stem ~ "^"$5".*") {
-			# add only the prefixes whose regex
-			# matches the start of $stem AND matches
-			# with a flag on any of the dic entries
-			stem_regexed_pfx[a[1],clen]=a[1]
-			stem_regexed_pfxc[a[1],clen]=clen
-		}
+		# put every suffix in $affix
+		if (($1=="SFX" && fx!=2) || ($1=="PFX" && fx!=1)) affix_db[$0]=$0; #could strip out the unused parts of $0?
 		next
 	}
 
 	# this runs after processing the .aff file
 	END {
-		wlen=length(stem)
+		# if there are no variations to generate
+		if (!flag_regex) { print stem; exit 0 }
 		
-		# every potential word goes in this array
+		stem_length=length(stem)
 		all_variations[stem]=stem
 		
-		if (fx!=1) {
-			# loop through only the array indexes of prefixes that will fit with the stem
-			for (j in stem_regexed_pfx) {
-				if (wlen<=pfxc[j]) continue;
-				pref_stem=(pfx[j]=="0" ? "" : pfx[j]) substr(stem, pfxc[j]+1)
-				pswlen=length(pref_stem)
-				# add prefixed stem to the array of words to check
+		# gather only the affixes referenced by
+		# the dictionary entries through their stems
+		# and put them together in $regexed_affixes
+		for (line in affix_db) {
+			split(line, line_particles)
+			split(line_particles[4], add_and_flags, "/")
+			if (line_particles[2] ~ "^"flag_regex"$") { #could add beginning / end of stem ~ line_particles[5] here
+				if (( line_particles[1]=="PFX" && stem ~ "^"line_particles[5]".*" ) || ( line_particles[1]=="SFX" && stem ~ ".*"line_particles[5]"$" )) {
+					regexed_affixes[line]=line
+					continue
+				}
+			}
+		}
+		
+		# find the affixes referenced by the
+		# top-level affixes and add them to
+		# a separate array $sub_affix_regex
+		for (line in regexed_affixes) {
+			sub_affix_regex=""
+			add_and_flags[1]=""
+			add_and_flags[2]=""
+			split(line, line_particles)
+			split(line_particles[4], add_and_flags, "/")
+			if (add_and_flags[2]) {
+				sub_affix_regex=get_regex_from_flags(add_and_flags[2])
+				for (sub_line in affix_db) {
+					split(sub_line, sub_line_particles)
+					split(sub_line_particles[4], sub_add_and_flags, "/")
+					if (sub_line_particles[2] ~ "^"sub_affix_regex"$") {
+						sub_regexed_affixes[sub_line]=sub_line
+					}
+				}
+			}
+		}
+		
+		# generate the stem with up to three
+		# suffixes and / or prefixes, two prefixes
+		# if dic rule COMPLEXPREFIXES exists, or
+		# (by default) two suffixes, and one affix
+		# of the opposite type i.e. f-stem-suff-suff
+		for (affix in regexed_affixes) {
+			split(affix, affix_particles)
+			split(affix_particles[4], add_and_flags, "/")
+			cut_chars=(affix_particles[3]=="0" ? 0 : length(affix_particles[3]))
+			if (affix_particles[1]=="PFX") {
+				if (stem_length<=cut_chars || flag_type==1) continue;
+				pref_stem=(add_and_flags[1]=="0" ? "" : add_and_flags[1]) substr(stem, cut_chars+1)
+				pref_stem_length=length(pref_stem)
 				all_variations[pref_stem]=pref_stem
-				if (complex_prefixes=="yes") {
-					# add the current prefixed stem, with every prefix added to the front
-					for (jj in pfx) {
-						if (pswlen<=pfxc[jj]) continue;
-						pref_pref_stem=(pfx[jj]=="0" ? "" : pfx[jj]) substr(pref_stem, pfxc[jj]+1)
+				for (sub_affix in sub_regexed_affixes) {
+					split(sub_affix, sub_affix_particles)
+					split(sub_affix_particles[4], sub_add_and_flags, "/")
+					sub_cut_chars=(sub_affix_particles[3]=="0" ? 0 : length(sub_affix_particles[3]))
+					if (complex_prefixes && sub_affix_particles[1]=="PFX" && pref_stem_length>sub_cut_chars && pref_stem ~ "^"sub_affix_particles[5]".*") {
+						pref_pref_stem=(sub_add_and_flags[1]=="0" ? "" : sub_add_and_flags[1]) substr(pref_stem, sub_cut_chars+1)
+						pref_pref_stem_length=length(pref_pref_stem)
 						all_variations[pref_pref_stem]=pref_pref_stem
-					}
-				}
-			}
-		}
-		if (fx!=2) {
-			# loop through only the array indexes of suffixes that will fit with the stem
-			for(i in stem_regexed_sfx) {
-				if (wlen<=sfxc[i]) continue;
-				stem_suff=substr(stem, 1, wlen-sfxc[i]) (sfx[i]=="0" ? "": sfx[i])
-				sswlen=length(stem_suff)
-				# add suffixed stem to the array of words to check
-				all_variations[stem_suff]=stem_suff
-				if (complex_prefixes="no") {
-					# add the current suffixed stem, with every suffix added to the end
-					for (ii in sfx) {
-						if (sswlen<=sfxc[ii]) continue;
-						stem_suff_suff=substr(stem_suff, 1, sswlen-sfxc[ii]) (sfx[ii]=="0" ? "": sfx[ii])
-						all_variations[stem_suff_suff]=stem_suff_suff
-					}
-				}
-			}
-		}
-		if (fx==0) {
-			# generate stems with prefixes and suffixes
-			# loop through only the array indexes of affixes that will fit with the stem
-			for (j in stem_regexed_pfx) {
-				if (wlen<=pfxc[j]) continue;
-				for(i in stem_regexed_sfx) {
-					if (wlen<=sfxc[i] || wlen <= (sfxc[i] + pfxc[j])) continue;
-					pref_stem_suff=(pfx[j]=="0" ? "" : pfx[j]) substr(stem, pfxc[j]+1, wlen-sfxc[i]-pfxc[j]) (sfx[i]=="0" ? "": sfx[i])
-					psswlen=length(pref_stem_suff)
-					# add the prefixed and suffixed stem
-					all_variations[pref_stem_suff]=pref_stem_suff
-					if (complex_prefixes=="yes") {
-						# add the current prefixed and suffixed stem, with every prefix added to the start
-						for (jj in pfx) {
-							if (psswlen<=pfxc[jj]) continue;
-							pref_pref_stem_suff=(pfx[jj]=="0" ? "" : pfx[jj]) substr(pref_stem_suff, pfxc[jj]+1)
+						for (sub_sub_affix in regexed_affixes) {
+							split(sub_sub_affix, sub_sub_affix_particles)
+							split(sub_sub_affix_particles[4], sub_sub_add_and_flags, "/")
+							sub_sub_cut_chars=(sub_sub_affix_particles[3]=="0" ? 0 : length(sub_sub_affix_particles[3]))
+							if (sub_sub_affix_particles[1]!="SFX" || pref_pref_stem_length>sub_sub_cut_chars || pref_pref_stem !~ ".*"sub_affix_particles[5]"$") continue;
+							pref_pref_stem_suff=substr(pref_pref_stem, 1, pref_pref_stem_length-sub_sub_cut_chars) (sub_sub_add_and_flags[1]=="0" ? "": sub_sub_add_and_flags[1])
 							all_variations[pref_pref_stem_suff]=pref_pref_stem_suff
 						}
 					}
-					else {
-						# add the current prefixed and suffixed stem, with every suffix added to the end
-						for (ii in sfx) {
-							if (psswlen<=sfxc[ii]) continue;
-							pref_stem_suff_suff=substr(pref_stem_suff, 1, psswlen-sfxc[ii]) (sfx[ii]=="0" ? "": sfx[ii])
+					if (sub_affix_particles[1]=="SFX" && pref_stem_length>sub_cut_chars && pref_stem ~ ".*"sub_affix_particles[5]"$") {
+						pref_stem_suff=substr(pref_stem, 1, pref_stem_length-sub_cut_chars) (sub_add_and_flags[1]=="0" ? "": sub_add_and_flags[1])
+						all_variations[pref_stem_suff]=pref_stem_suff
+					}
+				}
+			}
+			else if (affix_particles[1]=="SFX") {
+				if (stem_length<=cut_chars || flag_type==2) continue;
+				stem_suff=substr(stem, 1, stem_length-cut_chars) (add_and_flags[1]=="0" ? "": add_and_flags[1])
+				stem_suff_length=length(stem_suff)
+				all_variations[stem_suff]=stem_suff
+				for (sub_affix in sub_regexed_affixes) {
+					split(sub_affix, sub_affix_particles)
+					split(sub_affix_particles[4], sub_add_and_flags, "/")
+					sub_cut_chars=(sub_affix_particles[3]=="0" ? 0 : length(sub_affix_particles[3]))
+					if (sub_affix_particles[1]=="PFX" && stem_suff_length>sub_cut_chars && stem_suff ~ "^"sub_sub_affix_particles[5]".*") {
+						pref_stem_suff=(sub_add_and_flags[1]=="0" ? "" : sub_add_and_flags[1]) substr(stem_suff, sub_cut_chars+1)
+						all_variations[pref_stem_suff]=pref_stem_suff
+					}
+					if (!complex_prefixes && sub_affix_particles[1]=="SFX" && stem_suff_length>sub_cut_chars && stem_suff ~ ".*"sub_affix_particles[5]"$") {
+						stem_suff_suff=substr(stem_suff, 1, stem_suff_length-sub_cut_chars) (sub_add_and_flags[1]=="0" ? "": sub_add_and_flags[1])
+						all_variations[stem_suff_suff]=stem_suff_suff
+						for (sub_sub_affix in regexed_affixes) {
+							split(sub_sub_affix, sub_sub_affix_particles)
+							if (sub_sub_affix_particles[1]!="PFX" || stem_suff_suff_length>sub_sub_cut_chars || stem_suff_suff !~ "^"sub_sub_affix_particles[5]".*") continue;
+							split(sub_sub_affix_particles[4], sub_sub_add_and_flags, "/")
+							sub_sub_cut_chars=(sub_sub_affix_particles[3]=="0" ? 0 : length(sub_sub_affix_particles[3]))
+							pref_stem_suff_suff=(sub_sub_add_and_flags[1]=="0" ? "" : sub_sub_add_and_flags[1]) substr(stem_suff_suff, sub_sub_cut_chars+1)
 							all_variations[pref_stem_suff_suff]=pref_stem_suff_suff
 						}
 					}
 				}
 			}
 		}
+		
 		for (variation in all_variations) {
 			# finally, print all the unique prefix / stem / suffix variations
 			print variation
 		}
 	}
-	' /tmp/wordforms.dic /tmp/wordforms.aff | hunspell -d /tmp/wordforms -G -l
+	' /tmp/wordforms.dic /tmp/wordforms.aff | hunspell -d /tmp/wordforms -G -l | sort -u
 }
 
 ffeindio () {
