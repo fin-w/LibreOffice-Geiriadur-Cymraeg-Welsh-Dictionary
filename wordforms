@@ -52,6 +52,7 @@ BEGIN {
 	all_suffixes_regex="("
 	all_prefixes_regex="("
 	delete rule_to_subflags_map
+	sub_flags=""
 	
 	
 	delete all_variations
@@ -80,6 +81,81 @@ BEGIN {
 
 function debug(text) {
 	print text >"/dev/tty"
+}
+
+function affix_word(word, input_flags, location, affix_level) {
+	#debug("\nCALL START\n → word <" word "> + input_flags <" input_flags "> + location <" location ">")
+	return_value=0
+	#separate the flags
+	#for each flag
+	local_flag_regex=get_regex_from_flags(input_flags)
+	#print "input flags: " input_flags >"/dev/tty"
+	#for 
+	split(local_flag_regex, individual_flags, "|")
+	for (local_flag in individual_flags) {
+		#debug("checking stem and flag: " word " + " individual_flags[local_flag])
+		if (individual_flags[local_flag] ~ "^"all_suffixes_regex"$" && fx!=2) {
+			#debug("- " individual_flags[local_flag] " is SFX")
+			if (location ~ "^(3|34|345)$") {
+				#debug("-- (3|34|345) suffixing the stem, location: " location " , affix_level: " affix_level)
+				if (affix_level == 1 ) {
+					#debug("--- OPTIMISED SUFFIXING STEM WITH " length(first_level_suffixes_fitting_stem) " SUFFIXES")
+					if (add_stem_suffix(word, input_flags, location, affix_level, individual_flags, local_flag, first_level_suffixes_fitting_stem)) return_value = 1;
+				}
+				else {
+					#debug("--- NORMAL SUFFIXING STEM")
+					if (add_stem_suffix(word, input_flags, location, affix_level, individual_flags, local_flag, suffixes_fitting_stem)) return_value = 1;
+				}
+			}
+			else if (location ~ "^(34|234)$" && !complex_prefixes) {
+				#debug("-- (34|234) processing suffixed stem, location: " location " , affix_level: " affix_level)
+				if (affix_level == 2) {
+					#debug("--- subflagging: " word "," input_flags ", level==" affix_level ", location==" location)
+					if (add_outer_suffix(word, input_flags, location, affix_level, individual_flags, local_flag, suffixes_used_by_subflags)) return_value = 1;
+				}
+				else {
+					#debug("--- affix_level==" affix_level "so suffixing with entire DB")
+					if (add_outer_suffix(word, input_flags, location, affix_level, individual_flags, local_flag, suffixes_db)) return_value = 1;
+				}
+			}
+			else {
+				#debug("#------------ deleting an entry: " to_be_processed[word "/" input_flags "/" location "/" affix_level])
+				delete to_be_processed[word "/" input_flags "/" location "/" affix_level]
+			}
+		}
+		else if (individual_flags[local_flag] ~ "^"all_prefixes_regex"$" && fx!=1) {
+			#debug("- " individual_flags[local_flag] " is PFX")
+			if (location ~ "^(3|34|345)$") {
+				#debug("-- (3|34|345) prefixing the stem, location: " location " , affix_level: " affix_level)
+				if (affix_level == 1 ) {
+					#debug("--- OPTIMISED PREFIXING with " length(first_level_prefixes_fitting_stem) " PREFIXES")
+					if (add_stem_prefix(word, input_flags, location, affix_level, individual_flags, local_flag, first_level_prefixes_fitting_stem)) return_value = 1;
+				}
+				else {
+					if (add_stem_prefix(word, input_flags, location, affix_level, individual_flags, local_flag, prefixes_fitting_stem)) return_value = 1;
+				}
+			}
+			else if (location ~ "^(23|234)$" && complex_prefixes) {
+				#debug("-- (23|234) processing prefixed stem, location: " location " , affix_level: " affix_level)
+				if (affix_level == 2) {
+					#debug("--- subflagging: " word "," input_flags ", level==" affix_level ", location==" location)
+					if (add_outer_prefix(word, input_flags, location, affix_level, individual_flags, local_flag, prefixes_used_by_subflags)) return_value = 1;
+				}
+				else {
+					#debug("--- affix_level==" affix_level "so suffixing with entire DB")
+					if (add_outer_prefix(word, input_flags, location, affix_level, individual_flags, local_flag, prefixes_db)) return_value = 1;
+				}
+			}
+			else {
+				#debug("#------------ deleting an entry: " to_be_processed[word "/" input_flags "/" location "/" affix_level])
+				delete to_be_processed[word "/" input_flags "/" location "/" affix_level]
+			}
+		}
+		#debug("---- in affixed to_be_processed length is " length(to_be_processed))
+	}
+	#debug("function thinks to be processed length is " length(to_be_processed))
+	#debug("CALL END\n")
+	return return_value
 }
 
 function add_stem_suffix(word, input_flags, location, affix_level, individual_flags, local_flag, relevant_suffixes,	return_value) {
@@ -126,6 +202,7 @@ function add_outer_suffix(word, input_flags, location, affix_level, individual_f
 	return_value=0
 	for (non_touching_suffix in relevant_suffixes) {
 		if (relevant_suffixes[non_touching_suffix]!=individual_flags[local_flag]) continue;
+			#debug("skipping --" relevant_suffixes[non_touching_suffix] " != " individual_flags[local_flag]"--"); continue;
 		split(non_touching_suffix, affix_particles)
 		#debug("---- sub suffix- matched suffix " affix_particles[2])
 		split(affix_particles[4], add_and_flags, "/")
@@ -136,9 +213,11 @@ function add_outer_suffix(word, input_flags, location, affix_level, individual_f
 			return_value=1
 			to_be_processed[affixed_word "/" add_and_flags[2] "/" location "5/" (affix_level+1)]=affixed_word "/" add_and_flags[2]
 		}
+		#debug("    given " word " + " local_flag)
 		all_variations[affixed_word]=affixed_word
 		delete to_be_processed [word "/" input_flags "/" location "/" affix_level]
 	}
+	#debug("length" length(relevant_suffixes))
 	return return_value
 }
 
@@ -200,77 +279,6 @@ function add_outer_prefix(word, input_flags, location, affix_level, individual_f
 	return return_value
 }
 
-function affix_word(word, input_flags, location, affix_level) {
-	#debug("\nCALL START\n" word " + " input_flags " + " location)
-	return_value=0
-	#separate the flags
-	#for each flag
-	local_flag_regex=get_regex_from_flags(input_flags)
-	#print "input flags: " input_flags >"/dev/tty"
-	#for 
-	split(local_flag_regex, individual_flags, "|")
-	for (local_flag in individual_flags) {
-		#debug("checking stem and flag: " word " + " individual_flags[local_flag])
-		if (individual_flags[local_flag] ~ "^"all_suffixes_regex"$" && fx!=2) {
-			#debug("- " individual_flags[local_flag] " is SFX")
-			if (location ~ "^(3|23|123)$") {
-				#debug("-- (3|34|345) suffixing the stem, location: " location " , affix_level: " affix_level)
-				if (affix_level == 1 ) {
-					#debug("OPTIMISED SUFFIXING with " length(first_level_suffixes_fitting_stem) " SUFFIXES")
-					if (add_stem_suffix(word, input_flags, location, affix_level, individual_flags, local_flag, first_level_suffixes_fitting_stem)) return_value = 1;
-				}
-				else {
-					#debug("NORMAL SUFFIXING")
-					if (add_stem_suffix(word, input_flags, location, affix_level, individual_flags, local_flag, suffixes_fitting_stem)) return_value = 1;
-				}
-			}
-			else if (location ~ "^(34|234)$" && !complex_prefixes) {
-				#debug("-- (34|234) processing suffixed stem, location: " location " , affix_level: " affix_level)
-				if (affix_level == 2) {
-					if (add_outer_suffix(word, input_flags, location, affix_level, individual_flags, local_flag, suffixes_used_by_subflags)) return_value = 1;
-				}
-				else {
-					if (add_outer_suffix(word, input_flags, location, affix_level, individual_flags, local_flag, suffixes_db)) return_value = 1;
-				}
-			}
-			else {
-				#debug("#------------ deleting an entry: " to_be_processed[word "/" input_flags "/" location "/" affix_level])
-				delete to_be_processed[word "/" input_flags "/" location "/" affix_level]
-			}
-		}
-		else if (individual_flags[local_flag] ~ "^"all_prefixes_regex"$" && fx!=1) {
-			#debug("- " individual_flags[local_flag] " is PFX")
-			if (location ~ "^(3|34|345)$") {
-				#debug("-- (3|34|345) prefixing the stem, location: " location " , affix_level: " affix_level)
-				if (affix_level == 1 ) {
-					#debug("OPTIMISED PREFIXING with " length(first_level_prefixes_fitting_stem) " PREFIXES")
-					if (add_stem_prefix(word, input_flags, location, affix_level, individual_flags, local_flag, first_level_prefixes_fitting_stem)) return_value = 1;
-				}
-				else {
-					if (add_stem_prefix(word, input_flags, location, affix_level, individual_flags, local_flag, prefixes_fitting_stem)) return_value = 1;
-				}
-			}
-			else if (location ~ "^(23|234)$" && complex_prefixes) {
-				#debug("-- (23|234) processing prefixed stem, location: " location " , affix_level: " affix_level)
-				if (affix_level == 2) {
-					if (add_outer_prefix(word, input_flags, location, affix_level, individual_flags, local_flag, prefixes_used_by_subflags)) return_value = 1;
-				}
-				else {
-					if (add_outer_prefix(word, input_flags, location, affix_level, individual_flags, local_flag, prefixes_db)) return_value = 1;
-				}
-			}
-			else {
-				#debug("#------------ deleting an entry: " to_be_processed[word "/" input_flags "/" location "/" affix_level])
-				delete to_be_processed[word "/" input_flags "/" location "/" affix_level]
-			}
-		}
-		#debug("---- in affixed to_be_processed length is " length(to_be_processed))
-	}
-	#debug("function thinks to be processed length is " length(to_be_processed))
-	#debug("CALL END\n")
-	return return_value
-}
-
 function get_regex_from_flags(input_flags) {
 	delete flag_array
 	delete long_flags
@@ -328,6 +336,9 @@ function get_regex_from_flags(input_flags) {
 		prefixes_fitting_stem[$0]=$0;
 		if ($2 ~ "^"flag_regex"$") {
 			first_level_prefixes_fitting_stem[$0]=$0
+			if (add_and_flags[2]) {
+				sub_flags=subflags add_and_flags[2] (flag_type=="num" ? "," : "")
+			}
 		}
 	}
 	next
@@ -346,27 +357,40 @@ function get_regex_from_flags(input_flags) {
 		suffixes_fitting_stem[$0]=$0
 		if ($2 ~ "^"flag_regex"$") {
 			first_level_suffixes_fitting_stem[$0]=$0
+			if (add_and_flags[2]) {
+				sub_flags=subflags add_and_flags[2] (flag_type=="num" ? "," : "")
+			}
 		}
 	}
 	next
 }
 
-
 # this runs after processing the .aff file
 END {
-	# get any rules that are referenced by a flag that a .dic file stem uses
-	for (rule in suffixes_db) {
-		if (rule_to_subflags_map[rule] && suffixes_db[rule] ~ "^"flag_regex"$") {
-			# rule data in the array reference string (`rule`), array contains the rule name only
-			suffixes_used_by_subflags[rule]=suffixes_db[rule]
+	# get regex matching all subflags used
+	sub_flag_regex=get_regex_from_flags(sub_flags)
+	if (sub_flag_regex) {
+		sub_flag_regex="(" sub_flag_regex ")"
+		#debug("subflags: " sub_flags)
+		#debug("subflags regex: " sub_flag_regex)
+		# get any rules that are referenced by a flag that a .dic file stem uses
+		for (rule in suffixes_db) { #get rid of rule to subfalgs? idk...
+			#debug(rule "\t" rule_to_subflags_map[rule] "\t" suffixes_db[rule] "\t" sub_flag_regex)
+			if (suffixes_db[rule] ~ "^"sub_flag_regex"$") {
+				#debug("subflag match: " rule)
+				# rule data in the array reference string (`rule`), array contains the rule name only
+				suffixes_used_by_subflags[rule]=suffixes_db[rule]
+			}
+		}
+		for (rule in prefixes_db) {
+			if (prefixes_db[rule] ~ "^"sub_flag_regex"$") {
+				# rule data in the array reference string (`rule`), array contains the rule name only
+				prefixes_used_by_subflags[rule]=prefixes_db[rule]
+			}
 		}
 	}
-	for (rule in prefixes_db) {
-		if (rule_to_subflags_map[rule] && prefixes_db[rule] ~ "^"flag_regex"$") {
-			# rule data in the array reference string (`rule`), array contains the rule name only
-			prefixes_used_by_subflags[rule]=prefixes_db[rule]
-		}
-	}
+	#debug("length of flagged prefixes / suffixes (total / total): " length(first_level_prefixes_fitting_stem) " / " length(first_level_suffixes_fitting_stem) " (" length(prefixes_db) " / " length(suffixes_db) ")")
+	#debug("length of subflagged prefixes / suffixes (total / total): " length(prefixes_used_by_subflags) " / " length(suffixes_used_by_subflags) " (" length(prefixes_db) " / " length(suffixes_db) ")")
 	#debug("START END AWK")
 	# if there are no variations to generate
 	if (!flag_regex) { print stem; exit 0 }
