@@ -22,7 +22,7 @@ ln -s "$PWD/$1" /tmp/wordforms.aff
 # stem, plus optional forward slash and flags
 entries=""
 count=0
-for entry in $( grep -E "^$3(/|$)" $2 ) ; do
+for entry in $( awk -v stem="$3" '$1 ~ "^"stem"[/$]" {print $1}' $2 ) ; do
 	[ ! -z $entries ] && entries="$entries|$entry"
 	[ -z $entries ] && entries="$entry"
 	count=$((count+1))
@@ -261,6 +261,7 @@ function add_stem_prefix(word, input_flags, location, affix_level, individual_fl
 }
 
 function add_outer_prefix(word, input_flags, location, affix_level, individual_flags, local_flag, relevant_prefixes,	return_value) {
+	return_value=0
 	for (non_touching_prefix in relevant_prefixes) {
 		if (relevant_prefixes[non_touching_prefix]!=individual_flags[local_flag]) continue;
 		split(non_touching_prefix, affix_particles)
