@@ -327,21 +327,34 @@ SFX O Y 1
 SFX O 0 aidd .
 
 PFX P Y 14
-PFX P c  amlg/H c[^h]
-PFX P p  amlb/H p[^h]
-PFX P t  amld/H t[^h]
-PFX P 0  aml/H  [cpt]h
-PFX P g  aml/H  g
-PFX P b  amlf/H b
-PFX P m  amlf/H m
-PFX P 0  aml/H  dd
-PFX P 0  amld/H d[^d]
-PFX P l  aml-/H ll
-PFX P 0  aml-/H l[^l]
-PFX P rh amlr/H rh
-PFX P 0  aml/H  r[^h]
-PFX P 0  aml/H  [aeiouwyâêîôûŵŷfhjknqsvxz]
-
+PFX P c  amlg c[^h]
+PFX P p  amlb p[^h]
+PFX P t  amld t[^h]
+PFX P 0  aml  [cpt]h
+PFX P g  aml  g
+PFX P b  amlf b
+PFX P m  amlf m
+PFX P 0  aml  dd
+PFX P 0  amld d[^d]
+PFX P l  aml- ll
+PFX P 0  aml- l[^l]
+PFX P rh amlr rh
+PFX P 0  aml  r[^h]
+PFX P 0  aml  [aeiouwyâêîôûŵŷfhjknqsvxz]
+PFX P c  hamlg c[^h]
+PFX P p  hamlb p[^h]
+PFX P t  hamld t[^h]
+PFX P 0  haml  [cpt]h
+PFX P g  haml  g
+PFX P b  hamlf b
+PFX P m  hamlf m
+PFX P 0  haml  dd
+PFX P 0  hamld d[^d]
+PFX P l  haml- ll
+PFX P 0  haml- l[^l]
+PFX P rh hamlr rh
+PFX P 0  haml  r[^h]
+PFX P 0  haml  [aeiouwyâêîôûŵŷfhjknqsvxz]
 
 #SFX S Y 9
 #SFX S 0 'r  [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
