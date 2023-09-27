@@ -1,4 +1,4 @@
-51698
+51708
 a
 â
 abaci/H
@@ -2202,8 +2202,8 @@ amlwriaeth/H
 amlwyth/H
 amlwythiant/H
 amlwythi/H
-amlyc/H
 amlycaf/H
+amlyc/H
 amlyg/Hv
 amlygiad/BH
 amlygrwydd/H
@@ -4121,8 +4121,8 @@ argyhoeddi/H
 argyhuddo/H
 argylchlin/DH
 argymell/Hz
-argymhell/Hy
 argymelliadau/H
+argymhell/Hy
 argymhelliad/H
 argymhellion/H
 ar-/H
@@ -7908,6 +7908,7 @@ bydolddyn/CMT
 bydoldeb/MT
 bydoli/MT
 bydolrwydd/MT
+bydolwg/MT
 bydwragedd/MT
 bydwraig/MT
 bydwreigiaeth/MT
@@ -16513,6 +16514,7 @@ cynhwysiad/LMT
 cynhwysiaeth/LMT
 cynhwysiant/LMT
 cynhwysion/LMT
+cynhwysol/LMT
 cynhwysor/LMT
 cynhwysrif/LMT
 cynhwys/Rv
@@ -20927,6 +20929,7 @@ dyffrynnoedd/MT
 dyffrynnog/MT
 Dyfi/MT
 dyflwydd/MT
+dyfnach/MT
 dyfnaf/MT
 Dyfnaint/MT
 Dyfnallt/MT
@@ -20934,6 +20937,7 @@ Dyfnantaidd/MT
 dyfnant/MT
 dyfnder/BEMT
 dyfndra/MT
+dyfned/MT
 dyfnentydd/MT
 dyfnfor/MRT
 dyfnha/Mv
@@ -28575,9 +28579,9 @@ haenen/F
 haeniad/B
 haeniadur/H
 haenliwio
-haenog/P
 haenogi
 haenogiad/B
+haenog/P
 haenol
 haenu
 haeriad/B
@@ -35412,6 +35416,7 @@ mewnfuddsoddi/M
 mewnfuddsodd/Mv
 mewnfudiad/BM
 mewnfud/MQv
+mewnfudol/M
 mewnfudo/M
 mewnfwriol/M
 mewnganol/BM
@@ -42730,7 +42735,7 @@ rhyddfrydiaeth/M
 rhyddfrydig/M
 rhyddfrydigrwydd/M
 rhyddfrydoli/M
-Rhyddfrydol/M
+rhyddfrydol/M
 rhyddfryd/QX
 Rhyddfryd/QX
 Rhyddfrydwragedd/M
@@ -51673,6 +51678,7 @@ ystyriaeth/BH
 ystyried/H
 ystyri/HRv
 ystyrlon/H
+ystyron/H
 ysu/H
 yswain/H
 ysweiniaeth/H
