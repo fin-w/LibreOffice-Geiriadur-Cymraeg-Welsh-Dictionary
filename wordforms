@@ -93,6 +93,15 @@ function affix_word(word, input_flags, location, affix_level) {
 	#for 
 	split(local_flag_regex, individual_flags, "|")
 	for (local_flag in individual_flags) {
+# 		debug("####")
+# 		for (i in to_be_processed) {
+# 			debug("# " i)
+# 		}
+# 		debug("# ----")
+# 		for (i in all_variations) {
+# 			debug("# " i)
+# 		}
+# 		debug("####")
 		#debug("checking stem and flag: " word " + " individual_flags[local_flag])
 		if (individual_flags[local_flag] ~ "^"all_suffixes_regex"$" && fx!=2) {
 			#debug("- " individual_flags[local_flag] " is SFX")
@@ -119,7 +128,7 @@ function affix_word(word, input_flags, location, affix_level) {
 				}
 			}
 			else {
-				#debug("#------------ deleting an entry: " to_be_processed[word "/" input_flags "/" location "/" affix_level])
+				#debug("#------------ suffix deleting an entry: " to_be_processed[word "/" input_flags "/" location "/" affix_level])
 				delete to_be_processed[word "/" input_flags "/" location "/" affix_level]
 			}
 		}
@@ -132,6 +141,7 @@ function affix_word(word, input_flags, location, affix_level) {
 					if (add_stem_prefix(word, input_flags, location, affix_level, individual_flags, local_flag, first_level_prefixes_fitting_stem)) return_value = 1;
 				}
 				else {
+					#debug("--- NORMAL PREFIXING STEM")
 					if (add_stem_prefix(word, input_flags, location, affix_level, individual_flags, local_flag, prefixes_fitting_stem)) return_value = 1;
 				}
 			}
@@ -147,7 +157,7 @@ function affix_word(word, input_flags, location, affix_level) {
 				}
 			}
 			else {
-				#debug("#------------ deleting an entry: " to_be_processed[word "/" input_flags "/" location "/" affix_level])
+				#debug("#------------ prefix deleting an entry: " to_be_processed[word "/" input_flags "/" location "/" affix_level])
 				delete to_be_processed[word "/" input_flags "/" location "/" affix_level]
 			}
 		}
@@ -201,19 +211,19 @@ function add_stem_suffix(word, input_flags, location, affix_level, individual_fl
 function add_outer_suffix(word, input_flags, location, affix_level, individual_flags, local_flag, relevant_suffixes,	return_value) {
 	return_value=0
 	for (non_touching_suffix in relevant_suffixes) {
-		if (relevant_suffixes[non_touching_suffix]!=individual_flags[local_flag]) continue;
-			#debug("skipping --" relevant_suffixes[non_touching_suffix] " != " individual_flags[local_flag]"--"); continue;
+		#debug("trying " word " + " local_flag)
+		if (relevant_suffixes[non_touching_suffix]!=individual_flags[local_flag]) { debug("skipping --" relevant_suffixes[non_touching_suffix] " != " individual_flags[local_flag]"--"); continue; }
 		split(non_touching_suffix, affix_particles)
 		#debug("---- sub suffix- matched suffix " affix_particles[2])
 		split(affix_particles[4], add_and_flags, "/")
 		cut_chars=(affix_particles[3]=="0" ? 0 : length(affix_particles[3]))
 		affixed_word=substr(word, 1, length(word)-cut_chars) (add_and_flags[1]=="0" ? "": add_and_flags[1])
-		#debug("--- created sub suffixed word: " affixed_word)
+		#debug("---- created sub suffixed word: " affixed_word)
 		if (add_and_flags[2]) {
+			#debug("---- (will process word " affixed_word " further)")
 			return_value=1
 			to_be_processed[affixed_word "/" add_and_flags[2] "/" location "5/" (affix_level+1)]=affixed_word "/" add_and_flags[2]
 		}
-		#debug("    given " word " + " local_flag)
 		all_variations[affixed_word]=affixed_word
 		delete to_be_processed [word "/" input_flags "/" location "/" affix_level]
 	}
@@ -263,7 +273,8 @@ function add_stem_prefix(word, input_flags, location, affix_level, individual_fl
 function add_outer_prefix(word, input_flags, location, affix_level, individual_flags, local_flag, relevant_prefixes,	return_value) {
 	return_value=0
 	for (non_touching_prefix in relevant_prefixes) {
-		if (relevant_prefixes[non_touching_prefix]!=individual_flags[local_flag]) continue;
+		#debug("trying " word " + " local_flag)
+		if (relevant_prefixes[non_touching_prefix]!=individual_flags[local_flag]) { debug("skipping --" relevant_suffixes[non_touching_suffix] " != " individual_flags[local_flag]"--"); continue }
 		split(non_touching_prefix, affix_particles)
 		#debug("---- sub prefix- matched prefix " affix_particles[2])
 		split(affix_particles[4], add_and_flags, "/")
@@ -376,15 +387,15 @@ END {
 		#debug("subflags regex: " sub_flag_regex)
 		# get any rules that are referenced by a flag that a .dic file stem uses
 		for (rule in suffixes_db) { #get rid of rule to subfalgs? idk...
-			#debug(rule "\t" rule_to_subflags_map[rule] "\t" suffixes_db[rule] "\t" sub_flag_regex)
 			if (suffixes_db[rule] ~ "^"sub_flag_regex"$") {
-				#debug("subflag match: " rule)
+				#debug("subflag suffix match: " rule)
 				# rule data in the array reference string (`rule`), array contains the rule name only
 				suffixes_used_by_subflags[rule]=suffixes_db[rule]
 			}
 		}
 		for (rule in prefixes_db) {
 			if (prefixes_db[rule] ~ "^"sub_flag_regex"$") {
+				#debug("subflag prefix match: " rule)
 				# rule data in the array reference string (`rule`), array contains the rule name only
 				prefixes_used_by_subflags[rule]=prefixes_db[rule]
 			}
@@ -431,7 +442,7 @@ END {
 	#debug("exited looping\n")
 	
 	#print "\n-------------------------------------------------\n" >"/dev/tty"
-	#debug("\t\traw variations:")
+	#debug("raw variations:")
 	for (variation in all_variations) {
 		# finally, print all the unique prefix / stem / suffix variations
 		print all_variations[variation]
