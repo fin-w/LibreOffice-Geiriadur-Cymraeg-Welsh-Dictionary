@@ -326,7 +326,7 @@ SFX N 0 iaeth .
 SFX O Y 1
 SFX O 0 aidd .
 
-PFX P Y 14
+PFX P Y 28
 PFX P c  amlg c[^h]
 PFX P p  amlb p[^h]
 PFX P t  amld t[^h]
