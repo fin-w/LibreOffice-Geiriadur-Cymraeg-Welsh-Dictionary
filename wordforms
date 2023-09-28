@@ -202,8 +202,8 @@ function add_stem_suffix(word, input_flags, location, affix_level, individual_fl
 			#debug("---- to be processed (lower level): " affixed_word "/" add_and_flags[2] "/" location "4")
 		}
 		all_variations[affixed_word]=affixed_word
-		delete to_be_processed[word "/" input_flags "/" location "/" affix_level]
 	}
+	delete to_be_processed[word "/" input_flags "/" location "/" affix_level]
 	#debug("-------- in optimised suff to_be_processed length is " length(to_be_processed))
 	return return_value
 }
@@ -225,8 +225,8 @@ function add_outer_suffix(word, input_flags, location, affix_level, individual_f
 			to_be_processed[affixed_word "/" add_and_flags[2] "/" location "5/" (affix_level+1)]=affixed_word "/" add_and_flags[2]
 		}
 		all_variations[affixed_word]=affixed_word
-		delete to_be_processed [word "/" input_flags "/" location "/" affix_level]
 	}
+	delete to_be_processed [word "/" input_flags "/" location "/" affix_level]
 	#debug("length" length(relevant_suffixes))
 	return return_value
 }
@@ -264,8 +264,8 @@ function add_stem_prefix(word, input_flags, location, affix_level, individual_fl
 			#debug("---- to be processed (lower level): " affixed_word "/" add_and_flags[2] "/" location "2")
 		}
 		all_variations[affixed_word]=affixed_word
-		delete to_be_processed[word "/" input_flags "/" location "/" affix_level]
 	}
+	delete to_be_processed[word "/" input_flags "/" location "/" affix_level]
 	#debug("-------- in optimised pref to_be_processed length is " length(to_be_processed))
 	return return_value
 }
@@ -286,8 +286,8 @@ function add_outer_prefix(word, input_flags, location, affix_level, individual_f
 			to_be_processed[affixed_word "/" add_and_flags[2] "/1" location "/" (affix_level+1)]=affixed_word "/" add_and_flags[2]
 		}
 		all_variations[affixed_word]=affixed_word
-		delete to_be_processed[word "/" input_flags "/" location "/" affix_level]
 	}
+	delete to_be_processed[word "/" input_flags "/" location "/" affix_level]
 	return return_value
 }
 
