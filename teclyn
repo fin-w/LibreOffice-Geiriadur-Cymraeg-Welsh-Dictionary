@@ -173,7 +173,7 @@ ychwanegu () {
 		# Add word
 		if [[ $autotag -ne 1 ]] ; then
 			echo "Writing word \"$dictgair\" to dictionary"
-			echo "$gair" >> dictionaries/word_list.txt
+			echo "$gair" >> playground/word_list.txt
 			echo "$dictgair" >> dictionaries/cy_GB.dic
 			# Write number of lines to tmp
 			tail -n +2 dictionaries/cy_GB.dic | sort -u | wc -l > dictionaries/dict.tmp
@@ -191,7 +191,7 @@ ychwanegu () {
 	fi
 
 	# contains any unknown words in the word list
-	anhysbys=$(hunspell -L -d dictionaries/cy_GB dictionaries/word_list.txt)
+	anhysbys=$(hunspell -L -d dictionaries/cy_GB playground/word_list.txt)
 	if [[ -n "$anhysbys" ]] ; then
 		echo "The dictionary does not recognise the following:"
 		echo "$anhysbys"
