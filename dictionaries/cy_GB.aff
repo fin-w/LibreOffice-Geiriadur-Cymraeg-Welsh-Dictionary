@@ -356,6 +356,12 @@ PFX P rh hamlr rh
 PFX P 0  haml  r[^h]
 PFX P 0  haml  [aeiouwyâêîôûŵŷfhjknqsvxz]
 
+# Ôl-ddodiaid ansoddeiriol
+SFX V Y 3
+SFX V 0 ed/LMTH  .
+SFX V 0 ach/LMTH .
+SFX V 0 af/LMTH  .
+
 #SFX S Y 9
 #SFX S 0 'r  [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
 #SFX S 0 'n  [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
