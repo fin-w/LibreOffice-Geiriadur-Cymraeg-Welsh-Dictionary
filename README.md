@@ -1,6 +1,7 @@
 # A Cymraeg spellchecker extension for LibreOffice
 
 Released under GPL-3
+
 Copyright © 2023 fin-w@tutanota.com
 
 Download the latest version from https://extensions.libreoffice.org/en/extensions/show/27374 or https://github.com/fin-w/LibreOffice-Geiriadur-Cymraeg-Welsh-Dictionary and open the file with LibreOffice to install. Select "Welsh" as the document language in LibreOffice to use this extension for spellchecking.
