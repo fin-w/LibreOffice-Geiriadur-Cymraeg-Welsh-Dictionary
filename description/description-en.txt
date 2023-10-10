@@ -1,1 +1,1 @@
-A Welsh dictionary, which builds on the work of Bangor University.
+A Welsh speller, which builds on the work of Bangor University.
