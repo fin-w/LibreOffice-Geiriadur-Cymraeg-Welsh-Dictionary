@@ -207,10 +207,7 @@ adeiladu () {
 	mv *.oxt archive/ 2> /dev/null
 
 	# figure out which version we're building
-	version=$(grep -rnw './description.xml' -e '<version value=')
-	# remove xml stuff to just have the version data
-	version=${version/*value=\"/}
-	version=${version/\"*/}
+	version="$( sed -n 's|.*<version value="\(.*\)" />|\1|p' description.xml )"
 
 	# zip the latest files
 	zip -qr libreoffice-geiriadur-$version.oxt description/ META-INF/ dictionaries/cy_GB.dic dictionaries/cy_GB.aff baner_cymreig.png description.xml dictionaries.xcu LICENSE README.txt
