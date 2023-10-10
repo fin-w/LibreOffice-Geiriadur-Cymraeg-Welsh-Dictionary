@@ -49,6 +49,9 @@ BEGIN {
 	delete suffixes_fitting_stem
 	delete prefixes_used_by_subflags
 	delete suffixes_used_by_subflags
+	delete prefix_names_used_by_subflags_to_rule_length
+	delete suffix_names_used_by_subflags_to_rule_length
+	
 	all_suffixes_regex="("
 	all_prefixes_regex="("
 	delete rule_to_subflags_map
@@ -80,8 +83,13 @@ BEGIN {
 }
 
 function debug(text) {
-	print text >"/dev/tty"
 	return
+	print text >"/dev/tty"
+}
+
+function debug_(text) {
+	return
+	print text >"/dev/tty"
 }
 
 function affix_word(word, input_flags, location, affix_level) {
@@ -194,13 +202,13 @@ function affix_word(word, input_flags, location, affix_level) {
 					i++
 					if (length(local_prefix_group) > 0) {
 						return_value=1
-						to_be_processed[affixed_word "/" local_prefixes "/" location "5" "/" affix_level]=affixed_word "/" local_prefixes
-						debug("\t\t(from sub suffix) sandwich prefixing: " affixed_word "/" local_prefixes "/" location "5" "/" affix_level)
+						to_be_processed[affixed_word "/" local_prefixes "/" location "/" affix_level]=affixed_word "/" local_prefixes
+						debug("\t\t(from sub suffix) sandwich prefixing: " affixed_word "/" local_prefixes "/" location "/" affix_level)
 					}
 				}
 			}
 		}
-		else if (affix_level > 2) { debug("------------------ FAILED 1") }
+		else if (affix_level > 2) { debug_("------------------ FAILED 1") }
 	}
 	# if prefixing a prefix
 	else if (location ~ "^2") {
@@ -213,10 +221,15 @@ function affix_word(word, input_flags, location, affix_level) {
 					debug("\t\tsecond level prefixing: " local_prefix_group[prefix_name] " (" i ")\t\t" prefixes_used_by_subflags[local_prefix_group[prefix_name] " " i])
 					if (apply_prefix(word, affix_level, location, prefixes_used_by_subflags[local_prefix_group[prefix_name] " " i])) return_value = 1;
 					i++
+					if (length(local_suffix_group) > 0) {
+						return_value=1
+						to_be_processed[affixed_word "/" local_suffixes "/" location "/" affix_level]=affixed_word "/" local_suffixes
+						debug("\t\t(from sub prefix) sandwich suffixing: " affixed_word "/" local_suffixes "/" location "/" affix_level)
+					}
 				}
 			}
 		}
-		else if (affix_level > 2) { debug("------------------ FAILED 2") }
+		else if (affix_level > 2) { debug_("------------------ FAILED 2") }
 	}
 	debug("END AFFIX_WORD")
 	return return_value
