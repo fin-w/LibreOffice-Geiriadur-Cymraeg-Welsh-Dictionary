@@ -228,10 +228,16 @@ ystyried () {
 	# expand a word with all available relevant affixes: the below is modified from 'wordforms'
 	###
 	./wordforms ./dictionaries/cy_GB.aff ./dictionaries/cy_GB.dic $1
-	if [[ $? -ne 0 ]] ; then
-		printf "Oeddych chi'n golygu:"
-		hunspell -d ./dictionaries/cy_GB -a <<< $1 2>/dev/null | sed -e 's/^@.*$//' -e 's/^.*://' | tr -d '\n'
-		echo
+	exit_val=$?
+	if [[ $exit_val -ne 0 ]] ; then
+		suggest="$(hunspell -d ./dictionaries/cy_GB -a <<< $1 2>/dev/null | sed -e 's/^@.*$//' -e 's/^.*://' | tr -d '\n')"
+		if [[ "$suggest" == "*" ]] ; then
+			echo Dyw "$1" ddim yn bôn ond mae yn y geiriadur 1>&2
+		elif [[ "${suggest:0:1}" == "#" ]] ; then
+			echo Dyw "$1" ddim yn y geiriadur 1>&2
+		else
+			printf "Oeddych chi'n golygu: $suggest\n" 1>&2
+		fi
 		return 1
 	fi
 }
