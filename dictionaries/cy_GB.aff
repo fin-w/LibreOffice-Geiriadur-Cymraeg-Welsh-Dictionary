@@ -288,11 +288,13 @@ SFX k 0 ith/MLH .
 SFX k 0 iff/MLH .
 SFX k 0 an/MLH  .
 
+# Ôl-ddodiaid ansoddeiriol
 SFX A Y 3
-SFX A 0 ed  .
-SFX A 0 ach .
-SFX A 0 af  .
+SFX A 0 ed/LMTH  .
+SFX A 0 ach/LMTH .
+SFX A 0 af/LMTH  .
 
+# Lluosogion
 SFX B Y 1
 SFX B 0 au .
 
@@ -355,12 +357,6 @@ PFX P 0  haml- l[^l]
 PFX P rh hamlr rh
 PFX P 0  haml  r[^h]
 PFX P 0  haml  [aeiouwyâêîôûŵŷfhjknqsvxz]
-
-# Ôl-ddodiaid ansoddeiriol
-SFX V Y 3
-SFX V 0 ed/LMTH  .
-SFX V 0 ach/LMTH .
-SFX V 0 af/LMTH  .
 
 #SFX S Y 9
 #SFX S 0 'r  [aeiouwyAEIOUWYâêîôûŵŷÂÊÎÔÛŴŶ]
