@@ -168,7 +168,7 @@ ychwanegu () {
 			echo
 			# will only write anything to dict if autotag != 1
 			if [[ "$ateb" =~ [yY] ]] ; then autotag=0 ; fi
-			if [[ "$ateb" =~ [aA] ]] ; then autotag=0 ; dictgair=$gair ; fi
+			if [[ "$ateb" =~ [aA] ]] ; then autotag=0 ; dictgair="$gair" ; fi
 		fi
 		# Add word
 		if [[ $autotag -ne 1 ]] ; then
@@ -279,7 +279,15 @@ gwirio () {
 	###
 	# TODO: backslash-escaped filenames with spaces don't work with the -f
 	if [ -f "$1" ] ; then
-		cat $1 | hunspell -l -d dictionaries/cy_GB | hunspell -l -d en_GB | sort -u | uniq -u | tr ' ' '\n'
+		echo "Checking file: $1" 1>&2
+		to_check="$(cat $1)"
+		echo "Processing for Cymraeg errors..." 1>&2
+		cymraeg_errors="$(hunspell -l -d dictionaries/cy_GB <<< ${to_check[@]})"
+		echo "Filtering out English words..." 1>&2
+		errors="$(hunspell -l -d en_GB <<< ${cymraeg_errors[@]})"
+		echo "Errors:" 1>&2
+		echo " " 1>&2
+		echo "${errors[@]}" | sort -u | uniq -u | tr ' ' '\n'
 	else
 		response=$(tail -n1 <<< "$(echo $1 | hunspell -d dictionaries/cy_GB -a)")
 		case ${response:0:1} in
@@ -346,6 +354,17 @@ noflags () {
 	echo $( sed -e "s|/.*||" <<< $1 )
 }
 
+allflags () {
+	# abc/ABCabc format typically
+	# capture what this returns for just the flags without line or delimiter /
+	intext=$1
+	if [[ $( hasflags $intext ) -ne 1 ]] ; then
+		echo $( sed -e "s|.*/||" <<< $intext )
+	else
+		echo ""
+	fi
+}
+
 addflag () {
 	# return in abc/ABCabc format
 	# capture what this returns for the same line with
@@ -354,7 +373,9 @@ addflag () {
 	# abc/ABXcde, or "abc/ABcde x" for abc/ABcdex
 	intext=$1
 	inflag=$2
-	echo $( noflags $intext )"/"$( capsflags $intext )$( sed "s|[a-z]*||g" <<< $inflag )$( smallflags $intext )$( sed "s|[A-Z]*||g" <<< $inflag )
+	outflags=$( allflags $intext )"$inflag"
+	#echo $( noflags $intext )"/"$( capsflags $intext )$( sed "s|[a-z]*||g" <<< $inflag )$( smallflags $intext )$( sed "s|[A-Z]*||g" <<< $inflag )
+	echo $( noflags $intext )"/"$( sort_flags $outflags )
 }
 
 hasflags () {
@@ -363,6 +384,17 @@ hasflags () {
 		*/   ) return 2 ;;
 		*    ) return 1 ;;
 	esac
+}
+
+sort_flags () {
+	###
+	# give it a string of flags to sort
+	###
+	caps=$( sed -e "s|.*/||" -e "s|[a-z]*||g" <<< $1 )
+	smalls=$( sed -e "s|.*/||" -e "s|[A-Z]*||g" <<< $1 )
+	caps=$( echo $caps | grep -o . | sort | tr -d "\n" )
+	smalls=$( echo $smalls | grep -o . | sort | tr -d "\n" )
+	echo $caps$smalls
 }
 
 get_flags () {
@@ -483,3 +515,31 @@ checkmutationflags () {
 }
 
 parse $1 $2
+
+#while read line ; do
+#	flagless="$( sed 's|ion/.*||' <<< $line )"
+#	shortened="$( grep $flagless'/' ionless )"
+#	if [[ "$shortened" == "" ]] ; then echo -e $YELLOW"----- skipping $line"$ENDC ; continue; fi
+#	echo -e $BLUE"$line"$ENDC
+#	orig_flags="$( sed 's|.*/||' <<< $shortened )"
+#	out_flags="$( addflag $shortened C )"
+#	echo "$flagless"
+#	echo -e $RED"$shortened"$ENDC
+#	echo -e $GREEN"$out_flags"$ENDC
+#	echo
+#done < ion_muts_only
+
+# while read line ; do
+# 	flagless="$( sed 's|/.*||' <<< $line )"
+# 	#shortened="$( grep $flagless'/' ionless )"
+# 	#if [[ "$shortened" == "" ]] ; then echo -e $YELLOW"----- skipping $line"$ENDC ; continue; fi
+# 	echo -e $BLUE"$line"$ENDC
+# 	orig_flags="$( sed 's|.*/||' <<< $line )"
+# 	out_with_flags="$( addflag $line R )"
+# 	echo "$flagless"
+# 	echo -e $RED"$flagless/$orig_flags"$ENDC
+# 	echo -e $GREEN"$out_with_flags"$ENDC
+# 	sed -i 's|'"$flagless"'ol.*$||' dictionaries/cy_GB.dic
+# 	sed -i 's|'"$flagless/$orig_flags"'|'"$out_with_flags"'|' dictionaries/cy_GB.dic
+# 	echo
+# done < ol_matches
