@@ -6882,7 +6882,6 @@ bribysyn/MT
 bric-bridd/MT
 bric/DIMT
 bric-glai/MT
-briciau/MT
 bricio/MT
 brici/QX
 bricsen/MT
@@ -6901,7 +6900,6 @@ brîd/MT
 bridyll/MT
 brif/DMTv
 briff/DMT
-briffiau/MT
 briffio/MT
 brîff/MT
 brifiau/MT
@@ -6910,7 +6908,6 @@ brifo/MT
 brigadau/MT
 brigâd/MT
 Brigadydd/CMT
-brigau/MT
 brig/BMTv
 brigbori/MT
 brigbor/Mv
@@ -6926,8 +6923,7 @@ brigfasg/DMT
 brigflodau/MT
 brigflodeuol/MT
 brigflodyn/MT
-brigiadau/MT
-brigiad/MT
+brigiad/BMT
 brigladd/MTv
 briglaes/MT
 briglithryn/MT
@@ -6939,7 +6935,6 @@ brigog/MT
 brigo/MT
 brigwerth/EMT
 brigwn/MT
-brigwthiadau/MT
 brigwthiad/BMT
 brigwth/MT
 brigwyn/MT
@@ -7164,7 +7159,6 @@ brwysgni/MT
 brwysio/MT
 brycan/BMT
 Brychan/MT
-brychau/MT
 brych/BMTv
 Brychdwn/MT
 Brycheiniog/MT
@@ -7626,7 +7620,6 @@ bwydlenni/MT
 bwydlestri/MT
 bwydlestr/MT
 bwydlys/DMT
-bwydlysiau/MT
 bwydlysieu/QX
 bwydlysieuyn/MT
 bwydlysyddiaeth/MT
@@ -7791,7 +7784,6 @@ byl/BMT
 bylbyn/FMT
 bylchau/MT
 bylchfur/DMT
-bylchfuriau/MT
 bylchiad/BMT
 bylchio/MT
 bylchog/MT
@@ -8064,7 +8056,6 @@ cacti/LMT
 cactws/LMT
 cacwn/LMT
 cacynen/LMT
-cadachau/LMT
 cadach/BLMT
 cadafarch/LMT
 cadafarth/LMT
@@ -8673,7 +8664,6 @@ camomil/LMT
 camosodiad/BLMT
 camosod/LMTv
 campanoleg/LMT
-campau/LMT
 camp/BLMQT
 campfa/ELMT
 campfeydd/LMT
@@ -8825,7 +8815,6 @@ canhwyll/QX
 canhwyllydd/CLMT
 canhwyllyr/HLMT
 caniadaeth/LMT
-caniadau/LMT
 caniad/BLMT
 caniatâd/LMT
 caniataëdig/LMT
@@ -8844,7 +8833,6 @@ caniwla/LMT
 canllath/LMT
 canllaw/DLMT
 canllawiaeth/LMT
-canllawiau/LMT
 cân/LMT
 canlyneb/BLMT
 canlyniad/BLMRT
@@ -8938,7 +8926,6 @@ cans/LMT
 canslo/LMT
 cantata/LMT
 cantatau/LMT
-cantau/LMT
 cantawd/BLMT
 cant/BLMT
 cantel/BLMT
@@ -9231,8 +9218,7 @@ carolwragedd/LMT
 carolwraig/LMT
 Caron-is-clawdd/LMT
 Caron-uwch-clawdd/LMT
-carotenau/LMT
-caroten/LMT
+caroten/BLMT
 carotenoid/BLMT
 carotenyn/LMT
 carotid/LMT
@@ -9273,7 +9259,6 @@ carst/DLMT
 carstig/LMT
 cartaid/LMT
 carteidiau/LMT
-cartelau/LMT
 cartel/BLMT
 carteleiddio/LMT
 cartél/ILMT
@@ -9371,13 +9356,12 @@ casgeneidiau/LMT
 casgen/LMT
 casgennaid/LMT
 casgenni/LMT
-casgiau/LMT
 casgla/LMT
 casgl/CLMQTv
 casgliad/BLMRT
 casglifiad/LMT
 casglifol/LMT
-casg/LMT
+casg/DLMT
 casglu/LMT
 casglydd/CLMT
 Casgob/LMT
