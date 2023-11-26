@@ -1,4 +1,4 @@
-51092
+51078
 a
 â
 abaci/H
@@ -6417,6 +6417,8 @@ bondrwm/MT
 boned/BMT
 boneddic/AX
 boneddigaidd/MT
+boneddigeiddi/MTv
+boneddigeiddio/MT
 boneddigeiddrwydd/MT
 boneddigesaidd/MT
 boneddiges/BMT
@@ -9351,6 +9353,7 @@ casetiau/LMT
 casét/LMT
 casewinedd/LMT
 casewin/LMT
+casg/DLMT
 casged/BLMT
 casgeneidiau/LMT
 casgen/LMT
@@ -9361,7 +9364,6 @@ casgl/CLMQTv
 casgliad/BLMRT
 casglifiad/LMT
 casglifol/LMT
-casg/DLMT
 casglu/LMT
 casglydd/CLMT
 Casgob/LMT
@@ -36731,6 +36733,7 @@ noctyrnau
 nòd
 nodachfa
 nodachfeydd
+nodadwy
 nodal
 nodaledd
 nodarwydd/C
