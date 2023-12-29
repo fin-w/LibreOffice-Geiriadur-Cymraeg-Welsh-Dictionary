@@ -144,14 +144,24 @@ ychwanegu () {
 	###
 	autotag=1
 	# remove any dictionary tags from the end i.e. rhywedd/M becomes rhywedd
-	gair=$(sed -e "s|/.*||" <<< "$1")
+	gair=$( noflags "$1")
+	flags=$( get_flags "$1")
 	dictgair="$1"
-	# print out matches or closest words
-	gwirio "$gair"
 	# empty if hunspell recognises the word
 	anhysbys=$(hunspell -L -d dictionaries/cy_GB <<< "$gair")
+	# find out if the aff includes WARN and FORBIDWARN flags
+	warn_flag=$( awk '$1=="WARN"{print $2}' dictionaries/cy_GB.aff )
+	forbid_warn=$( awk '$1=="FORBIDWARN"' dictionaries/cy_GB.aff )
+	
+	# usually you would not add a word if it is already recognised
+	# but there is a special case when you are adding a word to reject
+	# with FORBIDWARN WARN flag i.e. to remove an unwanted generated form
+	if [[ -n "$forbid_warn" ]] ; then case ${flags[@]} in $warn_flag) add_anyway=true ;; esac ; fi
+	
+	# print out matches or closest words
+	if [[ "$add_anyway" != "true" ]] ; then gwirio "$gair" ; fi
 
-	if [[ -n "$anhysbys" ]] ; then
+	if [[ -n "$anhysbys" ]] || [[ "$add_anyway" == "true" ]] ; then
 		# offer to autotag word if tags were not found on the word
 		if [[ $autotag -eq 1 ]] && [[ "$gair" != "$dictgair" ]] ; then
 			echo "Not autotagging, tags already added."
@@ -242,9 +252,9 @@ ystyried () {
 	if [[ $exit_val -ne 0 ]] ; then
 		suggest="$(hunspell -d ./dictionaries/cy_GB -a <<< $1 2>/dev/null | sed -e 's/^@.*$//' -e 's/^.*://' | tr -d '\n')"
 		if [[ "$suggest" == "*" ]] ; then
-			echo Dyw "$1" ddim yn bôn ond mae yn y geiriadur 1>&2
+			echo "Dyw $1 ddim yn bôn ond mae yn y geiriadur" 1>&2
 		elif [[ "${suggest:0:1}" == "#" ]] ; then
-			echo Dyw "$1" ddim yn y geiriadur 1>&2
+			echo "Dyw $1 ddim yn y geiriadur" 1>&2
 		else
 			printf "Oeddych chi'n golygu: $suggest\n" 1>&2
 		fi
@@ -373,7 +383,12 @@ gwirio () {
 				shift
 				;;
 			"&")
-				echo -e "Closest matches:\t$(sed 's/^.*[:] //g' <<< $response)"
+			
+				if [[ "$(sed 's/^.*[:] //g' <<< $response)" == "$1" ]] ; then
+					echo "Word $1 is in the dictionary but marked as forbidden"
+				else
+					echo -e "Closest matches:\t$(sed 's/^.*[:] //g' <<< $response)"
+				fi
 				shift
 				;;
 			"+")
