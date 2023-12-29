@@ -123,7 +123,10 @@ SFX Q d wyr/LMTH  dd
 SFX Q r wyr/LMTH  rr
 
 SFX R Y 1
-SFX R 0 ol .
+SFX R 0  ol/LMTH   .
+# SFX R wd ydol/LMTH wd
+# SFX R wn ynol/LMTH wn
+# SFX R wm ymol/LMTH wm
 
 SFX U Y 3
 SFX U 0 aidd .
@@ -295,14 +298,55 @@ SFX A 0 ach/LMTH .
 SFX A 0 af/LMTH  .
 
 # Lluosogion
-SFX B Y 1
-SFX B 0 au .
+#SFX B awd	odau	awd
+SFX B Y 1 #add /T because plurals are kept separate in dic sometimes because they mutate differently to the stem
+SFX B 0		au	.
+# SFX B a		âu	a
+# SFX B ais	eisiau	ais
+# SFX B âd	adau	âd
+# SFX B ál	alau	ál
+# SFX B án	anau	án
+# SFX B áff	affau	áff
+# SFX B ésg	esgau	ésg
+# SFX B ét	etau	ét
+# SFX B él	elau	él
+# SFX B éd	edau	éd
+# SFX B fer	frau	fer
+# SFX B gell	ghellau	gell
+# SFX B gen	ghennau	gen
+# SFX B i		ïau	[nprtl]?i
+# SFX B iant	iannau	iant
+# SFX B în	inau	în
+# SFX B iwn	iynau	iwn
+# SFX B öes	oesau	öes
+# SFX B wcl	yclau	wcl
+# SFX B wd	ydau	wd
+# SFX B wl	ylau	wl
+# SFX B wll	yllau	wll
+# SFX B wm	ymau	wm
+# SFX B wn	ynau	wn
+# SFX B wng	yngau	wng
+# SFX B wncl	ynclau	wncl
+# SFX B wrdd	yrddau	wrdd
+# SFX B ws	ysau	ws
+# SFX B ŵn	wnau	ŵn
 
 SFX C Y 1
 SFX C 0 ion .
 
 SFX D Y 1
-SFX D 0 iau .
+SFX D 0		iau	.
+# SFX D aich	eichiau	aich
+# SFX D aid	eidiau	aid
+# SFX D aig	eigiau	aig
+# SFX D air	eiriau	air
+# SFX D aith	eithiau	aith
+# SFX D iad	eidiau	iad
+# SFX D îd	idiau	îd
+# SFX D wd	ydiau	wd
+# SFX D wnd	yndiau	wnd
+# SFX D wr	yriau	wr
+# SFX D ws	ysiau	ws
 
 SFX E Y 1
 SFX E 0 oedd .
