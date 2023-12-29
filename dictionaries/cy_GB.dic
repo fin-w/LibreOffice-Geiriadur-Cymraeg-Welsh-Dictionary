@@ -1,4 +1,4 @@
-51097
+51101
 a
 â
 Aaron
@@ -2110,7 +2110,8 @@ amlblecsydd/CH
 amlblwyfaeth/H
 amlblwyfydd/CH
 amlbwrpasedd/H
-aml-ddefnyddi/HQ
+aml-ddefnyddi/HQX
+amlddefnyddi/HQX
 amlddirgrynydd/CH
 amlddiwylliannaeth/H
 amlddiwylliannedd/H
@@ -30682,6 +30683,7 @@ Isgoed/H
 isgofnod/CH
 is-gonswl/GH
 is-gontract/BDH
+isgontract/HQX
 is-gontractio/H
 is-gontractwr/H
 is-gorff/H
@@ -38089,6 +38091,7 @@ parwydol/LMT
 parwydydd/LMT
 Parys/LMT
 pas/BDLMT
+pasbord/LMT
 pasbort/BLMT
 pasborts/LMT
 Pasgaidd/LMT
@@ -43890,8 +43893,9 @@ sgrineidiau
 sgrinia
 sgriniad
 sgrinio
+sgrini/v
 sgrinlun/D
-sgrinni
+sgrinni/bfg
 sgrin-olygydd/C
 sgript/D
 sgriptoria
@@ -51092,7 +51096,7 @@ ysywaeth/H
 yta/H
 yterbiwm/H
 ytriwm/H
-yw
 ywen/H
+yw/H
 Zambia
 Zimbabwe
