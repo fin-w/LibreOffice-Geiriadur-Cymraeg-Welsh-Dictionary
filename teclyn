@@ -72,7 +72,7 @@ parse () {
 			shift
 			;;
 		-g|--generate)
-			cynhyrchu "$2"
+			cynhyrchu "$2" "$3"
 			shift
 			;;
 		-i|--insert)
@@ -148,7 +148,7 @@ ychwanegu () {
 	flags=$( get_flags "$1")
 	dictgair="$1"
 	# empty if hunspell recognises the word
-	anhysbys=$(hunspell -L -d dictionaries/cy_GB <<< "$gair")
+	anhysbys=$( hunspell -L -d dictionaries/cy_GB <<< "$gair" )
 	# find out if the aff includes WARN and FORBIDWARN flags
 	warn_flag=$( awk '$1=="WARN"{print $2}' dictionaries/cy_GB.aff )
 	forbid_warn=$( awk '$1=="FORBIDWARN"' dictionaries/cy_GB.aff )
@@ -211,7 +211,7 @@ ychwanegu () {
 	fi
 
 	# contains any unknown words in the word list
-	anhysbys=$(hunspell -L -d dictionaries/cy_GB playground/word_list.txt)
+	anhysbys=$( hunspell -L -d dictionaries/cy_GB playground/word_list.txt )
 	if [[ -n "$anhysbys" ]] ; then
 		echo "The dictionary does not recognise the following:"
 		echo "$anhysbys"
@@ -273,8 +273,8 @@ cynhyrchu () {
 	###
 	# generate all entries in a dictionary
 	###
-	verbose="yes"
-	out="all_words.txt"
+	if [ -z "$2" ] ; then out="all_words.txt" ; else out="$2" ; fi
+
 	width=$(( "$( tput cols )" - 15 ))
 	# check to find the dic & aff files with default fallback
 	# TODO: backslash-escaped filenames with spaces dont work with the -f
@@ -285,55 +285,7 @@ cynhyrchu () {
 		dic="$1.dic"
 		aff="$1.aff"
 	fi
-	# if there are bounds to the generation then we don't generate all entries
-	# generation includes start and stop entries.
-	# line 1 of dic file is numbers, line 2 is first entry, start_entry begins at 2
-# 	echo "$2" "$3"
-# 	if [ -n "$2" ] && [ -n "$3" ] ; then
-# 		start_entry=$(("$2"))
-# 		stop_entry=$(("$3"))
-# 	else
-# 		start_entry="1"
-# 		stop_entry="$( tail -n +2 $dic | wc -l )"
-# 	fi
-	start_entry="1"
- 	stop_entry="$( tail -n +2 $dic | wc -l )"
-	#stop_entry="100"
-	if [ -n "$verbose" ] ; then
-		echo "Generating words..."
-		#all valid affixes in the dictionary"
-		#printf "\t$dic\n\t$aff\n"
-		#echo
-	fi
-	
-	rm -f $out 
-	for i in $( seq $((start_entry)) $((stop_entry)) ); do
-		# TODO strip misc data from line with awk here
-		stem=$( awk -v i="$i" 'NR==i+1' "$dic" )
-		if [[ "$stem" == */* ]] ; then
-			#printf $BLUE"stem: $stem$ENDC\n" >2
-			./wordforms "$aff" "$dic" "$stem" >> $out
-			#sleep 1
-		else
-			echo "$stem" >> $out
-		fi
-		fraction=$( echo "scale=4;($i-$start_entry)/($stop_entry-$start_entry)" | bc )
-		#echo "$fraction"
-		percent=$( echo "scale=4;$fraction*100" | bc )
-		percent=$( printf '%.0f' "$percent" )
-		#echo "$percent"
-		bar_blocks=$( echo "scale=4;$fraction*$width" | bc )
-		bar_blocks=$( printf '%.0f' "$bar_blocks" )
-		#echo "$bar_blocks"
-		printf '\r\e\033[0K'
-		echo -en $BLUE
-		printf '['
-		printf '■%.0s' $(seq $bar_blocks)
-		if [[ $bar_blocks -lt $width ]] ; then printf '\055%.0s' $(seq $(( width-bar_blocks )) ) ; fi
-		printf ']'
-		echo -en "$ENDC $percent%"
-	done
-	echo
+	./wordforms -g "$aff" "$dic" "$out"
 }
 
 insertmode () {
