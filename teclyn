@@ -145,7 +145,7 @@ ychwanegu () {
 	autotag=1
 	# remove any dictionary tags from the end i.e. rhywedd/M becomes rhywedd
 	gair=$( noflags "$1")
-	flags=$( get_flags "$1")
+	flags=($( get_flags "$1"))
 	dictgair="$1"
 	# empty if hunspell recognises the word
 	anhysbys=$( hunspell -L -d dictionaries/cy_GB <<< "$gair" )
@@ -156,7 +156,7 @@ ychwanegu () {
 	# usually you would not add a word if it is already recognised
 	# but there is a special case when you are adding a word to reject
 	# with FORBIDWARN WARN flag i.e. to remove an unwanted generated form
-	if [[ -n "$forbid_warn" ]] ; then case ${flags[@]} in $warn_flag) add_anyway=true ;; esac ; fi
+	if [[ -n "$forbid_warn" ]] ; then case "${flags[@]}" in *"$warn_flag"*) add_anyway=true ;; esac ; fi
 	
 	# print out matches or closest words
 	if [[ "$add_anyway" != "true" ]] ; then gwirio "$gair" ; fi
