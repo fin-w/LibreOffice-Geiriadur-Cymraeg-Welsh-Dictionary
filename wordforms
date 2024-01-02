@@ -490,7 +490,7 @@ elif [ -n "$3" ] ; then
 	for i in $( seq 1 $number_of_entries_to_generate ) ; do
 		generate $fx $flag_type $( awk -v i="$i" 'NR==i{print; exit}' /tmp/to_generate.txt ) >> /tmp/wordforms_all_words.txt
 		elapsed=$( echo "scale=12;$(date +%s.%N)-$start_time" | bc )
-		eta=$( echo "scale=12;($elapsed*$number_of_entries_to_generate/$i)-$elapsed" | bc )
+		eta=$( echo "scale=12;($elapsed/$i)*($number_of_entries_to_generate-$i)" | bc )
 		eta=$( printf '%.0f' "$eta" )
 		eta_pretty=$( date -ud "@$eta" +"%Hh %Mm %Ss" )
 		printf '\r\e\033[0KAffixing stems  %s/%s\t(%s%%)\t%s' "$((i+number_copied))" "$number_of_entries" $( echo "$((i+number_copied)) $number_of_entries" | awk '{printf("%.0f", $1/$2*100)}')  "$eta_pretty"
