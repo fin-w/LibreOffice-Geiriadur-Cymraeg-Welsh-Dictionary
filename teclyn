@@ -152,16 +152,18 @@ ychwanegu () {
 	# find out if the aff includes WARN and FORBIDWARN flags
 	warn_flag=$( awk '$1=="WARN"{print $2}' dictionaries/cy_GB.aff )
 	forbid_warn=$( awk '$1=="FORBIDWARN"' dictionaries/cy_GB.aff )
+	needaffix_flag=$( awk '$1=="NEEDAFFIX"{print $2}' dictionaries/cy_GB.aff )
 	
 	# usually you would not add a word if it is already recognised
 	# but there is a special case when you are adding a word to reject
 	# with FORBIDWARN WARN flag i.e. to remove an unwanted generated form
-	if [[ -n "$forbid_warn" ]] ; then case "${flags[@]}" in *"$warn_flag"*) add_anyway=true ;; esac ; fi
+	if [[ -n "$forbid_warn" ]] ; then case "${flags[@]}" in *"$warn_flag"*) forbidden=true ;; esac ; fi
+	case "${flags[@]}" in *"$needaffix_flag"*) needaffix=true ;; esac
 	
 	# print out matches or closest words
-	if [[ "$add_anyway" != "true" ]] ; then gwirio "$gair" ; fi
+	if [[ "$forbidden" != "true" ]] ; then gwirio "$gair" ; fi
 
-	if [[ -n "$anhysbys" ]] || [[ "$add_anyway" == "true" ]] ; then
+	if [[ -n "$anhysbys" ]] || [[ "$forbidden" == "true" ]] ; then
 		# offer to autotag word if tags were not found on the word
 		if [[ $autotag -eq 1 ]] && [[ "$gair" != "$dictgair" ]] ; then
 			echo "Not autotagging, tags already added."
@@ -193,7 +195,7 @@ ychwanegu () {
 		# Add word
 		if [[ $autotag -ne 1 ]] ; then
 			echo "Writing word \"$dictgair\" to dictionary"
-			echo "$gair" >> playground/word_list.txt
+			if [[ "$needaffix" != "true" ]] ; then echo "$gair" >> playground/word_list.txt ; fi
 			echo "$dictgair" >> dictionaries/cy_GB.dic
 			# Write number of lines to tmp
 			tail -n +2 dictionaries/cy_GB.dic | sort -u | wc -l > dictionaries/dict.tmp
