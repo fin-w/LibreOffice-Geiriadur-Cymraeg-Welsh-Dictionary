@@ -56,12 +56,6 @@ generate () {
 		flag_type="unicode"
 		stem=""
 		
-		for (line in dic_lines) {
-			split(dic_lines[line], stem_and_flags, "/")
-			stem=stem_and_flags[1]
-		}
-		# generate regex matching all flags used by the stem
-		
 		split(dic_entries, dic_lines, "|")
 		for (line in dic_lines) {
 			split(dic_lines[line], stem_and_flags, "/")
