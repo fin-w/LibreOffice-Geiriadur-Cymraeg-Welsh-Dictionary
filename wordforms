@@ -443,6 +443,111 @@ generate () {
 	' /tmp/wordforms.aff
 }
 
+generate_all () {
+	awk '
+	BEGIN {
+		delete prefixes
+		delete suffixes
+		delete referenced_affix_names
+		#delete separated_flags_array
+		#delete all_affix_names
+		flag_type="unicode"
+	}
+	
+	function debug(text) {
+		print text >"/dev/tty"
+		return
+	}
+	
+	function debug_(text) {
+		printf text >"/dev/tty"
+		return
+	}
+	
+	function separated_flags(flags) {
+		# return a space-separated string of separate flag names when
+		# given the flags following a "/" in a dic or aff file
+		#flag_string=""
+		# temp array, grab its contents as soon as you run this function
+		# (cant return arrays with awk)
+		delete separated_flags_array
+		if (flag_type == "num") {
+			split(flags, separated_flags_array, ",")
+		}
+			#for (f in flag_array) {
+			#	flag_string=flag_string " " f
+			#}
+		else if (flag_type == "long") {
+			for (i=0; i*2<length(flags); i++) {
+				separated_flags_array[i] = substr(flags, i*2, 2)
+			}
+		}
+		else {
+			split(flags, separated_flags_array, "")
+		}
+		#return substr(flag_string, 2)
+	}
+	
+	# get some .aff settings to help
+	# optimise the affixed word generation
+	/^COMPLEXPREFIXES/ { complex_prefixes="yes"; next }
+	/^FLAG/ { flag_type=$2; next }
+	
+	# first file only, i.e. affix file
+	NR==FNR && $1=="PFX" && NF>4 {
+		prefixes[$2 " " $3 " " $4]=$5
+		all_prefix_names[$2]=$2
+		if ($4 ~ /[/]/) {
+			#debug($4)
+			split($4, s, "/")
+			separated_flags(s[2])
+			for (flag in separated_flags_array) {
+				referenced_affix_names[flag] = separated_flags_array[flag]
+			}
+			#for (  ){
+			#	
+			#}
+		}
+		next
+	}
+
+	NR==FNR && $1=="SFX" && NF>4 {
+		suffixes[$2 " " $3 " " $4]=$5
+		all_suffix_names[$2]=$2
+		if ($4 ~ /[/]/) {
+			#debug($4)
+			split($4, s, "/")
+			separated_flags(s[2])
+			for (flag in separated_flags_array) {
+				referenced_affix_names[flag] = separated_flags_array[flag]
+			}
+			#for (  ){
+			#	
+			#}
+		}
+		next
+	}
+
+	#NR!=FNR && FNR==15 { print }
+	
+	END {
+		debug("Prefixes:")
+		for (prefix in all_prefix_names) {
+			debug_(prefix " ")
+		}
+		debug("\nSuffixes:")
+		for (suffix in all_suffix_names) {
+			debug_(suffix " ")
+		}
+		debug("\nReferenced affixes:")
+		for (affix in referenced_affix_names) {
+			debug_(referenced_affix_names[affix] " ")
+		}
+		debug(" ")
+	}
+	' $1 $2
+}
+
 # generate all forms of a single stem, default behaviour
 if [ "$generate_all_words" != "true" ] ; then
 	# find all lines exactly matching the search
@@ -466,31 +571,32 @@ if [ "$generate_all_words" != "true" ] ; then
 	generate $fx $flag_type $entries | hunspell -d /tmp/wordforms -G -l | sort -u
 elif [ -n "$3" ] ; then
 	echo "Generating all words in the dictionary..."
+	generate_all $1 $2
 
-	rm -f /tmp/wordforms_all_words.txt
-
-	# not all the stems need processing, add those with no flags directly
-	# filter out anything on lines after tabs (delimiter of valid word, notes usually follow)
-	tail -n +2 $2 | grep -v '/' | sed 's@\(^[^\t]*\).*@\1@' > /tmp/wordforms_all_words.txt
-	number_of_entries=$(( $( cat "$2" | wc -l ) - 1 ))
-	number_copied=$( cat /tmp/wordforms_all_words.txt | wc -l  )
-	printf 'Directly copied %s/%s\t(%s%%)\n' "$number_copied" "$number_of_entries" $( echo "$number_copied $number_of_entries" | awk '{printf("%.0f", $1/$2*100)}' )
-	# the remainder goes here to generate from
-	# filter anything after the flags (usually notes)
-	tail -n +2 $2 | grep '/' | sed 's@\(^[^/]*.*[/][^ \t]*\).*@\1@' > /tmp/to_generate.txt
-
-	number_of_entries_to_generate="$( cat /tmp/to_generate.txt | wc -l )"
-	start_time=$( date +%s.%N )
-	for i in $( seq 1 $number_of_entries_to_generate ) ; do
-		generate $fx $flag_type $( awk -v i="$i" 'NR==i{print; exit}' /tmp/to_generate.txt ) >> /tmp/wordforms_all_words.txt
-		elapsed=$( echo "scale=12;$(date +%s.%N)-$start_time" | bc )
-		eta=$( echo "scale=12;($elapsed/$i)*($number_of_entries_to_generate-$i)" | bc )
-		eta=$( printf '%.0f' "$eta" )
-		eta_pretty=$( date -ud "@$eta" +"%Hh %Mm %Ss" )
-		printf '\r\e\033[0KAffixing stems  %s/%s\t(%s%%)\t%s' "$((i+number_copied))" "$number_of_entries" $( echo "$((i+number_copied)) $number_of_entries" | awk '{printf("%.0f", $1/$2*100)}')  "$eta_pretty"
-	done
-	printf '\nChecking output...\n'
-	cat /tmp/wordforms_all_words.txt | hunspell -d $( echo "$1" | rev | cut -d"." -f2-  | rev ) -G -l | sort -u > $3
+# 	rm -f /tmp/wordforms_all_words.txt
+# 
+# 	# not all the stems need processing, add those with no flags directly
+# 	# filter out anything on lines after tabs (delimiter of valid word, notes usually follow)
+# 	tail -n +2 $2 | grep -v '/' | sed 's@\(^[^\t]*\).*@\1@' > /tmp/wordforms_all_words.txt
+# 	number_of_entries=$(( $( cat "$2" | wc -l ) - 1 ))
+# 	number_copied=$( cat /tmp/wordforms_all_words.txt | wc -l  )
+# 	printf 'Directly copied %s/%s\t(%s%%)\n' "$number_copied" "$number_of_entries" $( echo "$number_copied $number_of_entries" | awk '{printf("%.0f", $1/$2*100)}' )
+# 	# the remainder goes here to generate from
+# 	# filter anything after the flags (usually notes)
+# 	tail -n +2 $2 | grep '/' | sed 's@\(^[^/]*.*[/][^ \t]*\).*@\1@' > /tmp/to_generate.txt
+# 
+# 	number_of_entries_to_generate="$( cat /tmp/to_generate.txt | wc -l )"
+# 	start_time=$( date +%s.%N )
+# 	for i in $( seq 1 $number_of_entries_to_generate ) ; do
+# 		generate $fx $flag_type $( awk -v i="$i" 'NR==i{print; exit}' /tmp/to_generate.txt ) >> /tmp/wordforms_all_words.txt
+# 		elapsed=$( echo "scale=12;$(date +%s.%N)-$start_time" | bc )
+# 		eta=$( echo "scale=12;($elapsed/$i)*($number_of_entries_to_generate-$i)" | bc )
+# 		eta=$( printf '%.0f' "$eta" )
+# 		eta_pretty=$( date -ud "@$eta" +"%Hh %Mm %Ss" )
+# 		printf '\r\e\033[0KAffixing stems  %s/%s\t(%s%%)\t%s' "$((i+number_copied))" "$number_of_entries" $( echo "$((i+number_copied)) $number_of_entries" | awk '{printf("%.0f", $1/$2*100)}')  "$eta_pretty"
+# 	done
+# 	printf '\nChecking output...\n'
+# 	cat /tmp/wordforms_all_words.txt | hunspell -d $( echo "$1" | rev | cut -d"." -f2-  | rev ) -G -l | sort -u > $3
 else
 	# catch error when generating all words, where output file is not specified
 	printf "Usage:\twordforms [-s | -p] dictionary.aff dictionary.dic word
