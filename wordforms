@@ -37,7 +37,7 @@ generate () {
 	awk -v fx="$1" -v flag_type="$2" -v dic_entries="$3" '
 	BEGIN {
 		debug("BEGIN AWK")
-			global_loop_cycle_count=0
+		global_loop_cycle_count=0
 		delete prefixes_fitting_stem
 		delete suffixes_fitting_stem
 		delete prefixes_used_by_subflags
@@ -45,8 +45,9 @@ generate () {
 		delete prefix_names_used_by_subflags_to_rule_length
 		delete suffix_names_used_by_subflags_to_rule_length
 		
-		all_suffixes_regex="("
-		all_prefixes_regex="("
+		delete rule_entry_count
+		delete affix_db
+		
 		delete rule_to_subflags_map
 		sub_flags=""
 		
@@ -71,13 +72,13 @@ generate () {
 	}
 
 	function debug(text) {
-		print text >"/dev/tty"
 		return
+		print text >"/dev/tty"
 	}
 
 	function debug_(text) {
-		print text >"/dev/tty"
 		return
+		print text >"/dev/tty"
 	}
 
 	function affix_word(word, input_flags, location, affix_level) {
@@ -96,13 +97,13 @@ generate () {
 		# group the word s suffixes and prefixes together in arrays
 		for (local_flag in individual_flags) {
 			global_loop_cycle_count+=1
-			if (individual_flags[local_flag] ~ all_suffixes_regex) {
+			if (suffix_db[individual_flags[local_flag] " 1"]) {
 				local_suffix_group[i]=individual_flags[local_flag]
 				local_suffixes=local_suffixes individual_flags[local_flag]  (flag_type=="num" ? "," : "" )
 				i++
 				debug("(prep): suffix: " individual_flags[local_flag] " , length of this suffix: " suffix_name_to_rule_length[individual_flags[local_flag]])
 			}
-			else if (individual_flags[local_flag] ~ all_prefixes_regex) {
+			else if (prefix_db[individual_flags[local_flag] " 1"]) {
 				local_prefix_group[j]=individual_flags[local_flag]
 				local_prefixes=local_prefixes individual_flags[local_flag]  (flag_type=="num" ? "," : "" )
 				j++
@@ -317,7 +318,8 @@ generate () {
 	/^PFX/ && fx!=1 && NF>4 && $4 !~ "[1-9][0-9]*" {
 		split($4,add_and_flags,"/")
 		prefixes_db[$0]=$2
-		all_prefixes_regex=all_prefixes_regex $2 "|"
+# 		if (!rule_entry_count[$2]) { rule_entry_count[$2] = -1 } else { rule_entry_count[$2] -= 1 }
+# 		affix_db[$2 " " rule_entry_count[$2]*-1] = "P " $3 " " $4 " " $5
 		rule_to_subflags_map[$0]=add_and_flags[2]
 		
 		# save all prefixes to the db
@@ -347,7 +349,6 @@ generate () {
 	/^SFX/ && fx!=2 && NF>4 && $4 !~ "[1-9][0-9]*" {
 		split($4,add_and_flags,"/")
 		suffixes_db[$0]=$2
-		all_suffixes_regex=all_suffixes_regex $2 "|"
 		rule_to_subflags_map[$0]=add_and_flags[2]
 		
 		# save all suffixes to the db
@@ -428,9 +429,6 @@ generate () {
 		all_variations[stem]=stem
 		stem_length=length(stem)
 		
-		all_suffixes_regex=substr(all_suffixes_regex, 1, length(all_suffixes_regex)-1) ")"
-		all_prefixes_regex=substr(all_prefixes_regex, 1, length(all_prefixes_regex)-1) ")"
-		
 		process=1
 		while (process) {
 			global_loop_cycle_count+=1
@@ -458,7 +456,14 @@ generate () {
 			#print all_variations[variation] >"/dev/tty"
 		}
 		debug("Number of loops: " global_loop_cycle_count)
+# 		for (a in rule_entry_count) {
+# 			debug(a ": " rule_entry_count[a])
+# 		}
+# 		for (a in affix_db) {
+# 			debug(a "\t" affix_db[a])
+# 		}
 		#print "\n-------------------------------------------------\n" >"/dev/tty"
+		debug(" ")
 	}
 	' /tmp/wordforms.aff
 }
@@ -600,7 +605,7 @@ if [ "$generate_all_words" != "true" ] ; then
 elif [ -n "$3" ] ; then
 	echo "Generating all words in the dictionary..."
 	generate_all $1 $2
-
+	
 # 	rm -f /tmp/wordforms_all_words.txt
 # 
 # 	# not all the stems need processing, add those with no flags directly
