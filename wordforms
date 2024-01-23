@@ -37,6 +37,7 @@ generate () {
 	awk -v fx="$1" -v flag_type="$2" -v dic_entries="$3" '
 	BEGIN {
 		debug("BEGIN AWK")
+			global_loop_cycle_count=0
 		delete prefixes_fitting_stem
 		delete suffixes_fitting_stem
 		delete prefixes_used_by_subflags
@@ -58,6 +59,7 @@ generate () {
 		
 		split(dic_entries, dic_lines, "|")
 		for (line in dic_lines) {
+			global_loop_cycle_count+=1
 			split(dic_lines[line], stem_and_flags, "/")
 			stem=stem_and_flags[1]
 			if (stem_and_flags[2]) stem_flags=stem_flags stem_and_flags[2] (flag_type=="num" ? "," : "");
@@ -69,13 +71,13 @@ generate () {
 	}
 
 	function debug(text) {
-		return
 		print text >"/dev/tty"
+		return
 	}
 
 	function debug_(text) {
-		return
 		print text >"/dev/tty"
+		return
 	}
 
 	function affix_word(word, input_flags, location, affix_level) {
@@ -93,6 +95,7 @@ generate () {
 		debug("\nSTART AFFIX_WORD:\t" word "\t" input_flags "\t" location "\t" affix_level)
 		# group the word s suffixes and prefixes together in arrays
 		for (local_flag in individual_flags) {
+			global_loop_cycle_count+=1
 			if (individual_flags[local_flag] ~ all_suffixes_regex) {
 				local_suffix_group[i]=individual_flags[local_flag]
 				local_suffixes=local_suffixes individual_flags[local_flag]  (flag_type=="num" ? "," : "" )
@@ -116,6 +119,7 @@ generate () {
 			# run through very narrow list of suffixes that fit the stem
 			if (affix_level == 1) {
 				for (suffix_name in local_suffix_group) {
+					global_loop_cycle_count+=1
 					debug("suffix name: " local_suffix_group[suffix_name])
 					i = 1
 					while (first_level_suffixes_fitting_stem[local_suffix_group[suffix_name] " " i]) {
@@ -133,6 +137,7 @@ generate () {
 			# otherwise check any suffix that fits the stem
 			else if (affix_level > 1) {
 				for (suffix_name in local_suffix_group) {
+					global_loop_cycle_count+=1
 					debug("suffix name: " local_suffix_group[suffix_name])
 					i = 1
 					while (suffixes_fitting_stem[local_suffix_group[suffix_name] " " i]) {
@@ -153,6 +158,7 @@ generate () {
 			# run through very narrow list of prefixes that fit the stem
 			if (affix_level == 1) {
 				for (prefix_name in local_prefix_group) {
+					global_loop_cycle_count+=1
 					debug("prefix name: " local_prefix_group[prefix_name])
 					i = 1
 					while (first_level_prefixes_fitting_stem[local_prefix_group[prefix_name] " " i]) {
@@ -165,6 +171,7 @@ generate () {
 			# otherwise check any prefix that fits the stem
 			else if (affix_level > 1) {
 				for (prefix_name in local_prefix_group) {
+					global_loop_cycle_count+=1
 					debug("prefix name: " local_prefix_group[prefix_name])
 					i = 1
 					while (prefixes_fitting_stem[local_prefix_group[prefix_name] " " i]) {
@@ -180,6 +187,7 @@ generate () {
 			# if the suffix has been referenced by a first-level flag i.e. one in the dict entry
 			if (affix_level == 2) {
 				for (suffix_name in local_suffix_group) {
+					global_loop_cycle_count+=1
 					debug("sub suffix name: " local_suffix_group[suffix_name])
 					i = 1
 					while (suffixes_used_by_subflags[local_suffix_group[suffix_name] " " i]) {
@@ -201,6 +209,7 @@ generate () {
 			# if the prefix has been referenced by a first-level flag i.e. one in the dict entry
 			if (affix_level == 2) {
 				for (prefix_name in local_prefix_group) {
+					global_loop_cycle_count+=1
 					debug("sub prefix name: " local_prefix_group[prefix_name])
 					i = 1
 					while (prefixes_used_by_subflags[local_prefix_group[prefix_name] " " i]) {
@@ -266,6 +275,7 @@ generate () {
 			if (flag_type=="long") {
 				if (length(input_flags)<2) return 0;
 				for (i in flag_particles) {
+					global_loop_cycle_count+=1
 					temp=temp flag_particles[i]
 					if (length(temp)==2) {
 						#flag_particles[i] && flag_particles[i-1] &&) {
@@ -274,15 +284,18 @@ generate () {
 					}
 				}
 				for (i in long_flags) {
+					global_loop_cycle_count+=1
 					flag_array[long_flags[i]]=long_flags[i]
 				}
 			}
 			else {
 				for (i in flag_particles) {
+					global_loop_cycle_count+=1
 					flag_array[flag_particles[i]]=flag_particles[i]
 				}
 			}
 			for (flag in flag_array) {
+				global_loop_cycle_count+=1
 				if (flag_array[flag]) {
 					output_regex=output_regex flag_array[flag] "|"
 					#(flag_type!="unicode" ? "|" : "")
@@ -363,6 +376,7 @@ generate () {
 
 	# this runs after processing the .aff file
 	END {
+		debug("RUNNING END AWK")
 		# get regex matching all subflags used
 		sub_flag_regex=get_regex_from_flags(sub_flags)
 		if (sub_flag_regex) {
@@ -371,6 +385,7 @@ generate () {
 			debug("subflags regex: " sub_flag_regex)
 			# get any rules that are referenced by a flag that a .dic file stem uses
 			for (rule in suffixes_db) {
+				global_loop_cycle_count+=1
 				if (suffixes_db[rule] ~ "^"sub_flag_regex"$") {
 					if (suffix_names_used_by_subflags_to_rule_length[suffixes_db[rule]]) {
 						suffix_names_used_by_subflags_to_rule_length[suffixes_db[rule]] = suffix_names_used_by_subflags_to_rule_length[suffixes_db[rule]] + 1
@@ -388,9 +403,11 @@ generate () {
 			
 			debug("length suffix_names_used_by_subflags_to_rule_length: " length(suffix_names_used_by_subflags_to_rule_length))
 			for (i in suffix_names_used_by_subflags_to_rule_length) {
+				global_loop_cycle_count+=1
 				debug(i "\t" suffix_names_used_by_subflags_to_rule_length[i])
 			}
 			for (rule in prefixes_db) {
+				global_loop_cycle_count+=1
 				if (prefixes_db[rule] ~ "^"sub_flag_regex"$") {
 					if (prefix_names_used_by_subflags_to_rule_length[prefixes_db[rule]]) {
 						prefix_names_used_by_subflags_to_rule_length[prefixes_db[rule]] = prefix_names_used_by_subflags_to_rule_length[prefixes_db[rule]] + 1
@@ -416,6 +433,7 @@ generate () {
 		
 		process=1
 		while (process) {
+			global_loop_cycle_count+=1
 			process=0
 			for (entry in to_be_processed) {
 				split(entry, entry_data, "/")
@@ -434,10 +452,12 @@ generate () {
 		#print "\n-------------------------------------------------\n" >"/dev/tty"
 		#debug("raw variations:")
 		for (variation in all_variations) {
+			global_loop_cycle_count+=1
 			# finally, print all the unique prefix / stem / suffix variations
 			print all_variations[variation]
 			#print all_variations[variation] >"/dev/tty"
 		}
+		debug("Number of loops: " global_loop_cycle_count)
 		#print "\n-------------------------------------------------\n" >"/dev/tty"
 	}
 	' /tmp/wordforms.aff
@@ -502,7 +522,7 @@ generate_all () {
 			split($4, s, "/")
 			separated_flags(s[2])
 			for (flag in separated_flags_array) {
-				referenced_affix_names[flag] = separated_flags_array[flag]
+				referenced_affix_names[separated_flags_array[flag]] = separated_flags_array[flag]
 			}
 			#for (  ){
 			#	
@@ -519,7 +539,7 @@ generate_all () {
 			split($4, s, "/")
 			separated_flags(s[2])
 			for (flag in separated_flags_array) {
-				referenced_affix_names[flag] = separated_flags_array[flag]
+				referenced_affix_names[separated_flags_array[flag]] = separated_flags_array[flag]
 			}
 			#for (  ){
 			#	
@@ -531,17 +551,25 @@ generate_all () {
 	#NR!=FNR && FNR==15 { print }
 	
 	END {
-		debug("Prefixes:")
+		for (flag in referenced_affix_names) {
+			if (all_prefix_names[flag]) { referenced_prefix_names[flag] = all_prefix_names[flag] }
+			else if (all_suffix_names[flag]) { referenced_suffix_names[flag] = all_suffix_names[flag] }
+		}
+		debug_("Prefixes: ")
 		for (prefix in all_prefix_names) {
 			debug_(prefix " ")
 		}
-		debug("\nSuffixes:")
+		debug_("\nSuffixes: ")
 		for (suffix in all_suffix_names) {
 			debug_(suffix " ")
 		}
-		debug("\nReferenced affixes:")
-		for (affix in referenced_affix_names) {
-			debug_(referenced_affix_names[affix] " ")
+		debug_("\nPrefixes referenced by affixes: ")
+		for (flag in referenced_prefix_names) {
+			debug_(referenced_prefix_names[flag] " ")
+		}
+		debug_("\nSuffixes referenced by affixes: ")
+		for (flag in referenced_suffix_names) {
+			debug_(referenced_suffix_names[flag] " ")
 		}
 		debug(" ")
 	}
