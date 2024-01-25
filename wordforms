@@ -97,13 +97,15 @@ generate () {
 		# group the word s suffixes and prefixes together in arrays
 		for (local_flag in individual_flags) {
 			global_loop_cycle_count+=1
-			if (suffix_db[individual_flags[local_flag] " 1"]) {
+			# check if flag exists in prefix / suffix database array by searching for an
+			# element that must exist if the flag rule entry exists in the db i.e. "delete"
+			if (individual_flags[local_flag] " 1 delete" in suffix_db) {
 				local_suffix_group[i]=individual_flags[local_flag]
 				local_suffixes=local_suffixes individual_flags[local_flag]  (flag_type=="num" ? "," : "" )
 				i++
 				debug("(prep): suffix: " individual_flags[local_flag] " , length of this suffix: " suffix_name_to_rule_length[individual_flags[local_flag]])
 			}
-			else if (prefix_db[individual_flags[local_flag] " 1"]) {
+			else if (individual_flags[local_flag] " 1 delete" in prefix_db) {
 				local_prefix_group[j]=individual_flags[local_flag]
 				local_prefixes=local_prefixes individual_flags[local_flag]  (flag_type=="num" ? "," : "" )
 				j++
@@ -325,7 +327,12 @@ generate () {
 		# save all prefixes to the db
 		if (prefix_name_to_rule_length[$2]) { prefix_name_to_rule_length[$2]=prefix_name_to_rule_length[$2]+1 }
 		else { prefix_name_to_rule_length[$2]=1 }
-		prefix_db[$2 " " prefix_name_to_rule_length[$2]]=$0
+		i=prefix_name_to_rule_length[$2]
+		split($4, a_f, "/")
+		prefix_db[$2 " " i " delete"]=$3
+		prefix_db[$2 " " i " add"]=a_f[1]
+		if (a_f[2]) { prefix_db[$2 " " i " flags"]=a_f[2] }
+		prefix_db[$2 " " i " requires"]=$5
 		
 		if (stem ~ "^"$5".*") {
 			# save prefixes that fit the stem to a separate array
@@ -354,7 +361,12 @@ generate () {
 		# save all suffixes to the db
 		if (suffix_name_to_rule_length[$2]) { suffix_name_to_rule_length[$2]=suffix_name_to_rule_length[$2]+1 }
 		else { suffix_name_to_rule_length[$2]=1 }
-		suffix_db[$2 " " suffix_name_to_rule_length[$2]]=$0
+		i=suffix_name_to_rule_length[$2]
+		split($4, a_f, "/")
+		suffix_db[$2 " " i " delete"]=$3
+		suffix_db[$2 " " i " add"]=a_f[1]
+		if (a_f[2]) { suffix_db[$2 " " i " flags"]=a_f[2] }
+		suffix_db[$2 " " i " requires"]=$5
 		
 		if (stem ~ ".*"$5"$") {
 			# save suffixes that fit the stem to a separate array
