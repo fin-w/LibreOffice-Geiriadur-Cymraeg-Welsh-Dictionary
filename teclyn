@@ -277,7 +277,6 @@ cynhyrchu () {
 	###
 	if [ -z "$2" ] ; then out="all_words.txt" ; else out="$2" ; fi
 
-	width=$(( "$( tput cols )" - 15 ))
 	# check to find the dic & aff files with default fallback
 	# TODO: backslash-escaped filenames with spaces dont work with the -f
 	if [ ! -f "$1.dic" ] ; then
@@ -560,7 +559,7 @@ checkmutationflags () {
 	if [[ "$mutflags" == "$expflags" ]] ; then echo 0 ; else echo 1 ; fi
 }
 
-parse $1 $2
+parse $1 $2 $3
 
 #while read line ; do
 #	flagless="$( sed 's|ion/.*||' <<< $line )"
