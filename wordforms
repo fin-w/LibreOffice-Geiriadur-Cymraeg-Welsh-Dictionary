@@ -49,6 +49,7 @@ generate () {
 		delete rule_to_subflags_map
 		delete sub_flags
 		delete separated_flags_array
+		delete stem_flags_array
 		
 		delete all_variations
 		delete to_be_processed
@@ -61,12 +62,16 @@ generate () {
 			global_loop_cycle_count+=1
 			split(dic_lines[line], stem_and_flags, "/")
 			stem=stem_and_flags[1]
-			if (stem_and_flags[2]) stem_flags=stem_flags stem_and_flags[2] (flag_type=="num" ? "," : "");
+			if (2 in stem_and_flags) {
+				stem_flags=stem_flags stem_and_flags[2] (flag_type=="num" ? "," : "")
+				separated_flags(stem_and_flags[2])
+				for (i in separated_flags_array) {
+					stem_flags_array[separated_flags_array[i]] = separated_flags_array[i]
+				}
+			}
 		}
-		# generate regex matching all flags used by the stem
-		flag_regex="("get_regex_from_flags((flag_type=="num" ? substr(stem_flags, 1, length(stem_and_flags)) : stem_flags))")"
 		# don t process the .aff if there is only one acceptable word
-		if (flag_regex=="()") exit;
+		if (length(stem_flags_array) == 0) exit;
 	}
 
 	function debug(text) {
@@ -82,7 +87,7 @@ generate () {
 	function affix_word(word, input_flags, location, affix_level) {
 		delete to_be_processed[word "/" input_flags "/" location "/" affix_level]
 		return_value=0
-		# separate the flags
+		# separate the flags ("separated_flags_array" holds the data)
 		separated_flags(input_flags)
 		delete local_prefix_group
 		delete local_suffix_group
@@ -185,9 +190,9 @@ generate () {
 			# if the suffix has been referenced by a first-level flag i.e. one in the dict entry
 			if (affix_level == 2) {
 				for (suffix_name in local_suffix_group) {
-					global_loop_cycle_count+=1
 					debug("sub suffix name: " local_suffix_group[suffix_name])
 					for (i=1; i<suffix_name_to_rule_length[local_suffix_group[suffix_name]]; i++) {
+						global_loop_cycle_count+=1
 						if (apply_suffix(word, affix_level, location, "SFX " local_suffix_group[suffix_name] " " suffix_db[local_suffix_group[suffix_name] " " i " all"])) return_value = 1;
 						i++
 						if (length(local_prefix_group) > 0) {
@@ -205,9 +210,9 @@ generate () {
 			# if the prefix has been referenced by a first-level flag i.e. one in the dict entry
 			if (affix_level == 2) {
 				for (prefix_name in local_prefix_group) {
-					global_loop_cycle_count += 1
 					debug("sub prefix name: " local_prefix_group[prefix_name])
 					for (i=1; i<prefix_name_to_rule_length[local_prefix_group[prefix_name]]; i++) {
+						global_loop_cycle_count += 1
 						if (apply_prefix(word, affix_level, location, "PFX " local_prefix_group[prefix_name] " " prefix_db[local_prefix_group[prefix_name] " " i " all"])) return_value = 1;
 						i++
 						if (length(local_suffix_group) > 0) {
@@ -254,50 +259,50 @@ generate () {
 		return return_value
 	}
 
-	function get_regex_from_flags(input_flags) {
-		delete flag_array
-		delete long_flags
-		output_regex=""
-		temp=""
-
-		if (input_flags) {
-			split(input_flags, flag_particles, (flag_type=="num" ? "," : "" ))
-			if (flag_type=="long") {
-				if (length(input_flags)<2) return 0;
-				for (i in flag_particles) {
-					global_loop_cycle_count+=1
-					temp=temp flag_particles[i]
-					if (length(temp)==2) {
-						#flag_particles[i] && flag_particles[i-1] &&) {
-						long_flags[temp]=temp
-						temp=""
-					}
-				}
-				for (i in long_flags) {
-					global_loop_cycle_count+=1
-					flag_array[long_flags[i]]=long_flags[i]
-				}
-			}
-			else {
-				for (i in flag_particles) {
-					global_loop_cycle_count+=1
-					flag_array[flag_particles[i]]=flag_particles[i]
-				}
-			}
-			for (flag in flag_array) {
-				global_loop_cycle_count+=1
-				if (flag_array[flag]) {
-					output_regex=output_regex flag_array[flag] "|"
-					#(flag_type!="unicode" ? "|" : "")
-				}
-			}
-			output_regex=substr(output_regex, 1, (length(output_regex) - 1))
-			return output_regex
-		}
-		else {
-			return 0
-		}
-	}
+# 	function get_regex_from_flags(input_flags) {
+# 		delete flag_array
+# 		delete long_flags
+# 		output_regex=""
+# 		temp=""
+# 
+# 		if (input_flags) {
+# 			split(input_flags, flag_particles, (flag_type=="num" ? "," : "" ))
+# 			if (flag_type=="long") {
+# 				if (length(input_flags)<2) return 0;
+# 				for (i in flag_particles) {
+# 					global_loop_cycle_count+=1
+# 					temp=temp flag_particles[i]
+# 					if (length(temp)==2) {
+# 						#flag_particles[i] && flag_particles[i-1] &&) {
+# 						long_flags[temp]=temp
+# 						temp=""
+# 					}
+# 				}
+# 				for (i in long_flags) {
+# 					global_loop_cycle_count+=1
+# 					flag_array[long_flags[i]]=long_flags[i]
+# 				}
+# 			}
+# 			else {
+# 				for (i in flag_particles) {
+# 					global_loop_cycle_count+=1
+# 					flag_array[flag_particles[i]]=flag_particles[i]
+# 				}
+# 			}
+# 			for (flag in flag_array) {
+# 				global_loop_cycle_count+=1
+# 				if (flag_array[flag]) {
+# 					output_regex=output_regex flag_array[flag] "|"
+# 					#(flag_type!="unicode" ? "|" : "")
+# 				}
+# 			}
+# 			output_regex=substr(output_regex, 1, (length(output_regex) - 1))
+# 			return output_regex
+# 		}
+# 		else {
+# 			return 0
+# 		}
+# 	}
 	
 	function separated_flags(flags) {
 		# temp array, grab its contents as soon as you run
@@ -343,7 +348,7 @@ generate () {
 			if (prefix_name_to_rule_length_fitting_stem[$2]) { prefix_name_to_rule_length_fitting_stem[$2]=prefix_name_to_rule_length_fitting_stem[$2]+1 }
 			else { prefix_name_to_rule_length_fitting_stem[$2]=1 }
 			prefixes_fitting_stem[$2 " " prefix_name_to_rule_length_fitting_stem[$2]]=$0
-			if ($2 ~ "^"flag_regex"$") {
+			if ($2 in stem_flags_array) {
 				# save prefixes fitting stem that are explicitly referenced in first level flags to a separate array
 				if (first_level_prefix_name_to_rule_length_fitting_stem[$2]) { first_level_prefix_name_to_rule_length_fitting_stem[$2]=first_level_prefix_name_to_rule_length_fitting_stem[$2]+1 }
 				else { first_level_prefix_name_to_rule_length_fitting_stem[$2]=1 }
@@ -378,7 +383,7 @@ generate () {
 			else { suffix_name_to_rule_length_fitting_stem[$2]=1 }
 			suffixes_fitting_stem[$2 " " suffix_name_to_rule_length_fitting_stem[$2]]=$0
 			
-			if ($2 ~ "^"flag_regex"$") {
+			if ($2 in stem_flags_array) {
 				# save suffixes fitting stem that are explicitly referenced in first level flags to a separate array
 				if (first_level_suffix_name_to_rule_length_fitting_stem[$2]) { first_level_suffix_name_to_rule_length_fitting_stem[$2]=first_level_suffix_name_to_rule_length_fitting_stem[$2]+1 }
 				else { first_level_suffix_name_to_rule_length_fitting_stem[$2]=1 }
@@ -394,7 +399,7 @@ generate () {
 	# this runs after processing the .aff file
 	END {
 		debug("RUNNING END AWK")
-		# get regex matching all subflags used
+		# get arrays matching all subflags used
 		for (sub_flag in sub_flags) {
 			debug("subflag: " sub_flag)
 			global_loop_cycle_count+=1
@@ -420,7 +425,7 @@ generate () {
 		}
 
 		# if there are no variations to generate
-		if (!flag_regex) { print stem; exit 0 }
+		if (length(stem_flags_array) == 0) { print stem; exit 0 }
 		
 		# generate some variables
 		to_be_processed[stem "/" stem_flags "/3/1"]=stem "/" stem_flags
@@ -432,6 +437,7 @@ generate () {
 			global_loop_cycle_count+=1
 			process=0
 			for (entry in to_be_processed) {
+				global_loop_cycle_count += 1
 				split(entry, entry_data, "/")
 				split(to_be_processed[entry], word_and_flags, "/")
 				if (word_and_flags[2] && entry_data[4] < 4) {
@@ -597,32 +603,32 @@ if [ "$generate_all_words" != "true" ] ; then
 	generate $fx $flag_type $entries | hunspell -d /tmp/wordforms -G -l | sort -u
 elif [ -n "$3" ] ; then
 	echo "Generating all words in the dictionary..."
-	generate_all $1 $2
+# 	generate_all $1 $2
 	
-# 	rm -f /tmp/wordforms_all_words.txt
-# 
-# 	# not all the stems need processing, add those with no flags directly
-# 	# filter out anything on lines after tabs (delimiter of valid word, notes usually follow)
-# 	tail -n +2 $2 | grep -v '/' | sed 's@\(^[^\t]*\).*@\1@' > /tmp/wordforms_all_words.txt
-# 	number_of_entries=$(( $( cat "$2" | wc -l ) - 1 ))
-# 	number_copied=$( cat /tmp/wordforms_all_words.txt | wc -l  )
-# 	printf 'Directly copied %s/%s\t(%s%%)\n' "$number_copied" "$number_of_entries" $( echo "$number_copied $number_of_entries" | awk '{printf("%.0f", $1/$2*100)}' )
-# 	# the remainder goes here to generate from
-# 	# filter anything after the flags (usually notes)
-# 	tail -n +2 $2 | grep '/' | sed 's@\(^[^/]*.*[/][^ \t]*\).*@\1@' > /tmp/to_generate.txt
-# 
-# 	number_of_entries_to_generate="$( cat /tmp/to_generate.txt | wc -l )"
-# 	start_time=$( date +%s.%N )
-# 	for i in $( seq 1 $number_of_entries_to_generate ) ; do
-# 		generate $fx $flag_type $( awk -v i="$i" 'NR==i{print; exit}' /tmp/to_generate.txt ) >> /tmp/wordforms_all_words.txt
-# 		elapsed=$( echo "scale=12;$(date +%s.%N)-$start_time" | bc )
-# 		eta=$( echo "scale=12;($elapsed/$i)*($number_of_entries_to_generate-$i)" | bc )
-# 		eta=$( printf '%.0f' "$eta" )
-# 		eta_pretty=$( date -ud "@$eta" +"%Hh %Mm %Ss" )
-# 		printf '\r\e\033[0KAffixing stems  %s/%s\t(%s%%)\t%s' "$((i+number_copied))" "$number_of_entries" $( echo "$((i+number_copied)) $number_of_entries" | awk '{printf("%.0f", $1/$2*100)}')  "$eta_pretty"
-# 	done
-# 	printf '\nChecking output...\n'
-# 	cat /tmp/wordforms_all_words.txt | hunspell -d $( echo "$1" | rev | cut -d"." -f2-  | rev ) -G -l | sort -u > $3
+	rm -f /tmp/wordforms_all_words.txt
+
+	# not all the stems need processing, add those with no flags directly
+	# filter out anything on lines after tabs (delimiter of valid word, notes usually follow)
+	tail -n +2 $2 | grep -v '/' | sed 's@\(^[^\t]*\).*@\1@' > /tmp/wordforms_all_words.txt
+	number_of_entries=$(( $( cat "$2" | wc -l ) - 1 ))
+	number_copied=$( cat /tmp/wordforms_all_words.txt | wc -l  )
+	printf 'Directly copied %s/%s\t(%s%%)\n' "$number_copied" "$number_of_entries" $( echo "$number_copied $number_of_entries" | awk '{printf("%.0f", $1/$2*100)}' )
+	# the remainder goes here to generate from
+	# filter anything after the flags (usually notes)
+	tail -n +2 $2 | grep '/' | sed 's@\(^[^/]*.*[/][^ \t]*\).*@\1@' > /tmp/to_generate.txt
+
+	number_of_entries_to_generate="$( cat /tmp/to_generate.txt | wc -l )"
+	start_time=$( date +%s.%N )
+	for i in $( seq 1 $number_of_entries_to_generate ) ; do
+		generate $fx $flag_type $( awk -v i="$i" 'NR==i{print; exit}' /tmp/to_generate.txt ) >> /tmp/wordforms_all_words.txt
+		elapsed=$( echo "scale=12;$(date +%s.%N)-$start_time" | bc )
+		eta=$( echo "scale=12;($elapsed/$i)*($number_of_entries_to_generate-$i)" | bc )
+		eta=$( printf '%.0f' "$eta" )
+		eta_pretty=$( date -ud "@$eta" +"%Hh %Mm %Ss" )
+		printf '\r\e\033[0KAffixing stems  %s/%s\t(%s%%)\t%s' "$((i+number_copied))" "$number_of_entries" $( echo "$((i+number_copied)) $number_of_entries" | awk '{printf("%.0f", $1/$2*100)}')  "$eta_pretty"
+	done
+	printf '\nChecking output...\n'
+	cat /tmp/wordforms_all_words.txt | hunspell -d $( echo "$1" | rev | cut -d"." -f2-  | rev ) -G -l | sort -u > $3
 else
 	# catch error when generating all words, where output file is not specified
 	printf "Usage:\twordforms [-s | -p] dictionary.aff dictionary.dic word
