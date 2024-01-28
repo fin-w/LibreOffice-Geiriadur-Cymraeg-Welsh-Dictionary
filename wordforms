@@ -10,14 +10,14 @@ case $# in
 -g: generate all forms in the entire dictionary\n";
 	exit 1;;
 esac
-# this switches whether to print only suffixed (fx=1),
-# prefixed (fx=2) or all forms (fx=0) of stem
+# this switches whether to print only suffixed (fx = 1),
+# prefixed (fx = 2) or all forms (fx = 0) of stem
 # -g ignores the -s and -p and generates all forms
-fx=0
+fx = 0
 case $1 in
-	-s) fx=1; shift;;
-	-p) fx=2; shift;;
-	-g) generate_all_words=true; shift;;
+	-s) fx = 1; shift;;
+	-p) fx = 2; shift;;
+	-g) generate_all_words = true; shift;;
 esac
 
 # clear any previous temporary dictionary
@@ -26,18 +26,16 @@ test -h /tmp/wordforms.dic && rm /tmp/wordforms.dic
 # make a symbolic link of the aff file
 ln -s "$PWD/$1" /tmp/wordforms.aff
 
-flag_type="unicode"
+flag_type = "unicode"
 case "$( awk '/^FLAG/ && NF>1 { print $2; exit 0; }' $1 )" in
-	num) flag_type="num";;
-	long) flag_type="long";;
+	num) flag_type = "num";;
+	long) flag_type = "long";;
 esac
 
 generate () {
-	number_of_entries=$(( $( cat "$2" | wc -l) - 1 ))
-	awk -v number_of_entries="$number_of_entries" '
+	number_of_entries = $(( $( cat "$2" | wc -l) - 1 ))
+	awk -v number_of_entries = "$number_of_entries" '
 	BEGIN {
-		delete prefixes
-		delete suffixes
 		delete referenced_affix_names
 		flag_type = "unicode"
 		percent_complete = 0
@@ -47,11 +45,11 @@ generate () {
 	
 	function debug(text) {
 		return
-		print text >"/dev/tty"
+		print text > "/dev/tty"
 	}
 	
 	function print_to_terminal(text) {
-		printf text >"/dev/tty"
+		printf text > "/dev/tty"
 	}
 	
 	function separate_flags(flags) {
@@ -76,21 +74,21 @@ generate () {
 	function affix_word(word, input_flags, location, affix_level) {
 		debug("\n\nSTART AFFIX_WORD:\t" word "\t" input_flags "\t" location "\t" affix_level)
 		delete to_be_processed[word "/" input_flags "/" location "/" affix_level]
-		return_value=0
+		return_value = 0
 		# separate the flags ("separated_flags_array" holds the data)
 		separate_flags(input_flags)
 		delete local_prefix_group
 		delete local_suffix_group
 		# local affixes are added as string to "to_be_processed" array
 		# TODO turn this array into a more elegant database array, reduce string splitting / processing?
-		local_prefixes=""
-		local_suffixes=""
+		local_prefixes = ""
+		local_suffixes = ""
 		for (i in separated_flags_array) {
 			if (separated_flags_array[i] " 1 delete" in suffix_db) {
-				local_suffixes=local_suffixes separated_flags_array[i]  (flag_type=="num" ? "," : "" )
+				local_suffixes = local_suffixes separated_flags_array[i]  (flag_type=="num" ? "," : "" )
 			}
 			else if (separated_flags_array[i] " 1 delete" in prefix_db) {
-				local_prefixes=local_prefixes separated_flags_array[i]  (flag_type=="num" ? "," : "" )
+				local_prefixes = local_prefixes separated_flags_array[i]  (flag_type=="num" ? "," : "" )
 			}
 		}
 		# group the words suffixes and prefixes together in arrays
@@ -106,8 +104,8 @@ generate () {
 						# TODO put && fx != 1 below so as to add generation that doesnt add prefixes (with the -s flag)
 						if (local_prefixes) {
 							return_value = 1
-							sandwich_location=location (location ~ "3$" ? 4 : 5)
-							to_be_processed[affixed_word "/" local_prefixes "/" sandwich_location "/" affix_level]=affixed_word "/" local_prefixes
+							sandwich_location = location (location ~ "3$" ? 4 : 5)
+							to_be_processed[affixed_word "/" local_prefixes "/" sandwich_location "/" affix_level] = 69
 							debug("\t(from suffix) sandwich prefixing: " affixed_word "/" local_prefixes "/" sandwich_location "/" affix_level)
 						}
 					}
@@ -121,8 +119,8 @@ generate () {
 						# TODO put && fx != 2 below so as to add generation that doesnt add suffixes (with the -p flag)
 						if (local_suffixes) {
 							return_value = 1
-							sandwich_location=(location ~ "^3" ? 2 : 1) location
-							to_be_processed[affixed_word "/" local_suffixes "/" sandwich_location "/" affix_level]=affixed_word "/" local_suffixes
+							sandwich_location = (location ~ "^3" ? 2 : 1) location
+							to_be_processed[affixed_word "/" local_suffixes "/" sandwich_location "/" affix_level] = 1
 							debug("\t(from prefix) sandwich suffixing: " affixed_word "/" local_suffixes "/" sandwich_location "/" affix_level)
 						}
 					}
@@ -131,35 +129,35 @@ generate () {
 		}
 		# cut off the last "," added to a string of flags of type "num"
 		if (flag_type == "num") {
-			local_suffixes=substr(local_suffixes, 1, length(local_suffixes) - 1)
-			local_prefixes=substr(local_prefixes, 1, length(local_prefixes) - 1)
+			local_suffixes = substr(local_suffixes, 1, length(local_suffixes) - 1)
+			local_prefixes = substr(local_prefixes, 1, length(local_prefixes) - 1)
 		}
 		debug("END AFFIX_WORD")
 		return return_value
 	}
 
 	function apply_suffix(word, affix_level, local_location, rule,	return_value) {
-		cut_chars=(suffix_db[rule " delete"]=="0" ? 0 : length(suffix_db[rule " delete"]))
-		affixed_word=substr(word, 1, length(word)-cut_chars) (suffix_db[rule " add"]=="0" ? "": suffix_db[rule " add"])
-		all_variations[affixed_word]=affixed_word
+		cut_chars = (suffix_db[rule " delete"] == "0" ? 0 : length(suffix_db[rule " delete"]))
+		affixed_word = substr(word, 1, length(word)-cut_chars) (suffix_db[rule " add"] == "0" ? "": suffix_db[rule " add"])
+		all_variations[affixed_word] = affixed_word
 		if (rule " flags" in suffix_db) {
 			return_value = 1
 			if (local_location ~ "4$") local_location = local_location "5";
 			else if (local_location ~ "3$") local_location = local_location "4";
-			to_be_processed[affixed_word "/" suffix_db[rule " flags"] "/" local_location "/" affix_level + 1]=affixed_word "/" suffix_db[rule " flags"]
+			to_be_processed[affixed_word "/" suffix_db[rule " flags"] "/" local_location "/" affix_level + 1] = 1
 		}
 		return return_value
 	}
 
 	function apply_prefix(word, affix_level, local_location, rule,	return_value) {
-		cut_chars=(prefix_db[rule " delete"]=="0" ? 0 : length(prefix_db[rule " delete"]))
-		affixed_word=(prefix_db[rule " add"]=="0" ? "": prefix_db[rule " add"]) substr(word, cut_chars+1)
-		all_variations[affixed_word]=affixed_word
+		cut_chars = (prefix_db[rule " delete"] == "0" ? 0 : length(prefix_db[rule " delete"]))
+		affixed_word = (prefix_db[rule " add"] == "0" ? "": prefix_db[rule " add"]) substr(word, cut_chars+1)
+		all_variations[affixed_word] = affixed_word
 		if (rule " flags" in prefix_db) {
 			return_value = 1
 			if (local_location ~ "^2") local_location = "1" local_location;
 			else if (local_location ~ "^3") local_location = "2" local_location;
-			to_be_processed[affixed_word "/" prefix_db[rule " flags"] "/" local_location "/" affix_level + 1]=affixed_word "/" prefix_db[rule " flags"]
+			to_be_processed[affixed_word "/" prefix_db[rule " flags"] "/" local_location "/" affix_level + 1] = 1
 		}
 		return return_value
 	}
@@ -233,7 +231,7 @@ generate () {
 		all_variations[entry_and_flags[1]] = entry_and_flags[1]
 		# check if dic entry has flags
 		if (2 in entry_and_flags) {
-			to_be_processed[e[1] "/3/1"] = e[1]
+			to_be_processed[e[1] "/3/1"] = 1
 			stem = entry_and_flags[1]
 			stem_length = length(stem)
 			process = 1
@@ -241,13 +239,13 @@ generate () {
 				process = 0
 				for (entry in to_be_processed) {
 					split(entry, entry_data, "/")
-					split(to_be_processed[entry], word_and_flags, "/")
-					if (2 in word_and_flags && entry_data[4] < 4) {
-						if (affix_word(word_and_flags[1], word_and_flags[2], entry_data[3], entry_data[4])) process = 1;
+					# if data includes flags (#2) and no. flags applied (#4) is below four
+					if (length(entry_data) > 3 && entry_data[4] < 4) {
+						if (affix_word(entry_data[1], entry_data[2], entry_data[3], entry_data[4])) process = 1;
 					}
 					else {
 						process = 1
-						all_variations[word_and_flags[1]] = word_and_flags[1]
+						all_variations[entry_data[1]] = entry_data[1]
 						delete to_be_processed[entry]
 					}
 				}
@@ -296,7 +294,7 @@ if [ "$generate_all_words" != "true" ] ; then
 	
 	generate /tmp/wordforms.aff /tmp/wordforms.dic | sort -u
 elif [ -n "$3" ] ; then
-	dic_name=$( echo $1 | sed 's@[.]aff$@@' )
+	dic_name = $( echo $1 | sed 's@[.]aff$@@' )
 	generate $1 $2 | hunspell -d $dic_name -G -l | sort -u > $3
 else
 	# catch error when generating all words, where output file is not specified
@@ -306,5 +304,5 @@ else
 -s: print only suffixed forms of the word
 -p: print only prefixed forms of the word
 -g: generate all forms in the entire dictionary\n"
-	exit
+	exit 1
 fi
