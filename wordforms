@@ -97,7 +97,7 @@ generate () {
 						if (local_prefixes) {
 							return_value = 1
 							sandwich_location = location (location ~ "3$" ? 4 : 5)
-							to_be_processed[affixed_word "/" local_prefixes "/" sandwich_location "/" affix_level] = 69
+							to_be_processed[affixed_word "/" local_prefixes "/" sandwich_location "/" affix_level] = 1
 							debug("\t(from suffix) sandwich prefixing: " affixed_word "/" local_prefixes "/" sandwich_location "/" affix_level)
 						}
 					}
