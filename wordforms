@@ -226,8 +226,10 @@ generate () {
 		# TODO strip out any noise from the lines
 		
 		# strips out anything after a tab
+		# tries to strip comments out too
 		split($0, e, "\t")
-		split(e[1], entry_and_flags, "/")
+		split(e[1], e_, " #")
+		split(e_[1], entry_and_flags, "/")
 		all_variations[entry_and_flags[1]] = entry_and_flags[1]
 		# check if dic entry has flags
 		if (2 in entry_and_flags) {
@@ -257,10 +259,6 @@ generate () {
 	}
 	
 	END {
-		for (flag in referenced_affix_names) {
-			if (flag in prefix_name_to_rule_length) { referenced_prefix_names[flag] = flag }
-			else if (flag in suffix_name_to_rule_length) { referenced_suffix_names[flag] = flag }
-		}
 		if (number_of_entries >= 100) print_to_terminal("Sending entries to Hunspell...\n");
 		for (variation in all_variations) {
 			print(all_variations[variation])
