@@ -58,17 +58,13 @@ generate () {
 		# array has numerical indices and char / string / number data
 		delete separated_flags_array
 		
-		if (flag_type == "num") {
-			split(flags, separated_flags_array, ",")
-		}
+		if (flag_type == "num") split(flags, separated_flags_array, ",");
 		else if (flag_type == "long") {
 			for (i=0; i*2<length(flags); i++) {
 				separated_flags_array[i] = substr(flags, i*2, 2)
 			}
 		}
-		else {
-			split(flags, separated_flags_array, "")
-		}
+		else split(flags, separated_flags_array, "");
 	}
 	
 	function affix_word(word, input_flags, location, affix_level) {
@@ -84,12 +80,8 @@ generate () {
 		local_prefixes = ""
 		local_suffixes = ""
 		for (i in separated_flags_array) {
-			if (separated_flags_array[i] " 1 delete" in suffix_db) {
-				local_suffixes = local_suffixes separated_flags_array[i]  (flag_type=="num" ? "," : "" )
-			}
-			else if (separated_flags_array[i] " 1 delete" in prefix_db) {
-				local_prefixes = local_prefixes separated_flags_array[i]  (flag_type=="num" ? "," : "" )
-			}
+			if (separated_flags_array[i] " 1 delete" in suffix_db) local_suffixes = local_suffixes separated_flags_array[i]  (flag_type=="num" ? "," : "" );
+			else if (separated_flags_array[i] " 1 delete" in prefix_db) local_prefixes = local_prefixes separated_flags_array[i]  (flag_type=="num" ? "," : "" );
 		}
 		# group the words suffixes and prefixes together in arrays
 		for (i in separated_flags_array) {
@@ -138,7 +130,7 @@ generate () {
 
 	function apply_suffix(word, affix_level, local_location, rule,	return_value) {
 		cut_chars = (suffix_db[rule " delete"] == "0" ? 0 : length(suffix_db[rule " delete"]))
-		affixed_word = substr(word, 1, length(word)-cut_chars) (suffix_db[rule " add"] == "0" ? "": suffix_db[rule " add"])
+		affixed_word = substr(word, 1, length(word) - cut_chars) (suffix_db[rule " add"] == "0" ? "": suffix_db[rule " add"])
 		all_variations[affixed_word] = affixed_word
 		if (rule " flags" in suffix_db) {
 			return_value = 1
@@ -170,8 +162,8 @@ generate () {
 	# first file only, i.e. affix file
 	NR==FNR && $1=="PFX" && NF>4 && $4 !~ "[1-9][0-9]*" {
 		# save all prefixes to the db
-		if ($2 in prefix_name_to_rule_length) { prefix_name_to_rule_length[$2] = prefix_name_to_rule_length[$2] + 1 }
-		else { prefix_name_to_rule_length[$2] = 1 }
+		if ($2 in prefix_name_to_rule_length) prefix_name_to_rule_length[$2] = prefix_name_to_rule_length[$2] + 1;
+		else prefix_name_to_rule_length[$2] = 1;
 		i = prefix_name_to_rule_length[$2]
 		split($4, a_f, "/")
 		prefix_db[$2 " " i " delete"] = $3
@@ -190,8 +182,8 @@ generate () {
 
 	NR==FNR && $1=="SFX" && NF>4 && $4 !~ "[1-9][0-9]*" {
 		# save all suffixes to the db
-		if ($2 in suffix_name_to_rule_length) { suffix_name_to_rule_length[$2] = suffix_name_to_rule_length[$2] + 1 }
-		else { suffix_name_to_rule_length[$2] = 1 }
+		if ($2 in suffix_name_to_rule_length) suffix_name_to_rule_length[$2] = suffix_name_to_rule_length[$2] + 1;
+		else suffix_name_to_rule_length[$2] = 1;
 		i = suffix_name_to_rule_length[$2]
 		split($4, a_f, "/")
 		suffix_db[$2 " " i " delete"] = $3
@@ -252,8 +244,6 @@ generate () {
 			}
 		}
 		next
-		
-		
 	}
 	
 	END {
