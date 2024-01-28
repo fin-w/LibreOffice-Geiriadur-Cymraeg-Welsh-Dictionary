@@ -33,83 +33,100 @@ case "$( awk '/^FLAG/ && NF>1 { print $2; exit 0; }' $1 )" in
 esac
 
 generate () {
-	# generate the different potential words
-	awk -v fx="$1" -v flag_type="$2" -v dic_entries="$3" '
+	number_of_entries=$(( $( cat "$2" | wc -l) - 1 ))
+	awk -v number_of_entries="$number_of_entries" '
 	BEGIN {
-		debug("BEGIN AWK")
-		global_loop_cycle_count=0
-		delete prefixes_fitting_stem
-		delete suffixes_fitting_stem
-		delete prefix_names_used_by_subflags_to_rule_length
-		delete suffix_names_used_by_subflags_to_rule_length
-		
-		delete rule_entry_count
-		delete affix_db
-		
-		delete rule_to_subflags_map
-		delete sub_flags
-		delete separated_flags_array
-		delete stem_flags_array
-		
-		delete all_variations
-		delete to_be_processed
-		
-		flag_type="unicode"
-		stem=""
-		
-		split(dic_entries, dic_lines, "|")
-		for (line in dic_lines) {
-			global_loop_cycle_count+=1
-			split(dic_lines[line], stem_and_flags, "/")
-			stem=stem_and_flags[1]
-			if (2 in stem_and_flags) {
-				stem_flags=stem_flags stem_and_flags[2] (flag_type=="num" ? "," : "")
-				separated_flags(stem_and_flags[2])
-				for (i in separated_flags_array) {
-					stem_flags_array[separated_flags_array[i]] = separated_flags_array[i]
-				}
-			}
-		}
-		# don t process the .aff if there is only one acceptable word
-		if (length(stem_flags_array) == 0) exit;
+		delete prefixes
+		delete suffixes
+		delete referenced_affix_names
+		flag_type = "unicode"
+		percent_complete = 0
+		entry_step_per_percent = number_of_entries / 100
+		next_update = entry_step_per_percent
 	}
-
+	
 	function debug(text) {
 		return
 		print text >"/dev/tty"
 	}
-
-	function debug_(text) {
-		return
-		print text >"/dev/tty"
+	
+	function print_to_terminal(text) {
+		printf text >"/dev/tty"
 	}
-
+	
+	function separate_flags(flags) {
+		# temp array, grab its contents as soon as you run
+		# this function (cant return arrays with awk).
+		# array has numerical indices and char / string / number data
+		delete separated_flags_array
+		
+		if (flag_type == "num") {
+			split(flags, separated_flags_array, ",")
+		}
+		else if (flag_type == "long") {
+			for (i=0; i*2<length(flags); i++) {
+				separated_flags_array[i] = substr(flags, i*2, 2)
+			}
+		}
+		else {
+			split(flags, separated_flags_array, "")
+		}
+	}
+	
 	function affix_word(word, input_flags, location, affix_level) {
+		debug("\n\nSTART AFFIX_WORD:\t" word "\t" input_flags "\t" location "\t" affix_level)
 		delete to_be_processed[word "/" input_flags "/" location "/" affix_level]
 		return_value=0
 		# separate the flags ("separated_flags_array" holds the data)
-		separated_flags(input_flags)
+		separate_flags(input_flags)
 		delete local_prefix_group
 		delete local_suffix_group
 		# local affixes are added as string to "to_be_processed" array
 		# TODO turn this array into a more elegant database array, reduce string splitting / processing?
 		local_prefixes=""
 		local_suffixes=""
-		debug("\n\nSTART AFFIX_WORD:\t" word "\t" input_flags "\t" location "\t" affix_level)
-		# group the word s suffixes and prefixes together in arrays
 		for (i in separated_flags_array) {
-			global_loop_cycle_count+=1
-			# check if flag exists in prefix / suffix database array by searching for an
-			# element that must exist if the flag rule entry exists in the db i.e. "delete"
 			if (separated_flags_array[i] " 1 delete" in suffix_db) {
-				local_suffix_group[i]=separated_flags_array[i]
 				local_suffixes=local_suffixes separated_flags_array[i]  (flag_type=="num" ? "," : "" )
-				debug("(prep): suffix: " separated_flags_array[i] " , length of this suffix: " suffix_name_to_rule_length[separated_flags_array[i]])
 			}
 			else if (separated_flags_array[i] " 1 delete" in prefix_db) {
-				local_prefix_group[i]=separated_flags_array[i]
 				local_prefixes=local_prefixes separated_flags_array[i]  (flag_type=="num" ? "," : "" )
-				debug("(prep): prefix: " separated_flags_array[i] " , length of this prefix: " prefix_name_to_rule_length[separated_flags_array[i]])
+			}
+		}
+		# group the words suffixes and prefixes together in arrays
+		for (i in separated_flags_array) {
+			# check if flag exists in prefix / suffix database array by searching for an
+			# element that must exist if the flag rule entry exists in the db i.e. "delete"
+			# TODO put && fx != 2 below so as to add generation that doesnt add suffixes (with the -p flag)
+			if (separated_flags_array[i] " 1 delete" in suffix_db && location !~ "5$") {
+				for (j=1; separated_flags_array[i] " " j " delete" in suffix_db; j++) {
+					if (word ~ suffix_db[separated_flags_array[i] " " j " requires"]) {
+						if (apply_suffix(word, affix_level, location, separated_flags_array[i] " " j)) return_value = 1;
+						debug("stem \"" word "\" matches flag " separated_flags_array[i] "(" j ") with regex " suffix_db[separated_flags_array[i] " " j " requires"] " made word " affixed_word)
+						# TODO put && fx != 1 below so as to add generation that doesnt add prefixes (with the -s flag)
+						if (local_prefixes) {
+							return_value = 1
+							sandwich_location=location (location ~ "3$" ? 4 : 5)
+							to_be_processed[affixed_word "/" local_prefixes "/" sandwich_location "/" affix_level]=affixed_word "/" local_prefixes
+							debug("\t(from suffix) sandwich prefixing: " affixed_word "/" local_prefixes "/" sandwich_location "/" affix_level)
+						}
+					}
+				}
+			}
+			else if (separated_flags_array[i] " 1 delete" in prefix_db && location !~ "^1") {
+				for (j=1; separated_flags_array[i] " " j " delete" in prefix_db; j++) {
+					if (word ~ prefix_db[separated_flags_array[i] " " j " requires"]) {
+						if (apply_prefix(word, affix_level, location, separated_flags_array[i] " " j)) return_value = 1;
+						debug("stem \"" word "\" matches flag " separated_flags_array[i] "(" j ") with regex " prefix_db[separated_flags_array[i] " " j " requires"] " made word " affixed_word)
+						# TODO put && fx != 2 below so as to add generation that doesnt add suffixes (with the -p flag)
+						if (local_suffixes) {
+							return_value = 1
+							sandwich_location=(location ~ "^3" ? 2 : 1) location
+							to_be_processed[affixed_word "/" local_suffixes "/" sandwich_location "/" affix_level]=affixed_word "/" local_suffixes
+							debug("\t(from prefix) sandwich suffixing: " affixed_word "/" local_suffixes "/" sandwich_location "/" affix_level)
+						}
+					}
+				}
 			}
 		}
 		# cut off the last "," added to a string of flags of type "num"
@@ -117,465 +134,138 @@ generate () {
 			local_suffixes=substr(local_suffixes, 1, length(local_suffixes) - 1)
 			local_prefixes=substr(local_prefixes, 1, length(local_prefixes) - 1)
 		}
-		# if suffixing the stem
-		if (location ~ "3$") {
-			# run through very narrow list of suffixes that fit the stem
-			if (affix_level == 1) {
-				for (suffix_name in local_suffix_group) {
-					global_loop_cycle_count+=1
-					debug("suffix name (first level): " local_suffix_group[suffix_name])
-					i = 1
-					while (first_level_suffixes_fitting_stem[local_suffix_group[suffix_name] " " i]) {
-						debug("\tfirst level stem suffixing: " local_suffix_group[suffix_name] " (" i ")\t\t" first_level_suffixes_fitting_stem[local_suffix_group[suffix_name] " " i])
-						if (apply_suffix(word, affix_level, location, first_level_suffixes_fitting_stem[local_suffix_group[suffix_name] " " i])) return_value = 1;
-						i++
-						if (length(local_prefix_group) > 0) {
-							return_value = 1
-							to_be_processed[affixed_word "/" local_prefixes "/" location "4/" affix_level]=affixed_word "/" local_prefixes
-							debug("\t(from suffix) sandwich prefixing: " affixed_word "/" local_prefixes "/" location"4" "/" affix_level)
-						}
-					}
-				}
-			}
-			# otherwise check any suffix that fits the stem
-			else if (affix_level > 1) {
-				for (suffix_name in local_suffix_group) {
-					global_loop_cycle_count+=1
-					debug("suffix name (level " affix_level "): " local_suffix_group[suffix_name])
-					i = 1
-					while (suffixes_fitting_stem[local_suffix_group[suffix_name] " " i]) {
-						debug("\tsecond level stem suffixing: " local_suffix_group[suffix_name] " (" i ")\t\t" suffixes_fitting_stem[local_suffix_group[suffix_name] " " i])
-						if (apply_suffix(word, affix_level, location, suffixes_fitting_stem[local_suffix_group[suffix_name] " " i])) return_value = 1;
-						i++
-	# 					if (length(local_prefix_group) > 0) {
-	# 						return_value = 1
-	# 						to_be_processed[affixed_word "/" local_prefixes "/" location "4/" affix_level]=affixed_word "/" local_prefixes
-	# 						debug("\t(from suffix) sandwich prefixing: " affixed_word "/" local_prefixes "/" location "4/" affix_level)
-	# 					}
-					}
-				}
-			}
-		}
-		# if prefixing the stem
-		if (location ~ "^3") {
-			# run through very narrow list of prefixes that fit the stem
-			if (affix_level == 1) {
-				for (prefix_name in local_prefix_group) {
-					global_loop_cycle_count+=1
-					debug("prefix name: " local_prefix_group[prefix_name])
-					i = 1
-					while (first_level_prefixes_fitting_stem[local_prefix_group[prefix_name] " " i]) {
-						debug("\tfirst level stem prefixing: " local_prefix_group[prefix_name] " (" i ")\t\t" first_level_prefixes_fitting_stem[local_prefix_group[prefix_name] " " i])
-						if (apply_prefix(word, affix_level, location, first_level_prefixes_fitting_stem[local_prefix_group[prefix_name] " " i])) return_value = 1;
-						i++
-					}
-				}
-			}
-			# otherwise check any prefix that fits the stem
-			else if (affix_level > 1) {
-				for (prefix_name in local_prefix_group) {
-					global_loop_cycle_count+=1
-					debug("prefix name: " local_prefix_group[prefix_name])
-					i = 1
-					while (prefixes_fitting_stem[local_prefix_group[prefix_name] " " i]) {
-						debug("\tsecond level stem prefixing: " local_prefix_group[prefix_name] " (" i ")\t\t" prefixes_fitting_stem[local_prefix_group[prefix_name] " " i])
-						if (apply_prefix(word, affix_level, location, prefixes_fitting_stem[local_prefix_group[prefix_name] " " i])) return_value = 1;
-						i++
-					}
-				}
-			}
-		}
-		# if suffixing a suffix
-		if (location ~ "4$") {
-			# if the suffix has been referenced by a first-level flag i.e. one in the dict entry
-			if (affix_level == 2) {
-				for (suffix_name in local_suffix_group) {
-					debug("sub suffix name: " local_suffix_group[suffix_name])
-					for (i=1; i<suffix_name_to_rule_length[local_suffix_group[suffix_name]]; i++) {
-						global_loop_cycle_count+=1
-						if (apply_suffix(word, affix_level, location, "SFX " local_suffix_group[suffix_name] " " suffix_db[local_suffix_group[suffix_name] " " i " all"])) return_value = 1;
-						i++
-						if (length(local_prefix_group) > 0) {
-							return_value = 1
-							to_be_processed[affixed_word "/" local_prefixes "/" location "/" affix_level]=affixed_word "/" local_prefixes
-							debug("\t\t(from sub prefix) sandwich prefixing: " affixed_word "/" local_prefixes "/" location "/" affix_level)
-						}
-					}
-				}
-			}
-			else if (affix_level > 2) { debug_("------------------ FAILED 1") }
-		}
-		# if prefixing a prefix
-		else if (location ~ "^2") {
-			# if the prefix has been referenced by a first-level flag i.e. one in the dict entry
-			if (affix_level == 2) {
-				for (prefix_name in local_prefix_group) {
-					debug("sub prefix name: " local_prefix_group[prefix_name])
-					for (i=1; i<prefix_name_to_rule_length[local_prefix_group[prefix_name]]; i++) {
-						global_loop_cycle_count += 1
-						if (apply_prefix(word, affix_level, location, "PFX " local_prefix_group[prefix_name] " " prefix_db[local_prefix_group[prefix_name] " " i " all"])) return_value = 1;
-						i++
-						if (length(local_suffix_group) > 0) {
-							return_value = 1
-							to_be_processed[affixed_word "/" local_suffixes "/" location "/" affix_level]=affixed_word "/" local_suffixes
-							debug("\t\t(from sub prefix) sandwich suffixing: " affixed_word "/" local_suffixes "/" location "/" affix_level)
-						}
-					}
-				}
-			}
-			else if (affix_level > 2) { debug_("------------------ FAILED 2") }
-		}
 		debug("END AFFIX_WORD")
 		return return_value
 	}
 
 	function apply_suffix(word, affix_level, local_location, rule,	return_value) {
-		split(rule, affix_particles)
-		split(affix_particles[4], add_and_flags, "/")
-		cut_chars=(affix_particles[3]=="0" ? 0 : length(affix_particles[3]))
-		affixed_word=substr(word, 1, length(word)-cut_chars) (add_and_flags[1]=="0" ? "": add_and_flags[1])
+		cut_chars=(suffix_db[rule " delete"]=="0" ? 0 : length(suffix_db[rule " delete"]))
+		affixed_word=substr(word, 1, length(word)-cut_chars) (suffix_db[rule " add"]=="0" ? "": suffix_db[rule " add"])
 		all_variations[affixed_word]=affixed_word
-		if (2 in add_and_flags) {
+		if (rule " flags" in suffix_db) {
 			return_value = 1
 			if (local_location ~ "4$") local_location = local_location "5";
 			else if (local_location ~ "3$") local_location = local_location "4";
-			to_be_processed[affixed_word "/" add_and_flags[2] "/" local_location "/" affix_level + 1]=affixed_word "/" add_and_flags[2]
+			to_be_processed[affixed_word "/" suffix_db[rule " flags"] "/" local_location "/" affix_level + 1]=affixed_word "/" suffix_db[rule " flags"]
 		}
 		return return_value
 	}
 
 	function apply_prefix(word, affix_level, local_location, rule,	return_value) {
-		split(rule, affix_particles)
-		split(affix_particles[4], add_and_flags, "/")
-		cut_chars=(affix_particles[3]=="0" ? 0 : length(affix_particles[3]))
-		affixed_word=(add_and_flags[1]=="0" ? "": add_and_flags[1]) substr(word, cut_chars+1)
+		cut_chars=(prefix_db[rule " delete"]=="0" ? 0 : length(prefix_db[rule " delete"]))
+		affixed_word=(prefix_db[rule " add"]=="0" ? "": prefix_db[rule " add"]) substr(word, cut_chars+1)
 		all_variations[affixed_word]=affixed_word
-		if (2 in add_and_flags) {
+		if (rule " flags" in prefix_db) {
 			return_value = 1
 			if (local_location ~ "^2") local_location = "1" local_location;
 			else if (local_location ~ "^3") local_location = "2" local_location;
-			to_be_processed[affixed_word "/" add_and_flags[2] "/" local_location "/" affix_level + 1]=affixed_word "/" add_and_flags[2]
+			to_be_processed[affixed_word "/" prefix_db[rule " flags"] "/" local_location "/" affix_level + 1]=affixed_word "/" prefix_db[rule " flags"]
 		}
 		return return_value
 	}
-
-# 	function get_regex_from_flags(input_flags) {
-# 		delete flag_array
-# 		delete long_flags
-# 		output_regex=""
-# 		temp=""
-# 
-# 		if (input_flags) {
-# 			split(input_flags, flag_particles, (flag_type=="num" ? "," : "" ))
-# 			if (flag_type=="long") {
-# 				if (length(input_flags)<2) return 0;
-# 				for (i in flag_particles) {
-# 					global_loop_cycle_count+=1
-# 					temp=temp flag_particles[i]
-# 					if (length(temp)==2) {
-# 						#flag_particles[i] && flag_particles[i-1] &&) {
-# 						long_flags[temp]=temp
-# 						temp=""
-# 					}
-# 				}
-# 				for (i in long_flags) {
-# 					global_loop_cycle_count+=1
-# 					flag_array[long_flags[i]]=long_flags[i]
-# 				}
-# 			}
-# 			else {
-# 				for (i in flag_particles) {
-# 					global_loop_cycle_count+=1
-# 					flag_array[flag_particles[i]]=flag_particles[i]
-# 				}
-# 			}
-# 			for (flag in flag_array) {
-# 				global_loop_cycle_count+=1
-# 				if (flag_array[flag]) {
-# 					output_regex=output_regex flag_array[flag] "|"
-# 					#(flag_type!="unicode" ? "|" : "")
-# 				}
-# 			}
-# 			output_regex=substr(output_regex, 1, (length(output_regex) - 1))
-# 			return output_regex
-# 		}
-# 		else {
-# 			return 0
-# 		}
-# 	}
-	
-	function separated_flags(flags) {
-		# temp array, grab its contents as soon as you run
-		# this function (cant return arrays with awk).
-		# array has numerical indices and char / string / number data
-		delete separated_flags_array
-		
-		if (flag_type == "num") {
-			split(flags, separated_flags_array, ",")
-		}
-		else if (flag_type == "long") {
-			for (i=0; i*2<length(flags); i++) {
-				separated_flags_array[i] = substr(flags, i*2, 2)
-			}
-		}
-		else {
-			split(flags, separated_flags_array, "")
-		}
-	}
 	
 	# get some .aff settings to help
 	# optimise the affixed word generation
-	/^COMPLEXPREFIXES/ { complex_prefixes="yes"; next }
-
-	# this runs on the .aff file to get affix data
-	/^PFX/ && fx!=1 && NF>4 && $4 !~ "[1-9][0-9]*" {
-		# save all prefixes to the db
-		if (prefix_name_to_rule_length[$2]) { prefix_name_to_rule_length[$2]=prefix_name_to_rule_length[$2]+1 }
-		else { prefix_name_to_rule_length[$2]=1 }
-		i=prefix_name_to_rule_length[$2]
-		split($4, a_f, "/")
-		prefix_db[$2 " " i " delete"]=$3
-		prefix_db[$2 " " i " add"]=a_f[1]
-		if (a_f[2]) { prefix_db[$2 " " i " flags"]=a_f[2] }
-		prefix_db[$2 " " i " requires"]=$5
-		prefix_db[$2 " " i " all"]=$3 " " $4 " " $5
-		
-		rule_to_subflags_map[$0]=a_f[2]
-		prefixes_db[$0]=$2
-		
-		if (stem ~ "^"$5".*") {
-			# save prefixes that fit the stem to a separate array
-			if (prefix_name_to_rule_length_fitting_stem[$2]) { prefix_name_to_rule_length_fitting_stem[$2]=prefix_name_to_rule_length_fitting_stem[$2]+1 }
-			else { prefix_name_to_rule_length_fitting_stem[$2]=1 }
-			prefixes_fitting_stem[$2 " " prefix_name_to_rule_length_fitting_stem[$2]]=$0
-			if ($2 in stem_flags_array) {
-				# save prefixes fitting stem that are explicitly referenced in first level flags to a separate array
-				if (first_level_prefix_name_to_rule_length_fitting_stem[$2]) { first_level_prefix_name_to_rule_length_fitting_stem[$2]=first_level_prefix_name_to_rule_length_fitting_stem[$2]+1 }
-				else { first_level_prefix_name_to_rule_length_fitting_stem[$2]=1 }
-				first_level_prefixes_fitting_stem[$2 " " first_level_prefix_name_to_rule_length_fitting_stem[$2]]=$0
-				
-				# gather any sub-flags referenced by the first level flags
-				if (2 in add_and_flags) { sub_flags[add_and_flags[2]]=add_and_flags[2] }
-			}
-		}
-		next
-	}
-
-	# this runs on the .aff file to get affix data
-	/^SFX/ && fx!=2 && NF>4 && $4 !~ "[1-9][0-9]*" {
-		# save all suffixes to the db
-		if (suffix_name_to_rule_length[$2]) { suffix_name_to_rule_length[$2]=suffix_name_to_rule_length[$2]+1 }
-		else { suffix_name_to_rule_length[$2]=1 }
-		i=suffix_name_to_rule_length[$2]
-		split($4, a_f, "/")
-		suffix_db[$2 " " i " delete"]=$3
-		suffix_db[$2 " " i " add"]=a_f[1]
-		if (a_f[2]) { suffix_db[$2 " " i " flags"]=a_f[2] }
-		suffix_db[$2 " " i " requires"]=$5
-		suffix_db[$2 " " i " all"]=$3 " " $4 " " $5
-		
-		rule_to_subflags_map[$0]=a_f[2]
-		suffixes_db[$0]=$2
-		
-		if (stem ~ ".*"$5"$") {
-			# save suffixes that fit the stem to a separate array
-			if (suffix_name_to_rule_length_fitting_stem[$2]) { suffix_name_to_rule_length_fitting_stem[$2]=suffix_name_to_rule_length_fitting_stem[$2]+1 }
-			else { suffix_name_to_rule_length_fitting_stem[$2]=1 }
-			suffixes_fitting_stem[$2 " " suffix_name_to_rule_length_fitting_stem[$2]]=$0
-			
-			if ($2 in stem_flags_array) {
-				# save suffixes fitting stem that are explicitly referenced in first level flags to a separate array
-				if (first_level_suffix_name_to_rule_length_fitting_stem[$2]) { first_level_suffix_name_to_rule_length_fitting_stem[$2]=first_level_suffix_name_to_rule_length_fitting_stem[$2]+1 }
-				else { first_level_suffix_name_to_rule_length_fitting_stem[$2]=1 }
-				first_level_suffixes_fitting_stem[$2 " " first_level_suffix_name_to_rule_length_fitting_stem[$2]]=$0
-				
-				# gather any sub-flags referenced by the first level flags
-				if (2 in add_and_flags) { sub_flags[add_and_flags[2]]=add_and_flags[2] }
-			}
-		}
-		next
-	}
-
-	# this runs after processing the .aff file
-	END {
-		debug("RUNNING END AWK")
-		# get arrays matching all subflags used
-		for (sub_flag in sub_flags) {
-			debug("subflag: " sub_flag)
-			global_loop_cycle_count+=1
-			if (sub_flag " 1 delete" in suffix_db) {
-				if (sub_flag in suffix_names_used_by_subflags_to_rule_length) {
-					suffix_names_used_by_subflags_to_rule_length[sub_flag] += 1
-				}
-				else {
-					suffix_names_used_by_subflags_to_rule_length[sub_flag] = 1
-				}
-			}
-			else if (sub_flag " 1 delete" in prefix_db) {
-				if (sub_flag in prefix_names_used_by_subflags_to_rule_length) {
-					prefix_names_used_by_subflags_to_rule_length[sub_flag] += 1
-				}
-				else {
-					prefix_names_used_by_subflags_to_rule_length[sub_flag] = 1
-				}
-			}
-			else {
-				debug("no match: " sub_flag)
-			}
-		}
-
-		# if there are no variations to generate
-		if (length(stem_flags_array) == 0) { print stem; exit 0 }
-		
-		# generate some variables
-		to_be_processed[stem "/" stem_flags "/3/1"]=stem "/" stem_flags
-		all_variations[stem]=stem
-		stem_length=length(stem)
-		
-		process=1
-		while (process) {
-			global_loop_cycle_count+=1
-			process=0
-			for (entry in to_be_processed) {
-				global_loop_cycle_count += 1
-				split(entry, entry_data, "/")
-				split(to_be_processed[entry], word_and_flags, "/")
-				if (word_and_flags[2] && entry_data[4] < 4) {
-					if (affix_word(word_and_flags[1], word_and_flags[2], entry_data[3], entry_data[4])) process=1;
-				}
-				else {
-					process=1
-					all_variations[word_and_flags[1]]=word_and_flags[1]
-					delete to_be_processed[entry]
-				}
-			}
-		}
-		
-		#print "\n-------------------------------------------------\n" >"/dev/tty"
-		#debug("raw variations:")
-		for (variation in all_variations) {
-			global_loop_cycle_count+=1
-			# finally, print all the unique prefix / stem / suffix variations
-			print all_variations[variation]
-			#print all_variations[variation] >"/dev/tty"
-		}
-		debug("Number of loops: " global_loop_cycle_count)
-# 		for (a in rule_entry_count) {
-# 			debug(a ": " rule_entry_count[a])
-# 		}
-# 		for (a in affix_db) {
-# 			debug(a "\t" affix_db[a])
-# 		}
-		#print "\n-------------------------------------------------\n" >"/dev/tty"
-		debug(" ")
-	}
-	' /tmp/wordforms.aff
-}
-
-generate_all () {
-	awk '
-	BEGIN {
-		delete prefixes
-		delete suffixes
-		delete referenced_affix_names
-		#delete separated_flags_array
-		#delete all_affix_names
-		flag_type="unicode"
-	}
-	
-	function debug(text) {
-		print text >"/dev/tty"
-		return
-	}
-	
-	function debug_(text) {
-		printf text >"/dev/tty"
-		return
-	}
-	
-	function separated_flags(flags) {
-		# temp array, grab its contents as soon as you run
-		# this function (cant return arrays with awk).
-		# array has numerical indices and char / string / number data
-		delete separated_flags_array
-		
-		if (flag_type == "num") {
-			split(flags, separated_flags_array, ",")
-		}
-		else if (flag_type == "long") {
-			for (i=0; i*2<length(flags); i++) {
-				separated_flags_array[i] = substr(flags, i*2, 2)
-			}
-		}
-		else {
-			split(flags, separated_flags_array, "")
-		}
-	}
-	
-	# get some .aff settings to help
-	# optimise the affixed word generation
-	/^COMPLEXPREFIXES/ { complex_prefixes="yes"; next }
-	/^FLAG/ { flag_type=$2; next }
+	/^COMPLEXPREFIXES/ { complex_prefixes = "yes"; next }
+	/^FLAG/ { flag_type = $2; next }
 	
 	# first file only, i.e. affix file
-	NR==FNR && $1=="PFX" && NF>4 {
-		prefixes[$2 " " $3 " " $4]=$5
-		all_prefix_names[$2]=$2
-		if ($4 ~ /[/]/) {
-			#debug($4)
-			split($4, s, "/")
-			separated_flags(s[2])
+	NR==FNR && $1=="PFX" && NF>4 && $4 !~ "[1-9][0-9]*" {
+		# save all prefixes to the db
+		if ($2 in prefix_name_to_rule_length) { prefix_name_to_rule_length[$2] = prefix_name_to_rule_length[$2] + 1 }
+		else { prefix_name_to_rule_length[$2] = 1 }
+		i = prefix_name_to_rule_length[$2]
+		split($4, a_f, "/")
+		prefix_db[$2 " " i " delete"] = $3
+		prefix_db[$2 " " i " add"] = a_f[1]
+		if (2 in a_f) {
+			prefix_db[$2 " " i " flags"] = a_f[2]
+			separate_flags(a_f[2])
 			for (flag in separated_flags_array) {
 				referenced_affix_names[separated_flags_array[flag]] = separated_flags_array[flag]
 			}
-			#for (  ){
-			#	
-			#}
 		}
+		prefix_db[$2 " " i " requires"] = "^"$5
+		prefix_db[$2 " " i " all"] = $3 " " $4 " " $5
 		next
 	}
 
-	NR==FNR && $1=="SFX" && NF>4 {
-		suffixes[$2 " " $3 " " $4]=$5
-		all_suffix_names[$2]=$2
-		if ($4 ~ /[/]/) {
-			#debug($4)
-			split($4, s, "/")
-			separated_flags(s[2])
+	NR==FNR && $1=="SFX" && NF>4 && $4 !~ "[1-9][0-9]*" {
+		# save all suffixes to the db
+		if ($2 in suffix_name_to_rule_length) { suffix_name_to_rule_length[$2] = suffix_name_to_rule_length[$2] + 1 }
+		else { suffix_name_to_rule_length[$2] = 1 }
+		i = suffix_name_to_rule_length[$2]
+		split($4, a_f, "/")
+		suffix_db[$2 " " i " delete"] = $3
+		suffix_db[$2 " " i " add"] = a_f[1]
+		if (2 in a_f) {
+			suffix_db[$2 " " i " flags"] = a_f[2]
+			separate_flags(a_f[2])
 			for (flag in separated_flags_array) {
 				referenced_affix_names[separated_flags_array[flag]] = separated_flags_array[flag]
 			}
-			#for (  ){
-			#	
-			#}
 		}
+		suffix_db[$2 " " i " requires"] = $5"$"
+		suffix_db[$2 " " i " all"] = $3 " " $4 " " $5
 		next
 	}
 
-	#NR!=FNR && FNR==15 { print }
+	NR!=FNR && FNR==1 {
+		# do anything required at the end of the aff file / beginning of dic file
+		if (number_of_entries >= 100) print_to_terminal("Generating all words in the dictionary... 0%");
+	}
+	
+	NR!=FNR && (FNR-1)>=next_update && number_of_entries >= 100 {
+		percent_complete += 1
+		next_update = entry_step_per_percent*(percent_complete+1)
+		print_to_terminal("\r\033[0KGenerating all words in the dictionary... " percent_complete "%")
+		if (percent_complete == 100) print_to_terminal("\n");
+	}
+	
+	NR!=FNR && FNR>1 {
+		# TODO strip out any noise from the lines
+		
+		# strips out anything after a tab
+		split($0, e, "\t")
+		split(e[1], entry_and_flags, "/")
+		all_variations[entry_and_flags[1]] = entry_and_flags[1]
+		# check if dic entry has flags
+		if (2 in entry_and_flags) {
+			to_be_processed[e[1] "/3/1"] = e[1]
+			stem = entry_and_flags[1]
+			stem_length = length(stem)
+			process = 1
+			while (process) {
+				process = 0
+				for (entry in to_be_processed) {
+					split(entry, entry_data, "/")
+					split(to_be_processed[entry], word_and_flags, "/")
+					if (2 in word_and_flags && entry_data[4] < 4) {
+						if (affix_word(word_and_flags[1], word_and_flags[2], entry_data[3], entry_data[4])) process = 1;
+					}
+					else {
+						process = 1
+						all_variations[word_and_flags[1]] = word_and_flags[1]
+						delete to_be_processed[entry]
+					}
+				}
+			}
+		}
+		next
+		
+		
+	}
 	
 	END {
 		for (flag in referenced_affix_names) {
-			if (all_prefix_names[flag]) { referenced_prefix_names[flag] = all_prefix_names[flag] }
-			else if (all_suffix_names[flag]) { referenced_suffix_names[flag] = all_suffix_names[flag] }
+			if (flag in prefix_name_to_rule_length) { referenced_prefix_names[flag] = flag }
+			else if (flag in suffix_name_to_rule_length) { referenced_suffix_names[flag] = flag }
 		}
-		debug_("Prefixes: ")
-		for (prefix in all_prefix_names) {
-			debug_(prefix " ")
+		if (number_of_entries >= 100) print_to_terminal("Sending entries to Hunspell...\n");
+		for (variation in all_variations) {
+			print(all_variations[variation])
 		}
-		debug_("\nSuffixes: ")
-		for (suffix in all_suffix_names) {
-			debug_(suffix " ")
-		}
-		debug_("\nPrefixes referenced by affixes: ")
-		for (flag in referenced_prefix_names) {
-			debug_(referenced_prefix_names[flag] " ")
-		}
-		debug_("\nSuffixes referenced by affixes: ")
-		for (flag in referenced_suffix_names) {
-			debug_(referenced_suffix_names[flag] " ")
-		}
-		debug(" ")
+		if (number_of_entries >= 100) print_to_terminal("Spellchecking entries...\n");
 	}
 	' $1 $2
 }
@@ -583,56 +273,37 @@ generate_all () {
 # generate all forms of a single stem, default behaviour
 if [ "$generate_all_words" != "true" ] ; then
 	# find all lines exactly matching the search
-	# stem, plus optional forward slash and flags
-	entries=""
-	count=0
-	# TODO check this correctly gets entries that include spaces (see sed filtration when generating all words below)
-	for entry in $( awk -v stem="$3" '$1 ~ "^"stem"[/$]" || $0 == stem {print $1}' $2 ) ; do
-		[ ! -z $entries ] && entries="$entries|$entry"
-		[ -z $entries ] && entries="$entry"
-		count=$((count+1))
-	done
-	# if no stem was found then exit
-	[ $count -eq 0 ] && return 1
-	# number of stems found is the number of entries
-	# in the temporary dictionary
-	echo "$count" > /tmp/wordforms.dic
-	# add entries to temporary dictionary
-	echo "$entries" | sed 's/|/\n/g' >> /tmp/wordforms.dic
-
-	generate $fx $flag_type $entries | hunspell -d /tmp/wordforms -G -l | sort -u
-elif [ -n "$3" ] ; then
-	echo "Generating all words in the dictionary..."
-# 	generate_all $1 $2
+	# stem, plus optional forward slash and flags.
+	# does not filter for comments or other data
+	# in lines - these are copied into the temp
+	# dic and filtered out in the main awk script
+	awk -v stem="$3" '
+	BEGIN { stems_found = "no" }
+	$0 ~ "^"stem"[/$]" || $0 == stem { stems_found = "yes" ; stems[$0] = $0 }
+	END {
+		if (stems_found == "yes") {
+			print(length(stems))
+			for (s in stems) {
+				print(stems[s])
+			}
+		}
+		else {
+			exit 1
+		}
+	}' $2 > /tmp/wordforms.dic
 	
-	rm -f /tmp/wordforms_all_words.txt
-
-	# not all the stems need processing, add those with no flags directly
-	# filter out anything on lines after tabs (delimiter of valid word, notes usually follow)
-	tail -n +2 $2 | grep -v '/' | sed 's@\(^[^\t]*\).*@\1@' > /tmp/wordforms_all_words.txt
-	number_of_entries=$(( $( cat "$2" | wc -l ) - 1 ))
-	number_copied=$( cat /tmp/wordforms_all_words.txt | wc -l  )
-	printf 'Directly copied %s/%s\t(%s%%)\n' "$number_copied" "$number_of_entries" $( echo "$number_copied $number_of_entries" | awk '{printf("%.0f", $1/$2*100)}' )
-	# the remainder goes here to generate from
-	# filter anything after the flags (usually notes)
-	tail -n +2 $2 | grep '/' | sed 's@\(^[^/]*.*[/][^ \t]*\).*@\1@' > /tmp/to_generate.txt
-
-	number_of_entries_to_generate="$( cat /tmp/to_generate.txt | wc -l )"
-	start_time=$( date +%s.%N )
-	for i in $( seq 1 $number_of_entries_to_generate ) ; do
-		generate $fx $flag_type $( awk -v i="$i" 'NR==i{print; exit}' /tmp/to_generate.txt ) >> /tmp/wordforms_all_words.txt
-		elapsed=$( echo "scale=12;$(date +%s.%N)-$start_time" | bc )
-		eta=$( echo "scale=12;($elapsed/$i)*($number_of_entries_to_generate-$i)" | bc )
-		eta=$( printf '%.0f' "$eta" )
-		eta_pretty=$( date -ud "@$eta" +"%Hh %Mm %Ss" )
-		printf '\r\e\033[0KAffixing stems  %s/%s\t(%s%%)\t%s' "$((i+number_copied))" "$number_of_entries" $( echo "$((i+number_copied)) $number_of_entries" | awk '{printf("%.0f", $1/$2*100)}')  "$eta_pretty"
-	done
-	printf '\nChecking output...\n'
-	cat /tmp/wordforms_all_words.txt | hunspell -d $( echo "$1" | rev | cut -d"." -f2-  | rev ) -G -l | sort -u > $3
+	# if no matching stems have been found then exit;
+	# theres no need to run the main word generation code
+	if [ $? -ne 0 ] ; then exit 1 ; fi
+	
+	generate /tmp/wordforms.aff /tmp/wordforms.dic | sort -u
+elif [ -n "$3" ] ; then
+	dic_name=$( echo $1 | sed 's@[.]aff$@@' )
+	generate $1 $2 | hunspell -d $dic_name -G -l | sort -u > $3
 else
 	# catch error when generating all words, where output file is not specified
-	printf "Usage:\twordforms [-s | -p] dictionary.aff dictionary.dic word
-\twordforms -g dictionary.aff dictionary.dic output_file.txt
+	printf "Usage: wordforms [-s | -p] dictionary.aff dictionary.dic word
+       wordforms -g dictionary.aff dictionary.dic output_file.txt
 
 -s: print only suffixed forms of the word
 -p: print only prefixed forms of the word
