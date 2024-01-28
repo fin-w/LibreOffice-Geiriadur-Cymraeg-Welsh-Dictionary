@@ -13,11 +13,11 @@ esac
 # this switches whether to print only suffixed (fx = 1),
 # prefixed (fx = 2) or all forms (fx = 0) of stem
 # -g ignores the -s and -p and generates all forms
-fx = 0
+fx=0
 case $1 in
-	-s) fx = 1; shift;;
-	-p) fx = 2; shift;;
-	-g) generate_all_words = true; shift;;
+	-s) fx=1; shift;;
+	-p) fx=2; shift;;
+	-g) generate_all_words=true; shift;;
 esac
 
 # clear any previous temporary dictionary
@@ -26,15 +26,15 @@ test -h /tmp/wordforms.dic && rm /tmp/wordforms.dic
 # make a symbolic link of the aff file
 ln -s "$PWD/$1" /tmp/wordforms.aff
 
-flag_type = "unicode"
+flag_type="unicode"
 case "$( awk '/^FLAG/ && NF>1 { print $2; exit 0; }' $1 )" in
-	num) flag_type = "num";;
-	long) flag_type = "long";;
+	num) flag_type="num";;
+	long) flag_type="long";;
 esac
 
 generate () {
-	number_of_entries = $(( $( cat "$2" | wc -l) - 1 ))
-	awk -v number_of_entries = "$number_of_entries" '
+	number_of_entries=$(( $( cat "$2" | wc -l) - 1 ))
+	awk -v number_of_entries="$number_of_entries" '
 	BEGIN {
 		delete referenced_affix_names
 		flag_type = "unicode"
@@ -213,13 +213,13 @@ generate () {
 		if (number_of_entries >= 100) print_to_terminal("Generating all words in the dictionary... 0%");
 	}
 	
-	NR!=FNR && (FNR-1)>=next_update && number_of_entries >= 100 {
+	NR!=FNR && (FNR-1)>=int(next_update) && number_of_entries >= 100 {
 		percent_complete += 1
 		next_update = entry_step_per_percent*(percent_complete+1)
 		print_to_terminal("\r\033[0KGenerating all words in the dictionary... " percent_complete "%")
 		if (percent_complete == 100) print_to_terminal("\n");
 	}
-	
+
 	NR!=FNR && FNR>1 {
 		# TODO strip out any noise from the lines
 		
@@ -294,7 +294,7 @@ if [ "$generate_all_words" != "true" ] ; then
 	
 	generate /tmp/wordforms.aff /tmp/wordforms.dic | sort -u
 elif [ -n "$3" ] ; then
-	dic_name = $( echo $1 | sed 's@[.]aff$@@' )
+	dic_name=$( echo $1 | sed 's@[.]aff$@@' )
 	generate $1 $2 | hunspell -d $dic_name -G -l | sort -u > $3
 else
 	# catch error when generating all words, where output file is not specified
