@@ -227,9 +227,9 @@ generate () {
 		
 		# strips out anything after a tab
 		# tries to strip comments out too
-		split($0, e, "\t")
-		split(e[1], e_, " #")
-		split(e_[1], entry_and_flags, "/")
+		split($0, e_, "\t")
+		split(e_[1], e, " #")
+		split(e[1], entry_and_flags, "/")
 		all_variations[entry_and_flags[1]] = entry_and_flags[1]
 		# check if dic entry has flags
 		if (2 in entry_and_flags) {
