@@ -1,18 +1,18 @@
 #!/bin/bash
 
 ###
-# usage: ./teclyn -[a, b, d, e, f, g, i, n, s, t] OPTION
+# usage: ./teclyn -[a, d, e, f, g, i, n, p, r, s, t] OPTION
 # -a gair
-#       adds 'gair'  to dictionary (may include
-#       dictionary tags on the end e.g.  /AFG).
+#	adds 'gair'  to dictionary (may include
+#	dictionary tags on the end e.g.  /AFG).
 # -d
 #	git diff the dictionary file and  print
 #	only  the  words  that   have   changed
 #	(usually they have been added).
 # -e gair
-#       use 'wordforms' from hunspell to expand
-#       the   given  word  with  all   relevant
-#       permitted  affixes in  the  dictionary.
+#	use 'wordforms' from hunspell to expand
+#	the   given  word  with  all   relevant
+#	permitted  affixes in  the  dictionary.
 # -f gair
 #	find the word or word  fragment  in the
 #	dictionary  file and print all matches:
@@ -29,17 +29,19 @@
 #	search through a list of words (one per
 #	line) to find ones unknown to the  dict
 #	and add them to an output file.
-# -p 
-#       packages the zipped libreoffice oxt but
-#	does  not  overwrite  the release file.
+# -p
+#	packages the zipped libreoffice oxt and
+#	generates word list changes,  but  does
+#	not overwrite reference word list  used
+#	to find changes between  releases.  use
+#	to generate / check prerelease versions
+#	before publishing a release.
 # -r
 #	packages the zipped libreoffice oxt and
-#	overwrites    the   release   file   in
-#	./releases/, and generates a full  word
-#	list of the total entries  in  the  dic
-#	and  then  compares   that   with   the
-#	previous release and  finds  the  new /
-#	deleted words since the last release.
+#	overwrites any previous  data  released
+#	under that version in ./releases/,  and
+#	overwrites the reference word list used
+#	to find changes between releases.
 # -s gair
 #	check  whether  word  'gair'  (or words
 #	in file 'gair') are in the dictionary.
@@ -109,12 +111,10 @@ parse () {
 			break
 			;;
 		*)
-			echo "usage: ./teclyn -[a, b, e, f]
+			echo "usage: ./teclyn -[a, d, e, f, g, i, n, p, r, s, t] OPTION
 -a gair
 	adds 'gair'  to dictionary (may include
 	dictionary tags on the end e.g.  /AFG).
--b
-	builds the zipped  libreoffice package.
 -d
 	git diff the dictionary file and  print
 	only  the  words  that   have   changed
@@ -126,8 +126,8 @@ parse () {
 -f gair
 	find the word or word  fragment  in the
 	dictionary  file and print all matches:
-	accepts regex
- -g dict [n-m]
+	accepts regex.
+-g dict [n m]
 	generates   all   forms  in  dictionary
 	'dict'
 -i
@@ -139,13 +139,25 @@ parse () {
 	search through a list of words (one per
 	line) to find ones unknown to the  dict
 	and add them to an output file.
+-p
+	packages the zipped libreoffice oxt and
+	generates word list changes,  but  does
+	not overwrite reference word list  used
+	to find changes between  releases.  use
+	to generate / check prerelease versions
+	before publishing a release.
+-r
+	packages the zipped libreoffice oxt and
+	overwrites any previous  data  released
+	under that version in ./releases/,  and
+	overwrites the reference word list used
+	to find changes between releases.
 -s gair
 	check  whether  word  'gair'  (or words
 	in file 'gair') are in the dictionary.
 -t
 	sort the .dic file  alphabetically  and
 	add the number of lines to the top."
-
 			exit 3
 			;;
 	esac
@@ -236,44 +248,62 @@ ychwanegu () {
 adeiladu () {
 	###
 	# make the libreoffice extension
-	# adeiladu -p for package only,
+	# adeiladu -p for prerelease,
 	# adeiladu -r for a final release
 	###
 	
 	case $1 in
 		"-p")
 			echo "Packaging the extension..."
-			release_type="-prerelease"
+			prerelease="-prerelease"
+			version=""
 			shift
 			;;
 		"-r")
 			echo "Releasing the extension..."
-			release_type=""
+			prerelease=""
+			# figure out which version we're building
+			version="-v$( sed -n 's@.*<version value="\(.*\)" />@\1@p' description.xml )"
 			shift
 			;;
 	esac
 	
-	
 	# clean the directory
 	rm *.oxt 2> /dev/null
 	
-	# figure out which version we're building
-	version="$( sed -n 's/.*<version value="\(.*\)" />/\1/p' description.xml )"
+	# sort and count the dictionary file (ensure it s tidy)
+	tacluso "dictionaries/cy_GB.dic"
 	
 	# zip the latest files
-	zip -qr libreoffice-geiriadur-v"$version$release_type".oxt description/ META-INF/ dictionaries/cy_GB.dic dictionaries/cy_GB.aff baner_libreoffice_cymreig.svg description.xml dictionaries.xcu LICENSE README.txt
+	zip -qr libreoffice-geiriadur"$version$prerelease".oxt description/ META-INF/ dictionaries/cy_GB.dic dictionaries/cy_GB.aff baner_libreoffice_cymreig.svg description.xml dictionaries.xcu LICENSE README.md
 	
-	if [[ "$release_type" != "-prerelease" ]] ; then
-		mkdir -p releases/libreoffice-geiriadur-v"$version"/
-		cp libreoffice-geiriadur-v"$version".oxt releases/libreoffice-geiriadur-v"$version"/libreoffice-geiriadur-v"$version".oxt
-		./wordforms -g dictionaries/cy_GB.aff dictionaries/cy_GB.dic releases/libreoffice-geiriadur-v"$version"/libreoffice-geiriadur-v"$version"-word-list.txt
-		comm -23 releases/.data/previous-word-list.txt releases/libreoffice-geiriadur-v"$version"/libreoffice-geiriadur-v"$version"-word-list.txt > releases/libreoffice-geiriadur-v"$version"/libreoffice-geiriadur-v"$version"-deleted.txt
-		comm -13 releases/.data/previous-word-list.txt releases/libreoffice-geiriadur-v"$version"/libreoffice-geiriadur-v"$version"-word-list.txt > releases/libreoffice-geiriadur-v"$version"/libreoffice-geiriadur-v"$version"-added.txt
-		zip -qr releases/libreoffice-geiriadur-v"$version"/libreoffice-geiriadur-v"$version"-word-list.zip releases/libreoffice-geiriadur-v"$version"/libreoffice-geiriadur-v"$version"-word-list.txt
+	# overwrite either the prerelease dir, or if there's already an old release of the same version, then the old release
+	rm -rf releases/libreoffice-geiriadur"$version$prerelease"/
+	mkdir releases/libreoffice-geiriadur"$version$prerelease"/
+	
+	cp libreoffice-geiriadur"$version$prerelease".oxt releases/libreoffice-geiriadur"$version$prerelease"/libreoffice-geiriadur"$version$prerelease".oxt
+	
+	# affix stems to generate all valid words recognised by the dic / aff files
+	./wordforms -g dictionaries/cy_GB.aff dictionaries/cy_GB.dic releases/libreoffice-geiriadur"$version$prerelease"/libreoffice-geiriadur"$version$prerelease"-word-list.txt
+	
+	v=$( ls releases/.data/data-from* | awk -F "-" '{print $3}' )
+	echo "Finding added / deleted words since release $v ..."
+	comm -23 releases/.data/previous-word-list.txt releases/libreoffice-geiriadur"$version$prerelease"/libreoffice-geiriadur"$version$prerelease"-word-list.txt > releases/libreoffice-geiriadur"$version$prerelease"/libreoffice-geiriadur"$version$prerelease"-deleted.txt
+	comm -13 releases/.data/previous-word-list.txt releases/libreoffice-geiriadur"$version$prerelease"/libreoffice-geiriadur"$version$prerelease"-word-list.txt > releases/libreoffice-geiriadur"$version$prerelease"/libreoffice-geiriadur"$version$prerelease"-added.txt
+	
+	echo "Compressing reference word list..."
+	zip -qr releases/libreoffice-geiriadur"$version$prerelease"/libreoffice-geiriadur"$version$prerelease"-word-list.zip releases/libreoffice-geiriadur"$version$prerelease"/libreoffice-geiriadur"$version$prerelease"-word-list.txt
+	
+	# when publishing a new release, update the old word list used as reference for changes to the most recent word list
+	if [[ -n "$version" ]] ; then
+		echo "Updating reference word list to most recent release..."
 		rm releases/.data/* 2> /dev/null
-		touch releases/.data/version-"$version"
-		mv releases/libreoffice-geiriadur-v"$version"/libreoffice-geiriadur-v"$version"-word-list.txt releases/.data/previous-word-list.txt
+		touch releases/.data/data-from"$version"
+		cp releases/libreoffice-geiriadur"$version"/libreoffice-geiriadur"$version"-word-list.txt releases/.data/previous-word-list.txt
 	fi
+	
+	# get rid of the uncompressed word list
+	rm releases/libreoffice-geiriadur"$version$prerelease"/libreoffice-geiriadur"$version$prerelease"-word-list.txt
 }
 
 geiriau_a_newidiwyd () {
