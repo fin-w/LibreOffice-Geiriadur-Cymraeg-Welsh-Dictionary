@@ -5,8 +5,6 @@
 # -a gair
 #       adds 'gair'  to dictionary (may include
 #       dictionary tags on the end e.g.  /AFG).
-# -b
-#       builds the zipped  libreoffice package.
 # -d
 #	git diff the dictionary file and  print
 #	only  the  words  that   have   changed
@@ -31,6 +29,17 @@
 #	search through a list of words (one per
 #	line) to find ones unknown to the  dict
 #	and add them to an output file.
+# -p 
+#       packages the zipped libreoffice oxt but
+#	does  not  overwrite  the release file.
+# -r
+#	packages the zipped libreoffice oxt and
+#	overwrites    the   release   file   in
+#	./releases/, and generates a full  word
+#	list of the total entries  in  the  dic
+#	and  then  compares   that   with   the
+#	previous release and  finds  the  new /
+#	deleted words since the last release.
 # -s gair
 #	check  whether  word  'gair'  (or words
 #	in file 'gair') are in the dictionary.
@@ -55,10 +64,6 @@ parse () {
 			ychwanegu "$2"
 			shift
 			;;
-		-b|--build)
-			adeiladu
-			shift
-			;;
 		-d|--diff)
 			geiriau_a_newidiwyd
 			shift
@@ -81,6 +86,14 @@ parse () {
 			;;
 		-n|--new)
 			newydd "$2"
+			shift
+			;;
+		-p|--package)
+			adeiladu -p
+			shift
+			;;
+		-r|--release)
+			adeiladu -r
 			shift
 			;;
 		-s|--spell)
@@ -223,18 +236,44 @@ ychwanegu () {
 adeiladu () {
 	###
 	# make the libreoffice extension
+	# adeiladu -p for package only,
+	# adeiladu -r for a final release
 	###
-	echo "Building..."
-	#clean the folder of oxts (which are just renamed zips)
-	mv *.oxt archive/ 2> /dev/null
-
+	
+	case $1 in
+		"-p")
+			echo "Packaging the extension..."
+			release_type="-prerelease"
+			shift
+			;;
+		"-r")
+			echo "Releasing the extension..."
+			release_type=""
+			shift
+			;;
+	esac
+	
+	
+	# clean the directory
+	rm *.oxt 2> /dev/null
+	
 	# figure out which version we're building
-	version="$( sed -n 's|.*<version value="\(.*\)" />|\1|p' description.xml )"
-
+	version="$( sed -n 's/.*<version value="\(.*\)" />/\1/p' description.xml )"
+	
 	# zip the latest files
-	zip -qr libreoffice-geiriadur-v$version.oxt description/ META-INF/ dictionaries/cy_GB.dic dictionaries/cy_GB.aff baner_libreoffice_cymreig.svg description.xml dictionaries.xcu LICENSE README.txt
-
-	echo "Built."
+	zip -qr libreoffice-geiriadur-v"$version$release_type".oxt description/ META-INF/ dictionaries/cy_GB.dic dictionaries/cy_GB.aff baner_libreoffice_cymreig.svg description.xml dictionaries.xcu LICENSE README.txt
+	
+	if [[ "$release_type" != "-prerelease" ]] ; then
+		mkdir -p releases/libreoffice-geiriadur-v"$version"/
+		cp libreoffice-geiriadur-v"$version".oxt releases/libreoffice-geiriadur-v"$version"/libreoffice-geiriadur-v"$version".oxt
+		./wordforms -g dictionaries/cy_GB.aff dictionaries/cy_GB.dic releases/libreoffice-geiriadur-v"$version"/libreoffice-geiriadur-v"$version"-word-list.txt
+		comm -23 releases/.data/previous-word-list.txt releases/libreoffice-geiriadur-v"$version"/libreoffice-geiriadur-v"$version"-word-list.txt > releases/libreoffice-geiriadur-v"$version"/libreoffice-geiriadur-v"$version"-deleted.txt
+		comm -13 releases/.data/previous-word-list.txt releases/libreoffice-geiriadur-v"$version"/libreoffice-geiriadur-v"$version"-word-list.txt > releases/libreoffice-geiriadur-v"$version"/libreoffice-geiriadur-v"$version"-added.txt
+		zip -qr releases/libreoffice-geiriadur-v"$version"/libreoffice-geiriadur-v"$version"-word-list.zip releases/libreoffice-geiriadur-v"$version"/libreoffice-geiriadur-v"$version"-word-list.txt
+		rm releases/.data/* 2> /dev/null
+		touch releases/.data/version-"$version"
+		mv releases/libreoffice-geiriadur-v"$version"/libreoffice-geiriadur-v"$version"-word-list.txt releases/.data/previous-word-list.txt
+	fi
 }
 
 geiriau_a_newidiwyd () {
