@@ -10,26 +10,6 @@ print_help_and_exit () {
 	exit 1
 }
 
-# this switches whether to print only suffixed (fx = 1),
-# prefixed (fx = 2) or all forms (fx = 0) of stem
-# -g ignores the -s and -p and generates all forms
-fx=0
-generate_all_words=false
-case $1 in
-	-s) fx=1; shift;;
-	-p) fx=2; shift;;
-	-g) generate_all_words=true; shift;;
-esac
-
-# check if there are the correct remaining arguments
-[ $# -eq 3 ] || print_help_and_exit
-
-# clear any previous temporary dictionary
-test -h /tmp/wordforms.aff && rm /tmp/wordforms.aff
-test -h /tmp/wordforms.dic && rm /tmp/wordforms.dic
-# make a symbolic link of the aff file
-ln -s "$PWD/$1" /tmp/wordforms.aff
-
 generate () {
 	number_of_entries=$(( $( cat "$2" | wc -l) - 1 ))
 	awk -v number_of_entries="$number_of_entries" '
@@ -253,6 +233,26 @@ generate () {
 	}
 	' $1 $2
 }
+
+# this switches whether to print only suffixed (fx = 1),
+# prefixed (fx = 2) or all forms (fx = 0) of stem
+# -g ignores the -s and -p and generates all forms
+fx=0
+generate_all_words=false
+case $1 in
+	-s) fx=1; shift;;
+	-p) fx=2; shift;;
+	-g) generate_all_words=true; shift;;
+esac
+
+# check if there are the correct remaining arguments
+[ $# -eq 3 ] || print_help_and_exit
+
+# clear any previous temporary dictionary
+test -h /tmp/wordforms.aff && rm /tmp/wordforms.aff
+test -h /tmp/wordforms.dic && rm /tmp/wordforms.dic
+# make a symbolic link of the aff file
+ln -s "$PWD/$1" /tmp/wordforms.aff
 
 # generate all forms of a single stem, default behaviour
 if [ "$generate_all_words" = false ] ; then
