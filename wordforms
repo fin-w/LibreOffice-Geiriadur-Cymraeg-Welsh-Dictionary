@@ -1,36 +1,34 @@
 #!/bin/sh
 
-# check for incorrect number of arguments
-case $# in
-	0|1|2) printf "Usage:\twordforms [-s | -p] dictionary.aff dictionary.dic word
+print_help_and_exit () {
+	printf "Usage:\twordforms [-s | -p] dictionary.aff dictionary.dic word
 \twordforms -g dictionary.aff dictionary.dic output_file.txt
 
 -s: print only suffixed forms of the word
 -p: print only prefixed forms of the word
--g: generate all forms in the entire dictionary\n";
-	exit 1;;
-esac
+-g: generate all forms in the entire dictionary\n"
+	exit 1
+}
+
 # this switches whether to print only suffixed (fx = 1),
 # prefixed (fx = 2) or all forms (fx = 0) of stem
 # -g ignores the -s and -p and generates all forms
 fx=0
+generate_all_words=false
 case $1 in
 	-s) fx=1; shift;;
 	-p) fx=2; shift;;
 	-g) generate_all_words=true; shift;;
 esac
 
+# check if there are the correct remaining arguments
+[ $# -eq 3 ] || print_help_and_exit
+
 # clear any previous temporary dictionary
 test -h /tmp/wordforms.aff && rm /tmp/wordforms.aff
 test -h /tmp/wordforms.dic && rm /tmp/wordforms.dic
 # make a symbolic link of the aff file
 ln -s "$PWD/$1" /tmp/wordforms.aff
-
-flag_type="unicode"
-case "$( awk '/^FLAG/ && NF>1 { print $2; exit 0; }' $1 )" in
-	num) flag_type="num";;
-	long) flag_type="long";;
-esac
 
 generate () {
 	number_of_entries=$(( $( cat "$2" | wc -l) - 1 ))
@@ -257,7 +255,7 @@ generate () {
 }
 
 # generate all forms of a single stem, default behaviour
-if [ "$generate_all_words" != "true" ] ; then
+if [ "$generate_all_words" = false ] ; then
 	# find all lines exactly matching the search
 	# stem, plus optional forward slash and flags.
 	# does not filter for comments or other data
@@ -277,22 +275,13 @@ if [ "$generate_all_words" != "true" ] ; then
 			exit 1
 		}
 	}' $2 > /tmp/wordforms.dic
-	
+
 	# if no matching stems have been found then exit;
 	# theres no need to run the main word generation code
 	if [ $? -ne 0 ] ; then exit 1 ; fi
 	
 	generate /tmp/wordforms.aff /tmp/wordforms.dic | sort -u
-elif [ -n "$3" ] ; then
+else
 	dic_name=$( echo $1 | sed 's@[.]aff$@@' )
 	generate $1 $2 | hunspell -d $dic_name -G -l | sort -u > $3
-else
-	# catch error when generating all words, where output file is not specified
-	printf "Usage: wordforms [-s | -p] dictionary.aff dictionary.dic word
-       wordforms -g dictionary.aff dictionary.dic output_file.txt
-
--s: print only suffixed forms of the word
--p: print only prefixed forms of the word
--g: generate all forms in the entire dictionary\n"
-	exit 1
 fi
