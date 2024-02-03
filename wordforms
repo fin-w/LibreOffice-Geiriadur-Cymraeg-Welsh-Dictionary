@@ -137,14 +137,12 @@ generate () {
 		return return_value
 	}
 	
-	# get some .aff settings to help
-	# optimise the affixed word generation
-	/^COMPLEXPREFIXES/ { complex_prefixes = "yes"; next }
-	/^FLAG/ { flag_type = $2; next }
+	# get some .aff settings to help configure the affixed word generation
+	NR==FNR && $1=="COMPLEXPREFIXES" { complex_prefixes = "yes"; next }
+	NR==FNR && $1=="FLAG" { flag_type = $2; next }
 	
-	# first file only, i.e. affix file
-	NR==FNR && $1=="PFX" && fx!=1 && NF>4 && $4 !~ "[1-9][0-9]*" {
-		# save all prefixes to the db
+	# save all prefixes to the database
+	NR==FNR && $1=="PFX" && fx!=1 && NF>4 && $4!~"[1-9][0-9]*" {
 		if ($2 in prefix_name_to_rule_length) prefix_name_to_rule_length[$2] = prefix_name_to_rule_length[$2] + 1;
 		else prefix_name_to_rule_length[$2] = 1;
 		i = prefix_name_to_rule_length[$2]
@@ -162,8 +160,8 @@ generate () {
 		next
 	}
 
-	NR==FNR && $1=="SFX" && fx!=2 && NF>4 && $4 !~ "[1-9][0-9]*" {
-		# save all suffixes to the db
+	# save all suffixes to the database
+	NR==FNR && $1=="SFX" && fx!=2 && NF>4 && $4!~"[1-9][0-9]*" {
 		if ($2 in suffix_name_to_rule_length) suffix_name_to_rule_length[$2] = suffix_name_to_rule_length[$2] + 1;
 		else suffix_name_to_rule_length[$2] = 1;
 		i = suffix_name_to_rule_length[$2]
@@ -186,7 +184,7 @@ generate () {
 		if (number_of_entries >= 100) print_to_terminal("Generating all words in the dictionary... 0%");
 	}
 	
-	NR!=FNR && (FNR-1)>=int(next_update) && number_of_entries >= 100 {
+	NR!=FNR && (FNR-1)>=int(next_update) && number_of_entries>=100 {
 		percent_complete += 1
 		next_update = entry_step_per_percent*(percent_complete+1)
 		print_to_terminal("\r\033[0KGenerating all words in the dictionary... " percent_complete "%")
