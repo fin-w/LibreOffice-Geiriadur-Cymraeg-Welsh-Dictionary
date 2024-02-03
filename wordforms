@@ -1,17 +1,24 @@
 #!/bin/sh
 
 print_help_and_exit () {
-	printf "Usage:\twordforms [-s | -p] dictionary.aff dictionary.dic word
-\twordforms -g dictionary.aff dictionary.dic output_file.txt
+	printf "Usage: wordforms [-s | -p] DICTIONARY.aff DICTIONARY.dic STEM
+       wordforms -g DICTIONARY.aff DICTIONARY.dic OUTPUT_FILE
+Generate all variations of a word stem STEM in the dictionary file DICTIONARY.dic by
+affixing all prefixes and suffixes listed as flags of the stem, based on rules stored
+in DICTIONARY.aff, and print the results. If -g is given, generate every variation of
+every stem in the dictionary file DICTIONARY.dic by affixing all relevant flags, and
+write the results to file OUTPUT_FILE. Note that typically this will generate tens of
+thousands of words.
 
--s: print only suffixed forms of the word
--p: print only prefixed forms of the word
--g: generate all forms in the entire dictionary\n"
+  -s  print only the stem, and any suffixed forms of the stem
+  -p  print only the stem, and any prefixed forms of the stem
+  -g  generate all words in the entire dictionary and save them to a file
+"
 	exit 1
 }
 
 generate () {
-	number_of_entries=$(( $( cat "$2" | wc -l) - 1 ))
+	number_of_entries=$(( $( cat "$2" | wc -l ) - 1 ))
 	awk -v number_of_entries="$number_of_entries" -v fx="$fx" '
 	BEGIN {
 		delete referenced_affix_names
@@ -152,7 +159,6 @@ generate () {
 			}
 		}
 		prefix_db[$2 " " i " requires"] = "^"$5
-		prefix_db[$2 " " i " all"] = $3 " " $4 " " $5
 		next
 	}
 
@@ -172,7 +178,6 @@ generate () {
 			}
 		}
 		suffix_db[$2 " " i " requires"] = $5"$"
-		suffix_db[$2 " " i " all"] = $3 " " $4 " " $5
 		next
 	}
 
@@ -189,10 +194,8 @@ generate () {
 	}
 
 	NR!=FNR && FNR>1 {
-		# TODO strip out any noise from the lines
-		
-		# strips out anything after a tab
-		# tries to strip comments out too
+		# strips out anything on the line that follows a tab
+		# tries to strip comments out too i.e. starting with " #"
 		split($0, e_, "\t")
 		split(e_[1], e, " #")
 		split(e[1], entry_and_flags, "/")
@@ -200,8 +203,6 @@ generate () {
 		# check if dic entry has flags
 		if (2 in entry_and_flags) {
 			to_be_processed[e[1] "/3/1"] = 1
-			stem = entry_and_flags[1]
-			stem_length = length(stem)
 			process = 1
 			while (process) {
 				process = 0
@@ -241,14 +242,19 @@ case $1 in
 	-s) fx=1; shift;;
 	-p) fx=2; shift;;
 	-g) generate_all_words=true; shift;;
+	*)  [ ! -e "$PWD/$1" ] && print_help_and_exit;;
 esac
 
 # check if there are the correct remaining arguments
 [ $# -eq 3 ] || print_help_and_exit
 
+# check that the relevant files exist
+if [ ! -e "$PWD/$1" ] ; then echo "wordforms: Affix file $PWD/$1 does not exist." ; exit 1 ; fi
+if [ ! -e "$PWD/$2" ] ; then echo "wordforms: Dictionary file $PWD/$2 does not exist." ; exit 1 ; fi
+
 # clear any previous temporary dictionary
 test -h /tmp/wordforms.aff && rm /tmp/wordforms.aff
-test -h /tmp/wordforms.dic && rm /tmp/wordforms.dic
+rm -f /tmp/wordforms.dic
 # make a symbolic link of the aff file
 ln -s "$PWD/$1" /tmp/wordforms.aff
 
@@ -258,7 +264,7 @@ if [ "$generate_all_words" = true ] ; then
 	# with the rules in the aff file
 	
 	# make a symbolic link of the dic file
-	ln -s "$PWD/$1" /tmp/wordforms.dic
+	ln -s "$PWD/$2" /tmp/wordforms.dic
 	
 	generate /tmp/wordforms.aff /tmp/wordforms.dic | hunspell -d /tmp/wordforms -G -l | sort -u > $3
 else
