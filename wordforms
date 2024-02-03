@@ -237,9 +237,9 @@ generate () {
 fx=0
 generate_all_words=false
 case $1 in
-	-s) fx=1; shift;;
-	-p) fx=2; shift;;
-	-g) generate_all_words=true; shift;;
+	-s) fx=1 ; shift;;
+	-p) fx=2 ; shift;;
+	-g) generate_all_words=true ; shift;;
 	*)  [ ! -e "$PWD/$1" ] && print_help_and_exit;;
 esac
 
@@ -275,7 +275,7 @@ else
 	# in the function generate()
 	awk -v stem="$3" '
 	BEGIN { stems_found = "" }
-	$0 ~ "^"stem"[/$]" || $0 == stem { stems_found = "yes" ; stems[$0] = $0 }
+	$0~"^"stem"[/$]" || $0==stem { stems_found = "yes" ; stems[$0] = $0 }
 	END {
 		if (stems_found) {
 			print(length(stems))
