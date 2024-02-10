@@ -14,13 +14,11 @@
 #                         with all relevant permitted affixes in the dictionary.
 # -f WORD                 Find the word or word fragment in the dictionary file
 #                         and print all matches: accepts regex.
-# -g dict [dictionary_name_without_its_affix output_file.txt]
+# -g dict [DIC=dictionaries/cy_GB OUTPUT=all_words.txt]
 #                         Generates all forms in dictionary. Optionally supply
 #                         the dictionary name not including its affix (i.e.
-#                         cy_GB for cy_GB.dic, cy_GB.aff) (defaults to
-#                         dictionaries/cy_GB). Optionally supply the output file
-#                         name to write the words into (defaults to
-#                         ./all_words.txt).
+#                         cy_GB for cy_GB.dic, cy_GB.aff). Optionally supply the
+#                         output file name to write the words into.
 # -i                      Repeatedly prompt for words, then -a add them (this
 #                         first checks if they are in the dictionary already,
 #                         and by default auto-tags with treigladau tags).
@@ -116,13 +114,11 @@ Options:
                         with all relevant permitted affixes in the dictionary.
 -f WORD                 Find the word or word fragment in the dictionary file
                         and print all matches: accepts regex.
--g dict [dictionary_name_without_its_affix output_file.txt]
+-g [DIC=dictionaries/cy_GB OUTPUT=all_words.txt]
                         Generates all forms in dictionary. Optionally supply
                         the dictionary name not including its affix (i.e.
-                        cy_GB for cy_GB.dic, cy_GB.aff) (defaults to
-                        dictionaries/cy_GB). Optionally supply the output file
-                        name to write the words into (defaults to
-                        ./all_words.txt).
+                        cy_GB for cy_GB.dic, cy_GB.aff). Optionally supply the
+                        output file name to write the words into.
 -i                      Repeatedly prompt for words, then -a add them (this
                         first checks if they are in the dictionary already,
                         and by default auto-tags with treigladau tags).
