@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 
 ###
 # usage: ./teclyn -[a, d, e, f, g, i, n, p, r, s, t] OPTION
