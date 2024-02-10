@@ -1,53 +1,45 @@
 #!/bin/env bash
 
 ###
-# usage: ./teclyn -[a, d, e, f, g, i, n, p, r, s, t] OPTION
-# -a gair
-#	adds 'gair'  to dictionary (may include
-#	dictionary tags on the end e.g.  /AFG).
-# -d
-#	git diff the dictionary file and  print
-#	only  the  words  that   have   changed
-#	(usually they have been added).
-# -e gair
-#	use 'wordforms' from hunspell to expand
-#	the   given  word  with  all   relevant
-#	permitted  affixes in  the  dictionary.
-# -f gair
-#	find the word or word  fragment  in the
-#	dictionary  file and print all matches:
-#	accepts regex.
-# -g dict [n m]
-#	generates   all   forms  in  dictionary
-#	'dict'
-# -i
-#	repeatedly  prompt for words,  then  -a
-#	add them (this first checks if they are
-#	in  the  dictionary   already,  and  by
-#	default auto-tags with treigladau tags.
-# -n rhestr_o_eiriau.txt
-#	search through a list of words (one per
-#	line) to find ones unknown to the  dict
-#	and add them to an output file.
-# -p
-#	packages the zipped libreoffice oxt and
-#	generates word list changes,  but  does
-#	not overwrite reference word list  used
-#	to find changes between  releases.  use
-#	to generate / check prerelease versions
-#	before publishing a release.
-# -r
-#	packages the zipped libreoffice oxt and
-#	overwrites any previous  data  released
-#	under that version in ./releases/,  and
-#	overwrites the reference word list used
-#	to find changes between releases.
-# -s gair
-#	check  whether  word  'gair'  (or words
-#	in file 'gair') are in the dictionary.
-# -t
-#	sort the .dic file  alphabetically  and
-#	add the number of lines to the top.
+# Usage: ./teclyn (-a | -e | -f | -s) WORD
+#        ./teclyn (-g) [DIC=dictionaries/cy_GB OUTPUT=all_words.txt]
+#        ./teclyn (-d | -i | -p | -r | -t)
+#
+# Options:
+# -a WORD                 Adds 'WORD' to dictionary (may include dictionary tags
+#                         on the end e.g. /AFG).
+# -d                      Git diff the dictionary file and print only the words
+#                         that have changed (usually they have been added).
+# -e WORD                 Use 'wordforms' from Hunspell to expand the given word
+#                         with all relevant permitted affixes in the dictionary.
+# -f WORD                 Find the word or word fragment in the dictionary file
+#                         and print all matches: accepts regex.
+# -g dict [dictionary_name_without_its_affix output_file.txt]
+#                         Generates all forms in dictionary. Optionally supply
+#                         the dictionary name not including its affix (i.e.
+#                         cy_GB for cy_GB.dic, cy_GB.aff) (defaults to
+#                         dictionaries/cy_GB). Optionally supply the output file
+#                         name to write the words into (defaults to
+#                         ./all_words.txt).
+# -i                      Repeatedly prompt for words, then -a add them (this
+#                         first checks if they are in the dictionary already,
+#                         and by default auto-tags with treigladau tags).
+# -n rhestr_o_eiriau.txt  Search through a list of words (one per line) to find
+#                         ones unknown to the dict and add them to an output
+#                         file.
+# -p                      Packages the zipped LibreOffice oxt and generates word
+#                         list changes, but does not overwrite reference word
+#                         list used to find changes between releases. Use to
+#                         generate / check prerelease versions before publishing
+#                         a release.
+# -r                      Packages the zipped LibreOffice oxt and overwrites any
+#                         previous data released under that version in
+#                         ./releases/, and overwrites the reference word list
+#                         used to find changes between releases.
+# -s WORD                 Check whether word 'WORD' (or words in file 'WORD')
+#                         are in the dictionary.
+# -t                      Sort the .dic file alphabetically and add the number
+#                         of lines to the top.
 ###
 
 PINK='\033[95m'
@@ -111,53 +103,45 @@ parse () {
 			break
 			;;
 		*)
-			echo "usage: ./teclyn -[a, d, e, f, g, i, n, p, r, s, t] OPTION
--a gair
-	adds 'gair'  to dictionary (may include
-	dictionary tags on the end e.g.  /AFG).
--d
-	git diff the dictionary file and  print
-	only  the  words  that   have   changed
-	(usually they have been added).
--e gair
-	use 'wordforms' from hunspell to expand
-	the   given  word  with  all   relevant
-	permitted  affixes in  the  dictionary.
--f gair
-	find the word or word  fragment  in the
-	dictionary  file and print all matches:
-	accepts regex.
--g dict [n m]
-	generates   all   forms  in  dictionary
-	'dict'
--i
-	repeatedly  prompt for words,  then  -a
-	add them (this first checks if they are
-	in  the  dictionary   already,  and  by
-	default auto-tags with treigladau tags.
--n rhestr_o_eiriau.txt
-	search through a list of words (one per
-	line) to find ones unknown to the  dict
-	and add them to an output file.
--p
-	packages the zipped libreoffice oxt and
-	generates word list changes,  but  does
-	not overwrite reference word list  used
-	to find changes between  releases.  use
-	to generate / check prerelease versions
-	before publishing a release.
--r
-	packages the zipped libreoffice oxt and
-	overwrites any previous  data  released
-	under that version in ./releases/,  and
-	overwrites the reference word list used
-	to find changes between releases.
--s gair
-	check  whether  word  'gair'  (or words
-	in file 'gair') are in the dictionary.
--t
-	sort the .dic file  alphabetically  and
-	add the number of lines to the top."
+			echo "Usage: ./teclyn (-a | -e | -f | -s) WORD
+       ./teclyn (-g) [DIC=dictionaries/cy_GB OUTPUT=all_words.txt]
+       ./teclyn (-d | -i | -p | -r | -t)
+
+Options:
+-a WORD                 Adds 'WORD' to dictionary (may include dictionary tags
+                        on the end e.g. /AFG).
+-d                      Git diff the dictionary file and print only the words
+                        that have changed (usually they have been added).
+-e WORD                 Use 'wordforms' from Hunspell to expand the given word
+                        with all relevant permitted affixes in the dictionary.
+-f WORD                 Find the word or word fragment in the dictionary file
+                        and print all matches: accepts regex.
+-g dict [dictionary_name_without_its_affix output_file.txt]
+                        Generates all forms in dictionary. Optionally supply
+                        the dictionary name not including its affix (i.e.
+                        cy_GB for cy_GB.dic, cy_GB.aff) (defaults to
+                        dictionaries/cy_GB). Optionally supply the output file
+                        name to write the words into (defaults to
+                        ./all_words.txt).
+-i                      Repeatedly prompt for words, then -a add them (this
+                        first checks if they are in the dictionary already,
+                        and by default auto-tags with treigladau tags).
+-n rhestr_o_eiriau.txt  Search through a list of words (one per line) to find
+                        ones unknown to the dict and add them to an output
+                        file.
+-p                      Packages the zipped LibreOffice oxt and generates word
+                        list changes, but does not overwrite reference word
+                        list used to find changes between releases. Use to
+                        generate / check prerelease versions before publishing
+                        a release.
+-r                      Packages the zipped LibreOffice oxt and overwrites any
+                        previous data released under that version in
+                        ./releases/, and overwrites the reference word list
+                        used to find changes between releases.
+-s WORD                 Check whether word 'WORD' (or words in file 'WORD')
+                        are in the dictionary.
+-t                      Sort the .dic file alphabetically and add the number
+                        of lines to the top."
 			exit 3
 			;;
 	esac
