@@ -86,6 +86,7 @@ crefftwrwn
 crefftwrwyd
 crefftwrwyf
 crefftwrych
+dâp-yrrwyr
 ddisgyrrwyr
 disgyrrwyr
 grefftwraf
@@ -135,8 +136,10 @@ hamlddefnyddiwr
 hamlddefnyddwyr
 hamlyc
 hisgontractwyr
+huwch-ymchwilwyr
 isgontractwyr
 Mhinged
+neo-
 newyddwyr
 nghaniatâ
 nghaniatâf
@@ -184,6 +187,7 @@ nghrefftwrwyd
 nghrefftwrwyf
 nghrefftwrych
 ngwefryrrwyr
+nhâp-yrrwyr
 nisgyrrwyr
 olarddulleg
 olgwladych
@@ -235,4 +239,7 @@ Phinged
 Pinged
 Rhyddfrydol
 Ryddfrydol
+tâp-yrrwyr
+thâp-yrrwyr
+uwch-ymchwilwyr
 wefryrrwyr
