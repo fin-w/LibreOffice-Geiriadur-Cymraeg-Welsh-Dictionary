@@ -288,8 +288,6 @@ adeiladu () {
 		touch releases/.data/data-from"$version"
 		mv releases/.data/previous-word-list.txt releases/.data/previous-word-list.txt.old
 		cp releases/libreoffice-geiriadur"$version"/libreoffice-geiriadur"$version"-word-list.txt releases/.data/previous-word-list.txt
-		cp dictionaries/cy_GB.aff releases/.data/cy_GB.aff
-		cp dictionaries/cy_GB.dic releases/.data/cy_GB.dic
 	fi
 	
 	# get rid of the uncompressed word list
