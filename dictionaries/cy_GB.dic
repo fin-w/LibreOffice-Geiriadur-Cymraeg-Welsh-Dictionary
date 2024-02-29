@@ -1,4 +1,4 @@
-51106
+51139
 a
 â
 Aaron
@@ -178,6 +178,7 @@ academydd/CH
 acanthi/H
 acanthws/H
 acasia/HI
+acasias/H
 acasiâu/H
 Access/H
 acciaccatura/H
@@ -280,7 +281,9 @@ actiniwm/H
 actinomorffig/H
 actinomyset/BH
 actio/H
+actiwariaid/H
 actiwarïaid/H
+actiwari/H
 actor/CHR
 actores/BH
 actor-reol/QX
@@ -355,9 +358,12 @@ addasadwy/H
 addas/AHQRv
 addasedig/H
 addasiad/BH
+addasid/H!
+addasir/H!
 addasrwydd/H
 addaster/H
 addasu/H
+addasych/H!
 addasydd/CH
 addawa/H
 addaw/HRv
@@ -365,6 +371,7 @@ ad-ddail/H
 ad-ddynodi/H
 addef/Hv
 addefiad/H
+addes/w
 addewais/H
 addewaist/H
 addewch/H
@@ -394,6 +401,7 @@ addolgar/H
 addolgarwch/H
 addol/HQv
 addoliad/BH
+addoliaeth/H
 addoli/H
 ad-drefn/Hv
 ad-drefniadau/H
@@ -428,9 +436,12 @@ adeiladaeth/BH
 adeilada/H
 adeiladau/H
 adeilad/BHQRv
+adeiladid/H!
+adeiladir/H!
 adeiladu/H
 adeiladwaith/H
 adeiladweithiau/H
+adeiladych/H!
 adeiladydd/H
 adeiledd/BHR
 adeileddiaeth/H
@@ -438,6 +449,7 @@ adeiledd-proses-cam/H
 adeileddwr/H
 adeileddwyr/H
 adeiledig/H
+adeiled/Xw
 adeileg/H
 adeiniog/H
 adeinio/H
@@ -553,12 +565,16 @@ adladd/H
 adlais/H
 adlam/BHRv
 adlamiadau/H
+adlamid/H!
+adlamir/H!
 adlamu/H
+adlamych/H!
 adlaw/H
 adlef/BH
 adleisiau/H
 adleisi/Hv
 adleisio/H
+adlem/Xw
 adlenwad/BH
 adlenwi/H
 adleoladwy/H
@@ -670,6 +686,7 @@ adnewyddedig/H
 adnewydd/Hv
 adnewyddiad/BH
 adnewyddiant/H
+adnewyddol/H
 adnewyddu/H
 adnewyddwr/H
 adnewyddwyr/H
@@ -703,6 +720,7 @@ adrefn/Hv
 adrefnu/H
 adrefu/H
 adre/H
+adrenal/H
 adrenalin/H
 adrewiad/H
 adrewi/H
@@ -782,7 +800,7 @@ aeddfed/Hv
 aeddfediad/H
 aeddfedrwydd/H
 aeddfedu/H
-aeddfet/H
+aeddfet/AHX
 aed/H
 Aegeaidd/H
 aelddu/H
@@ -831,6 +849,7 @@ aeroleg/H
 aeronen/H
 aeron/H
 Aeronwy/H
+aeroponeg/H
 aerosol/BH
 aerwy/BH
 aes/H
@@ -874,6 +893,7 @@ affeithioldeb/H
 affeithiolrwydd/H
 affelion/BH
 afferol/H
+Affganistan/H
 AFF/H
 affidafid/BCH
 affin/DH
@@ -906,6 +926,7 @@ aflan/AH
 aflanha/Hv
 aflanhau/H
 aflanheui/Hk
+aflanhe/Xw
 aflawen/H
 aflednais/H
 afledneiseb/BCH
@@ -944,7 +965,8 @@ aflwyddo/H
 aflym/H
 aflywodraeth/H
 aflywodraethus/H
-afocado/HI
+afocado/H
+afocados/H
 afondiroedd/H
 afondrig/H
 afonfarch/H
@@ -1108,7 +1130,8 @@ ailbeinti/Hv
 ailbeintio/H
 ailbenderfyniad/BH
 ailbenderfynu/H
-ailbenn/Hvw
+ailbenn/H!
+ailbenn/Hv
 ailbennu/H
 ailbenod/Hv
 ailbenodiad/BH
@@ -4062,7 +4085,7 @@ arianyddwr/H
 arianyddwyr/H
 ariâu/H
 arien/H
-arienn/Hw
+arienn/HXw
 aril/BDH
 ariosi/H
 arioso/H
@@ -4592,7 +4615,7 @@ atgyfann/Hv
 atgyfannu/H
 atgyfeiriad/BH
 atgyfeirio/H
-atgyfenn/Hw
+atgyfenn/HXw
 atgyffwrdd/H
 atgyflyr/Hv
 atgyflyru/H
@@ -4915,10 +4938,10 @@ awyru/H
 awyrwyr/H
 awyrydd/CH
 a.y.b.
-ayb/H
+ayb
 ayre/HI
 a.y.y.b.
-ayyb/H
+ayyb
 Azerbaijan/H
 B.A.
 babanaidd/MT
@@ -5295,6 +5318,7 @@ barwnïau/MT
 barwnigaeth/BMT
 barwnig/GMT
 barwni/MT
+baryniaid/MT
 barysffer/BMT
 baryton/BMT
 bas/ABMQT
@@ -7143,7 +7167,6 @@ brws/MT
 brwswaith/MT
 brwsys/MT
 brwyd/BMT
-brwydo/MT
 brwydr/BMQTv
 brwydro/MT
 brwydwaith/MT
@@ -7373,6 +7396,7 @@ budron/M
 budrwhilen/MT
 budr-wleidydda/MT
 budur/MT
+Buellt/MT
 bues/M
 buest/M
 bufeddi/MT
@@ -15033,6 +15057,7 @@ cyfeddyf/LMT
 cyfeiliannau/LMT
 cyfeiliant/LMT
 cyfeili/LMQv
+Cyfeiliog/LMT
 cyfeilio/LMT
 cyfeiliornad/BLMT
 cyfeiliorn/BLMQTv
@@ -23939,6 +23964,7 @@ fideocasetiau
 fideo-gynadledda
 fideo/I
 fideorecordydd/C
+fideos
 fideosgop/B
 fidicon/B
 fie
@@ -24520,6 +24546,7 @@ geoffyt/BMT
 geofwrdd/MT
 geofyrddau/MT
 geoid/BMT
+geoleoliad
 geometreg/BMRT
 geometrig/MT
 geomorffoleg/MRT
@@ -26778,6 +26805,7 @@ gwenwyniad/MT
 gwenwynig/MT
 gwenwynllyd/MT
 gwenwyno/MT
+Gwenwynwyn/MT
 gwenyg/MT
 gwenynen/MT
 gwenynfa/MT
@@ -26860,6 +26888,7 @@ gwerthiannau/MT
 gwerthiant/MT
 gwerthostwng/MT
 gwerthostyngiad/MT
+Gwerthrynion/MT
 gwerthu/MT
 gwerthusiad/BMT
 gwerthus/MRv
@@ -27444,7 +27473,7 @@ gwrthelltydd/MT
 gwrthenghraifft/MT
 gwrthenghreifftiau/MT
 gwrth-Ewropeaidd/MT
-Gwrtheyrn/MT
+Gwrtheyrn/CMT
 gwrthfacteria/MT
 gwrthferyn/FMT
 gwrthffactor/BMT
@@ -43304,6 +43333,7 @@ seiclotron/B
 seicl/v
 seiclwr
 seiclwyr
+seicodrama
 seicodynamig
 seicoffisegol
 seicogeriatregwyr
@@ -43500,6 +43530,7 @@ semestrau
 semi-
 seminar/B
 semio
+semioteg
 Semitiaeth
 seml
 semolina
@@ -46671,6 +46702,7 @@ tewyn/CLMT
 teyrnaidd/LMT
 teyrnas/ELMTv
 teyrnasiad/BLMT
+teyrnasiaeth/LMT
 teyrnasu/LMT
 teyrndlysau/LMT
 teyrnedd/LMT
@@ -47509,6 +47541,7 @@ trawsgwricwledd/LMT
 trawsgyfandirol/LMT
 trawsgyfeiri/LMv
 trawsgyfeirio/LMT
+trawsgyfryngol/LMT
 trawsgynrychiolaeth/LMT
 trawsgyswllt/LMT
 trawsgysylltu/LMT
