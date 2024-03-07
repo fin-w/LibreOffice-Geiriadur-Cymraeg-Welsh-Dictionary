@@ -1,3 +1,4 @@
+241
 amlddefnyddiwr
 amlddefnyddwyr
 amlyc
@@ -136,7 +137,6 @@ hamlddefnyddiwr
 hamlddefnyddwyr
 hamlyc
 hisgontractwyr
-huwch-ymchwilwyr
 isgontractwyr
 Mhinged
 neo-
@@ -237,9 +237,6 @@ olgwladychych
 onad
 Phinged
 Pinged
-Rhyddfrydol
-Ryddfrydol
 tâp-yrrwyr
 thâp-yrrwyr
-uwch-ymchwilwyr
 wefryrrwyr
