@@ -264,7 +264,7 @@ adeiladu () {
 	cp libreoffice-geiriadur"$version$prerelease".oxt releases/libreoffice-geiriadur"$version$prerelease"/libreoffice-geiriadur"$version$prerelease".oxt
 	
 	# affix stems to generate all valid words recognised by the dic / aff files
-	./wordforms -g dictionaries/cy_GB.aff dictionaries/cy_GB.dic releases/libreoffice-geiriadur"$version$prerelease"/libreoffice-geiriadur"$version$prerelease"-word-list.txt
+	wordforms -g dictionaries/cy_GB.aff dictionaries/cy_GB.dic releases/libreoffice-geiriadur"$version$prerelease"/libreoffice-geiriadur"$version$prerelease"-word-list.txt
 	
 	v=$( ls releases/.data/data-from* | awk -F "-" '{print $3}' )
 	echo "Finding added / deleted words since release $v..."
@@ -310,7 +310,7 @@ ystyried () {
 	###
 	# expand a word with all available relevant affixes: the below is modified from 'wordforms'
 	###
-	./wordforms ./dictionaries/cy_GB.aff ./dictionaries/cy_GB.dic $1 | WC_ALL=C sort -u
+	wordforms ./dictionaries/cy_GB.aff ./dictionaries/cy_GB.dic $1 | WC_ALL=C sort -u
 	exit_val=$?
 	if [[ $exit_val -ne 0 ]] ; then
 		suggest="$(hunspell -d ./dictionaries/cy_GB -a <<< $1 2>/dev/null | sed -e 's/^@.*$//' -e 's/^.*://' | tr -d '\n')"
@@ -347,7 +347,7 @@ cynhyrchu () {
 		dic="$1.dic"
 		aff="$1.aff"
 	fi
-	./wordforms -g "$aff" "$dic" "$out"
+	wordforms -g "$aff" "$dic" "$out"
 }
 
 insertmode () {
