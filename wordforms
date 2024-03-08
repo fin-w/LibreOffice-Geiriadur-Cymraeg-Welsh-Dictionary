@@ -30,8 +30,8 @@ generate () {
 	}
 	
 	function debug(text) {
+		#print text > "/dev/tty"
 		return
-		print text > "/dev/tty"
 	}
 	
 	function print_to_terminal(text) {
@@ -59,8 +59,6 @@ generate () {
 		return_value = 0
 		# separate the flags ("separated_flags_array" holds the data)
 		separate_flags(input_flags)
-		delete local_prefix_group
-		delete local_suffix_group
 		# local affixes are added as string to "to_be_processed" array
 		# TODO turn this array into a more elegant database array, reduce string splitting / processing?
 		local_prefixes = ""
