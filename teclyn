@@ -314,7 +314,7 @@ ystyried () {
 	###
 	# expand a word with all available relevant affixes: the below is modified from 'wordforms'
 	###
-	./wordforms ./dictionaries/cy_GB.aff ./dictionaries/cy_GB.dic $1
+	./wordforms ./dictionaries/cy_GB.aff ./dictionaries/cy_GB.dic $1 | WC_ALL=C sort -u
 	exit_val=$?
 	if [[ $exit_val -ne 0 ]] ; then
 		suggest="$(hunspell -d ./dictionaries/cy_GB -a <<< $1 2>/dev/null | sed -e 's/^@.*$//' -e 's/^.*://' | tr -d '\n')"
@@ -397,11 +397,11 @@ gwirio () {
 		response=$(tail -n1 <<< "$(echo $1 | hunspell -d dictionaries/cy_GB -a)")
 		case ${response:0:1} in
 			"*")
-				echo "Correct, in dictionary."
+				printf "Correct, in dictionary."
+				echo $1 | hunspell -d dictionaries/cy_GB -m | head -n1 | awk -F"  " '{print " ("$2")"}'
 				shift
 				;;
 			"&")
-			
 				if [[ "$(sed 's/^.*[:] //g' <<< $response)" == "$1" ]] ; then
 					echo "Word $1 is in the dictionary but marked as forbidden"
 				else
