@@ -154,10 +154,6 @@ ychwanegu () {
 	dictgair="$1"
 	# empty if hunspell recognises the word
 	anhysbys=$( hunspell -L -d dictionaries/cy_GB <<< "$gair" )
-	echo "gair: $gair :"
-	echo "flags: ${flags[@]} :"
-	echo "dictgair: $dictgair :"
-	echo "anyhysbys: $anhysbys :"
 	# find out if the aff includes WARN and FORBIDWARN flags
 	warn_flag=$( awk '$1=="WARN"{print $2}' dictionaries/cy_GB.aff )
 	forbid_warn=$( awk '$1=="FORBIDWARN"' dictionaries/cy_GB.aff )
