@@ -351,6 +351,10 @@ cynhyrchu () {
 }
 
 insertmode () {
+	###
+	# repeatedly read from command line
+	# and try to add the submitted word(s).
+	###
 	while :
 	do
 		echo
