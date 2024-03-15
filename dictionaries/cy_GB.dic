@@ -1,4 +1,4 @@
-51142
+51152
 a
 â
 Aaron
@@ -3355,6 +3355,7 @@ ansefydlogrwydd/H
 ansefydlu/H
 ansegmennol/H
 anseneddol/H
+ansensitif
 ansero/H
 ansicr/AH
 ansicredig/H
@@ -14135,7 +14136,11 @@ cwympog/LMT
 cwympo/LMT
 cwynad/LMT
 cwyna/LMT
-cwyn/BCLMQTv
+cwyn/CLMQTv
+chŵyn/C
+gŵyn/C
+chwyn/!
+gwyn/!
 cwynfan/BCLMTv
 cwynfanllyd/LMT
 cwynfanu/LMT
@@ -21205,6 +21210,7 @@ edwythiad/BH
 edwytho/H
 edyn/H
 e.e.
+ee
 efadu/H
 Efa/H
 Efail-fach/H
@@ -24703,7 +24709,8 @@ Glanfrogan/MT
 Glangors/MT
 glanhad/MT
 glanhâi/MT
-glanha/MQRv
+glanha/MRv
+glanhä/QX
 glanhau/MT
 glanhawragedd/MT
 glanhawraig/MT
@@ -25539,6 +25546,7 @@ gorlawn/MT
 gorlenwad/MT
 gorlenwi/MT
 gorlenw/Mvw
+gorlenyddol/M
 gorlethu/MT
 gorlifan/FMT
 gorlifdir/EMT
@@ -30167,6 +30175,7 @@ hysian
 hysio
 hysi/v
 hyson
+hysterectomi
 hysteresis
 hysteria
 hysterig
@@ -41297,7 +41306,7 @@ rhagfarnllyd/M
 rhagfarnu/M
 rhagfeddiannu/M
 rhagfeddwl/M
-rhagferf/BM
+rhagferf/BMR
 rhagffurfio/M
 rhagflaen/MRv
 rhagflaenor/GM
@@ -48160,6 +48169,7 @@ trombôn/LMT
 trombonwyr/LMT
 trombonydd/LMT
 tromino/ILMT
+trom/LM
 tronsiau/LMT
 trôns/LMT
 trontol/BCLMT
@@ -48460,6 +48470,7 @@ trylwyredd/LMT
 trylwyr/LMT
 trymaidd/LMT
 trymaint/LMT
+trym/ALM
 trymder/LMT
 trymedd/LMT
 trymfryd/LMT
@@ -48467,7 +48478,6 @@ trymha/LMv
 trymhau/LMT
 trymion/LM
 trymllyd/LMT
-trym/LM
 trymlwythog/LMT
 trympedi/LMT
 trymped/LMQT
@@ -49728,6 +49738,7 @@ ymad/Hv
 ymado/H
 ymadrodd/CHv
 ymadroddi/H
+ymadroddol/H
 ymadroddus/H
 ymaelod/Hv
 ymaelodi/H
