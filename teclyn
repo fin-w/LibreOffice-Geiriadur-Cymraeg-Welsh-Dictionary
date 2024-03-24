@@ -158,13 +158,13 @@ ychwanegu () {
 	warn_flag=$( awk '$1=="WARN"{print $2}' dictionaries/cy_GB.aff )
 	forbid_warn=$( awk '$1=="FORBIDWARN"' dictionaries/cy_GB.aff )
 	needaffix_flag=$( awk '$1=="NEEDAFFIX"{print $2}' dictionaries/cy_GB.aff )
-	
+
 	# usually you would not add a word if it is already recognised
 	# but there is a special case when you are adding a word to reject
 	# with FORBIDWARN WARN flag i.e. to remove an unwanted generated form
 	if [[ -n "$forbid_warn" ]] ; then case "${flags[@]}" in *"$warn_flag"*) forbidden=true ;; esac ; fi
 	case "${flags[@]}" in *"$needaffix_flag"*) needaffix=true ;; esac
-	
+
 	# print out matches or closest words
 	if [[ "$forbidden" != "true" ]] ; then gwirio "$gair" ; fi
 
@@ -200,7 +200,6 @@ ychwanegu () {
 		# Add word
 		if [[ $autotag -ne 1 ]] ; then
 			echo "Writing word \"$dictgair\" to dictionary"
-			if [[ "$needaffix" != "true" ]] ; then echo "$gair" >> .playground/word_list.txt ; fi
 			echo "$dictgair" >> dictionaries/cy_GB.dic
 			# Write number of lines to tmp
 			tail -n +2 dictionaries/cy_GB.dic | sort -u | wc -l > dictionaries/dict.tmp
@@ -216,13 +215,6 @@ ychwanegu () {
 		printf ''
 		#echo "\"$gair\" is already in dictionary"
 	fi
-
-	# contains any unknown words in the word list
-	anhysbys=$( hunspell -L -d dictionaries/cy_GB .playground/word_list.txt )
-	if [[ -n "$anhysbys" ]] ; then
-		echo "The dictionary does not recognise the following:"
-		echo "$anhysbys"
-	fi
 }
 
 adeiladu () {
@@ -231,7 +223,7 @@ adeiladu () {
 	# adeiladu -p for prerelease,
 	# adeiladu -r for a final release
 	###
-	
+
 	case $1 in
 		"-p")
 			echo "Packaging the extension..."
@@ -247,25 +239,25 @@ adeiladu () {
 			shift
 			;;
 	esac
-	
+
 	# clean the directory
 	rm *.oxt 2> /dev/null
-	
+
 	# sort and count the dictionary file (ensure it s tidy)
 	tacluso "dictionaries/cy_GB.dic"
-	
+
 	# zip the latest files
 	zip -qr libreoffice-geiriadur"$version$prerelease".oxt description/ META-INF/ dictionaries/cy_GB.dic dictionaries/cy_GB.aff baner_libreoffice_cymreig.svg description.xml dictionaries.xcu LICENSE README.md
-	
+
 	# overwrite either the prerelease dir, or if there's already an old release of the same version, then the old release
 	rm -rf releases/libreoffice-geiriadur"$version$prerelease"/
 	mkdir releases/libreoffice-geiriadur"$version$prerelease"/
-	
+
 	cp libreoffice-geiriadur"$version$prerelease".oxt releases/libreoffice-geiriadur"$version$prerelease"/libreoffice-geiriadur"$version$prerelease".oxt
-	
+
 	# affix stems to generate all valid words recognised by the dic / aff files
 	wordforms -g dictionaries/cy_GB.aff dictionaries/cy_GB.dic releases/libreoffice-geiriadur"$version$prerelease"/libreoffice-geiriadur"$version$prerelease"-word-list.txt
-	
+
 	v=$( ls releases/.data/data-from* | awk -F "-" '{print $3}' )
 	echo "Finding added / deleted words since release $v..."
 
@@ -274,15 +266,15 @@ adeiladu () {
 	#hunspell -d releases/libreoffice-geiriadur"$version$prerelease"/dic/cy_GB -L releases/.data/previous-word-list.txt > /tmp/out
 	cat /tmp/out | wc -l > releases/libreoffice-geiriadur"$version$prerelease"/libreoffice-geiriadur"$version$prerelease"-deleted.txt
 	cat /tmp/out >> releases/libreoffice-geiriadur"$version$prerelease"/libreoffice-geiriadur"$version$prerelease"-deleted.txt
-	
+
 	# find words in new word list not known by old dictionary files but known by new files (i.e. new spellable words)
 	hunspell -d releases/.data/cy_GB -L releases/libreoffice-geiriadur"$version$prerelease"/libreoffice-geiriadur"$version$prerelease"-word-list.txt > /tmp/out
 	cat /tmp/out | wc -l > releases/libreoffice-geiriadur"$version$prerelease"/libreoffice-geiriadur"$version$prerelease"-added.txt
 	cat /tmp/out >> releases/libreoffice-geiriadur"$version$prerelease"/libreoffice-geiriadur"$version$prerelease"-added.txt
-	
+
 	echo "Compressing reference word list..."
 	zip -qr releases/libreoffice-geiriadur"$version$prerelease"/libreoffice-geiriadur"$version$prerelease"-word-list.zip releases/libreoffice-geiriadur"$version$prerelease"/libreoffice-geiriadur"$version$prerelease"-word-list.txt
-	
+
 	# when publishing a new release, update the old word list used as reference for changes to the most recent word list
 	if [[ -n "$version" ]] ; then
 		echo "Updating reference word list to most recent release..."
@@ -293,7 +285,7 @@ adeiladu () {
 		cp dictionaries/cy_GB.aff releases/.data/cy_GB.aff
 		cp dictionaries/cy_GB.dic releases/.data/cy_GB.dic
 	fi
-	
+
 	# get rid of the uncompressed word list
 	rm releases/libreoffice-geiriadur"$version$prerelease"/libreoffice-geiriadur"$version$prerelease"-word-list.txt
 }
