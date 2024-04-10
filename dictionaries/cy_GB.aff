@@ -173,7 +173,7 @@ SFX w 0	0/bcdeMLHX	.
 SFX y Y 3 # ~5 instances in the dic
 SFX y NI	nni/bcfMLHX	NI
 SFX y NI	ni/deghijMLHX	NI
-SFX y 0 	0/bcdefghijMLHX	[^I]
+SFX y 0	0/bcdefghijMLHX	[^I]
 
 SFX z Y 1 # ~50 instances in the dic
 SFX z 0	a/aMLHX	.
