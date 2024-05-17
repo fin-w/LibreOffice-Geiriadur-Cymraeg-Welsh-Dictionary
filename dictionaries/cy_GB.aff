@@ -25,8 +25,7 @@ TRY yia'onrmecwdbgufâhstlôpŷŵjî-êáïûëòöéìỳüàkèίẁíäóẃ
 KEY qwertyuiop|asdfghjkl|zxcvbnm|qwa|wes|erd|rtf|tyg|yuh|uij|iok|opl|asz|sdx|dfc|fgv|ghb|hjn|jkm|kl
 
 NEEDAFFIX X
-WARN !
-FORBIDWARN
+FORBIDDENWORD !
 
 ICONV 5
 ICONV ’ '
